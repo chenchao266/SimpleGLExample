@@ -1,0 +1,495 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="common">
+      <UniqueIdentifier>{1049bcca-5f52-439e-bbc5-45b0518abb35}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="PositionBasedDynamics\AABB.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="PositionBasedDynamics\BinaryFileReaderWriter.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="PositionBasedDynamics\BoundingSphere.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="PositionBasedDynamics\BoundingSphereHierarchy.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="PositionBasedDynamics\CollisionDetection.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="PositionBasedDynamics\Common.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="PositionBasedDynamics\Constraints.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="PositionBasedDynamics\Counting.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="PositionBasedDynamics\CubicSDFCollisionDetection.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="PositionBasedDynamics\DirectPositionBasedSolverForStiffRodsInterface.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="PositionBasedDynamics\DistanceFieldCollisionDetection.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="PositionBasedDynamics\EnumParameter.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="PositionBasedDynamics\FileSystem.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="PositionBasedDynamics\FunctionParameter.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="PositionBasedDynamics\Hashmap.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="PositionBasedDynamics\IDFactory.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="PositionBasedDynamics\IndexedFaceMesh.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="PositionBasedDynamics\IndexedTetMesh.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="PositionBasedDynamics\kdTree.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="PositionBasedDynamics\LineModel.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="PositionBasedDynamics\Logger.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="PositionBasedDynamics\MathFunctions.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="PositionBasedDynamics\NeighborhoodSearchSpatialHashing.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="PositionBasedDynamics\NumericParameter.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="PositionBasedDynamics\ObjectArray.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="PositionBasedDynamics\Parameter.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="PositionBasedDynamics\ParameterObject.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="PositionBasedDynamics\ParticleData.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="PositionBasedDynamics\PartioReaderWriter.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="PositionBasedDynamics\PBDWrapper.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="PositionBasedDynamics\PositionBasedDynamics.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="PositionBasedDynamics\PositionBasedElasticRods.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="PositionBasedDynamics\PositionBasedFluids.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="PositionBasedDynamics\PositionBasedGenericConstraints.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="PositionBasedDynamics\PositionBasedRigidBodyDynamics.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="PositionBasedDynamics\RigidBody.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="PositionBasedDynamics\RigidBodyGeometry.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="PositionBasedDynamics\SceneLoader.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="PositionBasedDynamics\Simulation.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="PositionBasedDynamics\SimulationModel.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="PositionBasedDynamics\SimulatorBase.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="PositionBasedDynamics\SPHKernels.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="PositionBasedDynamics\StringTools.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="PositionBasedDynamics\SystemInfo.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="PositionBasedDynamics\TetGenLoader.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="PositionBasedDynamics\TetModel.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="PositionBasedDynamics\TimeIntegration.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="PositionBasedDynamics\TimeManager.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="PositionBasedDynamics\TimeStep.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="PositionBasedDynamics\TimeStepController.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="PositionBasedDynamics\Timing.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="PositionBasedDynamics\TriangleModel.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="PositionBasedDynamics\VectorParameter.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="PositionBasedDynamics\VolumeIntegration.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="PositionBasedDynamics\XPBD.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="PositionBasedDynamics\AnimationField.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="PositionBasedDynamics\AnimationFieldSystem.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="PositionBasedDynamics\AVX_math.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="PositionBasedDynamics\BoundaryModel.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="PositionBasedDynamics\BoundaryModel_Akinci2012.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="PositionBasedDynamics\BoundaryModel_Bender2019.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="PositionBasedDynamics\BoundaryModel_Koschier2017.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="PositionBasedDynamics\BoundarySimulator.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="PositionBasedDynamics\CholeskyAVXSolver.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="PositionBasedDynamics\DebugTools.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="PositionBasedDynamics\Emitter.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="PositionBasedDynamics\EmitterSystem.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="PositionBasedDynamics\FluidModel.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="PositionBasedDynamics\GaussQuadrature.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="PositionBasedDynamics\MatrixFreeSolver.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="PositionBasedDynamics\NeighborhoodSearch.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="PositionBasedDynamics\NonPressureForceBase.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="PositionBasedDynamics\PBDBoundarySimulator.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="PositionBasedDynamics\PBDRigidBody.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="PositionBasedDynamics\PoissonDiskSampling.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="PositionBasedDynamics\RegularSampling2D.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="PositionBasedDynamics\RegularTriangleSampling.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="PositionBasedDynamics\RigidBodyObject.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="PositionBasedDynamics\SceneConfiguration.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="PositionBasedDynamics\SDFFunctions.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="PositionBasedDynamics\SimpleQuadrature.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="PositionBasedDynamics\SimulationSPH.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="PositionBasedDynamics\SPHKernelsSPH.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="PositionBasedDynamics\StaticBoundarySimulator.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="PositionBasedDynamics\StaticRigidBody.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="PositionBasedDynamics\SurfaceSampling.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="PositionBasedDynamics\TimeManagerSPH.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="PositionBasedDynamics\TimeStepSPH.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="PositionBasedDynamics\TriangleMesh.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="PositionBasedDynamics\VolumeSampling.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="PositionBasedDynamics\WindingNumbers.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="PositionBasedDynamics\SceneLoaderSPH.h">
+      <Filter>common</Filter>
+    </ClInclude>
+    <ClInclude Include="PositionBasedDynamics\FoamKernel.h" />
+    <ClInclude Include="PositionBasedDynamics\SamplingBase.h" />
+    <ClInclude Include="PositionBasedDynamics\SPHSamplingBase.h" />
+    <ClInclude Include="PositionBasedDynamics\SPHVolumeSampling.h" />
+    <ClInclude Include="PositionBasedDynamics\SPHVolumeSampling_Jiang2015.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="PositionBasedDynamics\BoundingSphereHierarchy.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="PositionBasedDynamics\CollisionDetection.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="PositionBasedDynamics\Constraints.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="PositionBasedDynamics\CubicSDFCollisionDetection.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="PositionBasedDynamics\DistanceFieldCollisionDetection.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="PositionBasedDynamics\IDFactory.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="PositionBasedDynamics\IndexedFaceMesh.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="PositionBasedDynamics\IndexedTetMesh.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="PositionBasedDynamics\LineModel.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="PositionBasedDynamics\MathFunctions.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="PositionBasedDynamics\NeighborhoodSearchSpatialHashing.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="PositionBasedDynamics\PartioReaderWriter.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="PositionBasedDynamics\PBDWrapper.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="PositionBasedDynamics\PositionBasedDynamics.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="PositionBasedDynamics\PositionBasedElasticRods.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="PositionBasedDynamics\PositionBasedFluids.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="PositionBasedDynamics\PositionBasedRigidBodyDynamics.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="PositionBasedDynamics\RigidBodyGeometry.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="PositionBasedDynamics\SceneLoader.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="PositionBasedDynamics\Simulation.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="PositionBasedDynamics\SimulationModel.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="PositionBasedDynamics\SimulatorBase.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="PositionBasedDynamics\SPHKernels.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="PositionBasedDynamics\TetGenLoader.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="PositionBasedDynamics\TetModel.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="PositionBasedDynamics\TimeIntegration.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="PositionBasedDynamics\TimeManager.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="PositionBasedDynamics\TimeStep.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="PositionBasedDynamics\TimeStepController.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="PositionBasedDynamics\TriangleModel.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="PositionBasedDynamics\VolumeIntegration.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="PositionBasedDynamics\XPBD.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="PositionBasedDynamics\AnimationField.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="PositionBasedDynamics\AnimationFieldSystem.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="PositionBasedDynamics\BoundaryModel.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="PositionBasedDynamics\BoundaryModel_Akinci2012.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="PositionBasedDynamics\BoundaryModel_Bender2019.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="PositionBasedDynamics\BoundaryModel_Koschier2017.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="PositionBasedDynamics\BoundarySimulator.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="PositionBasedDynamics\CholeskyAVXSolver.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="PositionBasedDynamics\DebugTools.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="PositionBasedDynamics\Emitter.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="PositionBasedDynamics\EmitterSystem.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="PositionBasedDynamics\ExporterRegistration.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="PositionBasedDynamics\FluidModel.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="PositionBasedDynamics\GaussQuadrature.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="PositionBasedDynamics\NonPressureForceBase.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="PositionBasedDynamics\NonPressureForceRegistration.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="PositionBasedDynamics\PBDBoundarySimulator.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="PositionBasedDynamics\PoissonDiskSampling.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="PositionBasedDynamics\RegularSampling2D.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="PositionBasedDynamics\RegularTriangleSampling.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="PositionBasedDynamics\SceneConfiguration.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="PositionBasedDynamics\SceneLoaderSPH.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="PositionBasedDynamics\SDFFunctions.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="PositionBasedDynamics\SimpleQuadrature.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="PositionBasedDynamics\SimulationSPH.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="PositionBasedDynamics\SPHKernelsSPH.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="PositionBasedDynamics\StaticBoundarySimulator.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="PositionBasedDynamics\TimeManagerSPH.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="PositionBasedDynamics\TimeStepSPH.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="PositionBasedDynamics\TriangleMesh.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="PositionBasedDynamics\VolumeSampling.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="PositionBasedDynamics\WindingNumbers.cpp">
+      <Filter>common</Filter>
+    </ClCompile>
+    <ClCompile Include="PositionBasedDynamics\FoamKernel.cpp" />
+    <ClCompile Include="PositionBasedDynamics\SamplingBase.cpp" />
+    <ClCompile Include="PositionBasedDynamics\SPHSamplingBase.cpp" />
+    <ClCompile Include="PositionBasedDynamics\SPHVolumeSampling.cpp" />
+    <ClCompile Include="PositionBasedDynamics\SPHVolumeSampling_Jiang2015.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="PositionBasedDynamics\kdTree.inl">
+      <Filter>common</Filter>
+    </None>
+  </ItemGroup>
+</Project>

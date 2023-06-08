@@ -1,0 +1,120 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="pls">
+      <UniqueIdentifier>{7dbb9e6d-c93e-41e8-8309-476f47a9576b}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="pls\LevelSet2D.cpp">
+      <Filter>pls</Filter>
+    </ClCompile>
+    <ClCompile Include="pls\LevelSet3D.cpp">
+      <Filter>pls</Filter>
+    </ClCompile>
+    <ClCompile Include="pls\LevelSetFMGrid2D.cpp">
+      <Filter>pls</Filter>
+    </ClCompile>
+    <ClCompile Include="pls\LevelSetFMGrid3D.cpp">
+      <Filter>pls</Filter>
+    </ClCompile>
+    <ClCompile Include="pls\LevelSetGrid2D.cpp">
+      <Filter>pls</Filter>
+    </ClCompile>
+    <ClCompile Include="pls\LevelSetGrid3D.cpp">
+      <Filter>pls</Filter>
+    </ClCompile>
+    <ClCompile Include="pls\MarchingCubes.cpp">
+      <Filter>pls</Filter>
+    </ClCompile>
+    <ClCompile Include="pls\MarchingSquares.cpp">
+      <Filter>pls</Filter>
+    </ClCompile>
+    <ClCompile Include="pls\Particle2D.cpp">
+      <Filter>pls</Filter>
+    </ClCompile>
+    <ClCompile Include="pls\Particle3D.cpp">
+      <Filter>pls</Filter>
+    </ClCompile>
+    <ClCompile Include="pls\ParticleSet2D.cpp">
+      <Filter>pls</Filter>
+    </ClCompile>
+    <ClCompile Include="pls\ParticleSet3D.cpp">
+      <Filter>pls</Filter>
+    </ClCompile>
+    <ClCompile Include="pls\StableFluid2D.cpp">
+      <Filter>pls</Filter>
+    </ClCompile>
+    <ClCompile Include="pls\StableFluid3D.cpp">
+      <Filter>pls</Filter>
+    </ClCompile>
+    <ClCompile Include="pls\WaterSimulator2D.cpp">
+      <Filter>pls</Filter>
+    </ClCompile>
+    <ClCompile Include="pls\WaterSimulator3D.cpp">
+      <Filter>pls</Filter>
+    </ClCompile>
+    <ClCompile Include="pls\Tests.cpp">
+      <Filter>pls</Filter>
+    </ClCompile>
+    <ClCompile Include="pls\mathfun.cpp">
+      <Filter>pls</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="pls\LevelSet2D.h">
+      <Filter>pls</Filter>
+    </ClInclude>
+    <ClInclude Include="pls\LevelSet3D.h">
+      <Filter>pls</Filter>
+    </ClInclude>
+    <ClInclude Include="pls\LevelSetFMGrid2D.h">
+      <Filter>pls</Filter>
+    </ClInclude>
+    <ClInclude Include="pls\LevelSetFMGrid3D.h">
+      <Filter>pls</Filter>
+    </ClInclude>
+    <ClInclude Include="pls\LevelSetGrid2D.h">
+      <Filter>pls</Filter>
+    </ClInclude>
+    <ClInclude Include="pls\LevelSetGrid3D.h">
+      <Filter>pls</Filter>
+    </ClInclude>
+    <ClInclude Include="pls\MarchingCubes.h">
+      <Filter>pls</Filter>
+    </ClInclude>
+    <ClInclude Include="pls\MarchingSquares.h">
+      <Filter>pls</Filter>
+    </ClInclude>
+    <ClInclude Include="pls\Particle2D.h">
+      <Filter>pls</Filter>
+    </ClInclude>
+    <ClInclude Include="pls\Particle3D.h">
+      <Filter>pls</Filter>
+    </ClInclude>
+    <ClInclude Include="pls\ParticleSet2D.h">
+      <Filter>pls</Filter>
+    </ClInclude>
+    <ClInclude Include="pls\ParticleSet3D.h">
+      <Filter>pls</Filter>
+    </ClInclude>
+    <ClInclude Include="pls\StableFluid2D.h">
+      <Filter>pls</Filter>
+    </ClInclude>
+    <ClInclude Include="pls\StableFluid3D.h">
+      <Filter>pls</Filter>
+    </ClInclude>
+    <ClInclude Include="pls\WaterSimulator2D.h">
+      <Filter>pls</Filter>
+    </ClInclude>
+    <ClInclude Include="pls\WaterSimulator3D.h">
+      <Filter>pls</Filter>
+    </ClInclude>
+    <ClInclude Include="pls\Tests.h">
+      <Filter>pls</Filter>
+    </ClInclude>
+    <ClInclude Include="pls\mathfun.h">
+      <Filter>pls</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

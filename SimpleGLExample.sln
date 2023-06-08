@@ -1,0 +1,70 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.852
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "SimpleGLExample", "SimpleGLExample.vcxproj", "{BD877E49-201F-3AA6-818C-DAAC4BA21B35}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ExampleApp", "ExampleApp.vcxproj", "{46DA935C-659E-488B-88AB-B6995454E9E3}"
+	ProjectSection(ProjectDependencies) = postProject
+		{BD877E49-201F-3AA6-818C-DAAC4BA21B35} = {BD877E49-201F-3AA6-818C-DAAC4BA21B35}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Droplet3D", "Droplet3D.vcxproj", "{46DA935C-659E-455B-55AB-B6335454E9E3}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "UnifiedParticle", "UnifiedParticle.vcxproj", "{46DA935C-659E-488B-55AB-B6775454E9E3}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OpenSPH", "OpenSPH.vcxproj", "{46D7735C-659E-455B-55AB-B6225454E9E3}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PositionBasedDynamics", "PositionBasedDynamics.vcxproj", "{46DA935C-659E-422B-55AB-B6225454E9E3}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ParticleLevelSet", "ParticleLevelSet.vcxproj", "{46DA975C-659E-477B-55AB-B6775454E9E3}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "pls", "pls.vcxproj", "{469A975C-6599-4779-55AB-B67754549993}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Release|x64 = Release|x64
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BD877E49-201F-3AA6-818C-DAAC4BA21B35}.Debug|x64.ActiveCfg = Debug|x64
+		{BD877E49-201F-3AA6-818C-DAAC4BA21B35}.Debug|x64.Build.0 = Debug|x64
+		{BD877E49-201F-3AA6-818C-DAAC4BA21B35}.Release|x64.ActiveCfg = Release|x64
+		{BD877E49-201F-3AA6-818C-DAAC4BA21B35}.Release|x64.Build.0 = Release|x64
+		{46DA935C-659E-488B-88AB-B6995454E9E3}.Debug|x64.ActiveCfg = Debug|x64
+		{46DA935C-659E-488B-88AB-B6995454E9E3}.Debug|x64.Build.0 = Debug|x64
+		{46DA935C-659E-488B-88AB-B6995454E9E3}.Release|x64.ActiveCfg = Release|x64
+		{46DA935C-659E-488B-88AB-B6995454E9E3}.Release|x64.Build.0 = Release|x64
+		{46DA935C-659E-455B-55AB-B6335454E9E3}.Debug|x64.ActiveCfg = Debug|x64
+		{46DA935C-659E-455B-55AB-B6335454E9E3}.Debug|x64.Build.0 = Debug|x64
+		{46DA935C-659E-455B-55AB-B6335454E9E3}.Release|x64.ActiveCfg = Release|x64
+		{46DA935C-659E-455B-55AB-B6335454E9E3}.Release|x64.Build.0 = Release|x64
+		{46DA935C-659E-488B-55AB-B6775454E9E3}.Debug|x64.ActiveCfg = Debug|x64
+		{46DA935C-659E-488B-55AB-B6775454E9E3}.Debug|x64.Build.0 = Debug|x64
+		{46DA935C-659E-488B-55AB-B6775454E9E3}.Release|x64.ActiveCfg = Release|x64
+		{46DA935C-659E-488B-55AB-B6775454E9E3}.Release|x64.Build.0 = Release|x64
+		{46D7735C-659E-455B-55AB-B6225454E9E3}.Debug|x64.ActiveCfg = Debug|x64
+		{46D7735C-659E-455B-55AB-B6225454E9E3}.Debug|x64.Build.0 = Debug|x64
+		{46D7735C-659E-455B-55AB-B6225454E9E3}.Release|x64.ActiveCfg = Release|x64
+		{46D7735C-659E-455B-55AB-B6225454E9E3}.Release|x64.Build.0 = Release|x64
+		{46DA935C-659E-422B-55AB-B6225454E9E3}.Debug|x64.ActiveCfg = Debug|x64
+		{46DA935C-659E-422B-55AB-B6225454E9E3}.Debug|x64.Build.0 = Debug|x64
+		{46DA935C-659E-422B-55AB-B6225454E9E3}.Release|x64.ActiveCfg = Release|x64
+		{46DA935C-659E-422B-55AB-B6225454E9E3}.Release|x64.Build.0 = Release|x64
+		{46DA975C-659E-477B-55AB-B6775454E9E3}.Debug|x64.ActiveCfg = Debug|x64
+		{46DA975C-659E-477B-55AB-B6775454E9E3}.Debug|x64.Build.0 = Debug|x64
+		{46DA975C-659E-477B-55AB-B6775454E9E3}.Release|x64.ActiveCfg = Release|x64
+		{46DA975C-659E-477B-55AB-B6775454E9E3}.Release|x64.Build.0 = Release|x64
+		{469A975C-6599-4779-55AB-B67754549993}.Debug|x64.ActiveCfg = Debug|x64
+		{469A975C-6599-4779-55AB-B67754549993}.Debug|x64.Build.0 = Debug|x64
+		{469A975C-6599-4779-55AB-B67754549993}.Release|x64.ActiveCfg = Release|x64
+		{469A975C-6599-4779-55AB-B67754549993}.Release|x64.Build.0 = Release|x64
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E12795D0-6823-4078-A383-CF7BE07A6D89}
+	EndGlobalSection
+EndGlobal

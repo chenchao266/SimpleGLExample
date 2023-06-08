@@ -1,0 +1,128 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="UnifiedPhysics\UnifiedIO.cpp">
+      <Filter>unified</Filter>
+    </ClCompile>
+    <ClCompile Include="UnifiedPhysics\UnifiedParticle.cpp">
+      <Filter>unified</Filter>
+    </ClCompile>
+    <ClCompile Include="UnifiedPhysics\UnifiedPhysics.cpp">
+      <Filter>unified</Filter>
+    </ClCompile>
+    <ClCompile Include="UnifiedPhysics\RigidBody.cpp">
+      <Filter>unified</Filter>
+    </ClCompile>
+    <ClCompile Include="UnifiedPhysics\UnifiedConstants.cpp">
+      <Filter>unified</Filter>
+    </ClCompile>
+    <ClCompile Include="UnifiedPhysics\WeightingKernel.cpp">
+      <Filter>unified</Filter>
+    </ClCompile>
+    <ClCompile Include="UnifiedPhysics\zIndex.cpp">
+      <Filter>unified</Filter>
+    </ClCompile>
+    <ClCompile Include="UnifiedPhysics\render_particles.cpp">
+      <Filter>unified</Filter>
+    </ClCompile>
+    <ClCompile Include="UnifiedPhysics\Scene.cpp">
+      <Filter>unified</Filter>
+    </ClCompile>
+    <ClCompile Include="UnifiedPhysics\Polygon.cpp">
+      <Filter>unified</Filter>
+    </ClCompile>
+    <ClCompile Include="UnifiedPhysics\fluid_system.cpp">
+      <Filter>fluid</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="unified">
+      <UniqueIdentifier>{acc3c91c-b379-461c-bd5e-e96be13bfce1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="fluid">
+      <UniqueIdentifier>{41a97e5c-ffce-49eb-b1a2-41f1bf21b897}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="UnifiedPhysics\UnifiedIO.h">
+      <Filter>unified</Filter>
+    </ClInclude>
+    <ClInclude Include="UnifiedPhysics\UnifiedParticle.h">
+      <Filter>unified</Filter>
+    </ClInclude>
+    <ClInclude Include="UnifiedPhysics\UnifiedPhysics.h">
+      <Filter>unified</Filter>
+    </ClInclude>
+    <ClInclude Include="UnifiedPhysics\cudaSPH_Include.h">
+      <Filter>unified</Filter>
+    </ClInclude>
+    <ClInclude Include="UnifiedPhysics\RigidBody.h">
+      <Filter>unified</Filter>
+    </ClInclude>
+    <ClInclude Include="UnifiedPhysics\UnifiedConstants.h">
+      <Filter>unified</Filter>
+    </ClInclude>
+    <ClInclude Include="UnifiedPhysics\WeightingKernel.h">
+      <Filter>unified</Filter>
+    </ClInclude>
+    <ClInclude Include="UnifiedPhysics\zIndex.h">
+      <Filter>unified</Filter>
+    </ClInclude>
+    <ClInclude Include="UnifiedPhysics\render_particles.h">
+      <Filter>unified</Filter>
+    </ClInclude>
+    <ClInclude Include="UnifiedPhysics\Scene.h">
+      <Filter>unified</Filter>
+    </ClInclude>
+    <ClInclude Include="UnifiedPhysics\sort.h">
+      <Filter>unified</Filter>
+    </ClInclude>
+    <ClInclude Include="UnifiedPhysics\Polygon.h">
+      <Filter>unified</Filter>
+    </ClInclude>
+    <ClInclude Include="UnifiedPhysics\fluid.h">
+      <Filter>fluid</Filter>
+    </ClInclude>
+    <ClInclude Include="UnifiedPhysics\fluid_system.h">
+      <Filter>fluid</Filter>
+    </ClInclude>
+    <ClInclude Include="UnifiedPhysics\fluid_system_host.cuh">
+      <Filter>fluid</Filter>
+    </ClInclude>
+    <ClInclude Include="UnifiedPhysics\fluid_system_kern.cuh">
+      <Filter>fluid</Filter>
+    </ClInclude>
+    <ClInclude Include="UnifiedPhysics\radixsort.cuh">
+      <Filter>unified</Filter>
+    </ClInclude>
+    <ClInclude Include="UnifiedPhysics\UnifiedMathCUDA.cuh">
+      <Filter>unified</Filter>
+    </ClInclude>
+    <ClInclude Include="UnifiedPhysics\particles.cuh">
+      <Filter>unified</Filter>
+    </ClInclude>
+    <ClInclude Include="UnifiedPhysics\particles_kernel.cuh">
+      <Filter>unified</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CudaCompile Include="UnifiedPhysics\fluid_system_host.cu">
+      <Filter>fluid</Filter>
+    </CudaCompile>
+    <CudaCompile Include="UnifiedPhysics\fluid_system_kern.cu">
+      <Filter>fluid</Filter>
+    </CudaCompile>
+    <CudaCompile Include="UnifiedPhysics\prefix_sum.cuh">
+      <Filter>fluid</Filter>
+    </CudaCompile>
+    <CudaCompile Include="UnifiedPhysics\particles.cu">
+      <Filter>unified</Filter>
+    </CudaCompile>
+    <CudaCompile Include="UnifiedPhysics\particles_kernel.cu">
+      <Filter>unified</Filter>
+    </CudaCompile>
+    <CudaCompile Include="UnifiedPhysics\radixsort_kernel.cu">
+      <Filter>unified</Filter>
+    </CudaCompile>
+  </ItemGroup>
+</Project>

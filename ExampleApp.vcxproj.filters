@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="cloth.cpp">
+      <Filter>app</Filter>
+    </ClCompile>
+    <ClCompile Include="ExampleEntries.cpp">
+      <Filter>app</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>app</Filter>
+    </ClCompile>
+    <ClCompile Include="OpenGLExampleBrowser.cpp">
+      <Filter>app</Filter>
+    </ClCompile>
+    <ClCompile Include="TinyVRGui.cpp">
+      <Filter>app</Filter>
+    </ClCompile>
+    <ClCompile Include="TimeSeriesExample.cpp">
+      <Filter>app</Filter>
+    </ClCompile>
+    <ClCompile Include="TinyRendererSetup.cpp">
+      <Filter>app</Filter>
+    </ClCompile>
+    <ClCompile Include="RenderInstancingDemo.cpp">
+      <Filter>app</Filter>
+    </ClCompile>
+    <ClCompile Include="DynamicTexturedCubeDemo.cpp">
+      <Filter>app</Filter>
+    </ClCompile>
+    <ClCompile Include="fft\OceanScene.cpp">
+      <Filter>fft</Filter>
+    </ClCompile>
+    <ClCompile Include="fft\OceanTile.cpp">
+      <Filter>fft</Filter>
+    </ClCompile>
+    <ClCompile Include="fft\FFTOceanSurface.cpp">
+      <Filter>fft</Filter>
+    </ClCompile>
+    <ClCompile Include="fft\FFTOceanTechnique.cpp">
+      <Filter>fft</Filter>
+    </ClCompile>
+    <ClCompile Include="fft\ScreenAlignedQuad.cpp">
+      <Filter>fft</Filter>
+    </ClCompile>
+    <ClCompile Include="fft\MipmapGeometryVBO.cpp">
+      <Filter>fft</Filter>
+    </ClCompile>
+    <ClCompile Include="fft\WaterTrochoids.cpp">
+      <Filter>fft</Filter>
+    </ClCompile>
+    <ClCompile Include="fft\MipmapGeometry.cpp">
+      <Filter>fft</Filter>
+    </ClCompile>
+    <ClCompile Include="fft\OceanTechnique.cpp">
+      <Filter>fft</Filter>
+    </ClCompile>
+    <ClCompile Include="fft\FFTSimulation.cpp">
+      <Filter>fft</Filter>
+    </ClCompile>
+    <ClCompile Include="fft\FFTOceanSurfaceVBO.cpp">
+      <Filter>fft</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="app">
+      <UniqueIdentifier>{36168d48-840f-46ae-b882-c657d2f878aa}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="fft">
+      <UniqueIdentifier>{44f390c4-1681-4526-8677-aa2cc5ffee60}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="OpenGLExampleBrowser.h">
+      <Filter>app</Filter>
+    </ClInclude>
+    <ClInclude Include="ExampleEntries.h">
+      <Filter>app</Filter>
+    </ClInclude>
+    <ClInclude Include="TinyRendererGUIHelper.h">
+      <Filter>app</Filter>
+    </ClInclude>
+    <ClInclude Include="TinyRendererSetup.h">
+      <Filter>app</Filter>
+    </ClInclude>
+    <ClInclude Include="cloth.h">
+      <Filter>app</Filter>
+    </ClInclude>
+    <ClInclude Include="fft\WaterTrochoids.h">
+      <Filter>fft</Filter>
+    </ClInclude>
+    <ClInclude Include="fft\ScreenAlignedQuad.h">
+      <Filter>fft</Filter>
+    </ClInclude>
+    <ClInclude Include="fft\MipmapGeometry.h">
+      <Filter>fft</Filter>
+    </ClInclude>
+    <ClInclude Include="fft\OceanTile.h">
+      <Filter>fft</Filter>
+    </ClInclude>
+    <ClInclude Include="fft\MipmapGeometryVBO.h">
+      <Filter>fft</Filter>
+    </ClInclude>
+    <ClInclude Include="fft\OceanScene.h">
+      <Filter>fft</Filter>
+    </ClInclude>
+    <ClInclude Include="fft\FFTOceanTechnique.h">
+      <Filter>fft</Filter>
+    </ClInclude>
+    <ClInclude Include="fft\FFTOceanSurface.h">
+      <Filter>fft</Filter>
+    </ClInclude>
+    <ClInclude Include="fft\OceanTechnique.h">
+      <Filter>fft</Filter>
+    </ClInclude>
+    <ClInclude Include="fft\FFTOceanSurfaceVBO.h">
+      <Filter>fft</Filter>
+    </ClInclude>
+    <ClInclude Include="fft\FFTSimulation.h">
+      <Filter>fft</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,184 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{46DA935C-659E-488B-88AB-B6995454E9E3}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <Platform>x64</Platform>
+    <ProjectName>ExampleApp</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+    <Import Project="$(VCTargetsPath)\BuildCustomizations\CUDA 11.6.props" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\Debug\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\Debug\$(ProjectName)</IntDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\Release\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\Release\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">ExampleApp</TargetName>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>.;.\cuda;.\glad;.\common;.\fmmtl;.\kernel;.\Droplet3D\LosTopos3D;.\Droplet3D;.\stb_image;N:\WorkBench\fftw-3.3.5-dll64;N:\WorkBench\eigen-3.3;N:\WorkBench\boost_1_69;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4244;4267</DisableSpecificWarnings>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <FloatingPointModel>Fast</FloatingPointModel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <Optimization>Disabled</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <StringPooling>true</StringPooling>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WIN64;HAVE_LAPACK;HAVE_BLAS;USE_FORTRAN_BLAS;USE_GRAPHICAL_BENCHMARK;_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;_SCL_SECURE_NO_WARNINGS;GLEW_STATIC;CMAKE_INTDIR="Debug";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WIN64;BT_USE_DOUBLE_PRECISION;USE_GRAPHICAL_BENCHMARK;_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;_SCL_SECURE_NO_WARNINGS;GLEW_STATIC;CMAKE_INTDIR=\"Debug\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>.\OpenGLWindow;.\glad;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>.\OpenGLWindow;.\glad;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+    </Lib>
+    <Link>
+      <AdditionalDependencies>cudart.lib;OpenGL32.Lib;.\Debug\SimpleGLExample.lib;.\Debug\UnifiedParticle.lib;.\Debug\Droplet3D.lib;.\Debug\OpenSPH.lib;N:\WorkBench\tbb2019_20191006oss\lib\intel64\vc14\tbbmalloc_debug.lib;libfftw3f-3.lib;N:\WorkBench\ceres-solver-1\lib\Release\libopenblas.dll.a;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>N:\WorkBench\fftw-3.3.5-dll64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+    <CudaCompile>
+      <CodeGeneration>compute_50,sm_50;compute_75,sm_75</CodeGeneration>
+      <TargetMachinePlatform>64</TargetMachinePlatform>
+    </CudaCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>.;.\OpenGLWindow;.\glad;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <DisableSpecificWarnings>4244;4267</DisableSpecificWarnings>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <FloatingPointModel>Fast</FloatingPointModel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <StringPooling>true</StringPooling>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WIN64;USE_GRAPHICAL_BENCHMARK;_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;_SCL_SECURE_NO_WARNINGS;GLEW_STATIC;CMAKE_INTDIR="Release";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WIN64;BT_USE_DOUBLE_PRECISION;USE_GRAPHICAL_BENCHMARK;_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;_SCL_SECURE_NO_WARNINGS;GLEW_STATIC;CMAKE_INTDIR=\"Release\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>.\OpenGLWindow;.\glad;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>.\OpenGLWindow;.\glad;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+    </Lib>
+    <Link>
+      <AdditionalDependencies>OpenGL32.Lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <CudaCompile>
+      <CodeGeneration>compute_50,sm_50;compute_75,sm_75</CodeGeneration>
+      <TargetMachinePlatform>64</TargetMachinePlatform>
+    </CudaCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="cloth.h" />
+    <ClInclude Include="ExampleEntries.h" />
+    <ClInclude Include="fft\FFTOceanSurface.h" />
+    <ClInclude Include="fft\FFTOceanSurfaceVBO.h" />
+    <ClInclude Include="fft\FFTOceanTechnique.h" />
+    <ClInclude Include="fft\FFTSimulation.h" />
+    <ClInclude Include="fft\MipmapGeometry.h" />
+    <ClInclude Include="fft\MipmapGeometryVBO.h" />
+    <ClInclude Include="fft\OceanScene.h" />
+    <ClInclude Include="fft\OceanTechnique.h" />
+    <ClInclude Include="fft\OceanTile.h" />
+    <ClInclude Include="fft\ScreenAlignedQuad.h" />
+    <ClInclude Include="fft\WaterTrochoids.h" />
+    <ClInclude Include="OpenGLExampleBrowser.h" />
+    <ClInclude Include="TinyRendererGUIHelper.h" />
+    <ClInclude Include="TinyRendererSetup.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="cloth.cpp" />
+    <ClCompile Include="DynamicTexturedCubeDemo.cpp" />
+    <ClCompile Include="ExampleEntries.cpp" />
+    <ClCompile Include="fft\FFTOceanSurface.cpp" />
+    <ClCompile Include="fft\FFTOceanSurfaceVBO.cpp" />
+    <ClCompile Include="fft\FFTOceanTechnique.cpp" />
+    <ClCompile Include="fft\FFTSimulation.cpp" />
+    <ClCompile Include="fft\MipmapGeometry.cpp" />
+    <ClCompile Include="fft\MipmapGeometryVBO.cpp" />
+    <ClCompile Include="fft\OceanScene.cpp" />
+    <ClCompile Include="fft\OceanTechnique.cpp" />
+    <ClCompile Include="fft\OceanTile.cpp" />
+    <ClCompile Include="fft\ScreenAlignedQuad.cpp" />
+    <ClCompile Include="fft\WaterTrochoids.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="OpenGLExampleBrowser.cpp" />
+    <ClCompile Include="RenderInstancingDemo.cpp" />
+    <ClCompile Include="TimeSeriesExample.cpp" />
+    <ClCompile Include="TinyRendererSetup.cpp" />
+    <ClCompile Include="TinyVRGui.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+    <Import Project="$(VCTargetsPath)\BuildCustomizations\CUDA 11.6.targets" />
+  </ImportGroup>
+</Project>

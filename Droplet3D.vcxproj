@@ -1,0 +1,255 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{46DA935C-659E-455B-55AB-B6335454E9E3}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <Platform>x64</Platform>
+    <ProjectName>Droplet3D</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+    <Import Project="$(VCTargetsPath)\BuildCustomizations\CUDA 11.6.props" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\Debug\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\Release\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\Release\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">ExampleApp</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <IntDir>.\Debug\$(ProjectName)</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>.;.\cuda;.\glad;.\common;.\fmmtl;.\kernel;.\Droplet3D\LosTopos3D;.\Droplet3D;.\stb_image;N:\WorkBench\tbb2019_20191006oss\include;N:\WorkBench\eigen-3.3;N:\WorkBench\boost_1_69;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4244;4267</DisableSpecificWarnings>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <FloatingPointModel>Fast</FloatingPointModel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <Optimization>Disabled</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <StringPooling>true</StringPooling>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WIN64;HAVE_LAPACK;HAVE_BLAS;USE_FORTRAN_BLAS;USE_GRAPHICAL_BENCHMARK;_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;_SCL_SECURE_NO_WARNINGS;GLEW_STATIC;CMAKE_INTDIR="Debug";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WIN64;BT_USE_DOUBLE_PRECISION;USE_GRAPHICAL_BENCHMARK;_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;_SCL_SECURE_NO_WARNINGS;GLEW_STATIC;CMAKE_INTDIR=\"Debug\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>.\OpenGLWindow;.\glad;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>.\OpenGLWindow;.\glad;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+    </Lib>
+    <Link>
+      <AdditionalDependencies>cudart.lib;OpenGL32.Lib;.\Debug\SimpleGLExample_Debug.lib;libfftw3f-3.lib;N:\WorkBench\ceres-solver-1\lib\Release\libopenblas.dll.a;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>N:\WorkBench\fftw-3.3.5-dll64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+    <CudaCompile>
+      <CodeGeneration>compute_50,sm_50;compute_75,sm_75</CodeGeneration>
+      <TargetMachinePlatform>64</TargetMachinePlatform>
+    </CudaCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>.;.\OpenGLWindow;.\glad;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <DisableSpecificWarnings>4244;4267</DisableSpecificWarnings>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <FloatingPointModel>Fast</FloatingPointModel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <StringPooling>true</StringPooling>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WIN64;USE_GRAPHICAL_BENCHMARK;_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;_SCL_SECURE_NO_WARNINGS;GLEW_STATIC;CMAKE_INTDIR="Release";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WIN64;BT_USE_DOUBLE_PRECISION;USE_GRAPHICAL_BENCHMARK;_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;_SCL_SECURE_NO_WARNINGS;GLEW_STATIC;CMAKE_INTDIR=\"Release\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>.\OpenGLWindow;.\glad;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>.\OpenGLWindow;.\glad;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+    </Lib>
+    <Link>
+      <AdditionalDependencies>OpenGL32.Lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <CudaCompile>
+      <CodeGeneration>compute_50,sm_50;compute_75,sm_75</CodeGeneration>
+      <TargetMachinePlatform>64</TargetMachinePlatform>
+    </CudaCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="Droplet3D\BoundaryIntegral.h" />
+    <ClInclude Include="Droplet3D\BPS3D.h" />
+    <ClInclude Include="Droplet3D\eigenheaders.h" />
+    <ClInclude Include="Droplet3D\Fluid3D\AlgebraicMultigrid.h" />
+    <ClInclude Include="Droplet3D\Fluid3D\blas_wrapper1.h" />
+    <ClInclude Include="Droplet3D\Fluid3D\cgsolver.h" />
+    <ClInclude Include="Droplet3D\Fluid3D\crsolver.h" />
+    <ClInclude Include="Droplet3D\Fluid3D\faithful_surfacing3.h" />
+    <ClInclude Include="Droplet3D\Fluid3D\fluidsim.h" />
+    <ClInclude Include="Droplet3D\Fluid3D\GeometricLevelGen.h" />
+    <ClInclude Include="Droplet3D\Fluid3D\gluvi.h" />
+    <ClInclude Include="Droplet3D\Fluid3D\hashgrid.h" />
+    <ClInclude Include="Droplet3D\Fluid3D\incomplete_qr.h" />
+    <ClInclude Include="Droplet3D\Fluid3D\levelset_util.h" />
+    <ClInclude Include="Droplet3D\Fluid3D\makelevelset3.h" />
+    <ClInclude Include="Droplet3D\Fluid3D\marching_tiles.h" />
+    <ClInclude Include="Droplet3D\Fluid3D\pcg_solver.h" />
+    <ClInclude Include="Droplet3D\Fluid3D\SDFGen.h" />
+    <ClInclude Include="Droplet3D\Fluid3D\sparseilu.h" />
+    <ClInclude Include="Droplet3D\Fluid3D\sparse_matrix.h" />
+    <ClInclude Include="Droplet3D\Fluid3D\sparsemilu.h" />
+    <ClInclude Include="Droplet3D\FMMTLWrapper.h" />
+    <ClInclude Include="Droplet3D\LosTopos3D\accelerationgrid.h" />
+    <ClInclude Include="Droplet3D\LosTopos3D\broadphase.h" />
+    <ClInclude Include="Droplet3D\LosTopos3D\broadphasegrid.h" />
+    <ClInclude Include="Droplet3D\LosTopos3D\collisionpipeline.h" />
+    <ClInclude Include="Droplet3D\LosTopos3D\dynamicsurface.h" />
+    <ClInclude Include="Droplet3D\LosTopos3D\edgecollapser.h" />
+    <ClInclude Include="Droplet3D\LosTopos3D\edgeflipper.h" />
+    <ClInclude Include="Droplet3D\LosTopos3D\edgesplitter.h" />
+    <ClInclude Include="Droplet3D\LosTopos3D\facesplitter.h" />
+    <ClInclude Include="Droplet3D\LosTopos3D\impactzonesolver.h" />
+    <ClInclude Include="Droplet3D\LosTopos3D\iomesh.h" />
+    <ClInclude Include="Droplet3D\LosTopos3D\meshcutter.h" />
+    <ClInclude Include="Droplet3D\LosTopos3D\meshmerger.h" />
+    <ClInclude Include="Droplet3D\LosTopos3D\meshpincher.h" />
+    <ClInclude Include="Droplet3D\LosTopos3D\meshsmoother.h" />
+    <ClInclude Include="Droplet3D\LosTopos3D\meshsnapper.h" />
+    <ClInclude Include="Droplet3D\LosTopos3D\nondestructivetrimesh.h" />
+    <ClInclude Include="Droplet3D\LosTopos3D\options.h" />
+    <ClInclude Include="Droplet3D\LosTopos3D\subdivisionscheme.h" />
+    <ClInclude Include="Droplet3D\LosTopos3D\surftrack.h" />
+    <ClInclude Include="Droplet3D\LosTopos3D\t1transition.h" />
+    <ClInclude Include="Droplet3D\LosTopos3D\trianglequality.h" />
+    <ClInclude Include="Droplet3D\MeshIO.h" />
+    <ClInclude Include="Droplet3D\Scenes.h" />
+    <ClInclude Include="Droplet3D\Sim.h" />
+    <ClInclude Include="Droplet3D\SimOptions.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="common\bfstream.cpp" />
+    <ClCompile Include="common\ccd_wrapper.cpp" />
+    <ClCompile Include="common\collisionqueries.cpp" />
+    <ClCompile Include="common\cubic_ccd_wrapper.cpp" />
+    <ClCompile Include="common\dense_matrix.cpp" />
+    <ClCompile Include="common\expansion.cpp" />
+    <ClCompile Include="common\intersection.cpp" />
+    <ClCompile Include="common\interval.cpp" />
+    <ClCompile Include="common\krylov_solvers.cpp" />
+    <ClCompile Include="common\marching_tiles_hires.cpp" />
+    <ClCompile Include="common\neg.cpp" />
+    <ClCompile Include="common\orientation.cpp" />
+    <ClCompile Include="common\predicates.cpp" />
+    <ClCompile Include="common\rootparitycollisiontest.cpp" />
+    <ClCompile Include="common\root_parity_ccd_wrapper.cpp" />
+    <ClCompile Include="common\runstats.cpp" />
+    <ClCompile Include="common\sos_intersection.cpp" />
+    <ClCompile Include="common\sos_orientation.cpp" />
+    <ClCompile Include="Droplet3D\BoundaryIntegral.cpp" />
+    <ClCompile Include="Droplet3D\BPS3D.cpp" />
+    <ClCompile Include="Droplet3D\BPS3DExplicit.cpp" />
+    <ClCompile Include="Droplet3D\BPS3DHelmholtzDecomposition.cpp" />
+    <ClCompile Include="Droplet3D\BPS3DImplicit.cpp" />
+    <ClCompile Include="Droplet3D\BPS3DPressureSolve.cpp" />
+    <ClCompile Include="Droplet3D\BPS3DPressureSolveIterative.cpp" />
+    <ClCompile Include="Droplet3D\eigenheaders.cpp" />
+    <ClCompile Include="Droplet3D\Fluid3D\faithful_surfacing3.cpp" />
+    <ClCompile Include="Droplet3D\Fluid3D\fluidsim.cpp" />
+    <ClCompile Include="Droplet3D\Fluid3D\GeometricLevelGen.cpp" />
+    <ClCompile Include="Droplet3D\Fluid3D\incomplete_qr.cpp" />
+    <ClCompile Include="Droplet3D\Fluid3D\levelset_util.cpp" />
+    <ClCompile Include="Droplet3D\Fluid3D\main1.cpp" />
+    <ClCompile Include="Droplet3D\Fluid3D\makelevelset3.cpp" />
+    <ClCompile Include="Droplet3D\Fluid3D\marching_tiles.cpp" />
+    <ClCompile Include="Droplet3D\FMMTLWrapper.cpp" />
+    <ClCompile Include="Droplet3D\LosTopos3D\accelerationgrid.cpp" />
+    <ClCompile Include="Droplet3D\LosTopos3D\broadphasegrid.cpp" />
+    <ClCompile Include="Droplet3D\LosTopos3D\collisionpipeline.cpp" />
+    <ClCompile Include="Droplet3D\LosTopos3D\dynamicsurface.cpp" />
+    <ClCompile Include="Droplet3D\LosTopos3D\edgecollapser.cpp" />
+    <ClCompile Include="Droplet3D\LosTopos3D\edgeflipper.cpp" />
+    <ClCompile Include="Droplet3D\LosTopos3D\edgesplitter.cpp" />
+    <ClCompile Include="Droplet3D\LosTopos3D\facesplitter.cpp" />
+    <ClCompile Include="Droplet3D\LosTopos3D\impactzonesolver.cpp" />
+    <ClCompile Include="Droplet3D\LosTopos3D\iomesh.cpp" />
+    <ClCompile Include="Droplet3D\LosTopos3D\meshcutter.cpp" />
+    <ClCompile Include="Droplet3D\LosTopos3D\meshmerger.cpp" />
+    <ClCompile Include="Droplet3D\LosTopos3D\meshpincher.cpp" />
+    <ClCompile Include="Droplet3D\LosTopos3D\meshsmoother.cpp" />
+    <ClCompile Include="Droplet3D\LosTopos3D\meshsnapper.cpp" />
+    <ClCompile Include="Droplet3D\LosTopos3D\nondestructivetrimesh.cpp" />
+    <ClCompile Include="Droplet3D\LosTopos3D\subdivisionscheme.cpp" />
+    <ClCompile Include="Droplet3D\LosTopos3D\surftrack.cpp" />
+    <ClCompile Include="Droplet3D\LosTopos3D\t1transition.cpp" />
+    <ClCompile Include="Droplet3D\LosTopos3D\trianglequality.cpp" />
+    <ClCompile Include="Droplet3D\MeshIO.cpp" />
+    <ClCompile Include="Droplet3D\Scenes.cpp" />
+    <ClCompile Include="Droplet3D\Sim.cpp" />
+    <ClCompile Include="Droplet3D\SimOptions.cpp" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+    <Import Project="$(VCTargetsPath)\BuildCustomizations\CUDA 11.6.targets" />
+  </ImportGroup>
+</Project>

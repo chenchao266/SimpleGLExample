@@ -1,0 +1,320 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="OpenSPH\common\Assert.cpp" />
+    <ClCompile Include="OpenSPH\gravity\AggregateSolver.cpp" />
+    <ClCompile Include="OpenSPH\gravity\BarnesHut.cpp" />
+    <ClCompile Include="OpenSPH\gravity\Handoff.cpp" />
+    <ClCompile Include="OpenSPH\gravity\NBodySolver.cpp" />
+    <ClCompile Include="OpenSPH\io\FileSystem.cpp" />
+    <ClCompile Include="OpenSPH\io\Logger.cpp" />
+    <ClCompile Include="OpenSPH\io\Path.cpp" />
+    <ClCompile Include="OpenSPH\math\Curve.cpp" />
+    <ClCompile Include="OpenSPH\math\Morton.cpp" />
+    <ClCompile Include="OpenSPH\math\SparseMatrix.cpp" />
+    <ClCompile Include="OpenSPH\objects\containers\String.cpp" />
+    <ClCompile Include="OpenSPH\objects\finders\HashMapFinder.cpp" />
+    <ClCompile Include="OpenSPH\objects\finders\IncrementalFinder.cpp" />
+    <ClCompile Include="OpenSPH\objects\finders\KdTree.cpp" />
+    <ClCompile Include="OpenSPH\objects\finders\NeighborFinder.cpp" />
+    <ClCompile Include="OpenSPH\objects\finders\PeriodicFinder.cpp" />
+    <ClCompile Include="OpenSPH\objects\finders\UniformGrid.cpp" />
+    <ClCompile Include="OpenSPH\objects\geometry\Delaunay.cpp" />
+    <ClCompile Include="OpenSPH\objects\geometry\Domain.cpp" />
+    <ClCompile Include="OpenSPH\objects\geometry\SymmetricTensor.cpp" />
+    <ClCompile Include="OpenSPH\objects\utility\Dynamic.cpp" />
+    <ClCompile Include="OpenSPH\objects\utility\Streams.cpp" />
+    <ClCompile Include="OpenSPH\physics\Aneos.cpp" />
+    <ClCompile Include="OpenSPH\physics\Damage.cpp" />
+    <ClCompile Include="OpenSPH\physics\Eos.cpp" />
+    <ClCompile Include="OpenSPH\physics\Functions.cpp" />
+    <ClCompile Include="OpenSPH\physics\Integrals.cpp" />
+    <ClCompile Include="OpenSPH\physics\Rheology.cpp" />
+    <ClCompile Include="OpenSPH\physics\Units.cpp" />
+    <ClCompile Include="OpenSPH\post\Analysis.cpp" />
+    <ClCompile Include="OpenSPH\post\Compare.cpp" />
+    <ClCompile Include="OpenSPH\post\MarchingCubes.cpp" />
+    <ClCompile Include="OpenSPH\post\Mesh.cpp" />
+    <ClCompile Include="OpenSPH\post\MeshFile.cpp" />
+    <ClCompile Include="OpenSPH\post\Plot.cpp" />
+    <ClCompile Include="OpenSPH\post\TwoBody.cpp" />
+    <ClCompile Include="OpenSPH\quantities\Attractor.cpp" />
+    <ClCompile Include="OpenSPH\quantities\IMaterial.cpp" />
+    <ClCompile Include="OpenSPH\quantities\Particle.cpp" />
+    <ClCompile Include="OpenSPH\quantities\Quantity.cpp" />
+    <ClCompile Include="OpenSPH\quantities\QuantityIds.cpp" />
+    <ClCompile Include="OpenSPH\quantities\Storage.cpp" />
+    <ClCompile Include="OpenSPH\quantities\Utility.cpp" />
+    <ClCompile Include="OpenSPH\run\Config.cpp" />
+    <ClCompile Include="OpenSPH\run\IRun.cpp" />
+    <ClCompile Include="OpenSPH\run\SpecialEntries.cpp" />
+    <ClCompile Include="OpenSPH\sph\boundary\Boundary.cpp" />
+    <ClCompile Include="OpenSPH\sph\Diagnostics.cpp" />
+    <ClCompile Include="OpenSPH\sph\equations\Accumulated.cpp" />
+    <ClCompile Include="OpenSPH\sph\equations\Derivative.cpp" />
+    <ClCompile Include="OpenSPH\sph\equations\EquationTerm.cpp" />
+    <ClCompile Include="OpenSPH\sph\equations\Rotation.cpp" />
+    <ClCompile Include="OpenSPH\sph\initial\Distribution.cpp" />
+    <ClCompile Include="OpenSPH\sph\initial\Galaxy.cpp" />
+    <ClCompile Include="OpenSPH\sph\initial\Initial.cpp" />
+    <ClCompile Include="OpenSPH\sph\initial\MeshDomain.cpp" />
+    <ClCompile Include="OpenSPH\sph\initial\Stellar.cpp" />
+    <ClCompile Include="OpenSPH\sph\initial\UvMapping.cpp" />
+    <ClCompile Include="OpenSPH\sph\Materials.cpp" />
+    <ClCompile Include="OpenSPH\sph\solvers\AsymmetricSolver.cpp" />
+    <ClCompile Include="OpenSPH\sph\solvers\DensityIndependentSolver.cpp" />
+    <ClCompile Include="OpenSPH\sph\solvers\ElasticDeformationSolver.cpp" />
+    <ClCompile Include="OpenSPH\sph\solvers\EnergyConservingSolver.cpp" />
+    <ClCompile Include="OpenSPH\sph\solvers\EquilibriumSolver.cpp" />
+    <ClCompile Include="OpenSPH\sph\solvers\GradHSolver.cpp" />
+    <ClCompile Include="OpenSPH\sph\solvers\GravitySolver.cpp" />
+    <ClCompile Include="OpenSPH\sph\solvers\PositionBasedSolver.cpp" />
+    <ClCompile Include="OpenSPH\sph\solvers\StandardSets.cpp" />
+    <ClCompile Include="OpenSPH\sph\solvers\SummationSolver.cpp" />
+    <ClCompile Include="OpenSPH\sph\solvers\SymmetricSolver.cpp" />
+    <ClCompile Include="OpenSPH\system\ArgsParser.cpp" />
+    <ClCompile Include="OpenSPH\system\Factory.cpp" />
+    <ClCompile Include="OpenSPH\system\Profiler.cpp" />
+    <ClCompile Include="OpenSPH\system\Settings.cpp" />
+    <ClCompile Include="OpenSPH\system\Statistics.cpp" />
+    <ClCompile Include="OpenSPH\thread\CheckFunction.cpp" />
+    <ClCompile Include="OpenSPH\thread\OpenMp.cpp" />
+    <ClCompile Include="OpenSPH\thread\Scheduler.cpp" />
+    <ClCompile Include="OpenSPH\thread\Tbb.cpp" />
+    <ClCompile Include="OpenSPH\timestepping\TimeStepCriterion.cpp" />
+    <ClCompile Include="OpenSPH\timestepping\TimeStepping.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="OpenSPH\common\Assert.h" />
+    <ClInclude Include="OpenSPH\common\ForwardDecl.h" />
+    <ClInclude Include="OpenSPH\common\Globals.h" />
+    <ClInclude Include="OpenSPH\common\Traits.h" />
+    <ClInclude Include="OpenSPH\gravity\AggregateSolver.h" />
+    <ClInclude Include="OpenSPH\gravity\BarnesHut.h" />
+    <ClInclude Include="OpenSPH\gravity\BruteForceGravity.h" />
+    <ClInclude Include="OpenSPH\gravity\CachedGravity.h" />
+    <ClInclude Include="OpenSPH\gravity\Collision.h" />
+    <ClInclude Include="OpenSPH\gravity\Handoff.h" />
+    <ClInclude Include="OpenSPH\gravity\IGravity.h" />
+    <ClInclude Include="OpenSPH\gravity\Moments.h" />
+    <ClInclude Include="OpenSPH\gravity\NBodySolver.h" />
+    <ClInclude Include="OpenSPH\gravity\SphericalGravity.h" />
+    <ClInclude Include="OpenSPH\gravity\SymmetricGravity.h" />
+    <ClInclude Include="OpenSPH\io\Column.h" />
+    <ClInclude Include="OpenSPH\io\FileSystem.h" />
+    <ClInclude Include="OpenSPH\io\Logger.h" />
+    <ClInclude Include="OpenSPH\io\Path.h" />
+    <ClInclude Include="OpenSPH\io\Serializer.h" />
+    <ClInclude Include="OpenSPH\io\Table.h" />
+    <ClInclude Include="OpenSPH\math\AffineMatrix.h" />
+    <ClInclude Include="OpenSPH\math\Curve.h" />
+    <ClInclude Include="OpenSPH\math\Functional.h" />
+    <ClInclude Include="OpenSPH\math\MathBasic.h" />
+    <ClInclude Include="OpenSPH\math\MathUtils.h" />
+    <ClInclude Include="OpenSPH\math\Means.h" />
+    <ClInclude Include="OpenSPH\math\Morton.h" />
+    <ClInclude Include="OpenSPH\math\Quat.h" />
+    <ClInclude Include="OpenSPH\math\SparseMatrix.h" />
+    <ClInclude Include="OpenSPH\physics\Aneos.h" />
+    <ClInclude Include="OpenSPH\physics\Constants.h" />
+    <ClInclude Include="OpenSPH\physics\Damage.h" />
+    <ClInclude Include="OpenSPH\physics\Eos.h" />
+    <ClInclude Include="OpenSPH\physics\Functions.h" />
+    <ClInclude Include="OpenSPH\physics\Integrals.h" />
+    <ClInclude Include="OpenSPH\physics\Rheology.h" />
+    <ClInclude Include="OpenSPH\physics\Units.h" />
+    <ClInclude Include="OpenSPH\post\Analysis.h" />
+    <ClInclude Include="OpenSPH\post\Compare.h" />
+    <ClInclude Include="OpenSPH\post\MarchingCubes.h" />
+    <ClInclude Include="OpenSPH\post\Mesh.h" />
+    <ClInclude Include="OpenSPH\post\MeshFile.h" />
+    <ClInclude Include="OpenSPH\post\Plot.h" />
+    <ClInclude Include="OpenSPH\post\Point.h" />
+    <ClInclude Include="OpenSPH\post\TwoBody.h" />
+    <ClInclude Include="OpenSPH\quantities\Attractor.h" />
+    <ClInclude Include="OpenSPH\quantities\IMaterial.h" />
+    <ClInclude Include="OpenSPH\quantities\Iterate.h" />
+    <ClInclude Include="OpenSPH\quantities\Particle.h" />
+    <ClInclude Include="OpenSPH\quantities\Quantity.h" />
+    <ClInclude Include="OpenSPH\quantities\QuantityHelpers.h" />
+    <ClInclude Include="OpenSPH\quantities\QuantityIds.h" />
+    <ClInclude Include="OpenSPH\quantities\Storage.h" />
+    <ClInclude Include="OpenSPH\quantities\Utility.h" />
+    <ClInclude Include="OpenSPH\run\Config.h" />
+    <ClInclude Include="OpenSPH\run\IRun.h" />
+    <ClInclude Include="OpenSPH\run\SpecialEntries.h" />
+    <ClInclude Include="OpenSPH\sph\Diagnostics.h" />
+    <ClInclude Include="OpenSPH\sph\Materials.h" />
+    <ClInclude Include="OpenSPH\sph\solvers\AsymmetricSolver.h" />
+    <ClInclude Include="OpenSPH\sph\solvers\DensityIndependentSolver.h" />
+    <ClInclude Include="OpenSPH\sph\solvers\ElasticDeformationSolver.h" />
+    <ClInclude Include="OpenSPH\sph\solvers\EnergyConservingSolver.h" />
+    <ClInclude Include="OpenSPH\sph\solvers\EntropySolver.h" />
+    <ClInclude Include="OpenSPH\sph\solvers\EquilibriumSolver.h" />
+    <ClInclude Include="OpenSPH\sph\solvers\GradHSolver.h" />
+    <ClInclude Include="OpenSPH\sph\solvers\GravitySolver.h" />
+    <ClInclude Include="OpenSPH\sph\solvers\PositionBasedSolver.h" />
+    <ClInclude Include="OpenSPH\sph\solvers\SimpleSolver.h" />
+    <ClInclude Include="OpenSPH\sph\solvers\StabilizationSolver.h" />
+    <ClInclude Include="OpenSPH\sph\solvers\StandardSets.h" />
+    <ClInclude Include="OpenSPH\sph\solvers\SummationSolver.h" />
+    <ClInclude Include="OpenSPH\sph\solvers\SymmetricSolver.h" />
+    <ClInclude Include="OpenSPH\system\ArgsParser.h" />
+    <ClInclude Include="OpenSPH\system\ArrayStats.h" />
+    <ClInclude Include="OpenSPH\system\Crashpad.h" />
+    <ClInclude Include="OpenSPH\system\Factory.h" />
+    <ClInclude Include="OpenSPH\system\Profiler.h" />
+    <ClInclude Include="OpenSPH\system\Settings.h" />
+    <ClInclude Include="OpenSPH\system\Settings.impl.h" />
+    <ClInclude Include="OpenSPH\system\Statistics.h" />
+    <ClInclude Include="OpenSPH\thread\AtomicFloat.h" />
+    <ClInclude Include="OpenSPH\thread\CheckFunction.h" />
+    <ClInclude Include="OpenSPH\thread\ConcurrentQueue.h" />
+    <ClInclude Include="OpenSPH\thread\OpenMp.h" />
+    <ClInclude Include="OpenSPH\thread\Scheduler.h" />
+    <ClInclude Include="OpenSPH\thread\Tbb.h" />
+    <ClInclude Include="OpenSPH\thread\ThreadLocal.h" />
+    <ClInclude Include="OpenSPH\timestepping\ISolver.h" />
+    <ClInclude Include="OpenSPH\timestepping\TimeStepCriterion.h" />
+    <ClInclude Include="OpenSPH\timestepping\TimeStepping.h" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{46D7735C-659E-455B-55AB-B6225454E9E3}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <Platform>x64</Platform>
+    <ProjectName>OpenSPH</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+    <Import Project="$(VCTargetsPath)\BuildCustomizations\CUDA 11.6.props" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\Debug\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\Debug\$(ProjectName)</IntDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\Release\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\Release\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">ExampleApp</TargetName>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>.;.\cuda;.\glad;.\common;.\OpenSPH;.\stb_image;N:\WorkBench\tbb2019_20191006oss\include;N:\WorkBench\eigen-3.3;N:\WorkBench\boost_1_69;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4244;4267</DisableSpecificWarnings>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <FloatingPointModel>Fast</FloatingPointModel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <Optimization>Disabled</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <StringPooling>true</StringPooling>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WIN64;HAVE_LAPACK;HAVE_BLAS;USE_FORTRAN_BLAS;USE_GRAPHICAL_BENCHMARK;_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;_SCL_SECURE_NO_WARNINGS;SPH_USE_TBB;SPH_USE_EIGEN;_ENABLE_EXTENDED_ALIGNED_STORAGE;CMAKE_INTDIR="Debug";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WIN64;BT_USE_DOUBLE_PRECISION;USE_GRAPHICAL_BENCHMARK;_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;_SCL_SECURE_NO_WARNINGS;GLEW_STATIC;CMAKE_INTDIR=\"Debug\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>.\OpenGLWindow;.\glad;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>.\OpenGLWindow;.\glad;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+    </Lib>
+    <Link>
+      <AdditionalDependencies>cudart.lib;OpenGL32.Lib;.\Debug\SimpleGLExample_Debug.lib;libfftw3f-3.lib;N:\WorkBench\ceres-solver-1\lib\Release\libopenblas.dll.a;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>N:\WorkBench\fftw-3.3.5-dll64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+    <CudaCompile>
+      <CodeGeneration>compute_50,sm_50;compute_75,sm_75</CodeGeneration>
+      <TargetMachinePlatform>64</TargetMachinePlatform>
+    </CudaCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>.;.\OpenGLWindow;.\glad;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <DisableSpecificWarnings>4244;4267</DisableSpecificWarnings>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <FloatingPointModel>Fast</FloatingPointModel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <StringPooling>true</StringPooling>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WIN64;USE_GRAPHICAL_BENCHMARK;_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;_SCL_SECURE_NO_WARNINGS;GLEW_STATIC;CMAKE_INTDIR="Release";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WIN64;BT_USE_DOUBLE_PRECISION;USE_GRAPHICAL_BENCHMARK;_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;_SCL_SECURE_NO_WARNINGS;GLEW_STATIC;CMAKE_INTDIR=\"Release\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>.\OpenGLWindow;.\glad;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>.\OpenGLWindow;.\glad;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+    </Lib>
+    <Link>
+      <AdditionalDependencies>OpenGL32.Lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <CudaCompile>
+      <CodeGeneration>compute_50,sm_50;compute_75,sm_75</CodeGeneration>
+      <TargetMachinePlatform>64</TargetMachinePlatform>
+    </CudaCompile>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+    <Import Project="$(VCTargetsPath)\BuildCustomizations\CUDA 11.6.targets" />
+  </ImportGroup>
+</Project>

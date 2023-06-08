@@ -1,0 +1,318 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="PositionBasedDynamics\AABB.h" />
+    <ClInclude Include="PositionBasedDynamics\AnimationField.h" />
+    <ClInclude Include="PositionBasedDynamics\AnimationFieldSystem.h" />
+    <ClInclude Include="PositionBasedDynamics\AVX_math.h" />
+    <ClInclude Include="PositionBasedDynamics\BinaryFileReaderWriter.h" />
+    <ClInclude Include="PositionBasedDynamics\BoundaryModel.h" />
+    <ClInclude Include="PositionBasedDynamics\BoundaryModel_Akinci2012.h" />
+    <ClInclude Include="PositionBasedDynamics\BoundaryModel_Bender2019.h" />
+    <ClInclude Include="PositionBasedDynamics\BoundaryModel_Koschier2017.h" />
+    <ClInclude Include="PositionBasedDynamics\BoundarySimulator.h" />
+    <ClInclude Include="PositionBasedDynamics\BoundingSphere.h" />
+    <ClInclude Include="PositionBasedDynamics\BoundingSphereHierarchy.h" />
+    <ClInclude Include="PositionBasedDynamics\CholeskyAVXSolver.h" />
+    <ClInclude Include="PositionBasedDynamics\CollisionDetection.h" />
+    <ClInclude Include="PositionBasedDynamics\Common.h" />
+    <ClInclude Include="PositionBasedDynamics\Constraints.h" />
+    <ClInclude Include="PositionBasedDynamics\Counting.h" />
+    <ClInclude Include="PositionBasedDynamics\CubicSDFCollisionDetection.h" />
+    <ClInclude Include="PositionBasedDynamics\DebugTools.h" />
+    <ClInclude Include="PositionBasedDynamics\DirectPositionBasedSolverForStiffRodsInterface.h" />
+    <ClInclude Include="PositionBasedDynamics\DistanceFieldCollisionDetection.h" />
+    <ClInclude Include="PositionBasedDynamics\Emitter.h" />
+    <ClInclude Include="PositionBasedDynamics\EmitterSystem.h" />
+    <ClInclude Include="PositionBasedDynamics\EnumParameter.h" />
+    <ClInclude Include="PositionBasedDynamics\FileSystem.h" />
+    <ClInclude Include="PositionBasedDynamics\FluidModel.h" />
+    <ClInclude Include="PositionBasedDynamics\FoamKernel.h" />
+    <ClInclude Include="PositionBasedDynamics\FunctionParameter.h" />
+    <ClInclude Include="PositionBasedDynamics\GaussQuadrature.h" />
+    <ClInclude Include="PositionBasedDynamics\Hashmap.h" />
+    <ClInclude Include="PositionBasedDynamics\IDFactory.h" />
+    <ClInclude Include="PositionBasedDynamics\IndexedFaceMesh.h" />
+    <ClInclude Include="PositionBasedDynamics\IndexedTetMesh.h" />
+    <ClInclude Include="PositionBasedDynamics\kdTree.h" />
+    <ClInclude Include="PositionBasedDynamics\LineModel.h" />
+    <ClInclude Include="PositionBasedDynamics\Logger.h" />
+    <ClInclude Include="PositionBasedDynamics\MathFunctions.h" />
+    <ClInclude Include="PositionBasedDynamics\MatrixFreeSolver.h" />
+    <ClInclude Include="PositionBasedDynamics\NeighborhoodSearch.h" />
+    <ClInclude Include="PositionBasedDynamics\NeighborhoodSearchSpatialHashing.h" />
+    <ClInclude Include="PositionBasedDynamics\NonPressureForceBase.h" />
+    <ClInclude Include="PositionBasedDynamics\NumericParameter.h" />
+    <ClInclude Include="PositionBasedDynamics\ObjectArray.h" />
+    <ClInclude Include="PositionBasedDynamics\Parameter.h" />
+    <ClInclude Include="PositionBasedDynamics\ParameterObject.h" />
+    <ClInclude Include="PositionBasedDynamics\ParticleData.h" />
+    <ClInclude Include="PositionBasedDynamics\PartioReaderWriter.h" />
+    <ClInclude Include="PositionBasedDynamics\PBDBoundarySimulator.h" />
+    <ClInclude Include="PositionBasedDynamics\PBDRigidBody.h" />
+    <ClInclude Include="PositionBasedDynamics\PBDWrapper.h" />
+    <ClInclude Include="PositionBasedDynamics\PoissonDiskSampling.h" />
+    <ClInclude Include="PositionBasedDynamics\PositionBasedDynamics.h" />
+    <ClInclude Include="PositionBasedDynamics\PositionBasedElasticRods.h" />
+    <ClInclude Include="PositionBasedDynamics\PositionBasedFluids.h" />
+    <ClInclude Include="PositionBasedDynamics\PositionBasedGenericConstraints.h" />
+    <ClInclude Include="PositionBasedDynamics\PositionBasedRigidBodyDynamics.h" />
+    <ClInclude Include="PositionBasedDynamics\RegularSampling2D.h" />
+    <ClInclude Include="PositionBasedDynamics\RegularTriangleSampling.h" />
+    <ClInclude Include="PositionBasedDynamics\RigidBody.h" />
+    <ClInclude Include="PositionBasedDynamics\RigidBodyGeometry.h" />
+    <ClInclude Include="PositionBasedDynamics\RigidBodyObject.h" />
+    <ClInclude Include="PositionBasedDynamics\SamplingBase.h" />
+    <ClInclude Include="PositionBasedDynamics\SceneConfiguration.h" />
+    <ClInclude Include="PositionBasedDynamics\SceneLoader.h" />
+    <ClInclude Include="PositionBasedDynamics\SceneLoaderSPH.h" />
+    <ClInclude Include="PositionBasedDynamics\SDFFunctions.h" />
+    <ClInclude Include="PositionBasedDynamics\SimpleQuadrature.h" />
+    <ClInclude Include="PositionBasedDynamics\Simulation.h" />
+    <ClInclude Include="PositionBasedDynamics\SimulationModel.h" />
+    <ClInclude Include="PositionBasedDynamics\SimulationSPH.h" />
+    <ClInclude Include="PositionBasedDynamics\SimulatorBase.h" />
+    <ClInclude Include="PositionBasedDynamics\SPHKernels.h" />
+    <ClInclude Include="PositionBasedDynamics\SPHKernelsSPH.h" />
+    <ClInclude Include="PositionBasedDynamics\SPHSamplingBase.h" />
+    <ClInclude Include="PositionBasedDynamics\SPHVolumeSampling.h" />
+    <ClInclude Include="PositionBasedDynamics\SPHVolumeSampling_Jiang2015.h" />
+    <ClInclude Include="PositionBasedDynamics\StaticBoundarySimulator.h" />
+    <ClInclude Include="PositionBasedDynamics\StaticRigidBody.h" />
+    <ClInclude Include="PositionBasedDynamics\StringTools.h" />
+    <ClInclude Include="PositionBasedDynamics\SurfaceSampling.h" />
+    <ClInclude Include="PositionBasedDynamics\SystemInfo.h" />
+    <ClInclude Include="PositionBasedDynamics\TetGenLoader.h" />
+    <ClInclude Include="PositionBasedDynamics\TetModel.h" />
+    <ClInclude Include="PositionBasedDynamics\TimeIntegration.h" />
+    <ClInclude Include="PositionBasedDynamics\TimeManager.h" />
+    <ClInclude Include="PositionBasedDynamics\TimeManagerSPH.h" />
+    <ClInclude Include="PositionBasedDynamics\TimeStep.h" />
+    <ClInclude Include="PositionBasedDynamics\TimeStepController.h" />
+    <ClInclude Include="PositionBasedDynamics\TimeStepSPH.h" />
+    <ClInclude Include="PositionBasedDynamics\Timing.h" />
+    <ClInclude Include="PositionBasedDynamics\TriangleMesh.h" />
+    <ClInclude Include="PositionBasedDynamics\TriangleModel.h" />
+    <ClInclude Include="PositionBasedDynamics\VectorParameter.h" />
+    <ClInclude Include="PositionBasedDynamics\VolumeIntegration.h" />
+    <ClInclude Include="PositionBasedDynamics\VolumeSampling.h" />
+    <ClInclude Include="PositionBasedDynamics\WindingNumbers.h" />
+    <ClInclude Include="PositionBasedDynamics\XPBD.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="PositionBasedDynamics\AnimationField.cpp" />
+    <ClCompile Include="PositionBasedDynamics\AnimationFieldSystem.cpp" />
+    <ClCompile Include="PositionBasedDynamics\BoundaryModel.cpp" />
+    <ClCompile Include="PositionBasedDynamics\BoundaryModel_Akinci2012.cpp" />
+    <ClCompile Include="PositionBasedDynamics\BoundaryModel_Bender2019.cpp" />
+    <ClCompile Include="PositionBasedDynamics\BoundaryModel_Koschier2017.cpp" />
+    <ClCompile Include="PositionBasedDynamics\BoundarySimulator.cpp" />
+    <ClCompile Include="PositionBasedDynamics\BoundingSphereHierarchy.cpp" />
+    <ClCompile Include="PositionBasedDynamics\CholeskyAVXSolver.cpp" />
+    <ClCompile Include="PositionBasedDynamics\CollisionDetection.cpp" />
+    <ClCompile Include="PositionBasedDynamics\Constraints.cpp" />
+    <ClCompile Include="PositionBasedDynamics\CubicSDFCollisionDetection.cpp" />
+    <ClCompile Include="PositionBasedDynamics\DebugTools.cpp" />
+    <ClCompile Include="PositionBasedDynamics\DistanceFieldCollisionDetection.cpp" />
+    <ClCompile Include="PositionBasedDynamics\Emitter.cpp" />
+    <ClCompile Include="PositionBasedDynamics\EmitterSystem.cpp" />
+    <ClCompile Include="PositionBasedDynamics\ExporterRegistration.cpp" />
+    <ClCompile Include="PositionBasedDynamics\FluidModel.cpp" />
+    <ClCompile Include="PositionBasedDynamics\FoamKernel.cpp" />
+    <ClCompile Include="PositionBasedDynamics\GaussQuadrature.cpp" />
+    <ClCompile Include="PositionBasedDynamics\IDFactory.cpp" />
+    <ClCompile Include="PositionBasedDynamics\IndexedFaceMesh.cpp" />
+    <ClCompile Include="PositionBasedDynamics\IndexedTetMesh.cpp" />
+    <ClCompile Include="PositionBasedDynamics\LineModel.cpp" />
+    <ClCompile Include="PositionBasedDynamics\MathFunctions.cpp" />
+    <ClCompile Include="PositionBasedDynamics\NeighborhoodSearchSpatialHashing.cpp" />
+    <ClCompile Include="PositionBasedDynamics\NonPressureForceBase.cpp" />
+    <ClCompile Include="PositionBasedDynamics\NonPressureForceRegistration.cpp" />
+    <ClCompile Include="PositionBasedDynamics\PartioReaderWriter.cpp" />
+    <ClCompile Include="PositionBasedDynamics\PBDBoundarySimulator.cpp" />
+    <ClCompile Include="PositionBasedDynamics\PBDWrapper.cpp" />
+    <ClCompile Include="PositionBasedDynamics\PoissonDiskSampling.cpp" />
+    <ClCompile Include="PositionBasedDynamics\PositionBasedDynamics.cpp" />
+    <ClCompile Include="PositionBasedDynamics\PositionBasedElasticRods.cpp" />
+    <ClCompile Include="PositionBasedDynamics\PositionBasedFluids.cpp" />
+    <ClCompile Include="PositionBasedDynamics\PositionBasedRigidBodyDynamics.cpp" />
+    <ClCompile Include="PositionBasedDynamics\RegularSampling2D.cpp" />
+    <ClCompile Include="PositionBasedDynamics\RegularTriangleSampling.cpp" />
+    <ClCompile Include="PositionBasedDynamics\RigidBodyGeometry.cpp" />
+    <ClCompile Include="PositionBasedDynamics\SamplingBase.cpp" />
+    <ClCompile Include="PositionBasedDynamics\SceneConfiguration.cpp" />
+    <ClCompile Include="PositionBasedDynamics\SceneLoader.cpp" />
+    <ClCompile Include="PositionBasedDynamics\SceneLoaderSPH.cpp" />
+    <ClCompile Include="PositionBasedDynamics\SDFFunctions.cpp" />
+    <ClCompile Include="PositionBasedDynamics\SimpleQuadrature.cpp" />
+    <ClCompile Include="PositionBasedDynamics\Simulation.cpp" />
+    <ClCompile Include="PositionBasedDynamics\SimulationModel.cpp" />
+    <ClCompile Include="PositionBasedDynamics\SimulationSPH.cpp" />
+    <ClCompile Include="PositionBasedDynamics\SimulatorBase.cpp" />
+    <ClCompile Include="PositionBasedDynamics\SPHKernels.cpp" />
+    <ClCompile Include="PositionBasedDynamics\SPHKernelsSPH.cpp" />
+    <ClCompile Include="PositionBasedDynamics\SPHSamplingBase.cpp" />
+    <ClCompile Include="PositionBasedDynamics\SPHVolumeSampling.cpp" />
+    <ClCompile Include="PositionBasedDynamics\SPHVolumeSampling_Jiang2015.cpp" />
+    <ClCompile Include="PositionBasedDynamics\StaticBoundarySimulator.cpp" />
+    <ClCompile Include="PositionBasedDynamics\TetGenLoader.cpp" />
+    <ClCompile Include="PositionBasedDynamics\TetModel.cpp" />
+    <ClCompile Include="PositionBasedDynamics\TimeIntegration.cpp" />
+    <ClCompile Include="PositionBasedDynamics\TimeManager.cpp" />
+    <ClCompile Include="PositionBasedDynamics\TimeManagerSPH.cpp" />
+    <ClCompile Include="PositionBasedDynamics\TimeStep.cpp" />
+    <ClCompile Include="PositionBasedDynamics\TimeStepController.cpp" />
+    <ClCompile Include="PositionBasedDynamics\TimeStepSPH.cpp" />
+    <ClCompile Include="PositionBasedDynamics\TriangleMesh.cpp" />
+    <ClCompile Include="PositionBasedDynamics\TriangleModel.cpp" />
+    <ClCompile Include="PositionBasedDynamics\VolumeIntegration.cpp" />
+    <ClCompile Include="PositionBasedDynamics\VolumeSampling.cpp" />
+    <ClCompile Include="PositionBasedDynamics\WindingNumbers.cpp" />
+    <ClCompile Include="PositionBasedDynamics\XPBD.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="PositionBasedDynamics\kdTree.inl" />
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{46DA935C-659E-422B-55AB-B6225454E9E3}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <Platform>x64</Platform>
+    <ProjectName>PositionBasedDynamics</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+    <Import Project="$(VCTargetsPath)\BuildCustomizations\CUDA 11.6.props" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\Debug\</OutDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\Release\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\Release\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">ExampleApp</TargetName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <IntDir>.\Debug\$(ProjectName)</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>.;.\cuda;.\glad;.\common;.\PositionBasedDynamics;.\CompactNSearch;.\PositionBasedDynamics\SPH;.\stb_image;N:\WorkBench\tbb2019_20191006oss\include;N:\WorkBench\eigen-3.3;N:\WorkBench\boost_1_69;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4244;4267</DisableSpecificWarnings>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <FloatingPointModel>Fast</FloatingPointModel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <Optimization>Disabled</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <StringPooling>true</StringPooling>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WIN64;HAVE_LAPACK;HAVE_BLAS;USE_FORTRAN_BLAS;USE_GRAPHICAL_BENCHMARK;_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;_SCL_SECURE_NO_WARNINGS;GLEW_STATIC;CMAKE_INTDIR="Debug";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <AdditionalOptions> /bigobj %(AdditionalOptions)</AdditionalOptions>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WIN64;BT_USE_DOUBLE_PRECISION;USE_GRAPHICAL_BENCHMARK;_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;_SCL_SECURE_NO_WARNINGS;GLEW_STATIC;CMAKE_INTDIR=\"Debug\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>.\OpenGLWindow;.\glad;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>.\OpenGLWindow;.\glad;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+    </Lib>
+    <Link>
+      <AdditionalDependencies>cudart.lib;OpenGL32.Lib;.\Debug\SimpleGLExample_Debug.lib;libfftw3f-3.lib;N:\WorkBench\ceres-solver-1\lib\Release\libopenblas.dll.a;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>N:\WorkBench\fftw-3.3.5-dll64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+    </Link>
+    <CudaCompile>
+      <CodeGeneration>compute_50,sm_50;compute_75,sm_75</CodeGeneration>
+      <TargetMachinePlatform>64</TargetMachinePlatform>
+    </CudaCompile>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>.;.\OpenGLWindow;.\glad;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <DisableSpecificWarnings>4244;4267</DisableSpecificWarnings>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <FloatingPointModel>Fast</FloatingPointModel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <StringPooling>true</StringPooling>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WIN64;USE_GRAPHICAL_BENCHMARK;_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;_SCL_SECURE_NO_WARNINGS;GLEW_STATIC;CMAKE_INTDIR="Release";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WIN64;BT_USE_DOUBLE_PRECISION;USE_GRAPHICAL_BENCHMARK;_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;_SCL_SECURE_NO_WARNINGS;GLEW_STATIC;CMAKE_INTDIR=\"Release\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>.\OpenGLWindow;.\glad;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>.\OpenGLWindow;.\glad;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+    </Lib>
+    <Link>
+      <AdditionalDependencies>OpenGL32.Lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+    <CudaCompile>
+      <CodeGeneration>compute_50,sm_50;compute_75,sm_75</CodeGeneration>
+      <TargetMachinePlatform>64</TargetMachinePlatform>
+    </CudaCompile>
+  </ItemDefinitionGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+    <Import Project="$(VCTargetsPath)\BuildCustomizations\CUDA 11.6.targets" />
+  </ImportGroup>
+</Project>

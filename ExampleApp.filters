@@ -1,0 +1,1062 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="OpenGLWindow\Win32OpenGLWindow.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="OpenGLWindow\Win32Window.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="OpenGLWindow\EGLOpenGLWindow.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="OpenGLWindow\GLInstancingRenderer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="OpenGLWindow\GLPrimitiveRenderer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="OpenGLWindow\GLRenderToTexture.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="OpenGLWindow\LoadShader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="OpenGLWindow\OpenSans.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="OpenGLWindow\SimpleCamera.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="OpenGLWindow\SimpleOpenGL3App.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="OpenGLWindow\TwFonts.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="OpenGLWindow\fontstash.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="OpenGLWindow\opengl_fontstashcallbacks.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files\app</Filter>
+    </ClCompile>
+    <ClCompile Include="OpenGLWindow\OpenGLGuiHelper.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="b3Clock.cpp">
+      <Filter>Source Files\app</Filter>
+    </ClCompile>
+    <ClCompile Include="Bullet3Common\btCollisionShape.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="b3ResourcePath.cpp">
+      <Filter>Source Files\app</Filter>
+    </ClCompile>
+    <ClCompile Include="Bullet3Common\btCollisionObject.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TinyRendererSetup.cpp">
+      <Filter>Source Files\app</Filter>
+    </ClCompile>
+    <ClCompile Include="Wavefront2GLInstanceGraphicsShape.cpp">
+      <Filter>Source Files\app</Filter>
+    </ClCompile>
+    <ClCompile Include="b3ImportMeshUtility.cpp">
+      <Filter>Source Files\app</Filter>
+    </ClCompile>
+    <ClCompile Include="LoadMeshFromObj.cpp">
+      <Filter>Source Files\app</Filter>
+    </ClCompile>
+    <ClCompile Include="Bullet3Common\b3AlignedAllocator.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Bullet3Common\CollisionShape2TriangleMesh.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Bullet3Common\geometry.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="OpenGLWindow\model.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="OpenGLWindow\tgaimage.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="OpenGLWindow\TinyRenderer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="OpenGLWindow\TinyShader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Bullet3Common\btStridingMeshInterface.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Bullet3Common\btTriangleBuffer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Bullet3Common\btTriangleIndexVertexArray.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Bullet3Common\btTriangleIndexVertexMaterialArray.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Bullet3Common\btTriangleMesh.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MipmapGeometry.cpp">
+      <Filter>Source Files\osg</Filter>
+    </ClCompile>
+    <ClCompile Include="MipmapGeometryVBO.cpp">
+      <Filter>Source Files\osg</Filter>
+    </ClCompile>
+    <ClCompile Include="OceanTile.cpp">
+      <Filter>Source Files\osg</Filter>
+    </ClCompile>
+    <ClCompile Include="GeometryShape.cpp">
+      <Filter>Source Files\osg</Filter>
+    </ClCompile>
+    <ClCompile Include="DrawElements.cpp">
+      <Filter>Source Files\osg</Filter>
+    </ClCompile>
+    <ClCompile Include="Image.cpp">
+      <Filter>Source Files\osg</Filter>
+    </ClCompile>
+    <ClCompile Include="dxtctool.cpp">
+      <Filter>Source Files\osg</Filter>
+    </ClCompile>
+    <ClCompile Include="mipmap.cpp">
+      <Filter>Source Files\osg</Filter>
+    </ClCompile>
+    <ClCompile Include="Texture.cpp">
+      <Filter>Source Files\osg</Filter>
+    </ClCompile>
+    <ClCompile Include="Texture2D.cpp">
+      <Filter>Source Files\osg</Filter>
+    </ClCompile>
+    <ClCompile Include="TextureCubeMap.cpp">
+      <Filter>Source Files\osg</Filter>
+    </ClCompile>
+    <ClCompile Include="TextureRectangle.cpp">
+      <Filter>Source Files\osg</Filter>
+    </ClCompile>
+    <ClCompile Include="ScreenAlignedQuad.cpp">
+      <Filter>Source Files\osg</Filter>
+    </ClCompile>
+    <ClCompile Include="SiltEffect.cpp">
+      <Filter>Source Files\osg</Filter>
+    </ClCompile>
+    <ClCompile Include="WaterTrochoids.cpp">
+      <Filter>Source Files\osg</Filter>
+    </ClCompile>
+    <ClCompile Include="Light.cpp">
+      <Filter>Source Files\osg</Filter>
+    </ClCompile>
+    <ClCompile Include="Cylinder.cpp">
+      <Filter>Source Files\osg</Filter>
+    </ClCompile>
+    <ClCompile Include="DistortionSurface.cpp">
+      <Filter>Source Files\osg</Filter>
+    </ClCompile>
+    <ClCompile Include="Fog.cpp">
+      <Filter>Source Files\osg</Filter>
+    </ClCompile>
+    <ClCompile Include="GodRayBlendSurface.cpp">
+      <Filter>Source Files\osg</Filter>
+    </ClCompile>
+    <ClCompile Include="GodRays.cpp">
+      <Filter>Source Files\osg</Filter>
+    </ClCompile>
+    <ClCompile Include="TexGen.cpp">
+      <Filter>Source Files\osg</Filter>
+    </ClCompile>
+    <ClCompile Include="Texture3D.cpp">
+      <Filter>Source Files\osg</Filter>
+    </ClCompile>
+    <ClCompile Include="ShadowVolumeOccluder.cpp">
+      <Filter>Source Files\osg</Filter>
+    </ClCompile>
+    <ClCompile Include="Bullet3Common\perlin.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Bullet3Common\Ray.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="OpenGLWindow\OpenGLHelper.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="cloth.cpp">
+      <Filter>Source Files\app</Filter>
+    </ClCompile>
+    <ClCompile Include="stb_image\ply.cpp">
+      <Filter>Source Files\ui</Filter>
+    </ClCompile>
+    <ClCompile Include="stb_image\tiny_obj_loader.cpp">
+      <Filter>Source Files\ui</Filter>
+    </ClCompile>
+    <ClCompile Include="gwork\platforms\PlatformCommon.cpp">
+      <Filter>Source Files\ui</Filter>
+    </ClCompile>
+    <ClCompile Include="gwork\platforms\Utility.cpp">
+      <Filter>Source Files\ui</Filter>
+    </ClCompile>
+    <ClCompile Include="gwork\platforms\WindowsPlatform.cpp">
+      <Filter>Source Files\ui</Filter>
+    </ClCompile>
+    <ClCompile Include="gwork\Anim.cpp">
+      <Filter>Source Files\ui</Filter>
+    </ClCompile>
+    <ClCompile Include="gwork\BaseRender.cpp">
+      <Filter>Source Files\ui</Filter>
+    </ClCompile>
+    <ClCompile Include="gwork\ControlList.cpp">
+      <Filter>Source Files\ui</Filter>
+    </ClCompile>
+    <ClCompile Include="gwork\DragAndDrop.cpp">
+      <Filter>Source Files\ui</Filter>
+    </ClCompile>
+    <ClCompile Include="gwork\Events.cpp">
+      <Filter>Source Files\ui</Filter>
+    </ClCompile>
+    <ClCompile Include="gwork\Gwork.cpp">
+      <Filter>Source Files\ui</Filter>
+    </ClCompile>
+    <ClCompile Include="gwork\Hook.cpp">
+      <Filter>Source Files\ui</Filter>
+    </ClCompile>
+    <ClCompile Include="gwork\InputHandler.cpp">
+      <Filter>Source Files\ui</Filter>
+    </ClCompile>
+    <ClCompile Include="gwork\Skin.cpp">
+      <Filter>Source Files\ui</Filter>
+    </ClCompile>
+    <ClCompile Include="gwork\ToolTip.cpp">
+      <Filter>Source Files\ui</Filter>
+    </ClCompile>
+    <ClCompile Include="gwork\Controls\Base.cpp">
+      <Filter>Source Files\ui</Filter>
+    </ClCompile>
+    <ClCompile Include="gwork\Controls\Button.cpp">
+      <Filter>Source Files\ui</Filter>
+    </ClCompile>
+    <ClCompile Include="gwork\Controls\Canvas.cpp">
+      <Filter>Source Files\ui</Filter>
+    </ClCompile>
+    <ClCompile Include="gwork\Controls\CheckBox.cpp">
+      <Filter>Source Files\ui</Filter>
+    </ClCompile>
+    <ClCompile Include="gwork\Controls\CollapsibleCategory.cpp">
+      <Filter>Source Files\ui</Filter>
+    </ClCompile>
+    <ClCompile Include="gwork\Controls\ColorControls.cpp">
+      <Filter>Source Files\ui</Filter>
+    </ClCompile>
+    <ClCompile Include="gwork\Controls\ColorPicker.cpp">
+      <Filter>Source Files\ui</Filter>
+    </ClCompile>
+    <ClCompile Include="gwork\Controls\ComboBox.cpp">
+      <Filter>Source Files\ui</Filter>
+    </ClCompile>
+    <ClCompile Include="gwork\Controls\CrossSplitter.cpp">
+      <Filter>Source Files\ui</Filter>
+    </ClCompile>
+    <ClCompile Include="gwork\Controls\DockBase.cpp">
+      <Filter>Source Files\ui</Filter>
+    </ClCompile>
+    <ClCompile Include="gwork\Controls\DockedTabControl.cpp">
+      <Filter>Source Files\ui</Filter>
+    </ClCompile>
+    <ClCompile Include="gwork\Controls\Dragger.cpp">
+      <Filter>Source Files\ui</Filter>
+    </ClCompile>
+    <ClCompile Include="gwork\Controls\GroupBox.cpp">
+      <Filter>Source Files\ui</Filter>
+    </ClCompile>
+    <ClCompile Include="gwork\Controls\HorizontalScrollBar.cpp">
+      <Filter>Source Files\ui</Filter>
+    </ClCompile>
+    <ClCompile Include="gwork\Controls\HorizontalSlider.cpp">
+      <Filter>Source Files\ui</Filter>
+    </ClCompile>
+    <ClCompile Include="gwork\Controls\HSVColorPicker.cpp">
+      <Filter>Source Files\ui</Filter>
+    </ClCompile>
+    <ClCompile Include="gwork\Controls\ImagePanel.cpp">
+      <Filter>Source Files\ui</Filter>
+    </ClCompile>
+    <ClCompile Include="gwork\Controls\Label.cpp">
+      <Filter>Source Files\ui</Filter>
+    </ClCompile>
+    <ClCompile Include="gwork\Controls\LabelClickable.cpp">
+      <Filter>Source Files\ui</Filter>
+    </ClCompile>
+    <ClCompile Include="gwork\Controls\ListBox.cpp">
+      <Filter>Source Files\ui</Filter>
+    </ClCompile>
+    <ClCompile Include="gwork\Controls\Menu.cpp">
+      <Filter>Source Files\ui</Filter>
+    </ClCompile>
+    <ClCompile Include="gwork\Controls\MenuItem.cpp">
+      <Filter>Source Files\ui</Filter>
+    </ClCompile>
+    <ClCompile Include="gwork\Controls\MenuStrip.cpp">
+      <Filter>Source Files\ui</Filter>
+    </ClCompile>
+    <ClCompile Include="gwork\Controls\NumericUpDown.cpp">
+      <Filter>Source Files\ui</Filter>
+    </ClCompile>
+    <ClCompile Include="gwork\Controls\PageControl.cpp">
+      <Filter>Source Files\ui</Filter>
+    </ClCompile>
+    <ClCompile Include="gwork\Controls\ProgressBar.cpp">
+      <Filter>Source Files\ui</Filter>
+    </ClCompile>
+    <ClCompile Include="gwork\Controls\Properties.cpp">
+      <Filter>Source Files\ui</Filter>
+    </ClCompile>
+    <ClCompile Include="gwork\Controls\PropertyTree.cpp">
+      <Filter>Source Files\ui</Filter>
+    </ClCompile>
+    <ClCompile Include="gwork\Controls\RadioButton.cpp">
+      <Filter>Source Files\ui</Filter>
+    </ClCompile>
+    <ClCompile Include="gwork\Controls\RadioButtonController.cpp">
+      <Filter>Source Files\ui</Filter>
+    </ClCompile>
+    <ClCompile Include="gwork\Controls\Rectangle.cpp">
+      <Filter>Source Files\ui</Filter>
+    </ClCompile>
+    <ClCompile Include="gwork\Controls\ResizableControl.cpp">
+      <Filter>Source Files\ui</Filter>
+    </ClCompile>
+    <ClCompile Include="gwork\Controls\Resizer.cpp">
+      <Filter>Source Files\ui</Filter>
+    </ClCompile>
+    <ClCompile Include="gwork\Controls\RichLabel.cpp">
+      <Filter>Source Files\ui</Filter>
+    </ClCompile>
+    <ClCompile Include="gwork\Controls\ScrollBar.cpp">
+      <Filter>Source Files\ui</Filter>
+    </ClCompile>
+    <ClCompile Include="gwork\Controls\ScrollBarBar.cpp">
+      <Filter>Source Files\ui</Filter>
+    </ClCompile>
+    <ClCompile Include="gwork\Controls\ScrollBarButton.cpp">
+      <Filter>Source Files\ui</Filter>
+    </ClCompile>
+    <ClCompile Include="gwork\Controls\ScrollControl.cpp">
+      <Filter>Source Files\ui</Filter>
+    </ClCompile>
+    <ClCompile Include="gwork\Controls\Slider.cpp">
+      <Filter>Source Files\ui</Filter>
+    </ClCompile>
+    <ClCompile Include="gwork\Controls\SplitterBar.cpp">
+      <Filter>Source Files\ui</Filter>
+    </ClCompile>
+    <ClCompile Include="gwork\Controls\TabButton.cpp">
+      <Filter>Source Files\ui</Filter>
+    </ClCompile>
+    <ClCompile Include="gwork\Controls\TabControl.cpp">
+      <Filter>Source Files\ui</Filter>
+    </ClCompile>
+    <ClCompile Include="gwork\Controls\TabStrip.cpp">
+      <Filter>Source Files\ui</Filter>
+    </ClCompile>
+    <ClCompile Include="gwork\Controls\Text.cpp">
+      <Filter>Source Files\ui</Filter>
+    </ClCompile>
+    <ClCompile Include="gwork\Controls\TextBox.cpp">
+      <Filter>Source Files\ui</Filter>
+    </ClCompile>
+    <ClCompile Include="gwork\Controls\TextBoxNumeric.cpp">
+      <Filter>Source Files\ui</Filter>
+    </ClCompile>
+    <ClCompile Include="gwork\Controls\TreeControl.cpp">
+      <Filter>Source Files\ui</Filter>
+    </ClCompile>
+    <ClCompile Include="gwork\Controls\TreeNode.cpp">
+      <Filter>Source Files\ui</Filter>
+    </ClCompile>
+    <ClCompile Include="gwork\Controls\VerticalScrollBar.cpp">
+      <Filter>Source Files\ui</Filter>
+    </ClCompile>
+    <ClCompile Include="gwork\Controls\VerticalSlider.cpp">
+      <Filter>Source Files\ui</Filter>
+    </ClCompile>
+    <ClCompile Include="gwork\Controls\WindowCanvas.cpp">
+      <Filter>Source Files\ui</Filter>
+    </ClCompile>
+    <ClCompile Include="gwork\Controls\WindowControl.cpp">
+      <Filter>Source Files\ui</Filter>
+    </ClCompile>
+    <ClCompile Include="OpenGLWindow\GwenParameterInterface.cpp">
+      <Filter>Source Files\ui</Filter>
+    </ClCompile>
+    <ClCompile Include="OpenGLWindow\GwenTextureWindow.cpp">
+      <Filter>Source Files\ui</Filter>
+    </ClCompile>
+    <ClCompile Include="OpenGLWindow\gwenUserInterface.cpp">
+      <Filter>Source Files\ui</Filter>
+    </ClCompile>
+    <ClCompile Include="gwork\renderers\Software\Software.cpp">
+      <Filter>Source Files\ui</Filter>
+    </ClCompile>
+    <ClCompile Include="OpenGLExampleBrowser.cpp">
+      <Filter>Source Files\app</Filter>
+    </ClCompile>
+    <ClCompile Include="ExampleEntries.cpp">
+      <Filter>Source Files\app</Filter>
+    </ClCompile>
+    <ClCompile Include="RenderInstancingDemo.cpp">
+      <Filter>Source Files\app</Filter>
+    </ClCompile>
+    <ClCompile Include="TimeSeriesCanvas.cpp">
+      <Filter>Source Files\app</Filter>
+    </ClCompile>
+    <ClCompile Include="TimeSeriesExample.cpp">
+      <Filter>Source Files\app</Filter>
+    </ClCompile>
+    <ClCompile Include="TinyVRGui.cpp">
+      <Filter>Source Files\app</Filter>
+    </ClCompile>
+    <ClCompile Include="TimeSeriesFontData.cpp">
+      <Filter>Source Files\app</Filter>
+    </ClCompile>
+    <ClCompile Include="OpenGLWindow\GraphingTexture.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="OpenGLWindow\EGLOpenGLWindow.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenGLWindow\GLInstanceGraphicsShape.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenGLWindow\GLInstanceRendererInternalData.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenGLWindow\GLInstancingRenderer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenGLWindow\GLPrimInternalData.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenGLWindow\GLPrimitiveRenderer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenGLWindow\GLRenderToTexture.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenGLWindow\GwenOpenGL3CoreRenderer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenGLWindow\LoadShader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenGLWindow\OpenGL2Include.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenGLWindow\OpenGLInclude.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenGLWindow\ShapeData.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenGLWindow\SimpleCamera.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenGLWindow\SimpleOpenGL3App.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenGLWindow\TwFonts.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenGLWindow\Win32InternalWindowData.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenGLWindow\Win32OpenGLWindow.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenGLWindow\Win32Window.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenGLWindow\fontstash.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenGLWindow\opengl_fontstashcallbacks.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenGLWindow\OpenGLGuiHelper.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="b3Clock.h">
+      <Filter>Source Files\app</Filter>
+    </ClInclude>
+    <ClInclude Include="b3ResourcePath.h">
+      <Filter>Source Files\app</Filter>
+    </ClInclude>
+    <ClInclude Include="SW_And_OpenGLGuiHelper.h">
+      <Filter>Source Files\app</Filter>
+    </ClInclude>
+    <ClInclude Include="TinyRendererGUIHelper.h">
+      <Filter>Source Files\app</Filter>
+    </ClInclude>
+    <ClInclude Include="TinyRendererSetup.h">
+      <Filter>Source Files\app</Filter>
+    </ClInclude>
+    <ClInclude Include="Wavefront2GLInstanceGraphicsShape.h">
+      <Filter>Source Files\app</Filter>
+    </ClInclude>
+    <ClInclude Include="b3ImportMeshUtility.h">
+      <Filter>Source Files\app</Filter>
+    </ClInclude>
+    <ClInclude Include="LoadMeshFromObj.h">
+      <Filter>Source Files\app</Filter>
+    </ClInclude>
+    <ClInclude Include="Bullet3Common\CollisionShape2TriangleMesh.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenGLWindow\model.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenGLWindow\tgaimage.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenGLWindow\TinyRenderer.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenGLWindow\TinyShader.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Bullet3Common\btSerializer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Bullet3Common\btTriangleInfoMap.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Bullet3Common\PrimVertex.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Bullet3Common\geometry.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Bullet3Common\btStridingMeshInterface.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Bullet3Common\btTriangleBuffer.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Bullet3Common\btTriangleCallback.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Bullet3Common\btTriangleIndexVertexArray.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Bullet3Common\btTriangleIndexVertexMaterialArray.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Bullet3Common\btTriangleMesh.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MipmapGeometry.h">
+      <Filter>Source Files\osg</Filter>
+    </ClInclude>
+    <ClInclude Include="MipmapGeometryVBO.h">
+      <Filter>Source Files\osg</Filter>
+    </ClInclude>
+    <ClInclude Include="OceanTile.h">
+      <Filter>Source Files\osg</Filter>
+    </ClInclude>
+    <ClInclude Include="Array.h">
+      <Filter>Source Files\osg</Filter>
+    </ClInclude>
+    <ClInclude Include="GeometryShape.h">
+      <Filter>Source Files\osg</Filter>
+    </ClInclude>
+    <ClInclude Include="DrawElements.h">
+      <Filter>Source Files\osg</Filter>
+    </ClInclude>
+    <ClInclude Include="Image.h">
+      <Filter>Source Files\osg</Filter>
+    </ClInclude>
+    <ClInclude Include="dxtctool.h">
+      <Filter>Source Files\osg</Filter>
+    </ClInclude>
+    <ClInclude Include="Texture2D.h">
+      <Filter>Source Files\osg</Filter>
+    </ClInclude>
+    <ClInclude Include="TextureRectangle.h">
+      <Filter>Source Files\osg</Filter>
+    </ClInclude>
+    <ClInclude Include="TextureCubeMap.h">
+      <Filter>Source Files\osg</Filter>
+    </ClInclude>
+    <ClInclude Include="Texture.h">
+      <Filter>Source Files\osg</Filter>
+    </ClInclude>
+    <ClInclude Include="SiltEffect.h">
+      <Filter>Source Files\osg</Filter>
+    </ClInclude>
+    <ClInclude Include="ScreenAlignedQuad.h">
+      <Filter>Source Files\osg</Filter>
+    </ClInclude>
+    <ClInclude Include="WaterTrochoids.h">
+      <Filter>Source Files\osg</Filter>
+    </ClInclude>
+    <ClInclude Include="Fog.h">
+      <Filter>Source Files\osg</Filter>
+    </ClInclude>
+    <ClInclude Include="Light.h">
+      <Filter>Source Files\osg</Filter>
+    </ClInclude>
+    <ClInclude Include="Cylinder.h">
+      <Filter>Source Files\osg</Filter>
+    </ClInclude>
+    <ClInclude Include="DistortionSurface.h">
+      <Filter>Source Files\osg</Filter>
+    </ClInclude>
+    <ClInclude Include="GodRayBlendSurface.h">
+      <Filter>Source Files\osg</Filter>
+    </ClInclude>
+    <ClInclude Include="GodRays.h">
+      <Filter>Source Files\osg</Filter>
+    </ClInclude>
+    <ClInclude Include="MultiGeometryShape.h">
+      <Filter>Source Files\osg</Filter>
+    </ClInclude>
+    <ClInclude Include="Bullet3Common\BoundingBox.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Bullet3Common\BoundingSphere.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Bullet3Common\b3AlignedAllocator.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Bullet3Common\b3AlignedObjectArray.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Bullet3Common\b3CommandLineArgs.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Bullet3Common\b3FileUtils.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Bullet3Common\b3HashMap.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Bullet3Common\b3Matrix3x3.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Bullet3Common\b3MinMax.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Bullet3Common\b3PoolAllocator.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Bullet3Common\b3QuadWord.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Bullet3Common\b3Quaternion.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Bullet3Common\b3Random.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Bullet3Common\b3ResizablePool.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Bullet3Common\b3Scalar.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Bullet3Common\b3StackAlloc.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Bullet3Common\b3Transform.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Bullet3Common\b3TransformUtil.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Bullet3Common\b3Vector3.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Bullet3Common\btCollisionObject.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Bullet3Common\btCollisionShape.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Bullet3Common\btDynamicsWorld.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Bullet3Common\MixinVector.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Bullet3Common\Plane.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Bullet3Common\Polytope.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Polytope.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Plane.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TexGen.h">
+      <Filter>Source Files\osg</Filter>
+    </ClInclude>
+    <ClInclude Include="Texture3D.h">
+      <Filter>Source Files\osg</Filter>
+    </ClInclude>
+    <ClInclude Include="ShadowVolumeOccluder.h">
+      <Filter>Source Files\osg</Filter>
+    </ClInclude>
+    <ClInclude Include="ConvexPlanarOccluder.h">
+      <Filter>Source Files\osg</Filter>
+    </ClInclude>
+    <ClInclude Include="Bullet3Common\Color.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="glad\glad\gl.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Bullet3Common\Ray.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Bullet3Common\perlin.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenGLWindow\OpenGLHelper.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="cloth.h">
+      <Filter>Source Files\app</Filter>
+    </ClInclude>
+    <ClInclude Include="stb_image\stb_image.h">
+      <Filter>Source Files\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="stb_image\stb_image_write.h">
+      <Filter>Source Files\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="stb_image\stb_rect_pack.h">
+      <Filter>Source Files\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="stb_image\stb_textedit.h">
+      <Filter>Source Files\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="stb_image\stb_truetype.h">
+      <Filter>Source Files\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="stb_image\ply.h">
+      <Filter>Source Files\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="stb_image\tiny_obj_loader.h">
+      <Filter>Source Files\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="gwork\platforms\DebugBreak.h">
+      <Filter>Source Files\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="gwork\Align.h">
+      <Filter>Source Files\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="gwork\Anim.h">
+      <Filter>Source Files\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="gwork\BaseRender.h">
+      <Filter>Source Files\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="gwork\Config.h">
+      <Filter>Source Files\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="gwork\ControlList.h">
+      <Filter>Source Files\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="gwork\Controls.h">
+      <Filter>Source Files\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="gwork\DragAndDrop.h">
+      <Filter>Source Files\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="gwork\Events.h">
+      <Filter>Source Files\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="gwork\Gwork.h">
+      <Filter>Source Files\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="gwork\Hook.h">
+      <Filter>Source Files\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="gwork\InputEventListener.h">
+      <Filter>Source Files\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="gwork\InputHandler.h">
+      <Filter>Source Files\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="gwork\Platform.h">
+      <Filter>Source Files\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="gwork\PlatformCommon.h">
+      <Filter>Source Files\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="gwork\PlatformTypes.h">
+      <Filter>Source Files\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="gwork\Skin.h">
+      <Filter>Source Files\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="gwork\ToolTip.h">
+      <Filter>Source Files\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="gwork\UiTypes.h">
+      <Filter>Source Files\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="gwork\UserData.h">
+      <Filter>Source Files\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="gwork\Utility.h">
+      <Filter>Source Files\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="gwork\WindowProvider.h">
+      <Filter>Source Files\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="gwork\Input\Windows.h">
+      <Filter>Source Files\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="gwork\Controls\Base.h">
+      <Filter>Source Files\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="gwork\Controls\Button.h">
+      <Filter>Source Files\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="gwork\Controls\Canvas.h">
+      <Filter>Source Files\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="gwork\Controls\CheckBox.h">
+      <Filter>Source Files\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="gwork\Controls\CollapsibleCategory.h">
+      <Filter>Source Files\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="gwork\Controls\CollapsibleList.h">
+      <Filter>Source Files\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="gwork\Controls\ColorControls.h">
+      <Filter>Source Files\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="gwork\Controls\ColorPicker.h">
+      <Filter>Source Files\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="gwork\Controls\ComboBox.h">
+      <Filter>Source Files\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="gwork\Controls\CrossSplitter.h">
+      <Filter>Source Files\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="gwork\Controls\DockBase.h">
+      <Filter>Source Files\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="gwork\Controls\DockedTabControl.h">
+      <Filter>Source Files\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="gwork\Controls\Dragger.h">
+      <Filter>Source Files\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="gwork\Controls\FieldLabel.h">
+      <Filter>Source Files\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="gwork\Controls\FilePicker.h">
+      <Filter>Source Files\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="gwork\Controls\FolderPicker.h">
+      <Filter>Source Files\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="gwork\Controls\GroupBox.h">
+      <Filter>Source Files\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="gwork\Controls\Highlight.h">
+      <Filter>Source Files\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="gwork\Controls\HorizontalScrollBar.h">
+      <Filter>Source Files\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="gwork\Controls\HorizontalSlider.h">
+      <Filter>Source Files\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="gwork\Controls\HSVColorPicker.h">
+      <Filter>Source Files\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="gwork\Controls\ImagePanel.h">
+      <Filter>Source Files\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="gwork\Controls\Label.h">
+      <Filter>Source Files\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="gwork\Controls\LabelClickable.h">
+      <Filter>Source Files\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="gwork\Controls\ListBox.h">
+      <Filter>Source Files\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="gwork\Controls\Menu.h">
+      <Filter>Source Files\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="gwork\Controls\MenuItem.h">
+      <Filter>Source Files\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="gwork\Controls\MenuStrip.h">
+      <Filter>Source Files\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="gwork\Controls\Modal.h">
+      <Filter>Source Files\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="gwork\Controls\NumericUpDown.h">
+      <Filter>Source Files\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="gwork\Controls\PageControl.h">
+      <Filter>Source Files\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="gwork\Controls\ProgressBar.h">
+      <Filter>Source Files\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="gwork\Controls\Properties.h">
+      <Filter>Source Files\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="gwork\Controls\PropertyTree.h">
+      <Filter>Source Files\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="gwork\Controls\RadioButton.h">
+      <Filter>Source Files\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="gwork\Controls\RadioButtonController.h">
+      <Filter>Source Files\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="gwork\Controls\Rectangle.h">
+      <Filter>Source Files\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="gwork\Controls\ResizableControl.h">
+      <Filter>Source Files\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="gwork\Controls\Resizer.h">
+      <Filter>Source Files\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="gwork\Controls\RichLabel.h">
+      <Filter>Source Files\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="gwork\Controls\ScrollBar.h">
+      <Filter>Source Files\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="gwork\Controls\ScrollBarBar.h">
+      <Filter>Source Files\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="gwork\Controls\ScrollBarButton.h">
+      <Filter>Source Files\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="gwork\Controls\ScrollControl.h">
+      <Filter>Source Files\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="gwork\Controls\Slider.h">
+      <Filter>Source Files\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="gwork\Controls\SplitterBar.h">
+      <Filter>Source Files\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="gwork\Controls\Splitters.h">
+      <Filter>Source Files\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="gwork\Controls\StatusBar.h">
+      <Filter>Source Files\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="gwork\Controls\TabButton.h">
+      <Filter>Source Files\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="gwork\Controls\TabControl.h">
+      <Filter>Source Files\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="gwork\Controls\TabStrip.h">
+      <Filter>Source Files\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="gwork\Controls\TabTitleBar.h">
+      <Filter>Source Files\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="gwork\Controls\Text.h">
+      <Filter>Source Files\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="gwork\Controls\TextBox.h">
+      <Filter>Source Files\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="gwork\Controls\ToolBar.h">
+      <Filter>Source Files\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="gwork\Controls\TreeControl.h">
+      <Filter>Source Files\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="gwork\Controls\TreeNode.h">
+      <Filter>Source Files\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="gwork\Controls\VerticalScrollBar.h">
+      <Filter>Source Files\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="gwork\Controls\VerticalSlider.h">
+      <Filter>Source Files\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="gwork\Controls\WindowButtons.h">
+      <Filter>Source Files\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="gwork\Controls\WindowCanvas.h">
+      <Filter>Source Files\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="gwork\Controls\WindowControl.h">
+      <Filter>Source Files\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenGLWindow\gwenUserInterface.h">
+      <Filter>Source Files\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenGLWindow\GwenParameterInterface.h">
+      <Filter>Source Files\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenGLWindow\GwenTextureWindow.h">
+      <Filter>Source Files\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="gwork\renderers\Software.h">
+      <Filter>Source Files\ui</Filter>
+    </ClInclude>
+    <ClInclude Include="ExampleEntries.h">
+      <Filter>Source Files\app</Filter>
+    </ClInclude>
+    <ClInclude Include="EmptyBrowser.h">
+      <Filter>Source Files\app</Filter>
+    </ClInclude>
+    <ClInclude Include="EmptyExample.h">
+      <Filter>Source Files\app</Filter>
+    </ClInclude>
+    <ClInclude Include="ExampleBrowserInterface.h">
+      <Filter>Source Files\app</Filter>
+    </ClInclude>
+    <ClInclude Include="OpenGLExampleBrowser.h">
+      <Filter>Source Files\app</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{98DF56AA-71C3-348C-B098-7906DF41EE48}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{1F29A0ED-5A2E-3F51-B01B-00502DA92CE7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\app">
+      <UniqueIdentifier>{0fe54ebd-43b2-437f-a836-4b856040fbef}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\osg">
+      <UniqueIdentifier>{9cd9ab98-2996-4622-9bd9-9872820d89bb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\ui">
+      <UniqueIdentifier>{27130045-717f-4a48-aee5-5a91aef0e292}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,481 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{BD877E49-201F-3AA6-818C-DAAC4BA21B35}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <Platform>x64</Platform>
+    <ProjectName>SimpleGLExample</ProjectName>
+    <VCProjectUpgraderObjectName>NoUpgrade</VCProjectUpgraderObjectName>
+    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.20506.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\Debug\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\Debug\$(ProjectName)</IntDir>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\Release\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\Release\</IntDir>
+    <TargetName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">SimpleGLExample</TargetName>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>.;.\OpenGLWindow;.\glad;.\CommonInterfaces;.\stb_image;.\Component;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <DisableSpecificWarnings>4244;4267</DisableSpecificWarnings>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <FloatingPointModel>Fast</FloatingPointModel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <InlineFunctionExpansion>Disabled</InlineFunctionExpansion>
+      <Optimization>Disabled</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <StringPooling>true</StringPooling>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WIN64;USE_GRAPHICAL_BENCHMARK;_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;_SCL_SECURE_NO_WARNINGS;GLEW_STATIC;CMAKE_INTDIR="Debug";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WIN64;BT_USE_DOUBLE_PRECISION;USE_GRAPHICAL_BENCHMARK;_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;_SCL_SECURE_NO_WARNINGS;GLEW_STATIC;CMAKE_INTDIR=\"Debug\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>.\OpenGLWindow;.\glad;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>.\OpenGLWindow;.\glad;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+    </Lib>
+    <Link>
+      <AdditionalDependencies>OpenGL32.Lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>.;.\OpenGLWindow;.\glad;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AssemblerListingLocation>$(IntDir)</AssemblerListingLocation>
+      <CompileAs>CompileAsCpp</CompileAs>
+      <DisableSpecificWarnings>4244;4267</DisableSpecificWarnings>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <FloatingPointModel>Fast</FloatingPointModel>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+      <Optimization>MaxSpeed</Optimization>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <RuntimeTypeInfo>false</RuntimeTypeInfo>
+      <StringPooling>true</StringPooling>
+      <UseFullPaths>false</UseFullPaths>
+      <WarningLevel>Level3</WarningLevel>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WIN64;USE_GRAPHICAL_BENCHMARK;_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;_SCL_SECURE_NO_WARNINGS;GLEW_STATIC;CMAKE_INTDIR="Release";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <ObjectFileName>$(IntDir)</ObjectFileName>
+      <DebugInformationFormat>
+      </DebugInformationFormat>
+    </ClCompile>
+    <ResourceCompile>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WIN64;BT_USE_DOUBLE_PRECISION;USE_GRAPHICAL_BENCHMARK;_CRT_SECURE_NO_WARNINGS;_CRT_SECURE_NO_DEPRECATE;_SCL_SECURE_NO_WARNINGS;GLEW_STATIC;CMAKE_INTDIR=\"Release\";%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>.\OpenGLWindow;.\glad;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+    <Midl>
+      <AdditionalIncludeDirectories>.\OpenGLWindow;.\glad;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <OutputDirectory>$(ProjectDir)/$(IntDir)</OutputDirectory>
+      <HeaderFileName>%(Filename).h</HeaderFileName>
+      <TypeLibraryName>%(Filename).tlb</TypeLibraryName>
+      <InterfaceIdentifierFileName>%(Filename)_i.c</InterfaceIdentifierFileName>
+      <ProxyFileName>%(Filename)_p.c</ProxyFileName>
+    </Midl>
+    <Lib>
+      <AdditionalOptions>%(AdditionalOptions) /machine:x64</AdditionalOptions>
+    </Lib>
+    <Link>
+      <AdditionalDependencies>OpenGL32.Lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <None Include="Shaders\osgOcean_ocean_scene_frag.inl" />
+    <None Include="Shaders\osgOcean_ocean_scene_vert.inl" />
+    <None Include="Shaders\osgOcean_ocean_surface_frag.inl" />
+    <None Include="Shaders\osgOcean_ocean_surface_vbo_vert.inl" />
+    <None Include="Shaders\osgOcean_ocean_surface_vert.inl" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Component\b3Clock.cpp" />
+    <ClCompile Include="Component\b3ImportMeshUtility.cpp" />
+    <ClCompile Include="Component\b3ResourcePath.cpp" />
+    <ClCompile Include="Bullet3Common\b3AlignedAllocator.cpp" />
+    <ClCompile Include="Bullet3Common\btCollisionObject.cpp" />
+    <ClCompile Include="Bullet3Common\btCollisionShape.cpp" />
+    <ClCompile Include="Bullet3Common\btStridingMeshInterface.cpp" />
+    <ClCompile Include="Bullet3Common\btTriangleBuffer.cpp" />
+    <ClCompile Include="Bullet3Common\btTriangleIndexVertexArray.cpp" />
+    <ClCompile Include="Bullet3Common\btTriangleIndexVertexMaterialArray.cpp" />
+    <ClCompile Include="Bullet3Common\btTriangleMesh.cpp" />
+    <ClCompile Include="Bullet3Common\CollisionShape2TriangleMesh.cpp" />
+    <ClCompile Include="Bullet3Common\geometry.cpp" />
+    <ClCompile Include="Bullet3Common\perlin.cpp" />
+    <ClCompile Include="Bullet3Common\Ray.cpp" />
+    <ClCompile Include="Component\ClipPlane.cpp" />
+    <ClCompile Include="Component\Cylinder.cpp" />
+    <ClCompile Include="Component\DrawElements.cpp" />
+    <ClCompile Include="Component\dxtctool.cpp" />
+    <ClCompile Include="Component\Fog.cpp" />
+    <ClCompile Include="Component\GeometryShape.cpp" />
+    <ClCompile Include="Component\Timer.cpp" />
+    <ClCompile Include="glad\gl.c">
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">CompileAsC</CompileAs>
+      <CompileAs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">CompileAsC</CompileAs>
+    </ClCompile>
+    <ClCompile Include="gwork\Anim.cpp" />
+    <ClCompile Include="gwork\BaseRender.cpp" />
+    <ClCompile Include="gwork\ControlList.cpp" />
+    <ClCompile Include="gwork\Controls\Base.cpp" />
+    <ClCompile Include="gwork\Controls\Button.cpp" />
+    <ClCompile Include="gwork\Controls\Canvas.cpp" />
+    <ClCompile Include="gwork\Controls\CheckBox.cpp" />
+    <ClCompile Include="gwork\Controls\CollapsibleCategory.cpp" />
+    <ClCompile Include="gwork\Controls\ColorControls.cpp" />
+    <ClCompile Include="gwork\Controls\ColorPicker.cpp" />
+    <ClCompile Include="gwork\Controls\ComboBox.cpp" />
+    <ClCompile Include="gwork\Controls\CrossSplitter.cpp" />
+    <ClCompile Include="gwork\Controls\DockBase.cpp" />
+    <ClCompile Include="gwork\Controls\DockedTabControl.cpp" />
+    <ClCompile Include="gwork\Controls\Dragger.cpp" />
+    <ClCompile Include="gwork\Controls\GroupBox.cpp" />
+    <ClCompile Include="gwork\Controls\HorizontalScrollBar.cpp" />
+    <ClCompile Include="gwork\Controls\HorizontalSlider.cpp" />
+    <ClCompile Include="gwork\Controls\HSVColorPicker.cpp" />
+    <ClCompile Include="gwork\Controls\ImagePanel.cpp" />
+    <ClCompile Include="gwork\Controls\Label.cpp" />
+    <ClCompile Include="gwork\Controls\LabelClickable.cpp" />
+    <ClCompile Include="gwork\Controls\ListBox.cpp" />
+    <ClCompile Include="gwork\Controls\Menu.cpp" />
+    <ClCompile Include="gwork\Controls\MenuItem.cpp" />
+    <ClCompile Include="gwork\Controls\MenuStrip.cpp" />
+    <ClCompile Include="gwork\Controls\NumericUpDown.cpp" />
+    <ClCompile Include="gwork\Controls\PageControl.cpp" />
+    <ClCompile Include="gwork\Controls\ProgressBar.cpp" />
+    <ClCompile Include="gwork\Controls\Properties.cpp" />
+    <ClCompile Include="gwork\Controls\PropertyTree.cpp" />
+    <ClCompile Include="gwork\Controls\RadioButton.cpp" />
+    <ClCompile Include="gwork\Controls\RadioButtonController.cpp" />
+    <ClCompile Include="gwork\Controls\Rectangle.cpp" />
+    <ClCompile Include="gwork\Controls\ResizableControl.cpp" />
+    <ClCompile Include="gwork\Controls\Resizer.cpp" />
+    <ClCompile Include="gwork\Controls\RichLabel.cpp" />
+    <ClCompile Include="gwork\Controls\ScrollBar.cpp" />
+    <ClCompile Include="gwork\Controls\ScrollBarBar.cpp" />
+    <ClCompile Include="gwork\Controls\ScrollBarButton.cpp" />
+    <ClCompile Include="gwork\Controls\ScrollControl.cpp" />
+    <ClCompile Include="gwork\Controls\Slider.cpp" />
+    <ClCompile Include="gwork\Controls\SplitterBar.cpp" />
+    <ClCompile Include="gwork\Controls\TabButton.cpp" />
+    <ClCompile Include="gwork\Controls\TabControl.cpp" />
+    <ClCompile Include="gwork\Controls\TabStrip.cpp" />
+    <ClCompile Include="gwork\Controls\Text.cpp" />
+    <ClCompile Include="gwork\Controls\TextBox.cpp" />
+    <ClCompile Include="gwork\Controls\TextBoxNumeric.cpp" />
+    <ClCompile Include="gwork\Controls\TreeControl.cpp" />
+    <ClCompile Include="gwork\Controls\TreeNode.cpp" />
+    <ClCompile Include="gwork\Controls\VerticalScrollBar.cpp" />
+    <ClCompile Include="gwork\Controls\VerticalSlider.cpp" />
+    <ClCompile Include="gwork\Controls\WindowCanvas.cpp" />
+    <ClCompile Include="gwork\Controls\WindowControl.cpp" />
+    <ClCompile Include="gwork\DragAndDrop.cpp" />
+    <ClCompile Include="gwork\Events.cpp" />
+    <ClCompile Include="gwork\Gwork.cpp" />
+    <ClCompile Include="gwork\Hook.cpp" />
+    <ClCompile Include="gwork\InputHandler.cpp" />
+    <ClCompile Include="gwork\platforms\PlatformCommon.cpp" />
+    <ClCompile Include="gwork\platforms\Utility.cpp" />
+    <ClCompile Include="gwork\platforms\WindowsPlatform.cpp" />
+    <ClCompile Include="gwork\renderers\Software\Software.cpp" />
+    <ClCompile Include="gwork\Skin.cpp" />
+    <ClCompile Include="gwork\ToolTip.cpp" />
+    <ClCompile Include="Component\Image.cpp" />
+    <ClCompile Include="Component\Light.cpp" />
+    <ClCompile Include="Component\LoadMeshFromObj.cpp" />
+    <ClCompile Include="OpenGLWindow\GraphingTexture.cpp" />
+    <ClCompile Include="OpenGLWindow\GwenParameterInterface.cpp" />
+    <ClCompile Include="OpenGLWindow\GwenTextureWindow.cpp" />
+    <ClCompile Include="OpenGLWindow\gwenUserInterface.cpp" />
+    <ClCompile Include="OpenGLWindow\model.cpp" />
+    <ClCompile Include="OpenGLWindow\OpenGLHelper.cpp" />
+    <ClCompile Include="OpenGLWindow\TinyShader.cpp" />
+    <ClCompile Include="OpenGLWindow\tgaimage.cpp" />
+    <ClCompile Include="OpenGLWindow\TinyRenderer.cpp" />
+    <ClCompile Include="Component\ShadowVolumeOccluder.cpp" />
+    <ClCompile Include="stb_image\ply.cpp" />
+    <ClCompile Include="stb_image\tiny_obj_loader.cpp" />
+    <ClCompile Include="Component\TexGen.cpp" />
+    <ClCompile Include="Component\Texture.cpp" />
+    <ClCompile Include="Component\Texture2D.cpp" />
+    <ClCompile Include="Component\Texture3D.cpp" />
+    <ClCompile Include="Component\TextureCubeMap.cpp" />
+    <ClCompile Include="Component\TextureRectangle.cpp" />
+    <ClCompile Include="Component\Wavefront2GLInstanceGraphicsShape.cpp" />
+    <ClCompile Include="Component\TimeSeriesCanvas.cpp" />
+    <ClInclude Include="Bullet3Common\SparseMatrix.h" />
+    <ClInclude Include="Bullet3Common\SparseVector.h" />
+    <ClInclude Include="CommonInterfaces\Common2dCanvasInterface.h" />
+    <ClInclude Include="CommonInterfaces\CommonCallbacks.h" />
+    <ClInclude Include="CommonInterfaces\CommonCameraInterface.h" />
+    <ClInclude Include="CommonInterfaces\CommonExampleInterface.h" />
+    <ClInclude Include="CommonInterfaces\CommonFileIOInterface.h" />
+    <ClInclude Include="CommonInterfaces\CommonGraphicsAppInterface.h" />
+    <ClInclude Include="CommonInterfaces\CommonGUIHelperInterface.h" />
+    <ClInclude Include="CommonInterfaces\CommonParameterInterface.h" />
+    <ClInclude Include="CommonInterfaces\CommonRenderInterface.h" />
+    <ClInclude Include="CommonInterfaces\CommonWindowInterface.h" />
+    <ClInclude Include="Component\b3ImportMeshUtility.h" />
+    <ClInclude Include="Component\Array.h" />
+    <ClInclude Include="Bullet3Common\b3AlignedAllocator.h" />
+    <ClInclude Include="Bullet3Common\b3AlignedObjectArray.h" />
+    <ClInclude Include="Bullet3Common\b3CommandLineArgs.h" />
+    <ClInclude Include="Bullet3Common\b3FileUtils.h" />
+    <ClInclude Include="Bullet3Common\b3HashMap.h" />
+    <ClInclude Include="Bullet3Common\b3Matrix3x3.h" />
+    <ClInclude Include="Bullet3Common\b3MinMax.h" />
+    <ClInclude Include="Bullet3Common\b3PoolAllocator.h" />
+    <ClInclude Include="Bullet3Common\b3QuadWord.h" />
+    <ClInclude Include="Bullet3Common\b3Quaternion.h" />
+    <ClInclude Include="Bullet3Common\b3Random.h" />
+    <ClInclude Include="Bullet3Common\b3ResizablePool.h" />
+    <ClInclude Include="Bullet3Common\b3Scalar.h" />
+    <ClInclude Include="Bullet3Common\b3StackAlloc.h" />
+    <ClInclude Include="Bullet3Common\b3Transform.h" />
+    <ClInclude Include="Bullet3Common\b3TransformUtil.h" />
+    <ClInclude Include="Bullet3Common\b3Vector3.h" />
+    <ClInclude Include="Bullet3Common\BoundingBox.h" />
+    <ClInclude Include="Bullet3Common\BoundingSphere.h" />
+    <ClInclude Include="Bullet3Common\btCollisionObject.h" />
+    <ClInclude Include="Bullet3Common\btCollisionShape.h" />
+    <ClInclude Include="Bullet3Common\btDynamicsWorld.h" />
+    <ClInclude Include="Bullet3Common\btSerializer.h" />
+    <ClInclude Include="Bullet3Common\btStridingMeshInterface.h" />
+    <ClInclude Include="Bullet3Common\btTriangleBuffer.h" />
+    <ClInclude Include="Bullet3Common\btTriangleCallback.h" />
+    <ClInclude Include="Bullet3Common\btTriangleIndexVertexArray.h" />
+    <ClInclude Include="Bullet3Common\btTriangleIndexVertexMaterialArray.h" />
+    <ClInclude Include="Bullet3Common\btTriangleInfoMap.h" />
+    <ClInclude Include="Bullet3Common\btTriangleMesh.h" />
+    <ClInclude Include="Bullet3Common\CollisionShape2TriangleMesh.h" />
+    <ClInclude Include="Bullet3Common\Color.h" />
+    <ClInclude Include="Bullet3Common\geometry.h" />
+    <ClInclude Include="Bullet3Common\MixinVector.h" />
+    <ClInclude Include="Bullet3Common\perlin.h" />
+    <ClInclude Include="Bullet3Common\Plane.h" />
+    <ClInclude Include="Bullet3Common\Polytope.h" />
+    <ClInclude Include="Bullet3Common\Ray.h" />
+    <ClInclude Include="Component\ClipPlane.h" />
+    <ClInclude Include="Component\ConvexPlanarOccluder.h" />
+    <ClInclude Include="Component\Cylinder.h" />
+    <ClInclude Include="Component\DrawElements.h" />
+    <ClInclude Include="Component\dxtctool.h" />
+    <ClInclude Include="Component\EmptyBrowser.h" />
+    <ClInclude Include="Component\EmptyExample.h" />
+    <ClInclude Include="Component\ExampleBrowserInterface.h" />
+    <ClInclude Include="Component\Fog.h" />
+    <ClInclude Include="Component\GeometryShape.h" />
+    <ClInclude Include="Bullet3Common\PrimVertex.h" />
+    <ClInclude Include="Component\Timer.h" />
+    <ClInclude Include="glad\glad\gl.h" />
+    <ClInclude Include="gwork\Align.h" />
+    <ClInclude Include="gwork\Anim.h" />
+    <ClInclude Include="gwork\BaseRender.h" />
+    <ClInclude Include="gwork\Config.h" />
+    <ClInclude Include="gwork\ControlList.h" />
+    <ClInclude Include="gwork\Controls.h" />
+    <ClInclude Include="gwork\Controls\Base.h" />
+    <ClInclude Include="gwork\Controls\Button.h" />
+    <ClInclude Include="gwork\Controls\Canvas.h" />
+    <ClInclude Include="gwork\Controls\CheckBox.h" />
+    <ClInclude Include="gwork\Controls\CollapsibleCategory.h" />
+    <ClInclude Include="gwork\Controls\CollapsibleList.h" />
+    <ClInclude Include="gwork\Controls\ColorControls.h" />
+    <ClInclude Include="gwork\Controls\ColorPicker.h" />
+    <ClInclude Include="gwork\Controls\ComboBox.h" />
+    <ClInclude Include="gwork\Controls\CrossSplitter.h" />
+    <ClInclude Include="gwork\Controls\DockBase.h" />
+    <ClInclude Include="gwork\Controls\DockedTabControl.h" />
+    <ClInclude Include="gwork\Controls\Dragger.h" />
+    <ClInclude Include="gwork\Controls\FieldLabel.h" />
+    <ClInclude Include="gwork\Controls\FilePicker.h" />
+    <ClInclude Include="gwork\Controls\FolderPicker.h" />
+    <ClInclude Include="gwork\Controls\GroupBox.h" />
+    <ClInclude Include="gwork\Controls\Highlight.h" />
+    <ClInclude Include="gwork\Controls\HorizontalScrollBar.h" />
+    <ClInclude Include="gwork\Controls\HorizontalSlider.h" />
+    <ClInclude Include="gwork\Controls\HSVColorPicker.h" />
+    <ClInclude Include="gwork\Controls\ImagePanel.h" />
+    <ClInclude Include="gwork\Controls\Label.h" />
+    <ClInclude Include="gwork\Controls\LabelClickable.h" />
+    <ClInclude Include="gwork\Controls\ListBox.h" />
+    <ClInclude Include="gwork\Controls\Menu.h" />
+    <ClInclude Include="gwork\Controls\MenuItem.h" />
+    <ClInclude Include="gwork\Controls\MenuStrip.h" />
+    <ClInclude Include="gwork\Controls\Modal.h" />
+    <ClInclude Include="gwork\Controls\NumericUpDown.h" />
+    <ClInclude Include="gwork\Controls\PageControl.h" />
+    <ClInclude Include="gwork\Controls\ProgressBar.h" />
+    <ClInclude Include="gwork\Controls\Properties.h" />
+    <ClInclude Include="gwork\Controls\PropertyTree.h" />
+    <ClInclude Include="gwork\Controls\RadioButton.h" />
+    <ClInclude Include="gwork\Controls\RadioButtonController.h" />
+    <ClInclude Include="gwork\Controls\Rectangle.h" />
+    <ClInclude Include="gwork\Controls\ResizableControl.h" />
+    <ClInclude Include="gwork\Controls\Resizer.h" />
+    <ClInclude Include="gwork\Controls\RichLabel.h" />
+    <ClInclude Include="gwork\Controls\ScrollBar.h" />
+    <ClInclude Include="gwork\Controls\ScrollBarBar.h" />
+    <ClInclude Include="gwork\Controls\ScrollBarButton.h" />
+    <ClInclude Include="gwork\Controls\ScrollControl.h" />
+    <ClInclude Include="gwork\Controls\Slider.h" />
+    <ClInclude Include="gwork\Controls\SplitterBar.h" />
+    <ClInclude Include="gwork\Controls\Splitters.h" />
+    <ClInclude Include="gwork\Controls\StatusBar.h" />
+    <ClInclude Include="gwork\Controls\TabButton.h" />
+    <ClInclude Include="gwork\Controls\TabControl.h" />
+    <ClInclude Include="gwork\Controls\TabStrip.h" />
+    <ClInclude Include="gwork\Controls\TabTitleBar.h" />
+    <ClInclude Include="gwork\Controls\Text.h" />
+    <ClInclude Include="gwork\Controls\TextBox.h" />
+    <ClInclude Include="gwork\Controls\ToolBar.h" />
+    <ClInclude Include="gwork\Controls\TreeControl.h" />
+    <ClInclude Include="gwork\Controls\TreeNode.h" />
+    <ClInclude Include="gwork\Controls\VerticalScrollBar.h" />
+    <ClInclude Include="gwork\Controls\VerticalSlider.h" />
+    <ClInclude Include="gwork\Controls\WindowButtons.h" />
+    <ClInclude Include="gwork\Controls\WindowCanvas.h" />
+    <ClInclude Include="gwork\Controls\WindowControl.h" />
+    <ClInclude Include="gwork\DragAndDrop.h" />
+    <ClInclude Include="gwork\Events.h" />
+    <ClInclude Include="gwork\Gwork.h" />
+    <ClInclude Include="gwork\Hook.h" />
+    <ClInclude Include="gwork\InputEventListener.h" />
+    <ClInclude Include="gwork\InputHandler.h" />
+    <ClInclude Include="gwork\Input\Windows.h" />
+    <ClInclude Include="gwork\Platform.h" />
+    <ClInclude Include="gwork\PlatformCommon.h" />
+    <ClInclude Include="gwork\platforms\DebugBreak.h" />
+    <ClInclude Include="gwork\PlatformTypes.h" />
+    <ClInclude Include="gwork\renderers\Software.h" />
+    <ClInclude Include="gwork\Skin.h" />
+    <ClInclude Include="gwork\ToolTip.h" />
+    <ClInclude Include="gwork\UiTypes.h" />
+    <ClInclude Include="gwork\UserData.h" />
+    <ClInclude Include="gwork\Utility.h" />
+    <ClInclude Include="gwork\WindowProvider.h" />
+    <ClInclude Include="Component\Image.h" />
+    <ClInclude Include="Component\Light.h" />
+    <ClInclude Include="Component\LoadMeshFromObj.h" />
+    <ClInclude Include="OpenGLWindow\GwenParameterInterface.h" />
+    <ClInclude Include="OpenGLWindow\GwenTextureWindow.h" />
+    <ClInclude Include="OpenGLWindow\gwenUserInterface.h" />
+    <ClInclude Include="OpenGLWindow\model.h" />
+    <ClInclude Include="OpenGLWindow\OpenGLHelper.h" />
+    <ClInclude Include="OpenGLWindow\TinyShader.h" />
+    <ClInclude Include="OpenGLWindow\tgaimage.h" />
+    <ClInclude Include="OpenGLWindow\TinyRenderer.h" />
+    <ClInclude Include="Component\ShadowVolumeOccluder.h" />
+    <ClInclude Include="Shaders\createShadowMapInstancingPS.h" />
+    <ClInclude Include="Shaders\createShadowMapInstancingVS.h" />
+    <ClInclude Include="Shaders\instancingPS.h" />
+    <ClInclude Include="Shaders\instancingVS.h" />
+    <ClInclude Include="Shaders\linesPS.h" />
+    <ClInclude Include="Shaders\linesVS.h" />
+    <ClInclude Include="Shaders\pointSpritePS.h" />
+    <ClInclude Include="Shaders\pointSpriteVS.h" />
+    <ClInclude Include="Shaders\projectiveTextureInstancingPS.h" />
+    <ClInclude Include="Shaders\projectiveTextureInstancingVS.h" />
+    <ClInclude Include="Shaders\segmentationMaskInstancingPS.h" />
+    <ClInclude Include="Shaders\segmentationMaskInstancingVS.h" />
+    <ClInclude Include="Shaders\useShadowMapInstancingPS.h" />
+    <ClInclude Include="Shaders\useShadowMapInstancingVS.h" />
+    <ClInclude Include="stb_image\ply.h" />
+    <ClInclude Include="stb_image\stb_image.h" />
+    <ClInclude Include="stb_image\stb_image_write.h" />
+    <ClInclude Include="stb_image\stb_rect_pack.h" />
+    <ClInclude Include="stb_image\stb_textedit.h" />
+    <ClInclude Include="stb_image\stb_truetype.h" />
+    <ClInclude Include="stb_image\tiny_obj_loader.h" />
+    <ClInclude Include="Component\SW_And_OpenGLGuiHelper.h" />
+    <ClInclude Include="Component\TexGen.h" />
+    <ClInclude Include="Component\Texture.h" />
+    <ClInclude Include="Component\Texture2D.h" />
+    <ClInclude Include="Component\Texture3D.h" />
+    <ClInclude Include="Component\TextureCubeMap.h" />
+    <ClInclude Include="Component\TextureRectangle.h" />
+    <ClCompile Include="OpenGLWindow\OpenGLGuiHelper.cpp" />
+    <ClCompile Include="OpenGLWindow\Win32OpenGLWindow.cpp" />
+    <ClCompile Include="OpenGLWindow\Win32Window.cpp" />
+    <ClCompile Include="OpenGLWindow\EGLOpenGLWindow.cpp" />
+    <ClCompile Include="OpenGLWindow\GLInstancingRenderer.cpp" />
+    <ClCompile Include="OpenGLWindow\GLPrimitiveRenderer.cpp" />
+    <ClCompile Include="OpenGLWindow\GLRenderToTexture.cpp" />
+    <ClCompile Include="OpenGLWindow\LoadShader.cpp" />
+    <ClCompile Include="OpenGLWindow\OpenSans.cpp" />
+    <ClCompile Include="OpenGLWindow\SimpleCamera.cpp" />
+    <ClCompile Include="OpenGLWindow\SimpleOpenGL3App.cpp" />
+    <ClCompile Include="OpenGLWindow\fontstash.cpp" />
+    <ClCompile Include="OpenGLWindow\fontstashcallbacks.cpp" />
+    <ClInclude Include="Component\b3Clock.h" />
+    <ClInclude Include="Component\b3ResourcePath.h" />
+    <ClInclude Include="OpenGLWindow\EGLOpenGLWindow.h" />
+    <ClInclude Include="OpenGLWindow\GLInstanceGraphicsShape.h" />
+    <ClInclude Include="OpenGLWindow\GLInstanceRendererInternalData.h" />
+    <ClInclude Include="OpenGLWindow\GLInstancingRenderer.h" />
+    <ClInclude Include="OpenGLWindow\GLPrimInternalData.h" />
+    <ClInclude Include="OpenGLWindow\GLPrimitiveRenderer.h" />
+    <ClInclude Include="OpenGLWindow\GLRenderToTexture.h" />
+    <ClInclude Include="OpenGLWindow\GwenOpenGL3CoreRenderer.h" />
+    <ClInclude Include="OpenGLWindow\LoadShader.h" />
+    <ClInclude Include="OpenGLWindow\OpenGLGuiHelper.h" />
+    <ClInclude Include="OpenGLWindow\OpenGLInclude.h" />
+    <ClInclude Include="OpenGLWindow\ShapeData.h" />
+    <ClInclude Include="OpenGLWindow\SimpleCamera.h" />
+    <ClInclude Include="OpenGLWindow\SimpleOpenGL3App.h" />
+    <ClInclude Include="OpenGLWindow\Win32InternalWindowData.h" />
+    <ClInclude Include="OpenGLWindow\Win32OpenGLWindow.h" />
+    <ClInclude Include="OpenGLWindow\Win32Window.h" />
+    <ClInclude Include="OpenGLWindow\fontstash.h" />
+    <ClInclude Include="OpenGLWindow\fontstashcallbacks.h" />
+    <ClInclude Include="Component\Wavefront2GLInstanceGraphicsShape.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
