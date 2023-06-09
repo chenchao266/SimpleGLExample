@@ -88,7 +88,7 @@ inline void LevelSet2D::FixNeg(const Particle2D &particle, int i, int j)
 	for(int dx = 0; dx < 2; dx++) {
 		for(int dy = 0; dy < 2; dy++) {
 			particlePhi = particle.phi(Vec2d(i+dx,j+dy), h);
-            gridNeg(i+dx,j+dy) = std::min(particlePhi, gridNeg(i+dx,j+dy));
+            gridNeg(i+dx,j+dy) = min(particlePhi, gridNeg(i+dx,j+dy));
 		}
 	}
 }
@@ -99,7 +99,7 @@ inline void LevelSet2D::FixPos(const Particle2D &particle, int i, int j)
 	for(int dx = 0; dx < 2; dx++) {
 		for(int dy = 0; dy < 2; dy++) {
 			particlePhi = particle.phi(Vec2d(i+dx,j+dy), h);
-            gridPos(i+dx,j+dy) = std::max(particlePhi, gridPos(i+dx,j+dy));
+            gridPos(i+dx,j+dy) = max(particlePhi, gridPos(i+dx,j+dy));
 		}
     }
 }

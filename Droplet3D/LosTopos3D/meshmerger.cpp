@@ -558,8 +558,8 @@ bool MeshMerger::merge_pass( )
         
         Vec3d emin, emax;
         m_surf.edge_static_bounds(i, emin, emax);
-        emin -= std::max(m_surf.m_merge_proximity_epsilon, m_surf.m_merge_proximity_epsilon_for_liquid_sheet_puncture) * Vec3d(1,1,1);
-        emax += std::max(m_surf.m_merge_proximity_epsilon, m_surf.m_merge_proximity_epsilon_for_liquid_sheet_puncture) * Vec3d(1,1,1);
+        emin -= max(m_surf.m_merge_proximity_epsilon, m_surf.m_merge_proximity_epsilon_for_liquid_sheet_puncture) * Vec3d(1,1,1);
+        emax += max(m_surf.m_merge_proximity_epsilon, m_surf.m_merge_proximity_epsilon_for_liquid_sheet_puncture) * Vec3d(1,1,1);
         
         std::vector<size_t> edge_candidates;
         m_surf.m_broad_phase->get_potential_edge_collisions( emin, emax, false, true, edge_candidates );

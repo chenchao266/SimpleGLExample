@@ -148,7 +148,7 @@ void CollisionPipeline::apply_impulse( const Vec4d& alphas,
     Vec3d post_relative_velocity = s0*v0 + s1*v1 + s2*v2 + s3*v3;
     Vec3d post_rv_normal =  ( normal).dot(post_relative_velocity ) * normal;
     double delta_rv_normal =  ( post_rv_normal - pre_rv_normal ).norm();
-    double friction_impulse = std::min( m_friction_coefficient * delta_rv_normal,  (pre_rv_tangential).norm());
+    double friction_impulse = min( m_friction_coefficient * delta_rv_normal,  (pre_rv_tangential).norm());
 
     Vec3d tan_collision_normal = -pre_rv_tangential;
     double mag_n =  ( tan_collision_normal ).norm();
@@ -472,11 +472,11 @@ void CollisionPipeline::process_proximity_candidates( double dt,
                         continue;
                     }
                     
-                    double impulse1 = std::max( 0.0, 0.1 * d / dt - relvel );
+                    double impulse1 = max( 0.0, 0.1 * d / dt - relvel );
                     
                     double impulse2 = dt * k * d;
                     
-                    double impulse = std::min( impulse1, impulse2 );
+                    double impulse = min( impulse1, impulse2 );
                     
                     Collision proximity( true, 
                                         Vec4st( e0[0], e0[1], e1[0], e1[1] ),
@@ -563,11 +563,11 @@ void CollisionPipeline::process_proximity_candidates( double dt,
                         continue;
                     }
                     
-                    double impulse1 = std::max( 0.0, 0.1 * d / dt - relvel );
+                    double impulse1 = max( 0.0, 0.1 * d / dt - relvel );
                     
                     double impulse2 = dt * k * d;
                     
-                    double impulse = std::min( impulse1, impulse2 );
+                    double impulse = min( impulse1, impulse2 );
                     
                     Collision proximity( false, 
                                         Vec4st( v, tri[0], tri[1], tri[2] ),

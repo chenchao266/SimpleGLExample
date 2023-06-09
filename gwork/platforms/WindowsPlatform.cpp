@@ -1,4 +1,4 @@
-/*
+﻿/*
  *  Gwork
  *  Copyright (c) 2011 Facepunch Studios
  *  Copyright (c) 2013-2018 Billy Quith
@@ -19,8 +19,7 @@
 #include <ShlObj.h>
 #include <Shobjidl.h>
 
-#undef min
-#undef max
+ 
 
 using namespace Gwk;
 using namespace Gwk::Platform;

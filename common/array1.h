@@ -1,11 +1,11 @@
-#ifndef ARRAY1_H
+﻿#ifndef ARRAY1_H
 #define ARRAY1_H
 
 #include <algorithm>
-#include <cassert>
-#include <climits>
-#include <cstdlib>
-#include <cstring>
+#include <assert.h>
+#include <limits.h>
+
+#include <string.h>
 #include <iostream>
 #include <stdexcept>
 #include <vector>

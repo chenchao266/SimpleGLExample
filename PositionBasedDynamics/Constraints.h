@@ -165,8 +165,8 @@ namespace PBD
 		virtual void setTarget(const Real val) 
 		{ 
 			const Real pi = (Real)M_PI;
-			m_target = std::max(val, -pi);
-			m_target = std::min(m_target, pi);
+			m_target = max(val, -pi);
+			m_target = min(m_target, pi);
 		}
 
 		bool initConstraint(SimulationModel &model, const unsigned int rbIndex1, const unsigned int rbIndex2, const Vector3r &pos, const Vector3r &axis);

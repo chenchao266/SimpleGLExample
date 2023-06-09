@@ -1,4 +1,5 @@
 ﻿#include "Polygon.h"
+#include "Bullet3Common/geometry.h"
 #include <algorithm>
 
 static const float kAlmostZero = 0.000001f;
@@ -23,8 +24,8 @@ void Polygon::AddVertex(const b3Vector3& vertex)
 	// update min & max of the bounding box
 	for(int i=0; i<3; ++i)
 	{
-		boundary_min_[i] = std::min(vertex[i], boundary_min_[i]);
-		boundary_max_[i] = std::max(vertex[i], boundary_max_[i]);
+		boundary_min_[i] = min(vertex[i], boundary_min_[i]);
+		boundary_max_[i] = max(vertex[i], boundary_max_[i]);
 	}
 	// calculate the normal
 	if(vertices_.size() == 2)

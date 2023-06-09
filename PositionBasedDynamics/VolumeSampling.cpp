@@ -1,16 +1,16 @@
-#include "VolumeSampling.h"
+﻿#include "VolumeSampling.h"
 #include "SDFFunctions.h"
 #include "Timing.h"
 
 using namespace Eigen;
-using namespace std;
+
 using namespace Utilities;
 
 
 void VolumeSampling::sampleMesh(const unsigned int numVertices, const Vector3r *vertices,
 	const unsigned int numFaces, const unsigned int *faces,
 	const Real radius, const AlignedBox3r *region, 
-	const std::array<unsigned int, 3> &resolution, const bool invert, 
+	const Vec3ui &resolution, const bool invert, 
 	const unsigned int sampleMode, 
 	std::vector<Vector3r> &samples)
  {
@@ -20,8 +20,8 @@ void VolumeSampling::sampleMesh(const unsigned int numVertices, const Vector3r *
 	{
 		for (unsigned int i = 0; i < 3; i++)
 		{
-			bbox.min()[i] = std::max(region->min()[i], bbox.min()[i]);
-			bbox.max()[i] = std::min(region->max()[i], bbox.max()[i]);
+			bbox.min()[i] = max(region->min()[i], bbox.min()[i]);
+			bbox.max()[i] = min(region->max()[i], bbox.max()[i]);
 		}
 	}
 

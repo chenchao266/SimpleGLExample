@@ -18,7 +18,7 @@ subject to the following restrictions:
  
 #define _USE_MATH_DEFINES
 #include <math.h>
-#include <stdlib.h>  //size_t for MSVC 6.0
+  //size_t for MSVC 6.0
 #include <float.h>
 
 //Original repository is at http://github.com/erwincoumans/bullet3

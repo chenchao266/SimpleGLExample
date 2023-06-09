@@ -1,4 +1,4 @@
-#include "GaussQuadrature.h"
+﻿#include "GaussQuadrature.h"
 
 #include <algorithm>
 #include <numeric>
@@ -5939,7 +5939,7 @@ double GaussQuadrature::integrate(Integrand integrand, Domain const& domain, uns
     auto c1 = (0.5 * (domain.min() + domain.max())).eval();
 
     auto res = 0.0;
-    auto xi = Eigen::Vector3d{};
+    auto xi = EigenVec3d{};
     for (auto i = 0u; i < n; ++i)
     {
         auto wi = gaussian_weights_1[p][i];
@@ -5973,14 +5973,14 @@ void GaussQuadrature::exportSamples(unsigned int p)
 	// Number of Gauss points
 	auto n = gaussian_n_1[p];
 
-	auto domain = Eigen::AlignedBox3d(Eigen::Vector3d::Constant(-1.0), Eigen::Vector3d::Constant(1.0));
+	auto domain = Eigen::AlignedBox3d(EigenVec3d::Constant(-1.0), EigenVec3d::Constant(1.0));
 
 	auto c0 = (0.5 * domain.diagonal()).eval();
 	auto c1 = (0.5 * (domain.min() + domain.max())).eval();
 
 	std::ofstream outfile("gauss.txt", std::ios::out);
 
-	auto xi = Eigen::Vector3d{};
+	auto xi = EigenVec3d{};
 	for (auto i = 0u; i < n; ++i)
 	{
 		auto wi = gaussian_weights_1[p][i];

@@ -44,8 +44,8 @@ void Camera::RotateX(Float degrees)
 {
 	dirty=true;
 	phi+=degrees;
-    phi=std::max(-85.0,phi);
-    phi= std::min(85.0,phi);
+    phi=max(-85.0,phi);
+    phi= min(85.0,phi);
 }
 
 

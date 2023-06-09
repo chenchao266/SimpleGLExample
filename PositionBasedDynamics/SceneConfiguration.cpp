@@ -1,7 +1,7 @@
 #include "SceneConfiguration.h"
 
 using namespace SPH;
-using namespace std;
+
 
 SceneConfiguration* SceneConfiguration::m_current = nullptr;
 

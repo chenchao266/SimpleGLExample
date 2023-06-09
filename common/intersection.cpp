@@ -1,7 +1,7 @@
 ﻿// Released into the public domain by Robert Bridson, 2009.
 
 #include <cassert>
-#include <cmath>
+#include <math.h>
 #include <iostream>
 #include "tunicate.h"
 

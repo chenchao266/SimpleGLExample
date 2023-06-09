@@ -91,7 +91,7 @@ inline void LevelSet::FixNeg(const Particle &particle, int i, int j, int k)
 		for(int dy = 0; dy < 2; dy++) {
             for(int dz = 0; dz < 2; dz++) {
 			    particlePhi = particle.phi(Vec3d(i+dx,j+dy,k+dz), h);
-                gridNeg(i+dx,j+dy,k+dz) = std::min(particlePhi, gridNeg(i+dx,j+dy,k+dz));
+                gridNeg(i+dx,j+dy,k+dz) = min(particlePhi, gridNeg(i+dx,j+dy,k+dz));
             }
 		}
 	}
@@ -104,7 +104,7 @@ inline void LevelSet::FixPos(const Particle &particle, int i, int j, int k)
 		for(int dy = 0; dy < 2; dy++) {
             for(int dz = 0; dz < 2; dz++) {
 			    particlePhi = particle.phi(Vec3d(i+dx,j+dy,k+dz), h);
-                gridPos(i+dx,j+dy,k+dz) = std::max(particlePhi, gridPos(i+dx,j+dy,k+dz));
+                gridPos(i+dx,j+dy,k+dz) = max(particlePhi, gridPos(i+dx,j+dy,k+dz));
             }
 		}
     }

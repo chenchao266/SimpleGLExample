@@ -24,7 +24,7 @@
 
 
 using namespace SPH;
-using namespace std;
+
 using namespace GenParam;
 
 Simulation* Simulation::current = nullptr;
@@ -461,7 +461,7 @@ void Simulation::updateTimeStepSizeCFL()
 			BoundaryModel_Koschier2017 *bm = static_cast<BoundaryModel_Koschier2017*>(getBoundaryModel(boundaryModelIndex));
 			if (bm->getRigidBodyObject()->isDynamic() || bm->getRigidBodyObject()->isAnimated())
 			{
-				maxVel = std::max(maxVel, bm->getMaxVel());
+				maxVel = max(maxVel, bm->getMaxVel());
 			}
 		}
 	}
@@ -472,7 +472,7 @@ void Simulation::updateTimeStepSizeCFL()
 			BoundaryModel_Bender2019 *bm = static_cast<BoundaryModel_Bender2019*>(getBoundaryModel(boundaryModelIndex));
 			if (bm->getRigidBodyObject()->isDynamic() || bm->getRigidBodyObject()->isAnimated())
 			{
-				maxVel = std::max(maxVel, bm->getMaxVel());
+				maxVel = max(maxVel, bm->getMaxVel());
 			}
 		}
 	}

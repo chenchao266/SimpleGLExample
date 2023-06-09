@@ -1,4 +1,4 @@
-#include "DistanceFieldCollisionDetection.h"
+﻿#include "DistanceFieldCollisionDetection.h"
 #include "IDFactory.h"
 #include "omp.h"
 
@@ -595,18 +595,18 @@ void DistanceFieldCollisionDetection::addCollisionObjectWithoutGeometry(const un
 	m_collisionObjects.push_back(co);
 }
 
-double DistanceFieldCollisionDetection::DistanceFieldCollisionBox::distance(const Eigen::Vector3d &x, const Real tolerance)
+double DistanceFieldCollisionDetection::DistanceFieldCollisionBox::distance(const EigenVec3d &x, const Real tolerance)
 {
-	const Eigen::Vector3d box_d = m_box.template cast<double>();
-	const Eigen::Vector3d x_d = x.template cast<double>();
-	const Eigen::Vector3d d(fabs(x_d.x()) - box_d.x(), fabs(x_d.y()) - box_d.y(), fabs(x_d.z()) - box_d.z());
-	const Eigen::Vector3d max_d(std::max(d.x(), 0.0), std::max(d.y(), 0.0), std::max(d.z(), 0.0));
-	return m_invertSDF*(std::min(std::max(d.x(), std::max(d.y(), d.z())), 0.0) + max_d.norm()) - static_cast<double>(tolerance);
+	const EigenVec3d box_d = m_box.template cast<double>();
+	const EigenVec3d x_d = x.template cast<double>();
+	const EigenVec3d d(fabs(x_d.x()) - box_d.x(), fabs(x_d.y()) - box_d.y(), fabs(x_d.z()) - box_d.z());
+	const EigenVec3d max_d(max(d.x(), 0.0), max(d.y(), 0.0), max(d.z(), 0.0));
+	return m_invertSDF*(min(max(d.x(), max(d.y(), d.z())), 0.0) + max_d.norm()) - static_cast<double>(tolerance);
 }
 
-double DistanceFieldCollisionDetection::DistanceFieldCollisionSphere::distance(const Eigen::Vector3d &x, const Real tolerance)
+double DistanceFieldCollisionDetection::DistanceFieldCollisionSphere::distance(const EigenVec3d &x, const Real tolerance)
 {
-	const Eigen::Vector3d d = x.template cast<double>();
+	const EigenVec3d d = x.template cast<double>();
 	const double dl = d.norm();
 	return m_invertSDF*(dl - static_cast<double>(m_radius)) - static_cast<double>(tolerance);
 }
@@ -629,25 +629,25 @@ bool DistanceFieldCollisionDetection::DistanceFieldCollisionSphere::collisionTes
 	return false;
 }
 
-double DistanceFieldCollisionDetection::DistanceFieldCollisionTorus::distance(const Eigen::Vector3d &x, const Real tolerance)
+double DistanceFieldCollisionDetection::DistanceFieldCollisionTorus::distance(const EigenVec3d &x, const Real tolerance)
 {
 	const Eigen::Vector2d radii_d = m_radii.template cast<double>();
 	const Eigen::Vector2d q(Vector2r(x.x(), x.z()).norm() - radii_d.x(), x.y());
 	return m_invertSDF*(q.norm() - radii_d.y()) - tolerance;
 }
 
-double DistanceFieldCollisionDetection::DistanceFieldCollisionCylinder::distance(const Eigen::Vector3d &x, const Real tolerance)
+double DistanceFieldCollisionDetection::DistanceFieldCollisionCylinder::distance(const EigenVec3d &x, const Real tolerance)
 {
 	const double l = sqrt(x.x()*x.x() + x.z()*x.z());
 	const Eigen::Vector2d d = Eigen::Vector2d(fabs(l), fabs(x.y())) - m_dim.template cast<double>();
-	const Eigen::Vector2d max_d(std::max(d.x(), 0.0), std::max(d.y(), 0.0));
-	return m_invertSDF*(std::min(std::max(d.x(), d.y()), 0.0) + max_d.norm()) - static_cast<double>(tolerance);
+	const Eigen::Vector2d max_d(max(d.x(), 0.0), max(d.y(), 0.0));
+	return m_invertSDF*(min(max(d.x(), d.y()), 0.0) + max_d.norm()) - static_cast<double>(tolerance);
 }
 
 
-double DistanceFieldCollisionDetection::DistanceFieldCollisionHollowSphere::distance(const Eigen::Vector3d &x, const Real tolerance)
+double DistanceFieldCollisionDetection::DistanceFieldCollisionHollowSphere::distance(const EigenVec3d &x, const Real tolerance)
 {
-	const Eigen::Vector3d d = x.template cast<double>();
+	const EigenVec3d d = x.template cast<double>();
 	const double dl = d.norm();
 	return m_invertSDF*(fabs(dl - static_cast<double>(m_radius)) - static_cast<double>(m_thickness)) - static_cast<double>(tolerance);
 }
@@ -672,21 +672,21 @@ bool DistanceFieldCollisionDetection::DistanceFieldCollisionHollowSphere::collis
 	return false;
 }
 
-double DistanceFieldCollisionDetection::DistanceFieldCollisionHollowBox::distance(const Eigen::Vector3d &x, const Real tolerance)
+double DistanceFieldCollisionDetection::DistanceFieldCollisionHollowBox::distance(const EigenVec3d &x, const Real tolerance)
 {
-	const Eigen::Vector3d box_d = m_box.template cast<double>();
-	const Eigen::Vector3d x_d = x.template cast<double>();
-	const Eigen::Vector3d d = x_d.cwiseAbs() - box_d;
-	const Eigen::Vector3d max_d = d.cwiseMax(Eigen::Vector3d(0.0, 0.0, 0.0));
-	return m_invertSDF * (fabs(std::min(d.maxCoeff(), 0.0) + max_d.norm()) - m_thickness) - static_cast<double>(tolerance);
+	const EigenVec3d box_d = m_box.template cast<double>();
+	const EigenVec3d x_d = x.template cast<double>();
+	const EigenVec3d d = x_d.cwiseAbs() - box_d;
+	const EigenVec3d max_d = d.cwiseMax(EigenVec3d(0.0, 0.0, 0.0));
+	return m_invertSDF * (fabs(min(d.maxCoeff(), 0.0) + max_d.norm()) - m_thickness) - static_cast<double>(tolerance);
 }
 
-void DistanceFieldCollisionDetection::DistanceFieldCollisionObject::approximateNormal(const Eigen::Vector3d &x, const Real tolerance, Vector3r &n)
+void DistanceFieldCollisionDetection::DistanceFieldCollisionObject::approximateNormal(const EigenVec3d &x, const Real tolerance, Vector3r &n)
 {
 	// approximate gradient
 	double eps = 1.e-6;
 	n.setZero();
-	Eigen::Vector3d xTmp = x;
+	EigenVec3d xTmp = x;
 	for (unsigned int j = 0; j < 3; j++)
 	{
 		xTmp[j] += eps;
@@ -717,7 +717,7 @@ bool DistanceFieldCollisionDetection::DistanceFieldCollisionObject::collisionTes
 	if (dist < maxDist)
 	{
 		// approximate gradient
-		const Eigen::Vector3d x_d = x.template cast<double>();
+		const EigenVec3d x_d = x.template cast<double>();
 
 		approximateNormal(x_d, t_d, n);
 
@@ -794,12 +794,12 @@ bool DistanceFieldCollisionDetection::findRefTetAt(const ParticleData &pd, TetMo
 	for (unsigned int i = 0; i < bary.size(); i++)
 	{
 		// Determine if barycentric coordinates are negative and add distance to 0 as error
-		Real error = std::max(static_cast<Real>(0.0), -bary[i][0]);
-		error += std::max(static_cast<Real>(0.0), -bary[i][1]);
-		error += std::max(static_cast<Real>(0.0), -bary[i][2]);
+		Real error = max(static_cast<Real>(0.0), -bary[i][0]);
+		error += max(static_cast<Real>(0.0), -bary[i][1]);
+		error += max(static_cast<Real>(0.0), -bary[i][2]);
 
 		// Determine if sum of barycentric coordinates is larger than one and add distance to 1 as error
-		error += std::max(static_cast<Real>(0.0), bary[i][0] + bary[i][1] + bary[i][2] - static_cast<Real>(1.0));
+		error += max(static_cast<Real>(0.0), bary[i][0] + bary[i][1] + bary[i][2] - static_cast<Real>(1.0));
 
 		if (error < minError)
 		{

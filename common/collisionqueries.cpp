@@ -13,7 +13,7 @@ void check_point_edge_proximity(bool update, const Vec3d &x0, const Vec3d &x1, c
     double s=clamp( (x2-x0).dot(dx)/m2, 0., 1.);
     // and find the distance
     if(update){
-        distance= std::min(distance, dist(x0,s*x1+(1-s)*x2));
+        distance= min(distance, dist(x0,s*x1+(1-s)*x2));
     }else{
         distance=dist(x0,s*x1+(1-s)*x2);
     }
@@ -55,7 +55,7 @@ void check_point_edge_proximity( bool update, const Vec2d &x0, const Vec2d &x1, 
     double s=clamp( (x2-x0).dot(dx)/m2, 0., 1.);
     // and find the distance
     if(update){
-        distance= std::min(distance, dist(x0,s*x1+(1-s)*x2));
+        distance= min(distance, dist(x0,s*x1+(1-s)*x2));
     }else{
         distance=dist(x0, s*x1+(1-s)*x2);
     }

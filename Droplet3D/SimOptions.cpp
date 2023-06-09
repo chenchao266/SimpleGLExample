@@ -10,6 +10,7 @@
 #include <sstream>
 #include <algorithm>
 #include "SimOptions.h"
+#include "eigenheaders.h"
 
 std::map<std::string, Options::Option> Options::s_options;
 
@@ -178,7 +179,7 @@ void Options::outputOptionValues(std::ostream & os)
 {
     size_t maxlen = 0;
     for (std::map<std::string, Option>::iterator i = s_options.begin(); i != s_options.end(); i++)
-        maxlen = std::max(maxlen, i->first.size());
+        maxlen = max(maxlen, i->first.size());
     
     for (std::map<std::string, Option>::iterator i = s_options.begin(); i != s_options.end(); i++)
     {

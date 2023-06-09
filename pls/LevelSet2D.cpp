@@ -118,7 +118,7 @@ void LevelSet2D::MakeCircle(double x, double y, double radius)
 				double ur = sqrt((i - rightWall)*(i - rightWall) + (j - topWall)*(j - topWall));
 				double bl = sqrt((i - leftWall)*(i - leftWall) + (j - bottomWall)*(j - bottomWall));
 				double br = sqrt((i - rightWall)*(i - rightWall) + (j - bottomWall)*(j - bottomWall));
-				val2 = -std::min(std::min(std::min(ul, ur), bl), br);
+				val2 = -min(min(min(ul, ur), bl), br);
 				//		cout<<"Not in"<<std::endl;
 			}
 
@@ -126,7 +126,7 @@ void LevelSet2D::MakeCircle(double x, double y, double radius)
 			//			std::cout << val2 << std::std::endl; 
 
 			grid1->get(i, j) = val1;
-			//			grid1->get(i,j,k) = std::max(val1,val2);
+			//			grid1->get(i,j,k) = max(val1,val2);
 			//				grid1->get(i,j,k) = j - 15;
 			
 		}

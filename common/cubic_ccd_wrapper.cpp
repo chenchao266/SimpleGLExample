@@ -345,7 +345,7 @@ namespace
                 
                 std::cout << "sample_val: " << sample_val << std::endl;
                 
-                min_val = std::min( min_val, std::fabs(sample_val) );
+                min_val = min( min_val, std::fabs(sample_val) );
             }
             std::cout << "min_val: " << min_val << std::endl;
         }   

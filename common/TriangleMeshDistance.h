@@ -1,4 +1,4 @@
-/*
+﻿/*
 	The MIT License (MIT)
 
 	Copyright (c) 2021 José Antonio Fernández Fernández
@@ -27,7 +27,7 @@
 #include <array>
 #include <algorithm>
 #include <unordered_map>
-#include <cmath>
+#include <math.h>
 
 namespace tmd
 {

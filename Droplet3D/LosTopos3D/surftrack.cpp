@@ -18,7 +18,7 @@
 
 #include <array3.h>
 #include <broadphase.h>
-#include <cassert>
+#include <assert.h>
 #include <ccd_wrapper.h>
 #include <collisionpipeline.h>
 #include <collisionqueries.h>
@@ -1196,7 +1196,7 @@ double SurfTrack::compute_vertex_target_edge_length(size_t vertex)
         {
             size_t t0 = m_mesh.m_edge_to_triangle_map[e][0];
             size_t t1 = m_mesh.m_edge_to_triangle_map[e][1];
-            curvature_i = acos(std::min(1.0, std::max(-1.0,  (get_triangle_normal(t0)).dot(get_triangle_normal(t1))))) * edge_length;
+            curvature_i = acos(min(1.0, max(-1.0,  (get_triangle_normal(t0)).dot(get_triangle_normal(t1))))) * edge_length;
             edge_area = (get_triangle_area(t0) + get_triangle_area(t1)) / 3;
             
         } else
@@ -1211,7 +1211,7 @@ double SurfTrack::compute_vertex_target_edge_length(size_t vertex)
                     size_t t0 = m_mesh.m_edge_to_triangle_map[e][j];
                     size_t t1 = m_mesh.m_edge_to_triangle_map[e][k];
                     double area = (get_triangle_area(t0) + get_triangle_area(t1)) / 3;
-                    double dihedral = M_PI - acos(std::min(1.0, std::max(-1.0,  (get_triangle_normal(t0)).dot(get_triangle_normal(t1)))));
+                    double dihedral = M_PI - acos(min(1.0, max(-1.0,  (get_triangle_normal(t0)).dot(get_triangle_normal(t1)))));
                     if (min_dihedral < 0 || dihedral < min_dihedral)
                     {
                         min_dihedral = dihedral;
@@ -1251,9 +1251,9 @@ double SurfTrack::compute_vertex_target_edge_length(size_t vertex)
     double target_edge_length_by_velocity = m_target_edge_length_coef_velocity / ( (v_laplacian).norm() + 1e-15);
     
     // combine all the criteria
-    double target_edge_length = std::min(target_edge_length_by_curvature, target_edge_length_by_velocity);
-    target_edge_length = std::max(target_edge_length, m_min_target_edge_length);
-    target_edge_length = std::min(target_edge_length, m_max_target_edge_length);
+    double target_edge_length = min(target_edge_length_by_curvature, target_edge_length_by_velocity);
+    target_edge_length = max(target_edge_length, m_min_target_edge_length);
+    target_edge_length = min(target_edge_length, m_max_target_edge_length);
     
     return target_edge_length;
 }

@@ -10,7 +10,7 @@
 
 using namespace SPH;
 using namespace Eigen;
-using namespace std;
+
 using namespace Utilities;
 
 SamplingBase::SamplingBase()
@@ -34,17 +34,17 @@ void SamplingBase::generateSampling(const std::string& inputFile, const std::str
 	computeBoundingBox(m_mesh);
 
 	bool md5 = false;
-	string exePath = FileSystem::getProgramPath();
-	string cachePath = exePath + "/Cache";
+    std::string exePath = FileSystem::getProgramPath();
+    std::string cachePath = exePath + "/Cache";
 	if (m_useCache)
 	{
-		string md5Str = FileSystem::getFileMD5(inputFile);
+        std::string md5Str = FileSystem::getFileMD5(inputFile);
 		std::string mesh_file_name = FileSystem::getFileName(inputFile);
-		const string scaleStr = "s" + StringTools::real2String(m_scale[0]) + "_" + StringTools::real2String(m_scale[1]) + "_" + StringTools::real2String(m_scale[2]);
-		const string resStr = "r" + to_string(m_resolutionSDF[0]) + "_" + to_string(m_resolutionSDF[1]) + "_" + to_string(m_resolutionSDF[2]);
-		const string invertStr = "i" + to_string((int)m_invert);
+		const std::string scaleStr = "s" + StringTools::real2String(m_scale[0]) + "_" + StringTools::real2String(m_scale[1]) + "_" + StringTools::real2String(m_scale[2]);
+		const std::string resStr = "r" + std::to_string(m_resolutionSDF[0]) + "_" + std::to_string(m_resolutionSDF[1]) + "_" + std::to_string(m_resolutionSDF[2]);
+		const std::string invertStr = "i" + std::to_string((int)m_invert);
 
-		string cacheFileName = FileSystem::normalizePath(cachePath + "/" + mesh_file_name + "_" + md5Str + "_" + scaleStr + "_" + resStr + "_" + invertStr  + ".csdf");
+        std::string cacheFileName = FileSystem::normalizePath(cachePath + "/" + mesh_file_name + "_" + md5Str + "_" + scaleStr + "_" + resStr + "_" + invertStr  + ".csdf");
 
 		// check MD5 if cache file is available
 		bool foundCacheFile = FileSystem::fileExists(cacheFileName);
@@ -111,7 +111,7 @@ void SamplingBase::writeParticlesVTK(const std::string& fileName, std::vector<Ve
 	}
 
 	outfile << "# vtk DataFile Version 4.1\n";
-	outfile << "SPlisHSPlasH particle data\n"; // title of the data set, (any string up to 256 characters+\n)
+	outfile << "SPlisHSPlasH particle data\n"; // title of the data set, (any std::string up to 256 characters+\n)
 	outfile << "BINARY\n";
 	outfile << "DATASET UNSTRUCTURED_GRID\n";
 
@@ -309,8 +309,8 @@ void SamplingBase::computeBoundingBox(TriangleMesh& mesh)
 	{
 		const Vector3r& p = v[i];
 		for (unsigned int j = 0; j < 3; ++j) {
-			m_bbmin[j] = std::min(m_bbmin[j], p[j]);
-			m_bbmax[j] = std::max(m_bbmax[j], p[j]);
+			m_bbmin[j] = min(m_bbmin[j], p[j]);
+			m_bbmax[j] = max(m_bbmax[j], p[j]);
 		}
 	}
 
@@ -318,8 +318,8 @@ void SamplingBase::computeBoundingBox(TriangleMesh& mesh)
 	{
 		for (unsigned int i = 0; i < 3; i++)
 		{
-			m_bbmin[i] = std::max(m_scale[i] * m_region.m_min[i], m_bbmin[i]);
-			m_bbmax[i] = std::min(m_scale[i] * m_region.m_max[i], m_bbmax[i]);
+			m_bbmin[i] = max(m_scale[i] * m_region.m_min[i], m_bbmin[i]);
+			m_bbmax[i] = min(m_scale[i] * m_region.m_max[i], m_bbmax[i]);
 		}
 	}
 }
@@ -329,7 +329,7 @@ void SamplingBase::computeBoundingBox(TriangleMesh& mesh)
 // next point on the surface.
 double SamplingBase::distance(const Vector3r& x, const Real tolerance, Vector3r& normal, Vector3r& nextSurfacePoint)
 {
-	Eigen::Vector3d n;
+	EigenVec3d n;
 	const double dist = m_distanceField->interpolate(0, x.template cast<double>(), &n);
 	if (dist == std::numeric_limits<double>::max())
 		return dist;
@@ -371,18 +371,18 @@ void SamplingBase::generateSDF(SPH::TriangleMesh& mesh)
 	Eigen::AlignedBox3d domain;
 	domain.extend(m_bbmin.cast<double>());
 	domain.extend(m_bbmax.cast<double>());
-	domain.max() += Eigen::Vector3d::Ones() * m_radius * 4.0;
-	domain.min() -= Eigen::Vector3d::Ones() * m_radius * 4.0;
+	domain.max() += EigenVec3d::Ones() * m_radius * 4.0;
+	domain.min() -= EigenVec3d::Ones() * m_radius * 4.0;
 
 	LOG_INFO << "Set SDF resolution: " << m_resolutionSDF[0] << ", " << m_resolutionSDF[1] << ", " << m_resolutionSDF[2];
-	m_distanceField = std::make_shared<Discregrid::CubicLagrangeDiscreteGrid>(domain, std::array<unsigned int, 3>({ m_resolutionSDF[0], m_resolutionSDF[1], m_resolutionSDF[2] }));
+	m_distanceField = std::make_shared<Discregrid::CubicLagrangeDiscreteGrid>(domain, Vec3ui( m_resolutionSDF[0], m_resolutionSDF[1], m_resolutionSDF[2] ));
 	auto func = Discregrid::DiscreteGrid::ContinuousFunction{};
 
 	// invert the distance field since the particles should stay inside
 	if (!m_invert)
-		func = [&md](Eigen::Vector3d const& xi) {return -md.signedDistanceCached(xi); };
+		func = [&md](EigenVec3d const& xi) {return -md.signedDistanceCached(xi); };
 	else
-		func = [&md](Eigen::Vector3d const& xi) {return md.signedDistanceCached(xi); };
+		func = [&md](EigenVec3d const& xi) {return md.signedDistanceCached(xi); };
 
 	LOG_INFO << "Generate SDF";
 	m_distanceField->addFunction(func, false);

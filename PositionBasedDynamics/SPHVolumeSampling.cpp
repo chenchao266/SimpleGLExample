@@ -10,7 +10,7 @@
 
 using namespace SPH;
 using namespace Eigen;
-using namespace std;
+
 using namespace Utilities;
 
 SPHVolumeSampling::SPHVolumeSampling() :

@@ -11,7 +11,7 @@
 #include "Sim.h"
 #include "SimOptions.h"
 #include "MeshIO.h"
-#include <cmath>
+
 #include "eigenheaders.h"
 #include <time.h>
 //#include <types.h>

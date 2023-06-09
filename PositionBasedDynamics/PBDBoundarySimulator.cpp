@@ -10,7 +10,7 @@
 //#include "GUI/Simulator_GUI_Base.h"
 #include "SceneConfiguration.h"
 
-using namespace std;
+
 using namespace SPH;
 using namespace Utilities;
  
@@ -91,11 +91,11 @@ void PBDBoundarySimulator::initBoundaryData()
 	const bool useCache = m_base->getUseParticleCaching();
 	Simulation *sim = Simulation::getCurrent();
 
-	string cachePath = scene_path + "/Cache";
+    std::string cachePath = scene_path + "/Cache";
 
 	for (unsigned int i = 0; i < scene.boundaryModels.size(); i++)
 	{
-		string meshFileName = scene.boundaryModels[i]->meshFile;
+        std::string meshFileName = scene.boundaryModels[i]->meshFile;
 		if (FileSystem::isRelativePath(meshFileName))
 			meshFileName = FileSystem::normalizePath(scene_path + "/" + scene.boundaryModels[i]->meshFile);
 
@@ -104,7 +104,7 @@ void PBDBoundarySimulator::initBoundaryData()
 		bool md5 = false;
 		if (useCache)
 		{
-			string md5Str = FileSystem::getFileMD5(meshFileName);
+            std::string md5Str = FileSystem::getFileMD5(meshFileName);
 			if (FileSystem::fileExists(md5FileName))
 				md5 = FileSystem::checkMD5(md5Str, md5FileName);
 		}
@@ -124,7 +124,7 @@ void PBDBoundarySimulator::initBoundaryData()
 			// if a samples file is given, use this one
 			if (scene.boundaryModels[i]->samplesFile != "")
 			{
-				string particleFileName = scene_path + "/" + scene.boundaryModels[i]->samplesFile;
+                std::string particleFileName = scene_path + "/" + scene.boundaryModels[i]->samplesFile;
 				PartioReaderWriter::readParticles(particleFileName, Vector3r::Zero(), Matrix3r::Identity(), scene.boundaryModels[i]->scale[0], boundaryParticles);
 
 				// transform back to local coordinates
@@ -137,10 +137,10 @@ void PBDBoundarySimulator::initBoundaryData()
 				std::string mesh_base_path = FileSystem::getFilePath(scene.boundaryModels[i]->meshFile);
 				std::string mesh_file_name = FileSystem::getFileName(scene.boundaryModels[i]->meshFile);
 
-				const string resStr = StringTools::real2String(scene.boundaryModels[i]->scale[0]) + "_" + StringTools::real2String(scene.boundaryModels[i]->scale[1]) + "_" + StringTools::real2String(scene.boundaryModels[i]->scale[2]);
+				const std::string resStr = StringTools::real2String(scene.boundaryModels[i]->scale[0]) + "_" + StringTools::real2String(scene.boundaryModels[i]->scale[1]) + "_" + StringTools::real2String(scene.boundaryModels[i]->scale[2]);
 
-				const string modeStr = "_m" + std::to_string(scene.boundaryModels[i]->samplingMode);
-				const string particleFileName = FileSystem::normalizePath(cachePath + "/" + mesh_file_name + "_db_" + StringTools::real2String(scene.particleRadius) + "_" + resStr + modeStr + ".bgeo");
+				const std::string modeStr = "_m" + std::to_string(scene.boundaryModels[i]->samplingMode);
+				const std::string particleFileName = FileSystem::normalizePath(cachePath + "/" + mesh_file_name + "_db_" + StringTools::real2String(scene.particleRadius) + "_" + resStr + modeStr + ".bgeo");
 
 				// check MD5 if cache file is available
 				bool foundCacheFile = false;

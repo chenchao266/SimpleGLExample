@@ -1,4 +1,4 @@
-#include "PoissonDiskSampling.h"
+﻿#include "PoissonDiskSampling.h"
 
 #include <algorithm>
 #include <limits>
@@ -10,7 +10,7 @@
 #define _USE_MATH_DEFINES
 #include "math.h"
 
-using namespace std;
+
 using namespace Eigen;
 using namespace SPH;
 
@@ -29,7 +29,7 @@ void PoissonDiskSampling::sampleMesh(const unsigned int numVertices, const Vecto
 	m_cellSize = m_r / sqrt(static_cast<Real>(3.0));
 
 	// Init sampling
-	m_maxArea = numeric_limits<Real>::min();
+	m_maxArea = std::numeric_limits<Real>::min();
 	determineMinX(numVertices, vertices);
 
 	determineTriangleAreas(numVertices, vertices, numFaces, faces);
@@ -81,7 +81,7 @@ void PoissonDiskSampling::determineTriangleAreas(const unsigned int numVertices,
 {
 	m_areas.resize(numFaces);
 	Real totalArea = 0.0;
-	Real tmpMaxArea = numeric_limits<Real>::min();
+	Real tmpMaxArea = std::numeric_limits<Real>::min();
 
 	#pragma omp parallel default(shared)
 	{
@@ -122,7 +122,7 @@ void PoissonDiskSampling::generateInitialPointSet(const unsigned int numVertices
 	// Drawing random barycentric coordinates
 	std::uniform_real_distribution<Real> distribution(0.0, 1.0);
 	
-	random_device r;
+    std::random_device r;
 	std::vector<std::default_random_engine> generators;
 
 	#ifdef _OPENMP
@@ -132,7 +132,7 @@ void PoissonDiskSampling::generateInitialPointSet(const unsigned int numVertices
 	#endif
 
     for (int i = 0; i < maxThreads; ++i) 
-        generators.emplace_back(default_random_engine(r()));
+        generators.emplace_back(std::default_random_engine(r()));
 	
 	#pragma omp parallel default(shared)
 	{	
@@ -168,7 +168,7 @@ void PoissonDiskSampling::generateInitialPointSet(const unsigned int numVertices
 }
 
 
-unsigned int PoissonDiskSampling::getAreaIndex(const vector<Real>& areas, const Real totalArea, std::default_random_engine &generator, std::uniform_real_distribution<Real> &distribution)
+unsigned int PoissonDiskSampling::getAreaIndex(const std::vector<Real>& areas, const Real totalArea, std::default_random_engine &generator, std::uniform_real_distribution<Real> &distribution)
 {
 	// see https://en.wikipedia.org/wiki/Fitness_proportionate_selection
 	//// Linear Version O(n)
@@ -200,7 +200,7 @@ void PoissonDiskSampling::parallelUniformSurfaceSampling(std::vector<Vector3r> &
 
 	// Sort initial points into HashMap storing only the index of the first point of cell
 	// and build phase groups
-	unordered_map<CellPos, HashEntry, CellPosHasher> hMap(2 * m_initialInfoVec.size());
+    std::unordered_map<CellPos, HashEntry, CellPosHasher> hMap(2 * m_initialInfoVec.size());
 	samples.clear();
 	samples.reserve(m_initialInfoVec.size());
 
@@ -232,7 +232,7 @@ void PoissonDiskSampling::parallelUniformSurfaceSampling(std::vector<Vector3r> &
 		// Loop over the 27 cell groups
 		for (int pg = 0; pg < m_phaseGroups.size(); pg++)
 		{
-			const vector<CellPos>& cells = m_phaseGroups[pg];
+			const std::vector<CellPos>& cells = m_phaseGroups[pg];
 			// Loop over the cells in each cell group
 			#pragma omp parallel for schedule(static)
 			for (int i = 0; i < (int)cells.size(); i++)
@@ -267,7 +267,7 @@ void PoissonDiskSampling::parallelUniformSurfaceSampling(std::vector<Vector3r> &
 	}
 }
 
-bool PoissonDiskSampling::nbhConflict(const unordered_map<CellPos, HashEntry, CellPosHasher>& hMap, const InitialPointInfo& iPI)
+bool PoissonDiskSampling::nbhConflict(const std::unordered_map<CellPos, HashEntry, CellPosHasher>& hMap, const InitialPointInfo& iPI)
 {
 	CellPos nbPos = iPI.cP;
 
@@ -309,7 +309,7 @@ bool PoissonDiskSampling::nbhConflict(const unordered_map<CellPos, HashEntry, Ce
 	return false;
 }
 
-bool PoissonDiskSampling::checkCell(const unordered_map<CellPos, HashEntry, CellPosHasher>& hMap, const CellPos& cell, const InitialPointInfo& iPI)
+bool PoissonDiskSampling::checkCell(const std::unordered_map<CellPos, HashEntry, CellPosHasher>& hMap, const CellPos& cell, const InitialPointInfo& iPI)
 {
 	const auto nbEntryIt = hMap.find(cell);
 	if (nbEntryIt != hMap.end())
@@ -349,14 +349,14 @@ bool PoissonDiskSampling::checkCell(const unordered_map<CellPos, HashEntry, Cell
 
 void PoissonDiskSampling::determineMinX(const unsigned int numVertices, const Vector3r *vertices)
 {
-	m_minVec = Vector3r(numeric_limits<Real>::max(), numeric_limits<Real>::max(), numeric_limits<Real>::max());
+	m_minVec = Vector3r(std::numeric_limits<Real>::max(), std::numeric_limits<Real>::max(), std::numeric_limits<Real>::max());
 
 	for (int i = 0; i < (int)numVertices; i++)
 	{
 		const Vector3r& v = vertices[i];
-		m_minVec[0] = std::min(m_minVec[0], v[0]);
-		m_minVec[1] = std::min(m_minVec[1], v[1]);
-		m_minVec[2] = std::min(m_minVec[2], v[2]);
+		m_minVec[0] = min(m_minVec[0], v[0]);
+		m_minVec[1] = min(m_minVec[1], v[1]);
+		m_minVec[2] = min(m_minVec[2], v[2]);
 	}
 }
 

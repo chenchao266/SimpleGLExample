@@ -60,7 +60,7 @@ void MathFunctions::pseudoInverse(const Matrix3r &a, Matrix3r &res)
 {
 	const Real epsilon = std::numeric_limits<Real>::epsilon();
 	const Eigen::JacobiSVD<Matrix3r> svd(a, Eigen::ComputeFullU | Eigen::ComputeFullV);
-	const Real tolerance = epsilon * std::max(a.cols(), a.rows()) * svd.singularValues().array().abs()(0);
+	const Real tolerance = epsilon * max(a.cols(), a.rows()) * svd.singularValues().array().abs()(0);
 	res = svd.matrixV() * (svd.singularValues().array().abs() > tolerance).select(svd.singularValues().array().inverse(), 0).matrix().asDiagonal() * svd.matrixU().adjoint();
 }
 

@@ -73,7 +73,7 @@ void BPS3D::step_explicit(double dt, const Partitioning & partitioning)
                 EigenVec3d dvi = vi - ovi;
                 if (vi.dot(n_i) < 0 && dvi.dot(n_i) < 0)    // the velocity is both inward and increasing
                 {
-//                    double normal_velocity_delta = (std::min(ovi.dot(n_i), 0.0) - vi.dot(n_i));
+//                    double normal_velocity_delta = (min(ovi.dot(n_i), 0.0) - vi.dot(n_i));
                     double normal_velocity_delta = (ovi.dot(n_i) - vi.dot(n_i));    // ignore the clamp with zero: if all the neighbors of this concave point is advancing forward, clamping this concave point to have zero normal velocity is not good enough.
                     assert(normal_velocity_delta >= 0);
                     std::cout << "CSOC: vertex " << i << " delta = " << normal_velocity_delta << std::endl;

@@ -1,4 +1,4 @@
-#ifndef TUNICATE_H
+﻿#ifndef TUNICATE_H
 #define TUNICATE_H
 
 // Released into the public domain by Robert Bridson, 2009.
@@ -11,9 +11,7 @@
 // calling code relies on it being something else, you must arrange this
 // yourself.
 
-#ifdef __cplusplus
-extern "C" {
-#endif
+
     
     //==============================================================================
     // The orientation routines take, in n dimensions, n+1 vectors
@@ -253,8 +251,6 @@ extern "C" {
                                double* alpha4,
                                double* alpha5);
     
-#ifdef __cplusplus
-} // end of extern "C" block
-#endif
+
 
 #endif

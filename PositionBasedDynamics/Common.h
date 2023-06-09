@@ -1,8 +1,9 @@
 ﻿#ifndef COMMON_H
 #define COMMON_H
 
-#include <Eigen/Dense>
+ 
 #include <float.h>
+#include "eigenheaders.h"
 
 //#define USE_DOUBLE
 #define MIN_PARALLEL_SIZE 64

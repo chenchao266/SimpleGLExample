@@ -155,11 +155,11 @@ float FluidSim::cfl() {
 
 	float maxvel = 0;
 	for(unsigned int i = 0; i < u.a.size(); ++i)
-		maxvel = std::max(maxvel, fabs(u.a[i]));
+		maxvel = max(maxvel, fabs(u.a[i]));
 	for(unsigned int i = 0; i < v.a.size(); ++i)
-		maxvel = std::max(maxvel, fabs(v.a[i]));
+		maxvel = max(maxvel, fabs(v.a[i]));
 	for(unsigned int i = 0; i < w.a.size(); ++i)
-		maxvel = std::max(maxvel, fabs(w.a[i]));
+		maxvel = max(maxvel, fabs(w.a[i]));
 	float dt = dx / maxvel;
 
 	if (dt<0.0005)
@@ -442,9 +442,9 @@ void FluidSim::compute_phi(std::vector<std::vector<int>> & particle_hash, std::v
 	   {
 		   
 			Vec3f sample_pos((i+0.5f)*dx, (j+0.5f)*dx,(k+0.5f)*dx);
-			for(int kk = std::max(0,k-1); kk<= std::min(k+1, nk-1);kk++)
-			for(int jj = std::max(0,j-1); jj<= std::min(j+1, nj-1);jj++)
-			for(int ii = std::max(0,i-1); ii<= std::min(i+1, ni-1);ii++)
+			for(int kk = max(0,k-1); kk<= min(k+1, nk-1);kk++)
+			for(int jj = max(0,j-1); jj<= min(j+1, nj-1);jj++)
+			for(int ii = max(0,i-1); ii<= min(i+1, ni-1);ii++)
 			{
 				int index = kk*ni*nj + jj*ni + ii;
 				for (int p=0; p<particle_hash[index].size();p++)
@@ -1136,9 +1136,9 @@ void FluidSim::FLIP_advection(float dt)
 		int i = cell_ind[0];
 		int j = cell_ind[1];
 		int k = cell_ind[2];
-		for(int kk = std::max(0,k-2); kk<= std::min(k+2, nk-1);kk++)
-		for(int jj = std::max(0,j-2); jj<= std::min(j+2, nj-1);jj++)
-		for(int ii = std::max(0,i-2); ii<= std::min(i+2, ni-1);ii++)
+		for(int kk = max(0,k-2); kk<= min(k+2, nk-1);kk++)
+		for(int jj = max(0,j-2); jj<= min(j+2, nj-1);jj++)
+		for(int ii = max(0,i-2); ii<= min(i+2, ni-1);ii++)
 		{
 			marker_cell(ii,jj,kk) = 1;
 		}
@@ -1175,9 +1175,9 @@ void FluidSim::FLIP_advection(float dt)
 			Vec3f sample_pos0((float)i*dx, ((float)j+0.5f)*dx,((float)k+0.5f)*dx);
 			Vec3f sample_pos1(((float)i+0.5f)*dx, ((float)j)*dx,((float)k+0.5f)*dx);
 			Vec3f sample_pos2(((float)i+0.5f)*dx, ((float)j+0.5)*dx,((float)k)*dx);
-			for(int kk = std::max(0,k-1); kk<= std::min(k+1, nk-1);kk++)
-				for(int jj = std::max(0,j-1); jj<= std::min(j+1, nj-1);jj++)
-					for(int ii = std::max(0,i-1); ii<= std::min(i+1, ni-1);ii++)
+			for(int kk = max(0,k-1); kk<= min(k+1, nk-1);kk++)
+				for(int jj = max(0,j-1); jj<= min(j+1, nj-1);jj++)
+					for(int ii = max(0,i-1); ii<= min(i+1, ni-1);ii++)
 					{
 						int index = kk*ni*nj + jj*ni + ii;
 						for (int p=0; p<particle_hash[index].size();p++)

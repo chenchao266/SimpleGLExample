@@ -1,4 +1,4 @@
-//
+﻿//
 // Copyright 2012-2013, Syoyo Fujita.
 //
 // Licensed under 2-clause BSD liecense.
@@ -15,9 +15,9 @@
 // version 0.9.0: Initial
 //
 
-#include <cstdlib>
-#include <cstring>
-#include <cassert>
+
+#include <string.h>
+#include <assert.h>
 
 #include <string>
 #include <vector>

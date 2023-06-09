@@ -7,7 +7,7 @@
 #include "Timing.h"
 
 using namespace PBD;
-using namespace std;
+
 using namespace GenParam;
 
 // int TimeStepController::SOLVER_ITERATIONS = -1;

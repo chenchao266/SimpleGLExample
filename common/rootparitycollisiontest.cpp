@@ -1,6 +1,6 @@
 ﻿
 #include "rootparitycollisiontest.h"
-#include <cstdlib>
+ 
 #include <array>
 namespace LosTopos {
 namespace rootparity 
@@ -2324,16 +2324,16 @@ namespace rootparity
                 Vec2d interval1 = m_interval_hex_vertices[i][1].get_actual_interval();
                 Vec2d interval2 = m_interval_hex_vertices[i][2].get_actual_interval();
                 
-                xmin[0] = std::min( xmin[0], interval0[0]  );
-                xmin[1] = std::min( xmin[1], interval1[0]  );
-                xmin[2] = std::min( xmin[2], interval2[0]  );
+                xmin[0] = min( xmin[0], interval0[0]  );
+                xmin[1] = min( xmin[1], interval1[0]  );
+                xmin[2] = min( xmin[2], interval2[0]  );
                 
-                xmax[0] = std::max( xmax[0], interval0[1]  );
-                xmax[1] = std::max( xmax[1], interval1[1]  );
-                xmax[2] = std::max( xmax[2], interval2[1]  );
+                xmax[0] = max( xmax[0], interval0[1]  );
+                xmax[1] = max( xmax[1], interval1[1]  );
+                xmax[2] = max( xmax[2], interval2[1]  );
             }
             
-            const double ray_len = std::max(  (xmin).norm(),  (xmax).norm()) + 10.0;
+            const double ray_len = max(  (xmin).norm(),  (xmax).norm()) + 10.0;
             
             m_ray = Vec3d( ray_len, ray_len, 0 );
             
@@ -2402,16 +2402,16 @@ namespace rootparity
             Vec2d interval1 = m_interval_hex_vertices[i][1].get_actual_interval();
             Vec2d interval2 = m_interval_hex_vertices[i][2].get_actual_interval();
             
-            xmin[0] = std::min( xmin[0], interval0[0]  );
-            xmin[1] = std::min( xmin[1], interval1[0]  );
-            xmin[2] = std::min( xmin[2], interval2[0]  );
+            xmin[0] = min( xmin[0], interval0[0]  );
+            xmin[1] = min( xmin[1], interval1[0]  );
+            xmin[2] = min( xmin[2], interval2[0]  );
             
-            xmax[0] = std::max( xmax[0], interval0[1]  );
-            xmax[1] = std::max( xmax[1], interval1[1]  );
-            xmax[2] = std::max( xmax[2], interval2[1]  );
+            xmax[0] = max( xmax[0], interval0[1]  );
+            xmax[1] = max( xmax[1], interval1[1]  );
+            xmax[2] = max( xmax[2], interval2[1]  );
         }
         
-        const double ray_len = std::max(  (xmin).norm(),  (xmax).norm()) + 10.0;
+        const double ray_len = max(  (xmin).norm(),  (xmax).norm()) + 10.0;
         
         m_ray = Vec3d( ray_len, ray_len, 0 );
         

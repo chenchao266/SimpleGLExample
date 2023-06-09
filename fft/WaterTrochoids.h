@@ -18,7 +18,7 @@
 #pragma once
  
 #include <vector>
-#include <cmath>
+#include <math.h>
 #include <stdlib.h>
 #include <Component/Array.h>
 

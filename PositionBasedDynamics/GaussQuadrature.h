@@ -1,7 +1,7 @@
-#ifndef __GaussQuadrature_h__
+﻿#ifndef __GaussQuadrature_h__
 #define __GaussQuadrature_h__
 
-#include <Eigen/Dense>
+#include "eigenheaders.h"
 
 namespace SPH
 {
@@ -9,7 +9,7 @@ namespace SPH
 	{
 	public:
 
-		using Integrand = std::function<double(Eigen::Vector3d const&)>;
+		using Integrand = std::function<double(EigenVec3d const&)>;
 		using Domain = Eigen::AlignedBox3d;
 
 		static double integrate(Integrand integrand, Domain const& domain, unsigned int p);

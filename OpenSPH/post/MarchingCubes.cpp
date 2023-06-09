@@ -1,4 +1,4 @@
-#include "post/MarchingCubes.h"
+﻿#include "post/MarchingCubes.h"
 #include "objects/finders/NeighborFinder.h"
 #include "post/Analysis.h"
 #include "quantities/Storage.h"
@@ -647,7 +647,7 @@ Array<Triangle> getSurfaceMesh(IScheduler& scheduler, const Storage& storage, co
             Svd svd = singularValueDecomposition(C);
             const Float maxSigma = maxElement(svd.S);
             for (Size i = 0; i < 3; ++i) {
-                svd.S[i] = 1._f / std::max(svd.S[i], 0.125_f * maxSigma);
+                svd.S[i] = 1._f / max(svd.S[i], 0.125_f * maxSigma);
             }
 
             AffineMatrix sigma = convert<AffineMatrix>(SymmetricTensor(svd.S, Vector(0._f)));

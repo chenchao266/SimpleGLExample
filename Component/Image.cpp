@@ -24,7 +24,7 @@
 #include "TextureCubeMap.h"
 
 
-using namespace std;
+
  
 Image::DataIterator::DataIterator(const Image* image):
     _image(image),

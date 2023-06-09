@@ -1,4 +1,4 @@
-#ifndef SDFFunctions_H
+﻿#ifndef SDFFunctions_H
 #define SDFFunctions_H
 
 #include "../Common.h"
@@ -15,7 +15,7 @@ namespace Utilities
 		*/
 		static Discregrid::CubicLagrangeDiscreteGrid* generateSDF(const unsigned int numVertices, 
 			const Vector3r *vertices, const unsigned int numFaces, const unsigned int *faces, 
-			const AlignedBox3r &bbox, const std::array<unsigned int, 3> &resolution, const bool invert=false);
+			const AlignedBox3r &bbox, const Vec3ui &resolution, const bool invert=false);
 	
 		/** Compute the bounding box of a mesh. 
 		 */

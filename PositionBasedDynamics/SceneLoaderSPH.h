@@ -36,13 +36,13 @@ namespace Utilities
 			Real density;
 			bool dynamic;
 			bool isWall;
-			Eigen::Matrix<float, 4, 1, Eigen::DontAlign> color;
+            Vector4f color;
 			void *rigidBody;
 
 			std::string mapFile;
 			bool mapInvert;
 			Real mapThickness;	
-			Eigen::Matrix<unsigned int, 3, 1, Eigen::DontAlign> mapResolution;
+			Vec3ui mapResolution;
 			unsigned int samplingMode;
 			bool isAnimated;
 		};
@@ -60,7 +60,7 @@ namespace Utilities
 			Vector3r initialAngularVelocity;
 			unsigned char mode;
 			bool invert;
-			std::array<unsigned int, 3> resolutionSDF;
+            Vec3ui resolutionSDF;
 		};
 
 		/** \brief Struct to store a fluid block */
@@ -155,6 +155,18 @@ namespace Utilities
 				vec[i] = values[i];
 			return true;
 		}
+        template <typename T, int size>
+        bool readVector(const nlohmann::json &j, vec<size, T> &vec_)
+        {
+            if (j.is_null())
+                return false;
+
+            std::vector<T> values = j.get<std::vector<T>>();
+            for (unsigned int i = 0; i < values.size(); i++)
+                vec_[i] = values[i];
+            return true;
+        }
+
 
 		template <typename T>
 		bool readValue(const std::string &section, const std::string &key, T &v)
@@ -212,6 +224,27 @@ namespace Utilities
 			}
 			return false;
 		}
+
+        template <typename T, int size>
+        bool readVector(const std::string &section, const std::string &key, vec<size, T> &vec_)
+        {
+            if (m_jsonData.find(section) != m_jsonData.end())
+            {
+                nlohmann::json j = m_jsonData[section];
+                if (j.is_null())
+                    return false;
+
+                nlohmann::json j2 = j[key];
+                if (j2.is_null())
+                    return false;
+
+                std::vector<T> values = j2.get<std::vector<T>>();
+                for (unsigned int i = 0; i < values.size(); i++)
+                    vec_[i] = values[i];
+                return true;
+            }
+            return false;
+        }
 
 		void readMaterialParameterObject(const std::string& key, GenParam::ParameterObject* paramObj);
 		void readParameterObject(const std::string &key, GenParam::ParameterObject *paramObj);

@@ -72,7 +72,7 @@ m_masses( masses ),
 m_mesh(), 
 m_broad_phase( new BroadPhaseGrid() ),
 m_collision_pipeline( NULL ),    // allocated and initialized in the constructor body
-m_aabb_padding( std::max( in_proximity_epsilon, 1e-4 ) ),
+m_aabb_padding( max( in_proximity_epsilon, 1e-4 ) ),
 m_feature_edge_angle_threshold(M_PI/6),
 //m_feature_edge_angle_threshold(M_PI)    //&&&& ignore edge features
 pm_positions(vertex_positions),
@@ -154,7 +154,7 @@ double DynamicSurface::distance_to_surface( const Vec3d& p, size_t& closest_tria
             check_point_triangle_proximity( p, get_position(tri[0]), get_position(tri[1]), get_position(tri[2]), curr_distance );
             if ( curr_distance < padding )
             {   
-                min_distance = std::min( min_distance, curr_distance );
+                min_distance = min( min_distance, curr_distance );
                 closest_triangle = nearby_triangles[j];
             }
         }
@@ -451,7 +451,7 @@ unsigned int DynamicSurface::vertex_primary_space_rank( size_t v, int region ) c
          }
 
          unsigned int rank = compute_rank_from_triangles(cur_tri_set);
-         max_rank = std::max(rank, max_rank);
+         max_rank = max(rank, max_rank);
       }
    
       return max_rank;
@@ -539,7 +539,7 @@ double DynamicSurface::get_largest_dihedral(size_t edge) const {
          }
 
          double angle = acos( (norm0).dot(norm1));
-         largest_angle = std::max(largest_angle,angle);
+         largest_angle = max(largest_angle,angle);
       }
    }
 
@@ -568,7 +568,7 @@ double DynamicSurface::get_largest_dihedral(size_t edge, const std::vector<Vec3d
             norm1 = -norm1;
          }
          double angle = acos( (norm0).dot(norm1));
-         largest_angle = std::max(largest_angle,angle);
+         largest_angle = max(largest_angle,angle);
       }
    }
 

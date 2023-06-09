@@ -286,7 +286,7 @@ void LevelSetFMGrid2D::CheckBehind(double& phi, int& a, bool& flag, int check, i
 			}
 			else
 			{
-				phi = std::min(grid[index].value, phi);
+				phi = min(grid[index].value, phi);
 			}
 		}
 	}

@@ -1,4 +1,4 @@
-// ---------------------------------------------------------
+﻿// ---------------------------------------------------------
 //
 //  surftrack.h
 //  Tyson Brochu 2008
@@ -10,7 +10,7 @@
 
 #ifndef LOSTOPOS_SURFTRACK_H
 #define LOSTOPOS_SURFTRACK_H
-
+#include "eigenheaders.h"
 #include <dynamicsurface.h>
 #include <edgecollapser.h>
 #include <edgeflipper.h>
@@ -590,7 +590,7 @@ public:
     void compute_all_vertex_target_edge_lengths();
     
     double vertex_target_edge_length(size_t v) const { assert(m_target_edge_lengths[v] > 0); return m_target_edge_lengths[v]; }
-    double edge_target_edge_length(size_t e) const { return std::min(vertex_target_edge_length(m_mesh.m_edges[e][0]), vertex_target_edge_length(m_mesh.m_edges[e][1])); }
+    double edge_target_edge_length(size_t e) const { return min(vertex_target_edge_length(m_mesh.m_edges[e][0]), vertex_target_edge_length(m_mesh.m_edges[e][1])); }
     
     double vertex_min_edge_length(size_t v) const { return vertex_target_edge_length(v) * m_min_to_target_ratio; }
     double vertex_max_edge_length(size_t v) const { return vertex_target_edge_length(v) * m_max_to_target_ratio; }

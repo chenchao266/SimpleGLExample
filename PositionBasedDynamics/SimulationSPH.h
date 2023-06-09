@@ -99,7 +99,7 @@ for (unsigned int pid = 0; pid < nBoundaries; pid++) \
 		const unsigned int maxN = sim->numberOfNeighbors(fluidModelIndex, pid, i); \
 		for (unsigned int j = 0; j < maxN; j += 8) \
 		{ \
-			const unsigned int count = std::min(maxN - j, 8u); \
+			const unsigned int count = min(maxN - j, 8u); \
 			const Vector3f8 xj_avx = convertVec_zero(&sim->getNeighborList(fluidModelIndex, pid, i)[j], &fm_neighbor->getPosition(0), count); \
 			code \
 		} \
@@ -116,7 +116,7 @@ for (unsigned int pid = 0; pid < nBoundaries; pid++) \
 		const unsigned int maxN = sim->numberOfNeighbors(fluidModelIndex, pid, i); \
 		for (unsigned int j = 0; j < maxN; j += 8) \
 		{ \
-			const unsigned int count = std::min(maxN - j, 8u); \
+			const unsigned int count = min(maxN - j, 8u); \
 			code \
 			idx++; \
 		} \
@@ -129,7 +129,7 @@ for (unsigned int pid = 0; pid < nBoundaries; pid++) \
 	const unsigned int maxN = sim->numberOfNeighbors(fluidModelIndex, fluidModelIndex, i); \
 	for (unsigned int j = 0; j < maxN; j += 8) \
 	{ \
-		const unsigned int count = std::min(maxN - j, 8u); \
+		const unsigned int count = min(maxN - j, 8u); \
 		const Vector3f8 xj_avx = convertVec_zero(&sim->getNeighborList(fluidModelIndex, fluidModelIndex, i)[j], &model->getPosition(0), count); \
 		code \
 	} 
@@ -141,7 +141,7 @@ for (unsigned int pid = 0; pid < nBoundaries; pid++) \
 	const unsigned int maxN = sim->numberOfNeighbors(fluidModelIndex, fluidModelIndex, i); \
 	for (unsigned int j = 0; j < maxN; j += 8) \
 	{ \
-		const unsigned int count = std::min(maxN - j, 8u); \
+		const unsigned int count = min(maxN - j, 8u); \
 		code \
 	} 
 
@@ -155,7 +155,7 @@ for (unsigned int pid = 0; pid < nBoundaries; pid++) \
 		const unsigned int maxN = sim->numberOfNeighbors(fluidModelIndex, pid, i); \
 		for (unsigned int j = 0; j < maxN; j += 8) \
 		{ \
-			const unsigned int count = std::min(maxN - j, 8u); \
+			const unsigned int count = min(maxN - j, 8u); \
 			const Vector3f8 xj_avx = convertVec_zero(&sim->getNeighborList(fluidModelIndex, pid, i)[j], &bm_neighbor->getPosition(0), count); \
 			code \
 		} \
@@ -246,7 +246,7 @@ namespace SPH
 			Vector3r initialAngularVelocity;
 			unsigned char mode;
 			bool invert;
-			std::array<unsigned int, 3> resolutionSDF;
+			Vec3ui resolutionSDF;
 			unsigned int emitter_width;
 			unsigned int emitter_height;
 			Real emitter_velocity; // emission velocity

@@ -1215,7 +1215,7 @@ void ParticleSystem::PredictionCorrectionStepCpu()
 		for ( int i=0; i < num_points(); i++ ) 
 			computePredictedDensityAndPressure(i);
 
-		float densityErrorInPercent = std::max(0.1f * maxPredictedDensity - 100.0f, 0.0f);
+		float densityErrorInPercent = max(0.1f * maxPredictedDensity - 100.0f, 0.0f);
 
 		if (toggle_ [ PPRINTDEBUGGINGINFO])
 			printf("ERROR: %f%% \n", densityErrorInPercent);
@@ -1297,11 +1297,11 @@ void ParticleSystem::computePredictedDensityAndPressure(uint index)
 		}
 	}
 
-	densityError_[index] = std::max(predictedSPHDensity - param_[PRESTDENSITY], 0.0f);
+	densityError_[index] = max(predictedSPHDensity - param_[PRESTDENSITY], 0.0f);
 
-	correction_pressure_[index] += std::max( densityError_[index] * param_[PDENSITYERRORFACTOR], 0.0f);
+	correction_pressure_[index] += max( densityError_[index] * param_[PDENSITYERRORFACTOR], 0.0f);
 
-	maxPredictedDensity = std::max(maxPredictedDensity, predictedSPHDensity);
+	maxPredictedDensity = max(maxPredictedDensity, predictedSPHDensity);
 
 	predicted_density_[index] = predictedSPHDensity;
 }
@@ -2220,7 +2220,7 @@ void ParticleSystem::ComputePressureGrid ()
 		if (density_[i] > maxDens)
 			maxDens = density_[i];
 
-		pressure_[i] = std::max(0.0f, ( density_[i] - param_[PRESTDENSITY] ) * param_[PGASCONSTANT]);
+		pressure_[i] = max(0.0f, ( density_[i] - param_[PRESTDENSITY] ) * param_[PGASCONSTANT]);
 
 		param_ [ PSTAT_NEIGHCNT ] = float(neighbor_nums);
 		param_ [ PSTAT_SEARCHCNT ] = float(search_nums);
@@ -2319,12 +2319,12 @@ void ParticleSystem::computeGasConstAndTimeStep(float densityVariation)
 
 		param_[PGASCONSTANT] = 70000;
 		float speedOfSound = sqrt(param_[PGASCONSTANT]);
-		float relevantSpeed = std::max(speedOfSound, maxParticleSpeed);
+		float relevantSpeed = max(speedOfSound, maxParticleSpeed);
 		time_step_wcsph_ = courantFactor * param_[PSMOOTHRADIUS] / relevantSpeed;
 
 		param_[PGASCONSTANT] = 1000.0f;					
 		speedOfSound = sqrt(param_[PGASCONSTANT]);
-		relevantSpeed = std::max(speedOfSound, maxParticleSpeed);	
+		relevantSpeed = max(speedOfSound, maxParticleSpeed);	
 		time_step_sph_ = courantFactor * param_[PSMOOTHRADIUS] / relevantSpeed;
 	}
 	else
@@ -2333,12 +2333,12 @@ void ParticleSystem::computeGasConstAndTimeStep(float densityVariation)
 
 		param_[PGASCONSTANT] = 6000000; 
 		float speedOfSound = sqrt(param_[PGASCONSTANT]);
-		float relevantSpeed = std::max(speedOfSound, maxParticleSpeed);
+		float relevantSpeed = max(speedOfSound, maxParticleSpeed);
 		time_step_wcsph_ = courantFactor * param_[PSMOOTHRADIUS] / relevantSpeed;
 
 		param_[PGASCONSTANT] = 1000.0f;				
 		speedOfSound = sqrt(param_[PGASCONSTANT]);
-		relevantSpeed = std::max(speedOfSound, maxParticleSpeed);
+		relevantSpeed = max(speedOfSound, maxParticleSpeed);
 		time_step_sph_ = courantFactor * param_[PSMOOTHRADIUS] / relevantSpeed;
 	}
 

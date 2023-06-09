@@ -22,9 +22,6 @@
     <ClCompile Include="Droplet3D\BPS3DPressureSolveIterative.cpp">
       <Filter>droplet3D</Filter>
     </ClCompile>
-    <ClCompile Include="Droplet3D\eigenheaders.cpp">
-      <Filter>droplet3D</Filter>
-    </ClCompile>
     <ClCompile Include="Droplet3D\FMMTLWrapper.cpp">
       <Filter>droplet3D</Filter>
     </ClCompile>
@@ -198,9 +195,6 @@
       <Filter>droplet3D</Filter>
     </ClInclude>
     <ClInclude Include="Droplet3D\BPS3D.h">
-      <Filter>droplet3D</Filter>
-    </ClInclude>
-    <ClInclude Include="Droplet3D\eigenheaders.h">
       <Filter>droplet3D</Filter>
     </ClInclude>
     <ClInclude Include="Droplet3D\FMMTLWrapper.h">

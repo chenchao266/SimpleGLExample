@@ -63,7 +63,7 @@ double MeshSmoother::compute_max_timestep_quadratic_solve( const std::vector<Vec
         
         double beta = 1.0;
         
-        min_area = std::min( min_area, c );
+        min_area = min( min_area, c );
         
         if ( c < 1e-14 )
         {
@@ -711,7 +711,7 @@ bool MeshSmoother::null_space_smoothing_pass( double dt )
             if ( !m_surf.vertex_is_all_solid(i) )
             {
                 null_space_smooth_vertex( i, triangle_areas, triangle_normals, triangle_centroids, displacements[i] );
-                max_displacement = std::max( max_displacement, ( displacements[i] ).norm() );
+                max_displacement = max( max_displacement, ( displacements[i] ).norm() );
             }
         }
     }
@@ -741,7 +741,7 @@ bool MeshSmoother::null_space_smoothing_pass( double dt )
                     if ( !m_surf.vertex_is_all_solid(v) && !smoothed_already[v])
                     {
                         null_space_smooth_vertex(v, triangle_areas, triangle_normals, triangle_centroids, displacements[v]);
-                        max_displacement = std::max( max_displacement,  ( displacements[v] ).norm());
+                        max_displacement = max( max_displacement,  ( displacements[v] ).norm());
                         smoothed_already[v] = true;
                     }
                 }
@@ -815,7 +815,7 @@ bool MeshSmoother::null_space_smoothing_pass( double dt )
     // Set positions
     for(size_t i = 0; i < m_surf.get_num_vertices(); i++)
     {
-        max_position_change = std::max( max_position_change,  ( m_surf.get_newposition(i) - m_surf.get_position(i) ).norm());
+        max_position_change = max( max_position_change,  ( m_surf.get_newposition(i) - m_surf.get_position(i) ).norm());
     } 
     
     m_surf.set_positions_to_newpositions();

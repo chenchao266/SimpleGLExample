@@ -514,7 +514,7 @@ void UnifiedPhysics::InitDptr(uint particleCount, float spacing)
 		temp_cout += ( MAX_THREADS_PER_BLOCK_SPH - temp_cout % MAX_THREADS_PER_BLOCK_SPH );
 	dptr_->particleCountRounded			= temp_cout;
 #endif
-	dptr_->maxLength						= std::max((float)dimensionsV.x*dimensionsV.y*dimensionsV.z, (float)particleCount);
+	dptr_->maxLength						= max((float)dimensionsV.x*dimensionsV.y*dimensionsV.z, (float)particleCount);
 	dptr_->filteredParticleCount			= 0;
 	dptr_->globalSupportRadius			= fc_->globalSupportRadius;
 	dptr_->distToCenterMassCutoff			= fc_->distToCenterMassCutoff;
@@ -2155,8 +2155,8 @@ void UnifiedPhysics::CreatePartilcesCPU(float spacing, float jitter, BoundBox& f
 	//cout << scales <<  " " << b3Vector3(GRID_RESOLUTION) / (virtualBoundingBox.getMax()-virtualBoundingBox.getMin()) << endl;
 
 	float my_block_size = fc_->scales.x * fc_->globalSupportRadius;
-	my_block_size = MAX(my_block_size, fc_->scales.y * fc_->globalSupportRadius); 
-	my_block_size = MAX(my_block_size, fc_->scales.z * fc_->globalSupportRadius); 
+	my_block_size = max(my_block_size, fc_->scales.y * fc_->globalSupportRadius); 
+	my_block_size = max(my_block_size, fc_->scales.z * fc_->globalSupportRadius); 
 
 	/*cout << "Individual block sizes : " << endl;
 	cout << fc->scales.x * fc->globalSupportRadius << " " << 
@@ -2256,8 +2256,8 @@ void UnifiedPhysics::GetNeighbors(const int i)
         max_query_box(fc_->scales * (p.position_ + b3Vector3(fc_->globalSupportRadius, fc_->globalSupportRadius, fc_->globalSupportRadius)));
 	// limit to bounding box of spatial domain
 	for (int i = 0; i < 3; i++) {
-		min_query_box[i] = MAX(min_query_box[i], 0);
-		max_query_box[i] = MIN(max_query_box[i], GRID_RESOLUTION);
+		min_query_box[i] = max(min_query_box[i], 0.0f);
+		max_query_box[i] = min(max_query_box[i], (float)GRID_RESOLUTION);
 	}
 
 	// get index ranges covering the given query box
@@ -2492,7 +2492,7 @@ float UnifiedPhysics::CalculatePressureSPH(const float density)
 	const float b_i = fc_->fluidRestDensity * fc_->fluidGasConst / gamma;		
 	const float densityFrac = density / fc_->fluidRestDensity;
 	const float powGamma = densityFrac;
-	float pressure = MAX(0.0f, b_i * (powGamma - 1.0f));	// p = k(rho - rho_0)
+	float pressure = max(0.0f, b_i * (powGamma - 1.0f));	// p = k(rho - rho_0)
 
 	return pressure;
 }
@@ -2504,7 +2504,7 @@ float UnifiedPhysics::CalculatePressureWCSPH(const float density)
 	const float b_i = fc_->fluidRestDensity * fc_->fluidGasConstantWCSPH / gamma;		
 	const float densityFrac = density / fc_->fluidRestDensity;
 	const float powGamma = pow(densityFrac, gamma);		
-	float pressure = MAX(0.0f, b_i * (powGamma - 1.0f));
+	float pressure = max(0.0f, b_i * (powGamma - 1.0f));
 
 	return pressure;
 }
@@ -2674,7 +2674,7 @@ void UnifiedPhysics::PredictionCorrectionStepVersatileCoupling()
 			ComputePredictedDensityAndPressure(i);
 
 		// check loop termination criterion
-		float densityErrorInPercent = MAX(0.1f * max_predicted_density_ - 100.0f, 0.0f); // 100/1000 * max_predicted_density_ - 100; 	
+		float densityErrorInPercent = max(0.1f * max_predicted_density_ - 100.0f, 0.0f); // 100/1000 * max_predicted_density_ - 100; 	
 
 		if(fc_->printDebuggingInfo==1)
 			std::cout << "ERROR: " << densityErrorInPercent << "%" << std::endl;
@@ -2880,7 +2880,7 @@ void UnifiedPhysics::CalculateParticleForceVersatilCoupling(const int i)
 
 					//* sum up viscosity force from liquid particles according to E.q(11)
 					// negative symmetry
-					float numerator = MAX(0.0, x_ij.dot(v_ij)); 
+					float numerator = max(0.0f, x_ij.dot(v_ij)); 
 					float denominator = x_ij.length2() + fc_->epsilon_h_square;
 					float pi = -1.0f * fc_->nu_liquid * numerator / denominator;
 					force -= kernelViscosity * fc_->initialMass * fc_->initialMass * pi;
@@ -2896,7 +2896,7 @@ void UnifiedPhysics::CalculateParticleForceVersatilCoupling(const int i)
 					force -= tempPressureForce;
 
 					// sum up viscosity force from boundary particles according to E.q(13)
-					float numerator = MAX(0.0, x_ij.dot(v_ij)); 
+					float numerator = max(0.0, x_ij.dot(v_ij)); 
 					float denominator = x_ij.length2() + fc->epsilon_h_square;
 					float pi = -1.0f * fc->nu_rigid_liquid * numerator / denominator;
 					force -= kernelViscosity * fc->initialMass * fc->fluidRestDensity * neigh.weighted_volume * pi;
@@ -3265,7 +3265,7 @@ void UnifiedPhysics::CalculateForcesWithContactForces(const int i)
 					{
 						// calculate normal force F_n
 						// formula(1)
-						float ksi = std::max(fc_->collisionDistThreshold - dist, 0.0f); 
+						float ksi = max(fc_->collisionDistThreshold - dist, 0.0f); 
 
 						// formula(2)
 						// distVec = p->position - neigh->position;
@@ -3287,7 +3287,7 @@ void UnifiedPhysics::CalculateForcesWithContactForces(const int i)
 						b3Vector3 F_n = N * f_n;
 
 						// formula (18) calculate shear force F_t
-                        float temp = std::min(fc_->mu * f_n, fc_->k_t * V_t.length()); V_t.normalize();
+                        float temp = min(fc_->mu * f_n, fc_->k_t * V_t.length()); V_t.normalize();
 						b3Vector3 F_t = V_t * (-temp); // V_t has aleady normalized through V_t.normalize() in previous line
 
 						// contact force F = F_n + F_t
@@ -5057,7 +5057,7 @@ void UnifiedPhysics::CalculateForcesISPHVersatilCoupling(const int i)
 				// ---------------------------versatile methods: Problem exists-----------------------------------------------
 				// sum up viscosity force from liquid particles according to E.q(11)
 				// negative symmetry
-				float numerator = MAX(0.0, x_ij.dot(v_ij)); 
+				float numerator = max(0.0, x_ij.dot(v_ij)); 
 				float denominator = x_ij.length2() + fc->epsilon_h_square;
 				float pi = -1.0f * fc->nu_liquid * numerator / denominator;
 				p.force -= kernelViscosity * fc->initialMass * fc->initialMass * pi;
@@ -5067,7 +5067,7 @@ void UnifiedPhysics::CalculateForcesISPHVersatilCoupling(const int i)
 			{
 				// ---------------------------versatile methods: Problem exists-----------------------------------------------
 				// sum up viscosity force from boundary particles according to E.q(13)
-				float numerator = MAX(0.0, x_ij.dot(v_ij)); 
+				float numerator = max(0.0, x_ij.dot(v_ij)); 
 				float denominator = x_ij.length2() + fc->epsilon_h_square;
 				float pi = -1.0f * fc->nu_rigid_liquid * numerator / denominator;
 				p.force -= kernelViscosity * fc->initialMass * fc->fluidRestDensity * neigh.weighted_volume * pi;
@@ -5397,7 +5397,7 @@ void UnifiedPhysics::PredictionCorrectionStep()
 			ComputePredictedDensityAndPressure(i);
 
 		// check loop termination criterion
-		float densityErrorInPercent = MAX(0.1f * max_predicted_density_ - 100.0f, 0.0f); // 100/1000 * max_predicted_density_ - 100; 	
+		float densityErrorInPercent = max(0.1f * max_predicted_density_ - 100.0f, 0.0f); // 100/1000 * max_predicted_density_ - 100; 	
 
 		if(fc_->printDebuggingInfo==1)
 			std::cout << "ERROR: " << densityErrorInPercent << "%" << std::endl;
@@ -5486,16 +5486,16 @@ void UnifiedPhysics::ComputePredictedDensityAndPressure(const int i)
 		}
 
 		// compute density error, correct only compression errors
-		p.density_error_ = MAX(p.predicted_density_ - fc_->fluidRestDensity, 0.0f);
+		p.density_error_ = max(p.predicted_density_ - fc_->fluidRestDensity, 0.0f);
 
 		// update pressure
 		// densityErrorFactor is precomputed and used as a constant (approximation)
 		// do not allow negative pressure corrections
-		p.correction_pressure_ += MAX(p.density_error_ * fc_->densityErrorFactor, 0.0f);
+		p.correction_pressure_ += max(p.density_error_ * fc_->densityErrorFactor, 0.0f);
 
 		// max_predicted_density_ is needed for the loop termination criterion
 		// find maximal predicted density of all particles
-		max_predicted_density_ = MAX(max_predicted_density_, p.predicted_density_);
+		max_predicted_density_ = max(max_predicted_density_, p.predicted_density_);
 	}
 }
 
@@ -5936,14 +5936,14 @@ float UnifiedPhysics::DistanceToWall(const float& x, const float& y, const float
 {
 	// To obtain the distance to the wall boundary, we have to compute the distance from each particle to 
 	// all the polygons belonging to the wall boundary and select the minimum distance.
-	float result = MAX( fc_->boxLength, MAX(fc_->boxHeight, fc_->boxWidth) );
+	float result = max( fc_->boxLength, max(fc_->boxHeight, fc_->boxWidth) );
 	float dist = 0.0f;
 	float temp = 0.0f;
 	norm = b3Vector3(0.0f, 1.0f, 0.0f);
 
 	// compare with dist to ground
-	dist = MAX((y - fc_->realBoxContainer.getMin().y) , 0.0f);
-	temp = MIN(result, dist);
+	dist = max((y - fc_->realBoxContainer.getMin().y) , 0.0f);
+	temp = min(result, dist);
 	if (temp < result)
 	{
 		result = temp;
@@ -5951,8 +5951,8 @@ float UnifiedPhysics::DistanceToWall(const float& x, const float& y, const float
 	}
 	
 	// compare with dist to ceil
-	dist = MAX((fc_->realBoxContainer.getMax().y - y), 0.0f);
-	temp = MIN(result, dist);
+	dist = max((fc_->realBoxContainer.getMax().y - y), 0.0f);
+	temp = min(result, dist);
 	if (temp < result)
 	{
 		result = temp;
@@ -5960,8 +5960,8 @@ float UnifiedPhysics::DistanceToWall(const float& x, const float& y, const float
 	}
 
 	// compare with dist to left wall
-	dist = MAX((x - fc_->realBoxContainer.getMin().x), 0.0f);
-	temp = MIN(result, dist);
+	dist = max((x - fc_->realBoxContainer.getMin().x), 0.0f);
+	temp = min(result, dist);
 	if (temp < result)
 	{
 		result = temp;
@@ -5969,8 +5969,8 @@ float UnifiedPhysics::DistanceToWall(const float& x, const float& y, const float
 	}
 
 	// compare with dist to right wall
-	dist = MAX((fc_->realBoxContainer.getMax().x - x), 0.0f);
-	temp = MIN(result, dist);
+	dist = max((fc_->realBoxContainer.getMax().x - x), 0.0f);
+	temp = min(result, dist);
 	if (temp < result)
 	{
 		result = temp;
@@ -5978,8 +5978,8 @@ float UnifiedPhysics::DistanceToWall(const float& x, const float& y, const float
 	}
 
 	// compare with dist to back wall
-	dist = MAX((z - fc_->realBoxContainer.getMin().z), 0.0f);
-	temp = MIN(result, dist);
+	dist = max((z - fc_->realBoxContainer.getMin().z), 0.0f);
+	temp = min(result, dist);
 	if (temp < result)
 	{
 		result = temp;
@@ -5987,8 +5987,8 @@ float UnifiedPhysics::DistanceToWall(const float& x, const float& y, const float
 	}
 
 	// compare with dist to front wall
-	dist = MAX((fc_->realBoxContainer.getMax().z - z), 0.0f);
-	temp = MIN(result, dist);
+	dist = max((fc_->realBoxContainer.getMax().z - z), 0.0f);
+	temp = min(result, dist);
 	if (temp < result)
 	{
 		result = temp;

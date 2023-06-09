@@ -1,4 +1,4 @@
-#include "CubicSDFCollisionDetection.h"
+﻿#include "CubicSDFCollisionDetection.h"
 #include "IDFactory.h"
 #include "Eigen/Dense"
 
@@ -63,9 +63,9 @@ CubicSDFCollisionDetection::CubicSDFCollisionObject::~CubicSDFCollisionObject()
 {
 }
 
-double CubicSDFCollisionDetection::CubicSDFCollisionObject::distance(const Eigen::Vector3d &x, const Real tolerance)
+double CubicSDFCollisionDetection::CubicSDFCollisionObject::distance(const EigenVec3d &x, const Real tolerance)
 {
-	const Eigen::Vector3d scaled_x = x.cwiseProduct(m_scale.template cast<double>().cwiseInverse());
+	const EigenVec3d scaled_x = x.cwiseProduct(m_scale.template cast<double>().cwiseInverse());
 	const double dist = m_sdf->interpolate(0, scaled_x);
 	if (dist == std::numeric_limits<double>::max())
 		return dist;
@@ -76,7 +76,7 @@ bool CubicSDFCollisionDetection::CubicSDFCollisionObject::collisionTest(const Ve
 {
 	const Vector3r scaled_x = x.cwiseProduct(m_scale.cwiseInverse());
 
-	Eigen::Vector3d normal;	
+	EigenVec3d normal;	
 	double d = m_sdf->interpolate(0, scaled_x.template cast<double>(), &normal);
 	if (d == std::numeric_limits<Real>::max())
 		return false;

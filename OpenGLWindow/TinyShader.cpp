@@ -1,6 +1,6 @@
-﻿#include <cmath>
+﻿#include <math.h>
 #include <limits>
-#include <cstdlib>
+ 
 #include "TinyShader.h"
 #include "tgaimage.h"
 #include "model.h"

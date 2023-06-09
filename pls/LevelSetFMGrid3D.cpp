@@ -235,7 +235,7 @@ void LevelSetFMGrid3D::CheckBehind(double& phi, int& a, bool& flag, int check,
 				flag = 1;
 			}
 			else
-				phi = std::min(grid[index].value, phi);
+				phi = min(grid[index].value, phi);
 		}
 	}
 }
@@ -468,7 +468,7 @@ flag[3] = 1;
 
 void LevelSetFMGrid::FindQuadCoef(double quadCoef [], double phif, double phib, bool flag []) {
 if(flag[1] & flag[3])
-SOQuadCoef(quadCoef, std::min(phif, phib));
+SOQuadCoef(quadCoef, min(phif, phib));
 else if(flag[1] & !flag[2])
 SOQuadCoef(quadCoef, phif);
 else if(!flag[0] & flag[3])
@@ -486,7 +486,7 @@ else
 FOQuadCoef(quadCoef, phif);
 }
 else if(flag[0] & flag[2])
-FOQuadCoef(quadCoef, std::min(phif, phib));
+FOQuadCoef(quadCoef, min(phif, phib));
 else if(flag[0] & !flag[2])
 FOQuadCoef(quadCoef, phif);
 else if(!flag[0] & flag[2])

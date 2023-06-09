@@ -12,7 +12,7 @@
 #include <Eigen/Core>
 #include <Eigen/Dense>
 #include <Eigen/Sparse>
-#include "surftrack.h"
+#include "Bullet3Common/geometry.h"
 
 typedef Eigen::Matrix<double, 4, 4> EigenMat4d;
 typedef Eigen::Matrix<double, 3, 3> EigenMat3d;
@@ -29,8 +29,16 @@ typedef Eigen::Matrix<size_t, 3, 1> EigenVec3st;
 
 typedef Eigen::SparseMatrix<double> EigenSparseMatrix;
 
-EigenVec3d vc(const Vec3d & v);
-Vec3d vc(const EigenVec3d & v);
+inline EigenVec3d vc(const Vec3d & v)
+{
+    return EigenVec3d(v[0], v[1], v[2]);
+}
+
+
+inline Vec3d vc(const EigenVec3d & v)
+{
+    return Vec3d(v[0], v[1], v[2]);
+}
 
 class Vec2iComp
 {

@@ -7,7 +7,7 @@
 
 using namespace Utilities;
 using namespace GenParam;
-using namespace std;
+
 
 
 void SceneLoaderSPH::readScene(const char *fileName, Scene &scene)
@@ -117,7 +117,7 @@ void SceneLoaderSPH::readScene(const char *fileName, Scene &scene)
 				data->mapThickness = 0.0;
 				readValue(boundaryModel["mapThickness"], data->mapThickness);
 
-				data->mapResolution = Eigen::Matrix<unsigned int, 3, 1>(20, 20, 20);
+				data->mapResolution = Vec3ui(20, 20, 20);
 				readVector(boundaryModel["mapResolution"], data->mapResolution);
 
 
@@ -423,7 +423,7 @@ void SceneLoaderSPH::readMaterialParameterObject(const std::string &key, Paramet
 		nlohmann::json materials = m_jsonData["Materials"];
 		for (auto& material : materials)
 		{
-			string id = "";
+            std::string id = "";
 			readValue(material["id"], id);
 
 			if (key == id)

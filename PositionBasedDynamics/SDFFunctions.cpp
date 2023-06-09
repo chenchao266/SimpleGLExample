@@ -1,9 +1,9 @@
-#include "SDFFunctions.h"
+﻿#include "SDFFunctions.h"
 #include "Timing.h"
 #include "OBJLoader.h"
 
 using namespace Eigen;
-using namespace std;
+
 using namespace Utilities;
 
 AlignedBox3r SDFFunctions::computeBoundingBox(const unsigned int numVertices, const Vector3r *vertices)
@@ -25,7 +25,7 @@ AlignedBox3r SDFFunctions::computeBoundingBox(const unsigned int numVertices, co
 double SDFFunctions::distance(Discregrid::CubicLagrangeDiscreteGrid* sdf, const Vector3r &x, 
 	const Real thickness, Vector3r &normal, Vector3r &nextSurfacePoint)
 {
-	Eigen::Vector3d n;
+	EigenVec3d n;
 	const double dist = sdf->interpolate(0, x.template cast<double>(), &n);
 	if (dist == std::numeric_limits<double>::max())
 		return dist;
@@ -48,7 +48,7 @@ double SDFFunctions::distance(Discregrid::CubicLagrangeDiscreteGrid* sdf, const 
 
 Discregrid::CubicLagrangeDiscreteGrid* SDFFunctions::generateSDF(const unsigned int numVertices,
 	const Vector3r *vertices, const unsigned int numFaces, const unsigned int *faces,
-	const AlignedBox3r &bbox, const std::array<unsigned int, 3> &resolution, const bool invert)
+	const AlignedBox3r &bbox, const Vec3ui &resolution, const bool invert)
 {
 	START_TIMING("SDF Generation");
 	//////////////////////////////////////////////////////////////////////////
@@ -70,15 +70,15 @@ Discregrid::CubicLagrangeDiscreteGrid* SDFFunctions::generateSDF(const unsigned 
 	Eigen::AlignedBox3d domain;
 	domain.extend(bbox.min().cast<double>());
 	domain.extend(bbox.max().cast<double>());
-	domain.max() += 1.0e-3 * domain.diagonal().norm() * Eigen::Vector3d::Ones();
-	domain.min() -= 1.0e-3 * domain.diagonal().norm() * Eigen::Vector3d::Ones();
+	domain.max() += 1.0e-3 * domain.diagonal().norm() * EigenVec3d::Ones();
+	domain.min() -= 1.0e-3 * domain.diagonal().norm() * EigenVec3d::Ones();
 
 	Discregrid::CubicLagrangeDiscreteGrid *distanceField = new Discregrid::CubicLagrangeDiscreteGrid(domain, resolution);
 	auto func = Discregrid::DiscreteGrid::ContinuousFunction{};
 	Real factor = 1.0;
 	if (invert)
 		factor = -1.0;
-	func = [&md,&factor](Eigen::Vector3d const& xi) {return factor * md.signedDistanceCached(xi); };
+	func = [&md,&factor](EigenVec3d const& xi) {return factor * md.signedDistanceCached(xi); };
 
 	distanceField->addFunction(func, false);
 	STOP_TIMING_PRINT;

@@ -1,4 +1,4 @@
-#ifndef _SIMPLECOLLISIONDETECTION_H
+﻿#ifndef _SIMPLECOLLISIONDETECTION_H
 #define _SIMPLECOLLISIONDETECTION_H
 
 #include "Common.h"
@@ -23,9 +23,9 @@ namespace PBD
 			DistanceFieldCollisionObject() { m_testMesh = true; m_invertSDF = 1.0; }
 			virtual ~DistanceFieldCollisionObject() {}
 			virtual bool collisionTest(const Vector3r &x, const Real tolerance, Vector3r &cp, Vector3r &n, Real &dist, const Real maxDist = 0.0);
-			virtual void approximateNormal(const Eigen::Vector3d &x, const Real tolerance, Vector3r &n);
+			virtual void approximateNormal(const EigenVec3d &x, const Real tolerance, Vector3r &n);
 
-			virtual double distance(const Eigen::Vector3d &x, const Real tolerance) = 0;
+			virtual double distance(const EigenVec3d &x, const Real tolerance) = 0;
 			void initTetBVH(const Vector3r *vertices, const unsigned int numVertices, const unsigned int *indices, const unsigned int numTets, const Real tolerance);
 		};
 
@@ -36,7 +36,7 @@ namespace PBD
 			virtual ~DistanceFieldCollisionObjectWithoutGeometry() {}
 			virtual int &getTypeId() const { return TYPE_ID; }
 			virtual bool collisionTest(const Vector3r &x, const Real tolerance, Vector3r &cp, Vector3r &n, Real &dist, const Real maxDist = 0.0) { return false; }
-			virtual double distance(const Eigen::Vector3d &x, const Real tolerance) { return 0.0; }
+			virtual double distance(const EigenVec3d &x, const Real tolerance) { return 0.0; }
 		};
 
 		struct DistanceFieldCollisionBox : public DistanceFieldCollisionObject
@@ -46,7 +46,7 @@ namespace PBD
 
 			virtual ~DistanceFieldCollisionBox() {}
 			virtual int &getTypeId() const { return TYPE_ID; }
-			virtual double distance(const Eigen::Vector3d &x, const Real tolerance);
+			virtual double distance(const EigenVec3d &x, const Real tolerance);
 		};
 
 		struct DistanceFieldCollisionSphere : public DistanceFieldCollisionObject
@@ -57,7 +57,7 @@ namespace PBD
 			virtual ~DistanceFieldCollisionSphere() {}
 			virtual int &getTypeId() const { return TYPE_ID; }
 			virtual bool collisionTest(const Vector3r &x, const Real tolerance, Vector3r &cp, Vector3r &n, Real &dist, const Real maxDist = 0.0);
-			virtual double distance(const Eigen::Vector3d &x, const Real tolerance);
+			virtual double distance(const EigenVec3d &x, const Real tolerance);
 		};
 
 		struct DistanceFieldCollisionTorus : public DistanceFieldCollisionObject
@@ -67,7 +67,7 @@ namespace PBD
 
 			virtual ~DistanceFieldCollisionTorus() {}
 			virtual int &getTypeId() const { return TYPE_ID; }
-			virtual double distance(const Eigen::Vector3d &x, const Real tolerance);
+			virtual double distance(const EigenVec3d &x, const Real tolerance);
 		};
 
 		struct DistanceFieldCollisionCylinder : public DistanceFieldCollisionObject
@@ -77,7 +77,7 @@ namespace PBD
 
 			virtual ~DistanceFieldCollisionCylinder() {}
 			virtual int &getTypeId() const { return TYPE_ID; }
-			virtual double distance(const Eigen::Vector3d &x, const Real tolerance);
+			virtual double distance(const EigenVec3d &x, const Real tolerance);
 		};
 
 		struct DistanceFieldCollisionHollowSphere : public DistanceFieldCollisionObject
@@ -89,7 +89,7 @@ namespace PBD
 			virtual ~DistanceFieldCollisionHollowSphere() {}
 			virtual int &getTypeId() const { return TYPE_ID; }
 			virtual bool collisionTest(const Vector3r &x, const Real tolerance, Vector3r &cp, Vector3r &n, Real &dist, const Real maxDist = 0.0);
-			virtual double distance(const Eigen::Vector3d &x, const Real tolerance);
+			virtual double distance(const EigenVec3d &x, const Real tolerance);
 		};
 
 		struct DistanceFieldCollisionHollowBox : public DistanceFieldCollisionObject
@@ -100,7 +100,7 @@ namespace PBD
 
 			virtual ~DistanceFieldCollisionHollowBox() {}
 			virtual int &getTypeId() const { return TYPE_ID; }
-			virtual double distance(const Eigen::Vector3d &x, const Real tolerance);
+			virtual double distance(const EigenVec3d &x, const Real tolerance);
 		};
 
 		struct ContactData

@@ -1,9 +1,9 @@
-#ifndef BFSTREAM_H
+﻿#ifndef BFSTREAM_H
 #define BFSTREAM_H
 
-#include <cassert>
-#include <cstdarg>
-#include <cstdlib>
+#include <assert.h>
+#include <stdarg.h>
+ 
 #include <fstream>
 
 #undef __LITTLE_ENDIAN__

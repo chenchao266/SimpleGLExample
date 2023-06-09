@@ -152,9 +152,9 @@ void RigidBody::UpdateMomenta(const float deltaT, const float terminalMomentum)
 	for (int i = 0; i < 3; ++i)
 	{
 		if (linear_momentum_[i] > 0.0f)
-			linear_momentum_[i] = MIN(linear_momentum_[i],terminalMomentum);	
+			linear_momentum_[i] = min(linear_momentum_[i],terminalMomentum);	
 		else
-			linear_momentum_[i] = MAX(linear_momentum_[i],-terminalMomentum);
+			linear_momentum_[i] = max(linear_momentum_[i],-terminalMomentum);
 	}
 
 	angular_momentum_ += torque_ * deltaT;

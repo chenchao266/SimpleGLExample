@@ -1,4 +1,4 @@
-#ifndef _CubicSDFCollisionDetection_H
+﻿#ifndef _CubicSDFCollisionDetection_H
 #define _CubicSDFCollisionDetection_H
 
 #include "Common.h"
@@ -28,7 +28,7 @@ namespace PBD
 			virtual ~CubicSDFCollisionObject();
 			virtual int &getTypeId() const { return TYPE_ID; }
 			virtual bool collisionTest(const Vector3r &x, const Real tolerance, Vector3r &cp, Vector3r &n, Real &dist, const Real maxDist = 0.0);
-			virtual double distance(const Eigen::Vector3d &x, const Real tolerance);
+			virtual double distance(const EigenVec3d &x, const Real tolerance);
 		};
 
 	public:

@@ -1,4 +1,5 @@
 ﻿#include "FastMarch2D.h"
+#include "Bullet3Common/geometry.h"
 
 FastMarch2D::FastMarch2D(int nx,int ny, Double hi) 
     : Nx(nx), Ny(ny), h(hi), hInv(1./hi), size((nx+2)*(ny+2)), NxInv(1./(nx+2))
@@ -80,12 +81,12 @@ void FastMarch2D::Initialize() {
                 if(flag >= 0) {
                     grid[ci].DoneFlag = 1;
                     AddClose(GI(i,j+1));
-                    grid[ci].value = std::min(grid[ci].value, abs(h + grid[pi].value));
+                    grid[ci].value = min(grid[ci].value, abs(h + grid[pi].value));
                 }
                 else {
                     grid[pi].DoneFlag = 1;
                     AddClose(GI(i,j-2));
-                    grid[pi].value = std::min(grid[pi].value, abs(h + grid[ci].value));
+                    grid[pi].value = min(grid[pi].value, abs(h + grid[ci].value));
                 }
             }
         }
@@ -104,12 +105,12 @@ void FastMarch2D::Initialize() {
                 if(flag >= 0) {
                     grid[ci].DoneFlag = 1;
                     AddClose(GI(i+1,j));
-                    grid[ci].value = std::min(grid[ci].value, abs(h + grid[pi].value));
+                    grid[ci].value = min(grid[ci].value, abs(h + grid[pi].value));
                 }
                 else {
                     grid[pi].DoneFlag = 1;
                     AddClose(GI(i-2,j));
-                    grid[pi].value = std::min(grid[pi].value, abs(h + grid[ci].value));
+                    grid[pi].value = min(grid[pi].value, abs(h + grid[ci].value));
                 }
             }
 		}
@@ -182,7 +183,7 @@ inline void FastMarch2D::CheckBehind(Double& phi, int& a, bool& flag, int index)
 {
 	if(grid[index].DoneFlag == 1) {
 		if(!flag) { phi = grid[index].value; a++; }
-		else phi = std::min(grid[index].value, phi);
+		else phi = min(grid[index].value, phi);
         flag = 1;
 	}
 }

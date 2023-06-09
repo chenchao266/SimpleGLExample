@@ -656,13 +656,13 @@ bool EdgeSplitter::split_edge( size_t edge, size_t& result_vert, bool ignore_bad
     
     double min_current_angle = 2*M_PI;
     for(size_t i = 0; i < incident_tris.size(); ++i) {
-        min_current_angle = std::min( min_current_angle, min_triangle_angle( va, vb, other_vert_pos[i] ) );
+        min_current_angle = min( min_current_angle, min_triangle_angle( va, vb, other_vert_pos[i] ) );
     }
     
     double min_new_angle = 2*M_PI;
     for(size_t i = 0; i < other_vert_pos.size(); ++i) {
-        min_new_angle = std::min( min_new_angle, min_triangle_angle( va, new_vertex_proposed_final_position, other_vert_pos[i] ) );
-        min_new_angle = std::min( min_new_angle, min_triangle_angle( vb, new_vertex_proposed_final_position, other_vert_pos[i] ) );
+        min_new_angle = min( min_new_angle, min_triangle_angle( va, new_vertex_proposed_final_position, other_vert_pos[i] ) );
+        min_new_angle = min( min_new_angle, min_triangle_angle( vb, new_vertex_proposed_final_position, other_vert_pos[i] ) );
     }
     
     if ( !ignore_bad_angles && rad2deg(min_new_angle) < m_surf.m_min_triangle_angle )
@@ -676,14 +676,14 @@ bool EdgeSplitter::split_edge( size_t edge, size_t& result_vert, bool ignore_bad
     
     double max_current_angle = 0;
     for(size_t i = 0; i < incident_tris.size(); ++i) {
-        max_current_angle = std::max( max_current_angle, max_triangle_angle( va, vb, other_vert_pos[i] ) );
+        max_current_angle = max( max_current_angle, max_triangle_angle( va, vb, other_vert_pos[i] ) );
     }
     
     double max_new_angle = 0;
     
     for(size_t i = 0; i < other_vert_pos.size(); ++i) {
-        max_new_angle = std::max( max_new_angle, max_triangle_angle( va, new_vertex_proposed_final_position, other_vert_pos[i] ) );
-        max_new_angle = std::max( max_new_angle, max_triangle_angle( vb, new_vertex_proposed_final_position, other_vert_pos[i] ) );
+        max_new_angle = max( max_new_angle, max_triangle_angle( va, new_vertex_proposed_final_position, other_vert_pos[i] ) );
+        max_new_angle = max( max_new_angle, max_triangle_angle( vb, new_vertex_proposed_final_position, other_vert_pos[i] ) );
     }
     
     // if new angle is greater than the allowed angle, and doesn't
@@ -844,7 +844,7 @@ bool EdgeSplitter::edge_length_needs_split(size_t edge_index) {
         
         double curvature_value = get_edge_curvature( m_surf, vertex_a, vertex_b );
         int circlesegs = 16;
-        double curvature_max_length = 2*M_PI / (double)circlesegs / std::max(curvature_value, 1e-8);
+        double curvature_max_length = 2*M_PI / (double)circlesegs / max(curvature_value, 1e-8);
         
         //split if curvature dictates
         if(edge_length > curvature_max_length)
@@ -854,10 +854,10 @@ bool EdgeSplitter::edge_length_needs_split(size_t edge_index) {
         //this enforces slow grading of the mesh.
         double min_nbr_len = edge_length;
         for(size_t edge_id = 0; edge_id < m_surf.m_mesh.m_vertex_to_edge_map[vertex_a].size(); ++edge_id) {
-            min_nbr_len = std::min(min_nbr_len, m_surf.get_edge_length(m_surf.m_mesh.m_vertex_to_edge_map[vertex_a][edge_id]));
+            min_nbr_len = min(min_nbr_len, m_surf.get_edge_length(m_surf.m_mesh.m_vertex_to_edge_map[vertex_a][edge_id]));
         }
         for(size_t edge_id = 0; edge_id < m_surf.m_mesh.m_vertex_to_edge_map[vertex_b].size(); ++edge_id) {
-            min_nbr_len = std::min(min_nbr_len, m_surf.get_edge_length(m_surf.m_mesh.m_vertex_to_edge_map[vertex_b][edge_id]));
+            min_nbr_len = min(min_nbr_len, m_surf.get_edge_length(m_surf.m_mesh.m_vertex_to_edge_map[vertex_b][edge_id]));
         }
         
         if(edge_length > min_nbr_len * 3)

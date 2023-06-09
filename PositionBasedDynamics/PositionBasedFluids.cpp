@@ -35,7 +35,7 @@ bool PositionBasedFluids::computePBFDensity(
 		}
 	}
 
-	density_err = std::max(density, density0) - density0;
+	density_err = max(density, density0) - density0;
 	return true;
 }
 
@@ -57,7 +57,7 @@ bool PositionBasedFluids::computePBFLagrangeMultiplier(
 	const Real eps = static_cast<Real>(1.0e-6);
 
 	// Evaluate constraint function
-	const Real C = std::max(density / density0 - static_cast<Real>(1.0), static_cast<Real>(0.0));			// clamp to prevent particle clumping at surface
+	const Real C = max(density / density0 - static_cast<Real>(1.0), static_cast<Real>(0.0));			// clamp to prevent particle clumping at surface
 
 	if (C != 0.0)
 	{

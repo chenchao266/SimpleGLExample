@@ -26,10 +26,10 @@
 /*   For the PCISPH, please refer to the paper "Predictive-Corrective Incompressible SPH"   */
 /********************************************************************************************/
 
-#include <cstring>
-#include <cassert>
-#include <cstdio>
-#include <cmath>
+#include <string.h>
+#include <assert.h>
+#include <stdio.h>
+#include <math.h>
 
 #include "cudaSPH_Include.h"
  	

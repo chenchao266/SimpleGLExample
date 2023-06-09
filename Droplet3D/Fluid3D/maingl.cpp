@@ -11,7 +11,7 @@
 //Simple viewer for liquid simulator data
 //Hold shift and use the mouse buttons to manipulate the camera
 
-using namespace std;
+//using namespace std;
 
 string frame_number="frame 0";
 

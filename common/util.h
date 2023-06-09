@@ -3,13 +3,12 @@
 
 #include <algorithm>
 #include <array3.h>
-#include <climits>
-#include <cmath>
+#include <limits.h>
+#include <math.h>
 #include <iostream>
 #include <vector>
-#include <cstdio>
-#include <cstdlib>
-#include <ctime>
+
+#include <time.h>
 #include "Bullet3Common/geometry.h"
 
 #ifndef M_PI

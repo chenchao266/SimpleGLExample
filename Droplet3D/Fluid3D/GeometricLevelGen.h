@@ -8,7 +8,7 @@
 #include "tbb/tbb.h"
 #include "util.h"
 #include "vec.h"
-#include <cmath>
+#include <math.h>
 #include "sparse_matrix.h"
 #include "blas_wrapper.h"
 

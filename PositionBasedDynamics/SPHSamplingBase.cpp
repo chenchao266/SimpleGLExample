@@ -12,7 +12,7 @@
 
 using namespace SPH;
 using namespace Eigen;
-using namespace std;
+
 using namespace Utilities;
 
 SPHSamplingBase::SPHSamplingBase() :
@@ -311,7 +311,7 @@ void SPHSamplingBase::pressureSolveIteration(Real &avg_density_err)
 				const Vector3r& xj = m_x[neighborIndex];
 				const Vector3r grad_p_j = -m_volume * m_gradKernelFct(xi - xj);
 
-				//const Real b_j = std::max(densities[neighborIndex] / density0 - static_cast<Real>(1.0), static_cast<Real>(0.0)); 
+				//const Real b_j = max(densities[neighborIndex] / density0 - static_cast<Real>(1.0), static_cast<Real>(0.0)); 
 				const Real b_j = m_densities[neighborIndex] / m_density0 - static_cast<Real>(1.0);
 				const Real kj = b_j * m_factors[neighborIndex];
 				const Real kSum = ki + kj;

@@ -1,5 +1,5 @@
 ﻿#include <iostream>
-#include <cstdlib>
+
 #include <time.h>
 
 #include "UnifiedConstants.h"
@@ -241,7 +241,7 @@ void UnifiedConstants::setSimulationMethod(int method)
 
 void UnifiedConstants::computeGasConstAndTimeStep(float densityVariation)
 {
-	double maxParticleSpeed = 4.0; // max Speed in particular scene
+	float maxParticleSpeed = 4.0; // max Speed in particular scene
 	courantFactor = 0.4;
 
 	if(densityVariation >= 1.0)
@@ -253,14 +253,14 @@ void UnifiedConstants::computeGasConstAndTimeStep(float densityVariation)
 		// set WCSPH params
 		fluidGasConstantWCSPH = 2000; //  set gasConst according to density error (manually tuned for particular Siggraph scene) square(V_f)/square(C_s) = 1%  vf = sqrt(2*g*Height) refer to "Weakly compressible SPH for free surface flows"
 		speedOfSound = sqrt(fluidGasConstantWCSPH);
-		relevantSpeed = MAX(speedOfSound, maxParticleSpeed);	
+		relevantSpeed = max(speedOfSound, maxParticleSpeed);	
 		deltaT_wcsph = courantFactor * globalSupportRadius / relevantSpeed;
 		deltaT = deltaT_wcsph;
 
 		// set SPH params
 		fluidGasConst = 1000;
 		speedOfSound = sqrt(fluidGasConst);
-		relevantSpeed = MAX(speedOfSound, maxParticleSpeed);	
+		relevantSpeed = max(speedOfSound, maxParticleSpeed);	
 		deltaT_sph = courantFactor * globalSupportRadius / relevantSpeed;
 		deltaT = deltaT_sph;
 	}
@@ -273,14 +273,14 @@ void UnifiedConstants::computeGasConstAndTimeStep(float densityVariation)
 		// set WCSPH params
 		fluidGasConstantWCSPH = 6000000; // set gasConst according to density error (manually tuned for particular Siggraph scene)
 		speedOfSound = sqrt(fluidGasConstantWCSPH);
-		relevantSpeed = MAX(speedOfSound, maxParticleSpeed);	
+		relevantSpeed = max(speedOfSound, maxParticleSpeed);	
 		deltaT_wcsph = courantFactor * globalSupportRadius / relevantSpeed;
 		deltaT = deltaT_wcsph;	
 
 		// set SPH params
 		fluidGasConst = 1000;
 		speedOfSound = sqrt(fluidGasConst);
-		relevantSpeed = MAX(speedOfSound, maxParticleSpeed);	
+		relevantSpeed = max(speedOfSound, maxParticleSpeed);	
 		deltaT_sph = courantFactor * globalSupportRadius / relevantSpeed;
 		deltaT = deltaT_sph;
 	}	

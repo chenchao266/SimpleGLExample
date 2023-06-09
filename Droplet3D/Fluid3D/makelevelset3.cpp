@@ -22,7 +22,7 @@ static float point_triangle_distance(const Vec3f &x0, const Vec3f &x1, const Vec
    // first find barycentric coordinates of closest point on infinite plane
    Vec3f x13(x1-x3), x23(x2-x3), x03(x0-x3);
    float m13= (x13).norm2(), m23= (x23).norm2(), d= (x13).dot(x23);
-   float invdet=1.f/ std::max(m13*m23-d*d,1e-30f);
+   float invdet=1.f/ max(m13*m23-d*d,1e-30f);
    float a=(x13).dot(x03), b= (x23).dot(x03);
    // the barycentric coordinates themselves
    float w23=invdet*(m23*a-d*b);
@@ -32,11 +32,11 @@ static float point_triangle_distance(const Vec3f &x0, const Vec3f &x1, const Vec
       return dist(x0, w23*x1+w31*x2+w12*x3); 
    }else{ // we have to clamp to one of the edges
       if(w23>0) // this rules out edge 2-3 for us
-         return std::min(point_segment_distance(x0,x1,x2), point_segment_distance(x0,x1,x3));
+         return min(point_segment_distance(x0,x1,x2), point_segment_distance(x0,x1,x3));
       else if(w31>0) // this rules out edge 1-3
-         return std::min(point_segment_distance(x0,x1,x2), point_segment_distance(x0,x2,x3));
+         return min(point_segment_distance(x0,x1,x2), point_segment_distance(x0,x2,x3));
       else // w12 must be >0, ruling out edge 1-2
-         return std::min(point_segment_distance(x0,x1,x3), point_segment_distance(x0,x2,x3));
+         return min(point_segment_distance(x0,x1,x3), point_segment_distance(x0,x2,x3));
    }
 }
 

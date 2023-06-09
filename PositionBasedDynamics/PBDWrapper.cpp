@@ -16,7 +16,7 @@
 
 
 using namespace Eigen;
-using namespace std;
+
 
 
 PBDWrapper::PBDWrapper()
@@ -222,7 +222,7 @@ void PBDWrapper::readScene(const std::string &sceneFileName, const std::vector< 
 	}
 
 	// map file names to loaded geometry to prevent multiple imports of same files
-	std::map<std::string, pair<PBD::VertexData, Utilities::IndexedFaceMesh>> objFiles;
+	std::map<std::string, std::pair<PBD::VertexData, Utilities::IndexedFaceMesh>> objFiles;
 	std::map<std::string, PBD::CubicSDFCollisionDetection::GridPtr> distanceFields;
 	for (unsigned int i = 0; i < data.m_rigidBodyData.size(); i++)
 	{
@@ -239,10 +239,10 @@ void PBDWrapper::readScene(const std::string &sceneFileName, const std::vector< 
 		}
 
 		const std::string basePath = Utilities::FileSystem::getFilePath(sceneFileName);
-		const string cachePath = basePath + "/Cache";
-		const string resStr = to_string(rbd.m_resolutionSDF[0]) + "_" + to_string(rbd.m_resolutionSDF[1]) + "_" + to_string(rbd.m_resolutionSDF[2]);
+		const  std::string cachePath = basePath + "/Cache";
+		const  std::string resStr = std::to_string(rbd.m_resolutionSDF[0]) + "_" + std::to_string(rbd.m_resolutionSDF[1]) + "_" + std::to_string(rbd.m_resolutionSDF[2]);
 		const std::string modelFileName = Utilities::FileSystem::getFileNameWithExt(rbd.m_modelFile);
-		const string sdfFileName = Utilities::FileSystem::normalizePath(cachePath + "/" + modelFileName + "_" + resStr + ".csdf");
+		const  std::string sdfFileName = Utilities::FileSystem::normalizePath(cachePath + "/" + modelFileName + "_" + resStr + ".csdf");
 
 		std::string sdfKey = rbd.m_collisionObjectFileName;
 		if (sdfKey == "")
@@ -257,14 +257,14 @@ void PBDWrapper::readScene(const std::string &sceneFileName, const std::vector< 
 				if (rbd.m_collisionObjectFileName == "")
 				{
 					std::string md5FileName = Utilities::FileSystem::normalizePath(cachePath + "/" + modelFileName + ".md5");
-					string md5Str = Utilities::FileSystem::getFileMD5(rbd.m_modelFile);
+                    std::string md5Str = Utilities::FileSystem::getFileMD5(rbd.m_modelFile);
 					bool md5 = false;
 					if (Utilities::FileSystem::fileExists(md5FileName))
 						md5 = Utilities::FileSystem::checkMD5(md5Str, md5FileName);
 
 					// check MD5 if cache file is available
-					const string resStr = to_string(rbd.m_resolutionSDF[0]) + "_" + to_string(rbd.m_resolutionSDF[1]) + "_" + to_string(rbd.m_resolutionSDF[2]);
-					const string sdfFileName = Utilities::FileSystem::normalizePath(cachePath + "/" + modelFileName + "_" + resStr + ".csdf");
+					const  std::string resStr = std::to_string(rbd.m_resolutionSDF[0]) + "_" + std::to_string(rbd.m_resolutionSDF[1]) + "_" + std::to_string(rbd.m_resolutionSDF[2]);
+					const  std::string sdfFileName = Utilities::FileSystem::normalizePath(cachePath + "/" + modelFileName + "_" + resStr + ".csdf");
 					bool foundCacheFile = Utilities::FileSystem::fileExists(sdfFileName);
 
 					if (foundCacheFile && md5)
@@ -297,13 +297,13 @@ void PBDWrapper::readScene(const std::string &sceneFileName, const std::vector< 
 						{
 							domain.extend(x);
 						}
-						domain.max() += 0.1 * Eigen::Vector3d::Ones();
-						domain.min() -= 0.1 * Eigen::Vector3d::Ones();
+						domain.max() += 0.1 * EigenVec3d::Ones();
+						domain.min() -= 0.1 * EigenVec3d::Ones();
 
 						LOG_INFO << "Set SDF resolution: " << rbd.m_resolutionSDF[0] << ", " << rbd.m_resolutionSDF[1] << ", " << rbd.m_resolutionSDF[2];
-						distanceFields[sdfFileName] = std::make_shared<PBD::CubicSDFCollisionDetection::Grid>(domain, std::array<unsigned int, 3>({ rbd.m_resolutionSDF[0], rbd.m_resolutionSDF[1], rbd.m_resolutionSDF[2] }));
+						distanceFields[sdfFileName] = std::make_shared<PBD::CubicSDFCollisionDetection::Grid>(domain, Vec3ui( rbd.m_resolutionSDF[0], rbd.m_resolutionSDF[1], rbd.m_resolutionSDF[2] ));
 						auto func = Discregrid::DiscreteGrid::ContinuousFunction{};
-						func = [&md](Eigen::Vector3d const& xi) {return md.signedDistanceCached(xi); };
+						func = [&md](EigenVec3d const& xi) {return md.signedDistanceCached(xi); };
 						LOG_INFO << "Generate SDF for " << rbd.m_modelFile;
 						distanceFields[sdfFileName]->addFunction(func, true);
 						if (Utilities::FileSystem::makeDir(cachePath) == 0)
@@ -413,10 +413,10 @@ void PBDWrapper::readScene(const std::string &sceneFileName, const std::vector< 
 			if (rbd.m_collisionObjectFileName == "")
 			{
 				const std::string basePath = Utilities::FileSystem::getFilePath(sceneFileName);
-				const string cachePath = basePath + "/Cache";
-				const string resStr = to_string(rbd.m_resolutionSDF[0]) + "_" + to_string(rbd.m_resolutionSDF[1]) + "_" + to_string(rbd.m_resolutionSDF[2]);
+				const  std::string cachePath = basePath + "/Cache";
+				const  std::string resStr = std::to_string(rbd.m_resolutionSDF[0]) + "_" + std::to_string(rbd.m_resolutionSDF[1]) + "_" + std::to_string(rbd.m_resolutionSDF[2]);
 				const std::string modelFileName = Utilities::FileSystem::getFileNameWithExt(rbd.m_modelFile);
-				const string sdfFileName = Utilities::FileSystem::normalizePath(cachePath + "/" + modelFileName + "_" + resStr + ".csdf");
+				const  std::string sdfFileName = Utilities::FileSystem::normalizePath(cachePath + "/" + modelFileName + "_" + resStr + ".csdf");
 				m_cd.addCubicSDFCollisionObject(i, PBD::CollisionDetection::CollisionObject::RigidBodyCollisionObjectType, vertices.data(), nVert, distanceFields[sdfFileName], rbd.m_collisionObjectScale, rbd.m_testMesh, rbd.m_invertSDF);
 			}
 			else
@@ -431,7 +431,7 @@ void PBDWrapper::readScene(const std::string &sceneFileName, const std::vector< 
 	//////////////////////////////////////////////////////////////////////////
 
 	// map file names to loaded geometry to prevent multiple imports of same files
-	std::map<std::string, pair<PBD::VertexData, Utilities::IndexedFaceMesh>> triFiles;
+	std::map<std::string, std::pair<PBD::VertexData, Utilities::IndexedFaceMesh>> triFiles;
 	for (unsigned int i = 0; i < data.m_triangleModelData.size(); i++)
 	{
 		const Utilities::SceneLoader::TriangleModelData &tmd = data.m_triangleModelData[i];
@@ -489,17 +489,17 @@ void PBDWrapper::readScene(const std::string &sceneFileName, const std::vector< 
 	//////////////////////////////////////////////////////////////////////////
 
 	// map file names to loaded geometry to prevent multiple imports of same files
-	std::map<pair<string, string>, pair<vector<Vector3r>, vector<unsigned int>>> tetFiles;
+	std::map< std::pair< std::string, std::string>, std::pair< std::vector<Vector3r>, std::vector<unsigned int>>> tetFiles;
 	for (unsigned int i = 0; i < data.m_tetModelData.size(); i++)
 	{
 		const Utilities::SceneLoader::TetModelData &tmd = data.m_tetModelData[i];
 
 		// Check if already loaded
-		pair<string, string> fileNames = { tmd.m_modelFileNodes, tmd.m_modelFileElements };
+        std::pair< std::string, std::string> fileNames = { tmd.m_modelFileNodes, tmd.m_modelFileElements };
 		if (tetFiles.find(fileNames) == tetFiles.end())
 		{
-			vector<Vector3r> vertices;
-			vector<unsigned int> tets;
+            std::vector<Vector3r> vertices;
+            std::vector<unsigned int> tets;
 			Utilities::TetGenLoader::loadTetgenModel(Utilities::FileSystem::normalizePath(tmd.m_modelFileNodes), Utilities::FileSystem::normalizePath(tmd.m_modelFileElements), vertices, tets);
 			tetFiles[fileNames] = { vertices, tets };
 		}
@@ -511,15 +511,15 @@ void PBDWrapper::readScene(const std::string &sceneFileName, const std::vector< 
 	{
 		const Utilities::SceneLoader::TetModelData &tmd = data.m_tetModelData[i];
 
-		pair<string, string> fileNames = { tmd.m_modelFileNodes, tmd.m_modelFileElements };
+        std::pair< std::string, std::string> fileNames = { tmd.m_modelFileNodes, tmd.m_modelFileElements };
 		auto geo = tetFiles.find(fileNames);
 		if (geo == tetFiles.end())
 			continue;
 
 		tm_id_index2[tmd.m_id] = i;
 
-		vector<Vector3r> vertices = geo->second.first;
-		vector<unsigned int> &tets = geo->second.second;
+        std::vector<Vector3r> vertices = geo->second.first;
+        std::vector<unsigned int> &tets = geo->second.second;
 
 		const Matrix3r R = tmd.m_q.matrix();
 		for (unsigned int j = 0; j < vertices.size(); j++)

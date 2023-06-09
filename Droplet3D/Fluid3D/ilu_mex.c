@@ -1,4 +1,4 @@
-#include <stdlib.h>
+﻿
 #include "mex.h"
 
 /******************************************************************************
@@ -7,7 +7,7 @@
  * [l, u] = ilu_mex(a, level, omega, storage);
  *****************************************************************************/
 
-#define MIN(x,y) ((x)<(y) ? (x) : (y))
+//#define MIN(x,y) ((x)<(y) ? (x) : (y))
 
 void shell_sort(
   const int n,
@@ -193,7 +193,7 @@ void symbolic_ilu(
                     oldlst = nxtlst;
                     nxtlst = lnklst[oldlst];
                     newlev = curlev[row] + levels[ii] + 1;
-                    curlev[jau[ii]] = MIN(curlev[jau[ii]], newlev);
+                    curlev[jau[ii]] = std::min(curlev[jau[ii]], newlev);
                     ii++;
                 }
                 else /* (jau[ii] > nxtlst) */

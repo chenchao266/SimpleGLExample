@@ -387,9 +387,9 @@ bool FaceSplitter::split_face( size_t face, size_t& result_vertex, bool specify_
     const Vec3d& vc = m_surf.get_position( vertex_c );
     
     double min_new_angle = 2*M_PI;
-    min_new_angle = std::min( min_new_angle, min_triangle_angle( va, vb, new_vertex_position ) );
-    min_new_angle = std::min( min_new_angle, min_triangle_angle( vb, vc, new_vertex_position ) );
-    min_new_angle = std::min( min_new_angle, min_triangle_angle( vc, va, new_vertex_position ) );
+    min_new_angle = min( min_new_angle, min_triangle_angle( va, vb, new_vertex_position ) );
+    min_new_angle = min( min_new_angle, min_triangle_angle( vb, vc, new_vertex_position ) );
+    min_new_angle = min( min_new_angle, min_triangle_angle( vc, va, new_vertex_position ) );
     
     if ( rad2deg(min_new_angle) < m_surf.m_min_triangle_angle )
     {
@@ -400,9 +400,9 @@ bool FaceSplitter::split_face( size_t face, size_t& result_vertex, bool specify_
     double max_current_angle = max_triangle_angle(va, vb, vc);
     
     double max_new_angle = 0;
-    max_new_angle = std::min( max_new_angle, max_triangle_angle( va, vb, new_vertex_position ) );
-    max_new_angle = std::min( max_new_angle, max_triangle_angle( vb, vc, new_vertex_position ) );
-    max_new_angle = std::min( max_new_angle, max_triangle_angle( vc, va, new_vertex_position ) );
+    max_new_angle = min( max_new_angle, max_triangle_angle( va, vb, new_vertex_position ) );
+    max_new_angle = min( max_new_angle, max_triangle_angle( vb, vc, new_vertex_position ) );
+    max_new_angle = min( max_new_angle, max_triangle_angle( vc, va, new_vertex_position ) );
     
     // if new angle is greater than the allowed angle, and doesn't
     // improve the current max angle, prevent the split

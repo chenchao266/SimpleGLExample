@@ -6,6 +6,7 @@
  */
 
 #include <runstats.h>
+#include <eigenheaders.h>
 
 #include <commonoptions.h>
 #include <algorithm>
@@ -57,7 +58,7 @@ void RunStats::update_min_int( std::string name, int64_t value )
     int64_t current_min;
     bool exists = get_int( name, current_min );
     if ( !exists ) { current_min = value; }
-    int_stats[name] = std::min( value, current_min );
+    int_stats[name] = min( value, current_min );
 }
 
 void RunStats::update_max_int( std::string name, int64_t value )
@@ -65,7 +66,7 @@ void RunStats::update_max_int( std::string name, int64_t value )
     int64_t current_max;
     bool exists = get_int( name, current_max );
     if ( !exists ) { current_max = value; }
-    int_stats[name] = std::max( value, current_max );
+    int_stats[name] = max( value, current_max );
 }
 
 // ------------------------------------------------------------------
@@ -110,7 +111,7 @@ void RunStats::update_min_double( std::string name, double value )
     double current_min;
     bool exists = get_double( name, current_min );
     if ( !exists ) { current_min = value; }
-    double_stats[name] = std::min( value, current_min );
+    double_stats[name] = min( value, current_min );
 }
 
 void RunStats::update_max_double( std::string name, double value )
@@ -118,7 +119,7 @@ void RunStats::update_max_double( std::string name, double value )
     double current_max;
     bool exists = get_double( name, current_max );
     if ( !exists ) { current_max = value; }
-    double_stats[name] = std::max( value, current_max );
+    double_stats[name] = max( value, current_max );
 }
 
 // ------------------------------------------------------------------

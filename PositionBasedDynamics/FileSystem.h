@@ -43,7 +43,7 @@ namespace Utilities
 			size_t p1 = result.rfind('\\', result.length());
 			size_t p2 = result.rfind('/', result.length());
 			if ((p1 != std::string::npos) && (p2 != std::string::npos))
-				result = result.substr(0, std::max(p1, p2));
+				result = result.substr(0, max(p1, p2));
 			else if (p1 != std::string::npos)
 				result = result.substr(0, p1);
 			else if (p2 != std::string::npos)
@@ -64,7 +64,7 @@ namespace Utilities
 			size_t p1 = result.rfind('\\', result.length());
 			size_t p2 = result.rfind('/', result.length());
 			if ((p1 != std::string::npos) && (p2 != std::string::npos))
-				result = result.substr(std::max(p1, p2) + 1, result.length());
+				result = result.substr(max(p1, p2) + 1, result.length());
 			else if (p1 != std::string::npos)
 				result = result.substr(p1 + 1, result.length());
 			else if (p2 != std::string::npos)
@@ -80,7 +80,7 @@ namespace Utilities
 			size_t p1 = result.rfind('\\', result.length());
 			size_t p2 = result.rfind('/', result.length());
 			if ((p1 != std::string::npos) && (p2 != std::string::npos))
-				result = result.substr(std::max(p1, p2) + 1, result.length());
+				result = result.substr(max(p1, p2) + 1, result.length());
 			else if (p1 != std::string::npos)
 				result = result.substr(p1 + 1, result.length());
 			else if (p2 != std::string::npos)
@@ -220,7 +220,7 @@ namespace Utilities
 #else
 			char szTmp[32];
 			sprintf(szTmp, "/proc/%d/exe", getpid());
-			int bytes = std::min((int)readlink(szTmp, buffer, 1000), 999);
+			int bytes = min((int)readlink(szTmp, buffer, 1000), 999);
 			buffer[bytes] = '\0';
 #endif
 			std::string::size_type pos = std::string(buffer).find_last_of("\\/");

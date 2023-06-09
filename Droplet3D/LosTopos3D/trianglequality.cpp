@@ -218,7 +218,7 @@ double inv_min_radius_curvature( const SurfTrack& surf, size_t vertex )
         //      min_radius = min( min_radius, radius );
         
         double inv_radius = 2.0 *  ( normal).dot(P ) /  ( P).dot(P );
-        inv_min_radius = std::max( inv_min_radius, inv_radius );
+        inv_min_radius = max( inv_min_radius, inv_radius );
         
     }
     
@@ -351,7 +351,7 @@ double estimated_max_curvature(const SurfTrack& surf, size_t vertex) {
     double eigenvalues[2];
     double work[10];
     LAPACK::get_eigen_decomposition( &n, shapeOperator.ptr(), &n, eigenvalues, work, &lwork, &info ); 
-    double max_curvature = std::max(std::fabs(eigenvalues[0]), std::fabs(eigenvalues[1]));
+    double max_curvature = max(std::fabs(eigenvalues[0]), std::fabs(eigenvalues[1]));
     
     return max_curvature;
     
@@ -413,8 +413,8 @@ double get_curvature_scaled_length(const SurfTrack& surf,
     
 
     curv_a /= rest_curvature;
-    curv_a = std::max( min_curvature_multiplier, curv_a );
-    curv_a = std::min( max_curvature_multiplier, curv_a );
+    curv_a = max( min_curvature_multiplier, curv_a );
+    curv_a = min( max_curvature_multiplier, curv_a );
     
     //std::cout << "Curv a: " << curv_a << std::endl;
 
@@ -425,8 +425,8 @@ double get_curvature_scaled_length(const SurfTrack& surf,
 #endif
     
     curv_b /= rest_curvature;
-    curv_b = std::max( min_curvature_multiplier, curv_b );
-    curv_b = std::min( max_curvature_multiplier, curv_b );
+    curv_b = max( min_curvature_multiplier, curv_b );
+    curv_b = min( max_curvature_multiplier, curv_b );
     
     //std::cout << "Curv b: " << curv_b << std::endl;
 
@@ -467,7 +467,7 @@ double get_edge_curvature(const SurfTrack& surf,
   double curv_b = unsigned_vertex_mean_curvature( vertex_b, surf );
 #endif
 
-  return std::max(curv_a, curv_b);//0.5 * ( curv_a + curv_b );
+  return max(curv_a, curv_b);//0.5 * ( curv_a + curv_b );
 
 }
 
@@ -487,7 +487,7 @@ double min_triangle_area( const SurfTrack& surf )
         if ( surf.triangle_is_all_solid(i) ) { continue; }
         
         double area = surf.get_triangle_area(i);
-        min_area = std::min( area, min_area );
+        min_area = min( area, min_area );
     }
     
     return min_area;
@@ -514,7 +514,7 @@ double min_triangle_angle( const SurfTrack& surf )
         
         double curr_min_angle = min_triangle_angle( a, b, c );
         
-        min_angle = std::min( curr_min_angle, min_angle );
+        min_angle = min( curr_min_angle, min_angle );
     }
     
     return min_angle;
@@ -542,7 +542,7 @@ double max_triangle_angle( const SurfTrack& surf )
         
         double curr_max_angle = max_triangle_angle( a, b, c );
         
-        max_angle = std::max( curr_max_angle, max_angle );
+        max_angle = max( curr_max_angle, max_angle );
     }
     
     return max_angle;

@@ -53,7 +53,7 @@ void BroadPhaseGrid::build_acceleration_grid( AccelerationGrid& grid,
     {
         update_minmax(xmins[i], xmin, xmax);
         update_minmax(xmaxs[i], xmin, xmax);
-        maxdistance = std::max(maxdistance,  (xmaxs[i] - xmins[i]).norm());
+        maxdistance = max(maxdistance,  (xmaxs[i] - xmins[i]).norm());
     }
     
     for(unsigned int i = 0; i < 3; i++)

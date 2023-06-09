@@ -30,9 +30,9 @@ float box_phi(const Vec3f& position, const Vec3f & centre, Vec3f & b)
 
 
 	Vec3f p = position - centre;
-	Vec3f d = (p).fabs() - b;
-	return std::min(std::max(d[0], std::max(d[1],d[2])),0.0f)
-		+ dist(Vec3f(std::max(d[0],0.0f), std::max(d[1],0.0f), std::max(d[2],0.0f)),Vec3f(0,0,0));
+	Vec3f d = (p).abs() - b;
+	return min(max(d[0], max(d[1],d[2])),0.0f)
+		+ dist(Vec3f(max(d[0],0.0f), max(d[1],0.0f), max(d[2],0.0f)),Vec3f(0,0,0));
 }
 
 float sphere_phi(const Vec3f& position, const Vec3f& centre, float radius) {

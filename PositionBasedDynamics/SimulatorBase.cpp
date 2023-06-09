@@ -35,7 +35,7 @@ INIT_TIMING
 INIT_COUNTING
 
 using namespace SPH;
-using namespace std;
+
 using namespace GenParam;
 using namespace Utilities;
 
@@ -59,7 +59,7 @@ int SimulatorBase::ENUM_WALLS_GEOMETRY_NO_WALLS = -1;
  
 SimulatorBase::SimulatorBase()
 {
-	Utilities::logger.addSink(unique_ptr<Utilities::ConsoleSink>(new Utilities::ConsoleSink(Utilities::LogLevel::INFO)));
+	Utilities::logger.addSink(std::unique_ptr<Utilities::ConsoleSink>(new Utilities::ConsoleSink(Utilities::LogLevel::INFO)));
 
 	m_boundarySimulator = nullptr;
 	//m_gui = nullptr;
@@ -282,7 +282,7 @@ void SimulatorBase::init(int argc, char **argv, const std::string &windowName)
 
 		if (result.count("param"))
 		{
-			const string paramStr = result["param"].as<std::string>();
+			const  std::string paramStr = result["param"].as<std::string>();
 			Utilities::StringTools::tokenize(paramStr, m_paramTokens, ":");
 
 			// add third element to get a unified method for all parameters
@@ -356,7 +356,7 @@ void SimulatorBase::init(int argc, char **argv, const std::string &windowName)
 
 	std::string logPath = FileSystem::normalizePath(m_outputPath + "/log");
 	FileSystem::makeDirs(logPath);
-	Utilities::logger.addSink(unique_ptr<Utilities::FileSink>(new Utilities::FileSink(Utilities::LogLevel::DEBUG, logPath + "/SPH_log.txt")));
+	Utilities::logger.addSink(std::unique_ptr<Utilities::FileSink>(new Utilities::FileSink(Utilities::LogLevel::DEBUG, logPath + "/SPH_log.txt")));
 
 	//LOG_INFO  << "SPlisHSPlasH version: " << SPLISHSPLASH_VERSION;
 	//LOG_DEBUG << "Git refspec:          " << GIT_REFSPEC;
@@ -728,7 +728,7 @@ void SimulatorBase::setCommandLineParameter(GenParam::ParameterObject *paramObj)
 			{
  				if (static_cast<VectorParameter<Real>*>(paramBase)->getDim() == 3)
  				{
-					vector<string> tokens;
+                    std::vector<std::string> tokens;
 					Utilities::StringTools::tokenize(m_paramTokens[2], tokens, ",");
 					if (tokens.size() == 3)
 					{
@@ -1128,7 +1128,7 @@ void SimulatorBase::initFluidData()
 
 	const bool useCache = getUseParticleCaching();
 	std::string scene_path = FileSystem::getFilePath(sceneFile);
-	string cachePath = scene_path + "/Cache";
+    std::string cachePath = scene_path + "/Cache";
 	sim->setCachePath(cachePath);
 	sim->setUseCache(useCache);
 
@@ -1145,7 +1145,7 @@ void SimulatorBase::initFluidData()
 		else
 			fileName = scene.fluidModels[i]->samplesFile;
 
-		string ext = FileSystem::getFileExt(fileName);
+        std::string ext = FileSystem::getFileExt(fileName);
 		transform(ext.begin(), ext.end(), ext.begin(), ::toupper);
 		if (ext == "OBJ")
 		{
@@ -1154,7 +1154,7 @@ void SimulatorBase::initFluidData()
 			bool md5 = false;
 			if (useCache)
 			{
-				string md5Str = FileSystem::getFileMD5(fileName);
+                std::string md5Str = FileSystem::getFileMD5(fileName);
 				if (FileSystem::fileExists(md5FileName))
 					md5 = FileSystem::checkMD5(md5Str, md5FileName);
 			}
@@ -1163,11 +1163,11 @@ void SimulatorBase::initFluidData()
 			std::string mesh_base_path = FileSystem::getFilePath(fileName);
 			std::string mesh_file_name = FileSystem::getFileName(fileName);
 
-			std::string invert = to_string(scene.fluidModels[i]->invert);
-			std::string mode = to_string(scene.fluidModels[i]->mode);
-			const string scaleStr = StringTools::real2String(scene.fluidModels[i]->scale[0]) + "_" + StringTools::real2String(scene.fluidModels[i]->scale[1]) + "_" + StringTools::real2String(scene.fluidModels[i]->scale[2]);
-			const string resStr = to_string(scene.fluidModels[i]->resolutionSDF[0]) + "_" + to_string(scene.fluidModels[i]->resolutionSDF[1]) + "_" + to_string(scene.fluidModels[i]->resolutionSDF[2]);
-			const string particleFileName = FileSystem::normalizePath(cachePath + "/" + mesh_file_name + "_fluid_" + StringTools::real2String(scene.particleRadius) + "_i" + invert + "_m" + mode + "_s" + scaleStr + "_r" + resStr + ".bgeo");
+			std::string invert = std::to_string(scene.fluidModels[i]->invert);
+			std::string mode = std::to_string(scene.fluidModels[i]->mode);
+			const  std::string scaleStr = StringTools::real2String(scene.fluidModels[i]->scale[0]) + "_" + StringTools::real2String(scene.fluidModels[i]->scale[1]) + "_" + StringTools::real2String(scene.fluidModels[i]->scale[2]);
+			const  std::string resStr = std::to_string(scene.fluidModels[i]->resolutionSDF[0]) + "_" + std::to_string(scene.fluidModels[i]->resolutionSDF[1]) + "_" + std::to_string(scene.fluidModels[i]->resolutionSDF[2]);
+			const  std::string particleFileName = FileSystem::normalizePath(cachePath + "/" + mesh_file_name + "_fluid_" + StringTools::real2String(scene.particleRadius) + "_i" + invert + "_m" + mode + "_s" + scaleStr + "_r" + resStr + ".bgeo");
 
 			// check MD5 if cache file is available
 			bool foundCacheFile = false;
@@ -1190,7 +1190,7 @@ void SimulatorBase::initFluidData()
 
 				bool invert = scene.fluidModels[i]->invert;
 				int mode = scene.fluidModels[i]->mode;
-				std::array<unsigned int, 3> resolutionSDF = scene.fluidModels[i]->resolutionSDF;
+                Vec3ui resolutionSDF = scene.fluidModels[i]->resolutionSDF;
 
 				LOG_INFO << "SDF resolution: " << resolutionSDF[0] << ", " << resolutionSDF[1] << ", " << resolutionSDF[2];
 
@@ -1325,7 +1325,7 @@ void SimulatorBase::createEmitters()
 			emitterBoundary->translation = pos;
 			emitterBoundary->samplesFile = "";
 			emitterBoundary->mapInvert = false;
-			emitterBoundary->mapResolution = Eigen::Matrix<unsigned int, 3, 1, Eigen::DontAlign>(20, 20, 20);
+			emitterBoundary->mapResolution = Vec3ui(20, 20, 20);
 			emitterBoundary->mapThickness = 0.0;
 
 			if (sim->is2DSimulation())
@@ -1682,7 +1682,7 @@ void SPH::SimulatorBase::saveState(const std::string& stateFile)
 	FileSystem::makeDirs(stateFilePath);
 
 	const std::string& sceneFile = SceneConfiguration::getCurrent()->getSceneFile();
-	string md5Str = FileSystem::getFileMD5(sceneFile);
+    std::string md5Str = FileSystem::getFileMD5(sceneFile);
 
 	Simulation *sim = Simulation::getCurrent();
 
@@ -1720,7 +1720,7 @@ void SPH::SimulatorBase::saveState(const std::string& stateFile)
 		{
 			BoundaryModel *model = sim->getBoundaryModel(i);
 			std::string fileName = "boundary";
-			fileName = fileName + "_" + to_string(i); // +"_" + std::to_string(m_frameCounter);
+			fileName = fileName + "_" + std::to_string(i); // +"_" + std::to_string(m_frameCounter);
 
 			// Save particle data
 			std::string expFileName = FileSystem::normalizePath(exportFileName + "_" + fileName);
@@ -1761,7 +1761,7 @@ void SPH::SimulatorBase::loadState(const std::string &stateFile)
 {
 	Simulation *sim = Simulation::getCurrent();
 	const std::string& sceneFile = SceneConfiguration::getCurrent()->getSceneFile();
-	string md5Str = FileSystem::getFileMD5(sceneFile);
+    std::string md5Str = FileSystem::getFileMD5(sceneFile);
 
 	// Load additional data
 	BinaryFileReader binReader;
@@ -1803,7 +1803,7 @@ void SPH::SimulatorBase::loadState(const std::string &stateFile)
 	{
 		BoundaryModel *model = sim->getBoundaryModel(i);
 		std::string fileName = "boundary";
-		fileName = fileName + "_" + to_string(i); // +"_" + std::to_string(m_frameCounter);
+		fileName = fileName + "_" + std::to_string(i); // +"_" + std::to_string(m_frameCounter);
 
 		// Save particle data
 		std::string impFileName = FileSystem::normalizePath(importFilePath + "/" + importFileName + "_" + fileName);
@@ -2313,20 +2313,20 @@ void SimulatorBase::initDensityMap(std::vector<Vector3r> &x, std::vector<unsigne
 		return;
 	}
 
-	string cachePath = scene_path + "/Cache";
+    std::string cachePath = scene_path + "/Cache";
 
 	// Cache map
 	std::string mesh_base_path = FileSystem::getFilePath(boundaryData->meshFile);
 	std::string mesh_file_name = FileSystem::getFileName(boundaryData->meshFile);
 
 
-	Eigen::Matrix<unsigned int, 3, 1> resolutionSDF = boundaryData->mapResolution;
-	const string scaleStr = "s" + StringTools::real2String(boundaryData->scale[0]) + "_" + StringTools::StringTools::real2String(boundaryData->scale[1]) + "_" + StringTools::real2String(boundaryData->scale[2]);
-	const string resStr = "r" + to_string(resolutionSDF[0]) + "_" + to_string(resolutionSDF[1]) + "_" + to_string(resolutionSDF[2]);
-	const string invertStr = "i" + to_string((int)boundaryData->mapInvert);
-	const string thicknessStr = "t" + StringTools::real2String(boundaryData->mapThickness);
-	const string kernelStr = "k" + to_string(sim->getKernel());
-	string densityMapFileName = "";
+	Vec3ui resolutionSDF = boundaryData->mapResolution;
+	const  std::string scaleStr = "s" + StringTools::real2String(boundaryData->scale[0]) + "_" + StringTools::StringTools::real2String(boundaryData->scale[1]) + "_" + StringTools::real2String(boundaryData->scale[2]);
+	const  std::string resStr = "r" + std::to_string(resolutionSDF[0]) + "_" + std::to_string(resolutionSDF[1]) + "_" + std::to_string(resolutionSDF[2]);
+	const  std::string invertStr = "i" + std::to_string((int)boundaryData->mapInvert);
+	const  std::string thicknessStr = "t" + StringTools::real2String(boundaryData->mapThickness);
+	const  std::string kernelStr = "k" + std::to_string(sim->getKernel());
+    std::string densityMapFileName = "";
 	if (isDynamic)
 		densityMapFileName = FileSystem::normalizePath(cachePath + "/" + mesh_file_name + "_db_dm_" + StringTools::real2String(scene.particleRadius) + "_" + scaleStr + "_" + resStr + "_" + invertStr + "_" + thicknessStr + "_" + kernelStr + ".cdm");
 	else 
@@ -2370,20 +2370,20 @@ void SimulatorBase::initDensityMap(std::vector<Vector3r> &x, std::vector<unsigne
 			domain.extend(x_.cast<double>());
 		}
 		const Real tolerance = boundaryData->mapThickness;
-		domain.max() += (8.0*supportRadius + tolerance) * Eigen::Vector3d::Ones();
-		domain.min() -= (8.0*supportRadius + tolerance) * Eigen::Vector3d::Ones();
+		domain.max() += (8.0*supportRadius + tolerance) * EigenVec3d::Ones();
+		domain.min() -= (8.0*supportRadius + tolerance) * EigenVec3d::Ones();
 
 		LOG_INFO << "Domain - min: " << domain.min()[0] << ", " << domain.min()[1] << ", " << domain.min()[2];
 		LOG_INFO << "Domain - max: " << domain.max()[0] << ", " << domain.max()[1] << ", " << domain.max()[2];
 
 		LOG_INFO << "Set SDF resolution: " << resolutionSDF[0] << ", " << resolutionSDF[1] << ", " << resolutionSDF[2];
-		densityMap = new Discregrid::CubicLagrangeDiscreteGrid(domain, std::array<unsigned int, 3>({ resolutionSDF[0], resolutionSDF[1], resolutionSDF[2] }));
+		densityMap = new Discregrid::CubicLagrangeDiscreteGrid(domain, Vec3ui( resolutionSDF[0], resolutionSDF[1], resolutionSDF[2] ));
 		auto func = Discregrid::DiscreteGrid::ContinuousFunction{};
 
 		Real sign = 1.0;
 		if (boundaryData->mapInvert)
 			sign = -1.0;
-		func = [&md, &sign, &tolerance](Eigen::Vector3d const& xi) {return sign * (md.signedDistanceCached(xi) - tolerance); };
+		func = [&md, &sign, &tolerance](EigenVec3d const& xi) {return sign * (md.signedDistanceCached(xi) - tolerance); };
 
 		LOG_INFO << "Generate SDF";
 		START_TIMING("SDF Construction");
@@ -2398,11 +2398,11 @@ void SimulatorBase::initDensityMap(std::vector<Vector3r> &x, std::vector<unsigne
 		if (sim2D)
 			SimpleQuadrature::determineSamplePointsInCircle(supportRadius, 30);
 
-		auto int_domain = Eigen::AlignedBox3d(Eigen::Vector3d::Constant(-supportRadius), Eigen::Vector3d::Constant(supportRadius));
+		auto int_domain = Eigen::AlignedBox3d(EigenVec3d::Constant(-supportRadius), EigenVec3d::Constant(supportRadius));
 		Real factor = 5.0;
 		if (sim2D)
 			factor = 1.75;
-		auto density_func = [&](Eigen::Vector3d const& x)
+		auto density_func = [&](EigenVec3d const& x)
 		{
 			auto d = densityMap->interpolate(0u, x);
 			if (d > (1.0 + 1.0 / factor) * supportRadius)
@@ -2410,7 +2410,7 @@ void SimulatorBase::initDensityMap(std::vector<Vector3r> &x, std::vector<unsigne
 				return 0.0;
 			}
 
-			auto integrand = [&](Eigen::Vector3d const& xi)
+			auto integrand = [&](EigenVec3d const& xi)
 			{
 				if (xi.squaredNorm() > supportRadius*supportRadius)
 					return 0.0;
@@ -2435,7 +2435,7 @@ void SimulatorBase::initDensityMap(std::vector<Vector3r> &x, std::vector<unsigne
 		std::cout << "Generate density map..." << std::endl;
 		const bool no_reduction = true;
 		START_TIMING("Density Map Construction");
-		densityMap->addFunction(density_func, false, [&](Eigen::Vector3d const& x_)
+		densityMap->addFunction(density_func, false, [&](EigenVec3d const& x_)
 		{
 			if (no_reduction)
 			{
@@ -2456,11 +2456,11 @@ void SimulatorBase::initDensityMap(std::vector<Vector3r> &x, std::vector<unsigne
 		if (!no_reduction)
 		{
 			std::cout << "Reduce discrete fields...";
-			densityMap->reduceField(0u, [&](const Eigen::Vector3d &, double v)
+			densityMap->reduceField(0u, [&](const EigenVec3d &, double v)
 			{
 				return fabs(v) < 2.5 * supportRadius;
 			});
-			densityMap->reduceField(1u, [&](const Eigen::Vector3d &, double v)->double
+			densityMap->reduceField(1u, [&](const EigenVec3d &, double v)->double
 			{
 				if (v == std::numeric_limits<double>::max())
 					return false;
@@ -2503,18 +2503,18 @@ void SimulatorBase::initVolumeMap(std::vector<Vector3r> &x, std::vector<unsigned
 		return;
 	}
 
-	string cachePath = scene_path + "/Cache";
+    std::string cachePath = scene_path + "/Cache";
 
 	// Cache map
 	std::string mesh_base_path = FileSystem::getFilePath(boundaryData->meshFile);
 	std::string mesh_file_name = FileSystem::getFileName(boundaryData->meshFile);
 
-	Eigen::Matrix<unsigned int, 3, 1> resolutionSDF = boundaryData->mapResolution;
-	const string scaleStr = "s" + StringTools::real2String(boundaryData->scale[0]) + "_" + StringTools::real2String(boundaryData->scale[1]) + "_" + StringTools::real2String(boundaryData->scale[2]);
-	const string resStr = "r" + to_string(resolutionSDF[0]) + "_" + to_string(resolutionSDF[1]) + "_" + to_string(resolutionSDF[2]);
-	const string invertStr = "i" + to_string((int)boundaryData->mapInvert);
-	const string thicknessStr = "t" + StringTools::real2String(boundaryData->mapThickness);
-	string volumeMapFileName = "";
+    Vec3ui resolutionSDF = boundaryData->mapResolution;
+	const std::string scaleStr = "s" + StringTools::real2String(boundaryData->scale[0]) + "_" + StringTools::real2String(boundaryData->scale[1]) + "_" + StringTools::real2String(boundaryData->scale[2]);
+	const std::string resStr = "r" + std::to_string(resolutionSDF[0]) + "_" + std::to_string(resolutionSDF[1]) + "_" + std::to_string(resolutionSDF[2]);
+	const std::string invertStr = "i" + std::to_string((int)boundaryData->mapInvert);
+	const std::string thicknessStr = "t" + StringTools::real2String(boundaryData->mapThickness);
+    std::string volumeMapFileName = "";
 	if (isDynamic)
 		volumeMapFileName = FileSystem::normalizePath(cachePath + "/" + mesh_file_name + "_db_vm_" + StringTools::real2String(scene.particleRadius) + "_" + scaleStr + "_" + resStr + "_" + invertStr + "_" + thicknessStr + ".cdm");
 	else 
@@ -2558,14 +2558,14 @@ void SimulatorBase::initVolumeMap(std::vector<Vector3r> &x, std::vector<unsigned
 			domain.extend(x_.cast<double>());
 		}
 		const Real tolerance = boundaryData->mapThickness;
-		domain.max() += (8.0*supportRadius + tolerance) * Eigen::Vector3d::Ones();
-		domain.min() -= (8.0*supportRadius + tolerance) * Eigen::Vector3d::Ones();
+		domain.max() += (8.0*supportRadius + tolerance) * EigenVec3d::Ones();
+		domain.min() -= (8.0*supportRadius + tolerance) * EigenVec3d::Ones();
 
 		LOG_INFO << "Domain - min: " << domain.min()[0] << ", " << domain.min()[1] << ", " << domain.min()[2];
 		LOG_INFO << "Domain - max: " << domain.max()[0] << ", " << domain.max()[1] << ", " << domain.max()[2];
 
 		LOG_INFO << "Set SDF resolution: " << resolutionSDF[0] << ", " << resolutionSDF[1] << ", " << resolutionSDF[2];
-		volumeMap = new Discregrid::CubicLagrangeDiscreteGrid(domain, std::array<unsigned int, 3>({ resolutionSDF[0], resolutionSDF[1], resolutionSDF[2] }));
+		volumeMap = new Discregrid::CubicLagrangeDiscreteGrid(domain, Vec3ui( resolutionSDF[0], resolutionSDF[1], resolutionSDF[2] ));
 		auto func = Discregrid::DiscreteGrid::ContinuousFunction{};
 
 		//volumeMap->setErrorTolerance(0.001);
@@ -2575,7 +2575,7 @@ void SimulatorBase::initVolumeMap(std::vector<Vector3r> &x, std::vector<unsigned
 			sign = -1.0;
 		const Real particleRadius = sim->getParticleRadius();
 		// subtract 0.5 * particle radius to prevent penetration of particles and the boundary
-		func = [&md, &sign, &tolerance, &particleRadius](Eigen::Vector3d const& xi) {return sign * (md.signedDistanceCached(xi) - tolerance ); };
+		func = [&md, &sign, &tolerance, &particleRadius](EigenVec3d const& xi) {return sign * (md.signedDistanceCached(xi) - tolerance ); };
 
 		LOG_INFO << "Generate SDF";
 		START_TIMING("SDF Construction");
@@ -2591,11 +2591,11 @@ void SimulatorBase::initVolumeMap(std::vector<Vector3r> &x, std::vector<unsigned
 
 		if (sim2D)
 			SimpleQuadrature::determineSamplePointsInCircle(supportRadius, 30);
-		auto int_domain = Eigen::AlignedBox3d(Eigen::Vector3d::Constant(-supportRadius), Eigen::Vector3d::Constant(supportRadius));
+		auto int_domain = Eigen::AlignedBox3d(EigenVec3d::Constant(-supportRadius), EigenVec3d::Constant(supportRadius));
 		Real factor = 1.0;
 		if (sim2D)
 			factor = 1.0;
-		auto volume_func = [&](Eigen::Vector3d const& x)
+		auto volume_func = [&](EigenVec3d const& x)
 		{
 			auto dist_x = volumeMap->interpolate(0u, x);
 
@@ -2604,7 +2604,7 @@ void SimulatorBase::initVolumeMap(std::vector<Vector3r> &x, std::vector<unsigned
 				return 0.0;
 			}
 
-			auto integrand = [&](Eigen::Vector3d const& xi) -> double
+			auto integrand = [&](EigenVec3d const& xi) -> double
 			{
 				if (xi.squaredNorm() > supportRadius*supportRadius)
 					return 0.0;
@@ -2630,7 +2630,7 @@ void SimulatorBase::initVolumeMap(std::vector<Vector3r> &x, std::vector<unsigned
 		std::cout << "Generate volume map..." << std::endl;
 		const bool no_reduction = true;
 		START_TIMING("Volume Map Construction");
-		volumeMap->addFunction(volume_func, false, [&](Eigen::Vector3d const& x_)
+		volumeMap->addFunction(volume_func, false, [&](EigenVec3d const& x_)
 		{
 			if (no_reduction)
 			{
@@ -2651,11 +2651,11 @@ void SimulatorBase::initVolumeMap(std::vector<Vector3r> &x, std::vector<unsigned
 		if (!no_reduction)
 		{
 			std::cout << "Reduce discrete fields...";
-			volumeMap->reduceField(0u, [&](const Eigen::Vector3d &, double v)
+			volumeMap->reduceField(0u, [&](const EigenVec3d &, double v)
 			{
 				return fabs(v) < 4.0 * supportRadius;
 			});
-			volumeMap->reduceField(1u, [&](const Eigen::Vector3d &, double v)->double
+			volumeMap->reduceField(1u, [&](const EigenVec3d &, double v)->double
 			{
 				if (v == std::numeric_limits<double>::max())
 					return false;				
@@ -2722,39 +2722,39 @@ void SimulatorBase::determineMinMaxOfScalarField()
 			{
 				Eigen::Map<Vector3r> vec((Real*)field->getFct(i));
 				const Real val = vec.norm();
-				minValue = std::min(minValue, val);
-				maxValue = std::max(maxValue, val);
+				minValue = min(minValue, val);
+				maxValue = max(maxValue, val);
 			}
 			else if (field->type == FieldType::Scalar)
 			{
-				minValue = std::min(minValue, static_cast<Real>(*(Real*)field->getFct(i)));
-				maxValue = std::max(maxValue, static_cast<Real>(*(Real*)field->getFct(i)));
+				minValue = min(minValue, static_cast<Real>(*(Real*)field->getFct(i)));
+				maxValue = max(maxValue, static_cast<Real>(*(Real*)field->getFct(i)));
 			}
 			else if (field->type == FieldType::UInt)
 			{
-				minValue = std::min(minValue, static_cast<Real>(*(unsigned int*)field->getFct(i)));
-				maxValue = std::max(maxValue, static_cast<Real>(*(unsigned int*)field->getFct(i)));
+				minValue = min(minValue, static_cast<Real>(*(unsigned int*)field->getFct(i)));
+				maxValue = max(maxValue, static_cast<Real>(*(unsigned int*)field->getFct(i)));
 			}
 			else if (field->type == FieldType::Matrix3)
 			{
 				Eigen::Map <Matrix3r> vec((Real*)field->getFct(i));
 				const Real val = vec.norm();
-				minValue = std::min(minValue, static_cast<Real>(val));
-				maxValue = std::max(maxValue, static_cast<Real>(val));
+				minValue = min(minValue, static_cast<Real>(val));
+				maxValue = max(maxValue, static_cast<Real>(val));
 			}
 			else if (field->type == FieldType::Vector6)
 			{
 				Eigen::Map<Vector6r> vec((Real*)field->getFct(i));
 				const Real val = vec.norm();
-				minValue = std::min(minValue, static_cast<Real>(val));
-				maxValue = std::max(maxValue, static_cast<Real>(val));
+				minValue = min(minValue, static_cast<Real>(val));
+				maxValue = max(maxValue, static_cast<Real>(val));
 			}
 			else if (field->type == FieldType::Matrix6)
 			{
 				Eigen::Map<Matrix6r> vec((Real*)field->getFct(i));
 				const Real val = vec.norm();
-				minValue = std::min(minValue, static_cast<Real>(val));
-				maxValue = std::max(maxValue, static_cast<Real>(val));
+				minValue = min(minValue, static_cast<Real>(val));
+				maxValue = max(maxValue, static_cast<Real>(val));
 			}
 		}
 		setRenderMinValue(fluidModelIndex, minValue);

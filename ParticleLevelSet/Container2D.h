@@ -153,13 +153,13 @@ void MakeSphere(Grid2D &init, Double h, const Vec2d &pos, Double radius)
 			Double ur = sqrt((i-rightWall)*(i-rightWall)+(j-topWall)*(j-topWall));
 			Double bl = sqrt((i-leftWall)*(i-leftWall)+(j-bottomWall)*(j-bottomWall));
 			Double br = sqrt((i-rightWall)*(i-rightWall)+(j-bottomWall)*(j-bottomWall));
-			val2 = -std::min(std::min(std::min(ul,ur),bl),br);
+			val2 = -min(min(min(ul,ur),bl),br);
 		}
         val2 *= h;
 
 		//val = 10*cos(i/Double(size[0])*10) + 10*sin(j/Double(size[1])*10) ;
 		//gridPhi(i,j) = val1;
-		init(i,j) = std::max(val1,val2);
+		init(i,j) = max(val1,val2);
 	END_FOR_TWO
 }
 

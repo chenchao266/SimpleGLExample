@@ -7,7 +7,7 @@
 
 using namespace SPH;
 
-std::vector<Eigen::Vector3d> SimpleQuadrature::m_samplePoints;
+std::vector<EigenVec3d> SimpleQuadrature::m_samplePoints;
 double SimpleQuadrature::m_volume = 0.0;
 
 
@@ -33,7 +33,7 @@ void SPH::SimpleQuadrature::determineSamplePointsInSphere(const double radius, u
 	const double start = -radius + 0.5*stepSize;
 	m_volume = stepSize*stepSize*stepSize;
 
-	Eigen::Vector3d pos;
+	EigenVec3d pos;
 	pos[0] = start;
 	for (unsigned int i = 0; i < p; i++)
 	{
@@ -69,7 +69,7 @@ void SPH::SimpleQuadrature::determineSamplePointsInCircle(const double radius, u
 	const double start = -radius + 0.5*stepSize;
 	m_volume = stepSize*stepSize;
 
-	Eigen::Vector3d pos;
+	EigenVec3d pos;
 	pos[0] = start;
 	for (unsigned int i = 0; i < p; i++)
 	{

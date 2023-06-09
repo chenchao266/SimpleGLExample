@@ -1,8 +1,8 @@
 ﻿#ifndef GLOBAL_H
 #define GLOBAL_H
 
-#define MAX(a, b) ((a)>=(b) ? (a) : (b))
-#define MIN(a, b) ((a)<=(b) ? (a) : (b))
+//#define MAX(a, b) ((a)>=(b) ? (a) : (b))
+//#define MIN(a, b) ((a)<=(b) ? (a) : (b))
 
 #define WINDOW_WIDTH 800
 #define WINDOW_HEIGHT 600

@@ -4,7 +4,7 @@
 #include "expansion.h"
 
 #include <cassert>
-#include <cmath>
+#include <math.h>
 #include <iostream>
 #include "commonoptions.h"
 

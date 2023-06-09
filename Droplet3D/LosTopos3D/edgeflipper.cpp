@@ -363,14 +363,14 @@ bool EdgeFlipper::flip_edge( size_t edge,
      (new_normal0).normalize();
     (new_normal1).normalize();
     
-    if ( new_area0 < std::min(m_surf.m_min_triangle_area, std::min(old_area0, old_area0) * 0.5) )
+    if ( new_area0 < min(m_surf.m_min_triangle_area, min(old_area0, old_area0) * 0.5) )
     {
         if ( m_surf.m_verbose ) { std::cout << "edge flip rejected: area0 too small" << std::endl;    }
         g_stats.add_to_int( "EdgeFlipper:edge_flip_new_area_too_small", 1 );
         return false;
     }
     
-    if ( new_area1 < std::min(m_surf.m_min_triangle_area, std::min(old_area0, old_area0) * 0.5) )
+    if ( new_area1 < min(m_surf.m_min_triangle_area, min(old_area0, old_area0) * 0.5) )
     {
         if ( m_surf.m_verbose ) { std::cout << "edge flip rejected: area1 too small" << std::endl; }
         g_stats.add_to_int( "EdgeFlipper:edge_flip_new_area_too_small", 1 );
@@ -400,20 +400,20 @@ bool EdgeFlipper::flip_edge( size_t edge,
     }
     
     // Don't flip if it produces triangles with bad aspect ratio (regardless of area)
-    double old_min_edge_0 = std::min(std::min( (xs[old_tri0[1]] - xs[old_tri0[0]]).norm(),  (xs[old_tri0[2]] - xs[old_tri0[1]]).norm()),  (xs[old_tri0[0]] - xs[old_tri0[2]]).norm());
-    double old_min_edge_1 = std::min(std::min( (xs[old_tri1[1]] - xs[old_tri1[0]]).norm(),  (xs[old_tri1[2]] - xs[old_tri1[1]]).norm()),  (xs[old_tri1[0]] - xs[old_tri1[2]]).norm());
-    double old_max_edge_0 = std::max(std::max( (xs[old_tri0[1]] - xs[old_tri0[0]]).norm(),  (xs[old_tri0[2]] - xs[old_tri0[1]]).norm()),  (xs[old_tri0[0]] - xs[old_tri0[2]]).norm());
-    double old_max_edge_1 = std::max(std::max( (xs[old_tri1[1]] - xs[old_tri1[0]]).norm(),  (xs[old_tri1[2]] - xs[old_tri1[1]]).norm()),  (xs[old_tri1[0]] - xs[old_tri1[2]]).norm());
-    double new_min_edge_0 = std::min(std::min( (xs[new_triangle0[1]] - xs[new_triangle0[0]]).norm(),  (xs[new_triangle0[2]] - xs[new_triangle0[1]]).norm()),  (xs[new_triangle0[0]] - xs[new_triangle0[2]]).norm());
-    double new_min_edge_1 = std::min(std::min( (xs[new_triangle1[1]] - xs[new_triangle1[0]]).norm(),  (xs[new_triangle1[2]] - xs[new_triangle1[1]]).norm()),  (xs[new_triangle1[0]] - xs[new_triangle1[2]]).norm());
-    double new_max_edge_0 = std::max(std::max( (xs[new_triangle0[1]] - xs[new_triangle0[0]]).norm(),  (xs[new_triangle0[2]] - xs[new_triangle0[1]]).norm()),  (xs[new_triangle0[0]] - xs[new_triangle0[2]]).norm());
-    double new_max_edge_1 = std::max(std::max( (xs[new_triangle1[1]] - xs[new_triangle1[0]]).norm(),  (xs[new_triangle1[2]] - xs[new_triangle1[1]]).norm()),  (xs[new_triangle1[0]] - xs[new_triangle1[2]]).norm());
+    double old_min_edge_0 = min(min( (xs[old_tri0[1]] - xs[old_tri0[0]]).norm(),  (xs[old_tri0[2]] - xs[old_tri0[1]]).norm()),  (xs[old_tri0[0]] - xs[old_tri0[2]]).norm());
+    double old_min_edge_1 = min(min( (xs[old_tri1[1]] - xs[old_tri1[0]]).norm(),  (xs[old_tri1[2]] - xs[old_tri1[1]]).norm()),  (xs[old_tri1[0]] - xs[old_tri1[2]]).norm());
+    double old_max_edge_0 = max(max( (xs[old_tri0[1]] - xs[old_tri0[0]]).norm(),  (xs[old_tri0[2]] - xs[old_tri0[1]]).norm()),  (xs[old_tri0[0]] - xs[old_tri0[2]]).norm());
+    double old_max_edge_1 = max(max( (xs[old_tri1[1]] - xs[old_tri1[0]]).norm(),  (xs[old_tri1[2]] - xs[old_tri1[1]]).norm()),  (xs[old_tri1[0]] - xs[old_tri1[2]]).norm());
+    double new_min_edge_0 = min(min( (xs[new_triangle0[1]] - xs[new_triangle0[0]]).norm(),  (xs[new_triangle0[2]] - xs[new_triangle0[1]]).norm()),  (xs[new_triangle0[0]] - xs[new_triangle0[2]]).norm());
+    double new_min_edge_1 = min(min( (xs[new_triangle1[1]] - xs[new_triangle1[0]]).norm(),  (xs[new_triangle1[2]] - xs[new_triangle1[1]]).norm()),  (xs[new_triangle1[0]] - xs[new_triangle1[2]]).norm());
+    double new_max_edge_0 = max(max( (xs[new_triangle0[1]] - xs[new_triangle0[0]]).norm(),  (xs[new_triangle0[2]] - xs[new_triangle0[1]]).norm()),  (xs[new_triangle0[0]] - xs[new_triangle0[2]]).norm());
+    double new_max_edge_1 = max(max( (xs[new_triangle1[1]] - xs[new_triangle1[0]]).norm(),  (xs[new_triangle1[2]] - xs[new_triangle1[1]]).norm()),  (xs[new_triangle1[0]] - xs[new_triangle1[2]]).norm());
     double AR_THRESHOLD = 10.0;
     double arthreshold = AR_THRESHOLD;
-    arthreshold = std::max(arthreshold, 1 / (old_area0 * 2 / (old_max_edge_0 * old_max_edge_0)));
-    arthreshold = std::max(arthreshold, 1 / (old_area1 * 2 / (old_max_edge_1 * old_max_edge_1)));
-    arthreshold = std::max(arthreshold, old_area0 * 2 / (old_min_edge_0 * old_min_edge_0));
-    arthreshold = std::max(arthreshold, old_area1 * 2 / (old_min_edge_1 * old_min_edge_1));
+    arthreshold = max(arthreshold, 1 / (old_area0 * 2 / (old_max_edge_0 * old_max_edge_0)));
+    arthreshold = max(arthreshold, 1 / (old_area1 * 2 / (old_max_edge_1 * old_max_edge_1)));
+    arthreshold = max(arthreshold, old_area0 * 2 / (old_min_edge_0 * old_min_edge_0));
+    arthreshold = max(arthreshold, old_area1 * 2 / (old_min_edge_1 * old_min_edge_1));
     if ((new_area0 * 2 / (new_max_edge_0 * new_max_edge_0) < 1 / arthreshold || new_area0 * 2 / (new_min_edge_0 * new_min_edge_0) > arthreshold) ||
         (new_area1 * 2 / (new_max_edge_1 * new_max_edge_1) < 1 / arthreshold || new_area1 * 2 / (new_min_edge_1 * new_min_edge_1) > arthreshold))
     {
@@ -427,7 +427,7 @@ bool EdgeFlipper::flip_edge( size_t edge,
     // Don't introduce a large or small angle
     
     double min_angle = min_triangle_angle( xs[new_triangle0[0]], xs[new_triangle0[1]], xs[new_triangle0[2]] );
-    min_angle = std::min( min_angle, min_triangle_angle( xs[new_triangle1[0]], xs[new_triangle1[1]], xs[new_triangle1[2]] ) );
+    min_angle = min( min_angle, min_triangle_angle( xs[new_triangle1[0]], xs[new_triangle1[1]], xs[new_triangle1[2]] ) );
     
     if ( rad2deg(min_angle) < m_surf.m_min_triangle_angle )
     {
@@ -436,7 +436,7 @@ bool EdgeFlipper::flip_edge( size_t edge,
     }
     
     double max_angle = max_triangle_angle( xs[new_triangle0[0]], xs[new_triangle0[1]], xs[new_triangle0[2]] );
-    max_angle = std::max( max_angle, max_triangle_angle( xs[new_triangle1[0]], xs[new_triangle1[1]], xs[new_triangle1[2]] ) );
+    max_angle = max( max_angle, max_triangle_angle( xs[new_triangle1[0]], xs[new_triangle1[1]], xs[new_triangle1[2]] ) );
     
     if ( rad2deg(max_angle) > m_surf.m_max_triangle_angle )
     {
@@ -767,12 +767,12 @@ bool EdgeFlipper::flip_pass( )
                 if(m_surf.m_aggressive_mode) {
                     //skip any triangles that don't have fairly bad angles.
                     double min_angle = min_triangle_angle(pos_vert_0, pos_vert_1, pos_3rd_0);
-                    min_angle = std::min(min_angle, min_triangle_angle(pos_vert_0, pos_vert_1, pos_3rd_1));
+                    min_angle = min(min_angle, min_triangle_angle(pos_vert_0, pos_vert_1, pos_3rd_1));
                     if(min_angle > m_surf.m_min_triangle_angle)
                         continue;
                     
                     double max_angle = max_triangle_angle(pos_vert_0, pos_vert_1, pos_3rd_0);
-                    max_angle = std::min(max_angle, max_triangle_angle(pos_vert_0, pos_vert_1, pos_3rd_1));
+                    max_angle = min(max_angle, max_triangle_angle(pos_vert_0, pos_vert_1, pos_3rd_1));
                     if(max_angle < m_surf.m_max_triangle_angle)
                         continue;
                 }

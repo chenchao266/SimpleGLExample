@@ -7,7 +7,7 @@
 // with guarantees made only for M-matrices (where off-diagonal entries are all
 // non-positive, and row sums are non-negative).
 
-#include <cmath>
+#include <math.h>
 #include "sparse_matrix.h"
 #include "blas_wrapper.h"
 

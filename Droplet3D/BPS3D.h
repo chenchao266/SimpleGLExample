@@ -11,7 +11,7 @@
 
 #include <stdio.h>
 #include <iostream>
-#include "eigenheaders.h"
+
 #include "surftrack.h"
 #include "Component/Timer.h"
 

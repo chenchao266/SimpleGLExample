@@ -9,7 +9,7 @@
 #include "BoundaryModel_Bender2019.h"
 
 using namespace SPH;
-using namespace std;
+
 using namespace GenParam;
 
 //#define USE_FD_NORMAL
@@ -228,12 +228,12 @@ void TimeStep::computeVolumeAndBoundaryX()
 	STOP_TIMING_AVG;
 }
 
-void TimeStep::approximateNormal(Discregrid::DiscreteGrid* map, const Eigen::Vector3d &x, Eigen::Vector3d &n, const unsigned int dim)
+void TimeStep::approximateNormal(Discregrid::DiscreteGrid* map, const EigenVec3d &x, EigenVec3d &n, const unsigned int dim)
 {
 	// approximate gradient
 	double eps = 0.1*Simulation::getCurrent()->getSupportRadius();
 	n.setZero();
-	Eigen::Vector3d xTmp = x;
+	EigenVec3d xTmp = x;
 	for (unsigned int j = 0; j < dim; j++)
 	{
 		xTmp[j] += eps;
@@ -274,12 +274,12 @@ void TimeStep::computeVolumeAndBoundaryX(const unsigned int fluidModelIndex, con
 		const Vector3r& t = bm->getRigidBodyObject()->getPosition();
 		const Matrix3r& R = bm->getRigidBodyObject()->getRotation().toRotationMatrix();
 
-		Eigen::Vector3d normal;
-		const Eigen::Vector3d localXi = (R.transpose() * (xi - t)).cast<double>();
+		EigenVec3d normal;
+		const EigenVec3d localXi = (R.transpose() * (xi - t)).cast<double>();
 
 
 		std::array<unsigned int, 32> cell;
-		Eigen::Vector3d c0;
+		EigenVec3d c0;
 		Eigen::Matrix<double, 32, 1> N;
 #ifdef USE_FD_NORMAL
 		bool chk = bm->getMap()->determineShapeFunctions(0, localXi, cell, c0, N);
@@ -287,7 +287,7 @@ void TimeStep::computeVolumeAndBoundaryX(const unsigned int fluidModelIndex, con
 		Eigen::Matrix<double, 32, 3> dN;
 		bool chk = bm->getMap()->determineShapeFunctions(0, localXi, cell, c0, N, &dN);
 #endif
-		double dist = numeric_limits<double>::max();
+		double dist = std::numeric_limits<double>::max();
 		if (chk)
 #ifdef USE_FD_NORMAL
 			dist = bm->getMap()->interpolate(0, localXi, cell, c0, N);
@@ -301,7 +301,7 @@ void TimeStep::computeVolumeAndBoundaryX(const unsigned int fluidModelIndex, con
 			if ((dist > 0.0) && (static_cast<Real>(dist) < supportRadius))
 			{
 				const double volume = bm->getMap()->interpolate(1, localXi, cell, c0, N);
-				if ((volume > 0.0) && (volume != numeric_limits<double>::max()))
+				if ((volume > 0.0) && (volume != std::numeric_limits<double>::max()))
 				{
 					boundaryVolume = static_cast<Real>(volume);
 
@@ -351,7 +351,7 @@ void TimeStep::computeVolumeAndBoundaryX(const unsigned int fluidModelIndex, con
 		// too large time steps are used. 
 		if (animateParticle)
 		{
-			if (dist != numeric_limits<double>::max())				// if dist is numeric_limits<double>::max(), then the particle is not close to the current boundary
+			if (dist != std::numeric_limits<double>::max())				// if dist is numeric_limits<double>::max(), then the particle is not close to the current boundary
 			{
 				normal = R.cast<double>() * normal;
 				const double nl = normal.norm();
@@ -361,7 +361,7 @@ void TimeStep::computeVolumeAndBoundaryX(const unsigned int fluidModelIndex, con
 					normal /= nl;
 					// project to surface
 					Real delta = static_cast<Real>(2.0) * particleRadius - static_cast<Real>(dist);
-					delta = std::min(delta, static_cast<Real>(0.1) * particleRadius);		// get up in small steps
+					delta = min(delta, static_cast<Real>(0.1) * particleRadius);		// get up in small steps
 					model->getPosition(i) = (xi + delta * normal.cast<Real>());
 					// adapt velocity in normal direction
 					//model->getVelocity(i) = 1.0/dt * delta * normal.cast<Real>();
@@ -417,16 +417,16 @@ void TimeStep::computeDensityAndGradient(const unsigned int fluidModelIndex, con
 		const Vector3r &t = bm->getRigidBodyObject()->getPosition();
 		const Matrix3r &R = bm->getRigidBodyObject()->getRotation().toRotationMatrix();
 
-		Eigen::Vector3d normal;
-		const Eigen::Vector3d localXi = (R.transpose() * (xi - t)).cast<double>();
+		EigenVec3d normal;
+		const EigenVec3d localXi = (R.transpose() * (xi - t)).cast<double>();
 
 		Vector3r &boundaryXj = bm->getBoundaryXj(fluidModelIndex, i);		
  		std::array<unsigned int, 32> cell; 
- 		Eigen::Vector3d c0;
+ 		EigenVec3d c0;
  		Eigen::Matrix<double, 32, 1> N;
 		Eigen::Matrix<double, 32, 3> dN;
 		bool chk = bm->getMap()->determineShapeFunctions(0, localXi, cell, c0, N, &dN);
-		Real dist = numeric_limits<Real>::max();
+		Real dist = std::numeric_limits<Real>::max();
 		if (chk)
 #ifdef USE_FD_NORMAL
 			dist = static_cast<Real>(bm->getMap()->interpolate(0, localXi, cell, c0, N));
@@ -436,9 +436,9 @@ void TimeStep::computeDensityAndGradient(const unsigned int fluidModelIndex, con
 
 		if ((dist > 0.1*particleRadius) && (dist < sim->getSupportRadius()))
 		{
-			Eigen::Vector3d gradD;
+			EigenVec3d gradD;
 			const Real d = static_cast<Real>(bm->getMap()->interpolate(1, localXi, cell, c0, N, &gradD, &dN));
-			if ((d > 1e-6) && (d != numeric_limits<Real>::max()))
+			if ((d > 1e-6) && (d != std::numeric_limits<Real>::max()))
 			{
 				boundaryDensity = d;
 
@@ -479,7 +479,7 @@ void TimeStep::computeDensityAndGradient(const unsigned int fluidModelIndex, con
 				normal /= nl;
 				// project to surface
 				Real d = -dist;
-				d = std::min(d, static_cast<Real>(0.25 / 0.005) * particleRadius * dt);		// get up in small steps
+				d = min(d, static_cast<Real>(0.25 / 0.005) * particleRadius * dt);		// get up in small steps
 				sim->getFluidModel(fluidModelIndex)->getPosition(i) = (xi + d * normal.cast<Real>());
 				// adapt velocity in normal direction
 				sim->getFluidModel(fluidModelIndex)->getVelocity(i) += (0.05 - sim->getFluidModel(fluidModelIndex)->getVelocity(i).dot(normal.cast<Real>())) * normal.cast<Real>();

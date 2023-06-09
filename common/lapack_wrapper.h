@@ -5,8 +5,10 @@
 // as well as versions with stride==1 assumed.
 // For the moment, no complex number support, and most routines have been dropped.
 
-#include <cmath>
+#include <math.h>
 #include <iostream>
+#include <algorithm>
+
 
 //////////////
 // includes necessary to use Accelerate framework with GCC on OS Yosemite+ (http://stackoverflow.com/questions/26527077/compiling-with-accelerate-framework-on-osx-yosemite ). Thanks to Herve Turlier for pointing out.
@@ -50,12 +52,12 @@ namespace LAPACK{
         int lapack_n = n;
         int lapack_nrhs = nrhs;
         int lapack_lda = lda;   
-        int lapack_ldb = std::max( lapack_m, lapack_n );
-        double* s = new double[std::min(lapack_m, lapack_n) ];
+        int lapack_ldb = max( lapack_m, lapack_n );
+        double* s = new double[min(lapack_m, lapack_n) ];
         double optimal_work_size;
         int lwork = -1;
         int nlvl = 26;
-        int liwork = 2* std::min(lapack_m,lapack_n)*nlvl + 11* std::min(lapack_m,lapack_n);
+        int liwork = 2* min(lapack_m,lapack_n)*nlvl + 11* min(lapack_m,lapack_n);
         int *iwork = new int[liwork];
         
         // query for optimal work size

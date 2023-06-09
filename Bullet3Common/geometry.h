@@ -1,13 +1,12 @@
 ﻿#ifndef __GEOMETRY_H__
 #define __GEOMETRY_H__
 #define  _USE_MATH_DEFINES
-#include <cmath>
-#include <cassert>
-#include <stdlib.h>
+ 
+#include <assert.h>
 #include <math.h>
 #include <vector>
 #include <exception>
-#include <algorithm>
+//#include <algorithm>
 #ifdef _MSC_VER
 #undef min
 #undef max
@@ -27,51 +26,63 @@ inline T cube(const T& x)
 }
 
 template<typename T>
+inline T min(T a1, T a2)
+{
+    return (a1) <= (a2) ? (a1) : (a2);
+}
+
+template<typename T>
 inline T min(T a1, T a2, T a3)
 {
-    return std::min(a1, std::min(a2, a3));
+    return min(a1, min(a2, a3));
 }
 
 template<typename T>
 inline T min(T a1, T a2, T a3, T a4)
 {
-    return std::min(std::min(a1, a2), std::min(a3, a4));
+    return min(min(a1, a2), min(a3, a4));
 }
 
 template<typename T>
 inline T min(T a1, T a2, T a3, T a4, T a5)
 {
-    return min(std::min(a1, a2), std::min(a3, a4), a5);
+    return min(min(a1, a2), min(a3, a4), a5);
 }
 
 template<typename T>
 inline T min(T a1, T a2, T a3, T a4, T a5, T a6)
 {
-    return min(std::min(a1, a2), std::min(a3, a4), std::min(a5, a6));
+    return min(min(a1, a2), min(a3, a4), min(a5, a6));
+}
+
+template<typename T>
+inline T max(T a1, T a2)
+{
+    return (a1) >= (a2) ? (a1) : (a2);
 }
 
 template<typename T>
 inline T max(T a1, T a2, T a3)
 {
-    return std::max(a1, std::max(a2, a3));
+    return max(a1, max(a2, a3));
 }
 
 template<typename T>
 inline T max(T a1, T a2, T a3, T a4)
 {
-    return std::max(std::max(a1, a2), std::max(a3, a4));
+    return max(max(a1, a2), max(a3, a4));
 }
 
 template<typename T>
 inline T max(T a1, T a2, T a3, T a4, T a5)
 {
-    return max(std::max(a1, a2), std::max(a3, a4), a5);
+    return max(max(a1, a2), max(a3, a4), a5);
 }
 
 template<typename T>
 inline T max(T a1, T a2, T a3, T a4, T a5, T a6)
 {
-    return max(std::max(a1, a2), std::max(a3, a4), std::max(a5, a6));
+    return max(max(a1, a2), max(a3, a4), max(a5, a6));
 }
 
 template<typename T>
@@ -120,22 +131,22 @@ inline void minmax(T a1, T a2, T a3, T a4, T& amin, T& amax)
 {
     if (a1 < a2) {
         if (a3 < a4) {
-            amin = std::min(a1, a3);
-            amax = std::max(a2, a4);
+            amin = min(a1, a3);
+            amax = max(a2, a4);
         }
         else {
-            amin = std::min(a1, a4);
-            amax = std::max(a2, a3);
+            amin = min(a1, a4);
+            amax = max(a2, a3);
         }
     }
     else {
         if (a3 < a4) {
-            amin = std::min(a2, a3);
-            amax = std::max(a1, a4);
+            amin = min(a2, a3);
+            amax = max(a1, a4);
         }
         else {
-            amin = std::min(a2, a4);
-            amax = std::max(a1, a3);
+            amin = min(a2, a4);
+            amax = max(a1, a3);
         }
     }
 }
@@ -343,7 +354,7 @@ struct vec
      
     inline T dist(const vec<N, T> &b)const
     {
-        return std::sqrt(dist2(b));
+        return sqrt(dist2(b));
     }
      
     inline void normalize( )
@@ -358,8 +369,8 @@ struct vec
      
     inline T infnorm()const
     {
-        T d = std::fabs(u[0]);
-        for (unsigned int i = 1; i < N; ++i) d = std::max(std::fabs(u[i]), d);
+        T d = fabs(u[0]);
+        for (unsigned int i = 1; i < N; ++i) d = max(fabs(u[i]), d);
         return d;
     }
  
@@ -415,32 +426,6 @@ struct vec
         return t;
     }
  
-    inline void assign( T &a0, T &a1) const
-    {
-        assert(N == 2);
-        a0 = u[0]; a1 = u[1];
-    }
-
-    
-    inline void assign( T &a0, T &a1, T &a2)const
-    {
-        assert(N == 3);
-        a0 = u[0]; a1 = u[1]; a2 = u[2];
-    }
-
-    
-    inline void assign( T &a0, T &a1, T &a2, T &a3)const
-    {
-        assert(N == 4);
-        a0 = u[0]; a1 = u[1]; a2 = u[2]; a3 = u[3];
-    }
-
-    
-    inline void assign( T &a0, T &a1, T &a2, T &a3, T &a4, T &a5)const
-    {
-        assert(N == 6);
-        a0 = u[0]; a1 = u[1]; a2 = u[2]; a3 = u[3]; a4 = u[4]; a5 = u[5];
-    }
 
     
     inline vec<N, int> round()const
@@ -470,11 +455,11 @@ struct vec
     }
 
     
-    inline vec<N, T> fabs( )const
+    inline vec<N, T> abs( )const
     {
         vec<N, T> result;
         for (unsigned int i = 0; i < N; ++i)
-            result.u[i] = (T)std::fabs(u[i]);
+            result.u[i] = (T)fabs(u[i]);
         return result;
     }
      
@@ -593,7 +578,7 @@ struct vec<2, T>
     {
         return vec<2, T>(-u[0], -u[1]);
     }
-    T norm() const { return std::sqrt(x * x + y * y); }
+    T norm() const { return sqrt(x * x + y * y); }
     T norm2() const { return (x * x + y * y); }
     vec<2, T> normalized(T l = 1) const
     {
@@ -616,9 +601,9 @@ struct vec<2, T>
     {
         return (u[0] * rhs.u[0] + u[1] * rhs.u[1]);
     }
-    inline vec<2, T> fabs()const
+    inline vec<2, T> abs()const
     { 
-        return vec<2, T>(std::fabs(u[0]), std::fabs(u[1]));
+        return vec<2, T>(fabs(u[0]), fabs(u[1]));
     }
 
     union
@@ -666,7 +651,7 @@ struct vec<3, T>
     {
         return vec<4, T>(x, y, z, 1);
     }
-	T norm() const { return std::sqrt(x * x + y * y + z * z); }
+	T norm() const { return sqrt(x * x + y * y + z * z); }
 	T norm2() const { return (x * x + y * y + z * z); }
 	vec<3, T> normalized(T l = 1) const
 	{
@@ -787,9 +772,9 @@ struct vec<3, T>
     {
         return (u[0] * rhs.u[0] + u[1] * rhs.u[1] + u[2] * rhs.u[2]);
     }
-    inline vec<3, T> fabs()const
+    inline vec<3, T> abs()const
     {
-        return vec<3, T>(std::fabs(u[0]), std::fabs(u[1]), std::fabs(u[2]));
+        return vec<3, T>(fabs(u[0]), fabs(u[1]), fabs(u[2]));
     }
 
     union
@@ -834,7 +819,7 @@ struct vec<4, T>
     {
         return vec<3, T>(x, y, z);
     }
-    T norm() const { return std::sqrt(x * x + y * y + z * z + w * w); }
+    T norm() const { return sqrt(x * x + y * y + z * z + w * w); }
     T norm2() const { return (x * x + y * y + z * z + w * w); }
     vec<4, T> normalized(T l = 1) const
     {
@@ -957,9 +942,9 @@ struct vec<4, T>
             u[2] * rhs.u[2] +
             u[3] * rhs.u[3];
     }
-    inline vec<4, T> fabs()const
+    inline vec<4, T> abs()const
     {
-        return vec<4, T>(std::fabs(u[0]), std::fabs(u[1]), std::fabs(u[2]), std::fabs(u[3]));
+        return vec<4, T>(fabs(u[0]), fabs(u[1]), fabs(u[2]), fabs(u[3]));
     }
     union
     {
@@ -987,7 +972,7 @@ inline T dist2(const vec<N, T> &a, const vec<N, T> &b)
 template<size_t N, typename T>
 inline T dist(const vec<N, T> &a, const vec<N, T> &b)
 {
-    return std::sqrt(dist2(a, b));
+    return sqrt(dist2(a, b));
 }
 
 template <size_t N, typename T>
@@ -1239,7 +1224,7 @@ public:
 		return ret;
 	}
     inline void zero() {
-        std::memset(ptr(), 0, DimRows * DimCols * sizeof(T));
+        memset(ptr(), 0, DimRows * DimCols * sizeof(T));
     }
 
 	T det() const
@@ -1354,7 +1339,7 @@ public:
     template<unsigned int N, typename T>
     inline void make_identity(mat<N, N, T>& mat)
     {
-        std::memset(mat.a, 0, N*N * sizeof(T));
+        memset(mat.a, 0, N*N * sizeof(T));
         for (unsigned int i = 0; i < N; ++i)
             mat.a[(N + 1)*i] = 1;
     }
@@ -1562,6 +1547,33 @@ typedef vec<6, char>           Vec6c;
 typedef vec<6, unsigned char>  Vec6uc;
 typedef vec<6, size_t>         Vec6st;
 
+template <size_t N, typename T>
+inline void assign(const vec<N,T>& vs, T &a0, T &a1)
+{
+    assert(N == 2);
+    a0 = vs.u[0]; a1 = vs.u[1];
+}
+
+template <size_t N, typename T>
+inline void assign(const vec<N, T>& vs, T &a0, T &a1, T &a2)
+{
+    assert(N == 3);
+    a0 = vs.u[0]; a1 = vs.u[1]; a2 = vs.u[2];
+}
+
+template <size_t N, typename T>
+inline void assign(const vec<N, T>& vs, T &a0, T &a1, T &a2, T &a3)
+{
+    assert(N == 4);
+    a0 = vs.u[0]; a1 = vs.u[1]; a2 = vs.u[2]; a3 = vs.u[3];
+}
+
+template <size_t N, typename T>
+inline void assign(const vec<N, T>& vs, T &a0, T &a1, T &a2, T &a3, T &a4, T &a5)
+{
+    assert(N == 6);
+    a0 = vs.u[0]; a1 = vs.u[1]; a2 = vs.u[2]; a3 = vs.u[3]; a4 = vs.u[4]; a5 = vs.u[5];
+}
 
 struct WrongDimensionException : public std::exception { };
 

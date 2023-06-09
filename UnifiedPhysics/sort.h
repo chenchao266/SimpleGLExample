@@ -1,7 +1,7 @@
-#ifndef GPU_UNIFIED_H_
+﻿#ifndef GPU_UNIFIED_H_
 #define GPU_UNIFIED_H_
 
-#include <cstdlib>
+
 #include <algorithm>
 #include <vector>
 

@@ -1,7 +1,7 @@
 ﻿#ifndef SPARSEMILU_H
 #define SPARSEMILU_H
 
-#include <cmath>
+#include <math.h>
 //#include "blas_wrapper.h"
 #include "sparse_matrix.h"
 

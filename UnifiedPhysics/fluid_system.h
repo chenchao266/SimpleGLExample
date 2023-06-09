@@ -35,7 +35,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
-#include <cstring>
+#include <string.h>
 
 //#include "vector.h"
 //#include "gl_helper.h"

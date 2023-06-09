@@ -10,7 +10,7 @@
 
 using namespace SPH;
 using namespace Eigen;
-using namespace std;
+
 using namespace Utilities;
 
 SPHVolumeSampling_Jiang2015::SPHVolumeSampling_Jiang2015() :
@@ -183,7 +183,7 @@ void SPHVolumeSampling_Jiang2015::computePressure()
 		for (int i = 0; i < numParticles; i++)
 		{
 			// compute pressure (EOS)
-			m_p[i] = std::max(m_stiffness * (m_densities[i] - m_density0), static_cast<Real>(0.0));
+			m_p[i] = max(m_stiffness * (m_densities[i] - m_density0), static_cast<Real>(0.0));
 		}
 
 		#pragma omp for schedule(static)  

@@ -1,6 +1,5 @@
-﻿#include <cmath>
-#include <cstdarg>
-#include <cstdlib>
+﻿#include <math.h>
+
 #include <fstream>
 #include <glad/gl.h>
 #include "gluvi.h"
@@ -10,7 +9,7 @@
 #define M_PI 3.14159265358979323846f
 #endif
 
-using namespace std;
+//using namespace std;
 
 namespace Gluvi{
 

@@ -1,9 +1,8 @@
 ﻿
 #include "iomesh.h"
 
-#include <cstdarg>
-#include <cstdlib>
-#include <cmath>
+ 
+#include <math.h>
 #include <fstream>
 
 #include <nondestructivetrimesh.h>

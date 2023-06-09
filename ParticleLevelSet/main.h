@@ -51,20 +51,20 @@
  
 #include <deque>
   
-#include <cmath>
+#include <math.h>
  
 
-#include <ctime>
+#include <time.h>
  
 
-#include <cstdlib>
-#include <cassert>
+
+#include <assert.h>
 #include <fstream>
  
 
 #include <sstream>
 #include <iomanip>
-#include <cstdio>
+#include <stdio.h>
 
 //------------------------------CONSTANTS---------------------------------------------
 typedef double Float;

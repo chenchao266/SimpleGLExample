@@ -1,8 +1,8 @@
 ﻿// Released into the public domain by Robert Bridson, 2009.
 
-#include <cassert>
+#include <assert.h>
 #include "tunicate.h"
-#include <cstdlib>
+ 
 
 //==============================================================================
 // Note: it is assumed all arguments are nonzero (have a sign).

@@ -271,7 +271,7 @@ bool EdgeCollapser::collapse_edge_introduces_normal_inversion( size_t source_ver
             min_triangle_area = area;
     }
     assert(min_triangle_area > 0);
-    min_triangle_area = std::min(min_triangle_area, m_surf.m_min_triangle_area);
+    min_triangle_area = min(min_triangle_area, m_surf.m_min_triangle_area);
     
     //
     // check for normal inversion
@@ -425,8 +425,8 @@ bool EdgeCollapser::collapse_edge_introduces_bad_angle(size_t source_vertex,
     
     assert(max_tri_angle >= min_tri_angle);
     
-    min_tri_angle = std::min(min_tri_angle, deg2rad(m_surf.m_min_triangle_angle));
-    max_tri_angle = std::max(max_tri_angle, deg2rad(m_surf.m_max_triangle_angle));
+    min_tri_angle = min(min_tri_angle, deg2rad(m_surf.m_min_triangle_angle));
+    max_tri_angle = max(max_tri_angle, deg2rad(m_surf.m_max_triangle_angle));
     
     for ( size_t i = 0; i < moving_triangles.size(); ++i )
     {
@@ -1087,10 +1087,10 @@ bool EdgeCollapser::edge_is_collapsible( size_t edge_index, double& current_leng
         size_t vertex_a = m_surf.m_mesh.m_edges[edge_index][0];
         size_t vertex_b = m_surf.m_mesh.m_edges[edge_index][1];
         for(size_t edge_id = 0; edge_id < m_surf.m_mesh.m_vertex_to_edge_map[vertex_a].size(); ++edge_id) {
-            min_nbr_len = std::min(min_nbr_len, m_surf.get_edge_length(m_surf.m_mesh.m_vertex_to_edge_map[vertex_a][edge_id]));
+            min_nbr_len = min(min_nbr_len, m_surf.get_edge_length(m_surf.m_mesh.m_vertex_to_edge_map[vertex_a][edge_id]));
         }
         for(size_t edge_id = 0; edge_id < m_surf.m_mesh.m_vertex_to_edge_map[vertex_b].size(); ++edge_id) {
-            min_nbr_len = std::min(min_nbr_len, m_surf.get_edge_length(m_surf.m_mesh.m_vertex_to_edge_map[vertex_b][edge_id]));
+            min_nbr_len = min(min_nbr_len, m_surf.get_edge_length(m_surf.m_mesh.m_vertex_to_edge_map[vertex_b][edge_id]));
         }
         
         if(current_length < 3*min_nbr_len )
@@ -1102,7 +1102,7 @@ bool EdgeCollapser::edge_is_collapsible( size_t edge_index, double& current_leng
         //Then give the curvature (i.e. inverse radius) the target edge length
         //here should be computed as... 
         int circlesegs = 32;
-        double curvature_min_length = 2*M_PI / (double)circlesegs / std::max(curvature_value, 1e-8);
+        double curvature_min_length = 2*M_PI / (double)circlesegs / max(curvature_value, 1e-8);
         
         //collapse if curvature dictates we should. 
         return current_length < curvature_min_length;

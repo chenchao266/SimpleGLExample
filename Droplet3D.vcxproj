@@ -140,7 +140,6 @@
   <ItemGroup>
     <ClInclude Include="Droplet3D\BoundaryIntegral.h" />
     <ClInclude Include="Droplet3D\BPS3D.h" />
-    <ClInclude Include="Droplet3D\eigenheaders.h" />
     <ClInclude Include="Droplet3D\Fluid3D\AlgebraicMultigrid.h" />
     <ClInclude Include="Droplet3D\Fluid3D\blas_wrapper1.h" />
     <ClInclude Include="Droplet3D\Fluid3D\cgsolver.h" />
@@ -213,7 +212,6 @@
     <ClCompile Include="Droplet3D\BPS3DImplicit.cpp" />
     <ClCompile Include="Droplet3D\BPS3DPressureSolve.cpp" />
     <ClCompile Include="Droplet3D\BPS3DPressureSolveIterative.cpp" />
-    <ClCompile Include="Droplet3D\eigenheaders.cpp" />
     <ClCompile Include="Droplet3D\Fluid3D\faithful_surfacing3.cpp" />
     <ClCompile Include="Droplet3D\Fluid3D\fluidsim.cpp" />
     <ClCompile Include="Droplet3D\Fluid3D\GeometricLevelGen.cpp" />

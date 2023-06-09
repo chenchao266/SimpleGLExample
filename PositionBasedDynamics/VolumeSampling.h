@@ -1,7 +1,7 @@
-#ifndef VolumeSampling_H
+﻿#ifndef VolumeSampling_H
 #define VolumeSampling_H
 
-#include "../Common.h"
+#include "Common.h"
 #include <vector>
 
 
@@ -29,7 +29,7 @@ namespace Utilities
 		static void sampleMesh(const unsigned int numVertices, const Vector3r *vertices, 
 			const unsigned int numFaces, const unsigned int *faces,
 			const Real radius, const AlignedBox3r *region,
-			const std::array<unsigned int, 3> &resolution, const bool invert,
+			const Vec3ui &resolution, const bool invert,
 			const unsigned int sampleMode,
 			std::vector<Vector3r> &samples);		
 	};

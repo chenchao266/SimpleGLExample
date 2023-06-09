@@ -5,7 +5,7 @@
 #include "TimeStepController.h"
 
 using namespace PBD;
-using namespace std;
+
 using namespace GenParam;
 
 Simulation* Simulation::current = nullptr;

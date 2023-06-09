@@ -479,7 +479,7 @@ bool MeshSnapper::snap_vertex_pair( size_t vertex_to_keep, size_t vertex_to_dele
     m_surf.pm_velocities[vertex_to_keep] = (m_surf.pm_velocities[vertex_to_keep] + m_surf.pm_velocities[vertex_to_delete]) / 2;
 
     // update target edge lengths
-    m_surf.m_target_edge_lengths[vertex_to_keep] = std::min(m_surf.m_target_edge_lengths[vertex_to_keep], m_surf.m_target_edge_lengths[vertex_to_delete]);
+    m_surf.m_target_edge_lengths[vertex_to_keep] = min(m_surf.m_target_edge_lengths[vertex_to_keep], m_surf.m_target_edge_lengths[vertex_to_delete]);
     
     // Store the history
     m_surf.m_mesh_change_history.push_back(collapse);
@@ -1159,8 +1159,8 @@ bool MeshSnapper::snap_pass()
         
         Vec3d vmin, vmax;
         m_surf.vertex_static_bounds(vertex, vmin, vmax);
-        vmin -= std::max(m_surf.m_merge_proximity_epsilon, m_surf.m_merge_proximity_epsilon_for_liquid_sheet_puncture) * Vec3d(1,1,1);
-        vmax += std::max(m_surf.m_merge_proximity_epsilon, m_surf.m_merge_proximity_epsilon_for_liquid_sheet_puncture) * Vec3d(1,1,1);
+        vmin -= max(m_surf.m_merge_proximity_epsilon, m_surf.m_merge_proximity_epsilon_for_liquid_sheet_puncture) * Vec3d(1,1,1);
+        vmax += max(m_surf.m_merge_proximity_epsilon, m_surf.m_merge_proximity_epsilon_for_liquid_sheet_puncture) * Vec3d(1,1,1);
         
         std::vector<size_t> overlapping_tris;
         m_surf.m_broad_phase->get_potential_triangle_collisions(vmin, vmax, false, true, overlapping_tris);
@@ -1184,8 +1184,8 @@ bool MeshSnapper::snap_pass()
         
         Vec3d vmin, vmax;
         m_surf.edge_static_bounds(edge0, vmin, vmax);
-        vmin -= std::max(m_surf.m_merge_proximity_epsilon, m_surf.m_merge_proximity_epsilon_for_liquid_sheet_puncture) * Vec3d(1,1,1);
-        vmax += std::max(m_surf.m_merge_proximity_epsilon, m_surf.m_merge_proximity_epsilon_for_liquid_sheet_puncture) * Vec3d(1,1,1);
+        vmin -= max(m_surf.m_merge_proximity_epsilon, m_surf.m_merge_proximity_epsilon_for_liquid_sheet_puncture) * Vec3d(1,1,1);
+        vmax += max(m_surf.m_merge_proximity_epsilon, m_surf.m_merge_proximity_epsilon_for_liquid_sheet_puncture) * Vec3d(1,1,1);
         
         std::vector<size_t> overlapping_edges;
         m_surf.m_broad_phase->get_potential_edge_collisions(vmin, vmax, false, true, overlapping_edges);

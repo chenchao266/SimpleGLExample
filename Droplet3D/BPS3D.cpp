@@ -616,7 +616,7 @@ double BPS3D::vert_interior_solid_angle_dihedral(size_t v) const
         
         EigenVec3d n0 = face_outward_normal(f0);
         EigenVec3d n1 = face_outward_normal(f1);
-        double dihedral_angle = M_PI + (n0.cross(n1).dot(et) > 0 ? -1 : 1) * acos(std::min(1.0, std::max(-1.0, n0.dot(n1))));
+        double dihedral_angle = M_PI + (n0.cross(n1).dot(et) > 0 ? -1 : 1) * acos(min(1.0, max(-1.0, n0.dot(n1))));
         
         sa += dihedral_angle;
     }

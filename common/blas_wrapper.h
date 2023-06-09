@@ -1,9 +1,9 @@
-#ifndef BLAS_WRAPPER_H
+﻿#ifndef BLAS_WRAPPER_H
 #define BLAS_WRAPPER_H
 
-#include <cassert>
-#include <cmath>
-#include <cstring>
+#include <assert.h>
+#include <math.h>
+#include <string.h>
 #include <vector>
 
 // Useful dense kernels from BLAS, with readable, overloaded, cross-platform names and some simplified calling

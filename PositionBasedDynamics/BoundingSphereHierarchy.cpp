@@ -44,7 +44,7 @@ void PointCloudBSH::compute_hull_approx(unsigned int b, unsigned int n, Bounding
 	Real radius2 = 0.0;
 	for (unsigned int i = b; i < b+n; i++)
 	{
-		radius2 = std::max(radius2, (x - m_vertices[m_lst[i]]).squaredNorm());
+		radius2 = max(radius2, (x - m_vertices[m_lst[i]]).squaredNorm());
 	}
 
 	hull.x() = x;
@@ -95,10 +95,10 @@ void TetMeshBSH::compute_hull_approx(unsigned int b, unsigned int n, BoundingSph
 	for (unsigned int i = b; i < b + n; i++)
 	{
 		const unsigned int tet = m_lst[i];
-		radius2 = std::max(radius2, (x - m_vertices[m_indices[4 * tet]]).squaredNorm());
-		radius2 = std::max(radius2, (x - m_vertices[m_indices[4 * tet+1]]).squaredNorm());
-		radius2 = std::max(radius2, (x - m_vertices[m_indices[4 * tet+2]]).squaredNorm());
-		radius2 = std::max(radius2, (x - m_vertices[m_indices[4 * tet+3]]).squaredNorm());
+		radius2 = max(radius2, (x - m_vertices[m_indices[4 * tet]]).squaredNorm());
+		radius2 = max(radius2, (x - m_vertices[m_indices[4 * tet+1]]).squaredNorm());
+		radius2 = max(radius2, (x - m_vertices[m_indices[4 * tet+2]]).squaredNorm());
+		radius2 = max(radius2, (x - m_vertices[m_indices[4 * tet+3]]).squaredNorm());
 	}
 
 	hull.x() = x;

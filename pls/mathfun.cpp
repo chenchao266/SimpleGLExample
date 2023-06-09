@@ -12,7 +12,7 @@ double CalcWENO(double v1, double v2, double v3, double v4, double v5)
 	double s2 = 13 / 12.0*square(v2 - 2 * v3 + v4) + 0.25*square(v2 - v4);
 	double s3 = 13 / 12.0*square(v3 - 2 * v4 + v5) + 0.25*square(3 * v3 - 4 * v4 + v5);
  
-	double maxv = std::max(square(v1), std::max(square(v2), std::max(square(v3), std::max(square(v4), square(v5)))));
+	double maxv = max(square(v1), max(square(v2), max(square(v3), max(square(v4), square(v5)))));
 
 	double epsilon = 1e-6 * maxv + 1e-99;
 	double alpha1 = 0.1 / square(s1 + epsilon);

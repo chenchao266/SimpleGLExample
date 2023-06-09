@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 /// \file MathUtils.h
 /// \brief Additional math routines (with more includes).
@@ -7,8 +7,8 @@
 
 #include "common/Assert.h"
 #include "math/MathBasic.h"
-#include <cmath>
-#include <cstring>
+#include <math.h>
+#include <string.h>
 #include <limits>
 #include <utility>
 

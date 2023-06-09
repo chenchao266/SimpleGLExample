@@ -1,7 +1,7 @@
 ﻿#ifndef SPARSEILU_H
 #define SPARSEILU_H
 
-#include <cmath>
+#include <math.h>
 #include "sparse_matrix.h"
 #include "incomplete_qr.h"
 

@@ -25,7 +25,7 @@ namespace GenParam
 			setType(m_minValue);
 			m_maxValue = std::numeric_limits<T>::max();
 			m_minValue = std::numeric_limits<T>::lowest();
-			Parameter<T>::m_setValue = [&, valuePtr](T value) { *valuePtr = std::max(std::min(value, m_maxValue), m_minValue); };
+			Parameter<T>::m_setValue = [&, valuePtr](T value) { *valuePtr = max(min(value, m_maxValue), m_minValue); };
 		}
 
 		NumericParameter(const std::string& name, const std::string& label, ParameterBase::GetFunc<T> getValue, ParameterBase::SetFunc<T> setValue)

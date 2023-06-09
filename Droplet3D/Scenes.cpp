@@ -901,7 +901,7 @@ BPS3D * Scenes::scene(Sim * sim, const std::string & scene, std::vector<Vec3d> &
         
         double sigma_sa = Options::doubleValue("sigma-sa");
         double sigma_sl = Options::doubleValue("sigma-sl");
-        double contact_angle = acos(std::min(1.0, std::max(-1.0, sigma_sa - sigma_sl)));
+        double contact_angle = acos(min(1.0, max(-1.0, sigma_sa - sigma_sl)));
         std::cout << "equilibrium contact angle = " << contact_angle * 180 / M_PI << std::endl;
         
         double alpha_end = contact_angle;

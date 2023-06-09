@@ -34,8 +34,8 @@ void Scene::build(UnifiedPhysics* physics, UnifiedConstants* fc, float spacing, 
 	// (or overwrite this method in a subclass, but don't forget to call addAllTo(physics) in the end)
 
 	float my_block_size = fc->scales.x * fc->globalSupportRadius;
-	my_block_size = MAX(my_block_size, fc->scales.y * fc->globalSupportRadius); 
-	my_block_size = MAX(my_block_size, fc->scales.z * fc->globalSupportRadius); 
+	my_block_size = max(my_block_size, fc->scales.y * fc->globalSupportRadius); 
+	my_block_size = max(my_block_size, fc->scales.z * fc->globalSupportRadius); 
 
 	// setup for spatial queries
 	zIndex.SetBlockSize(my_block_size);

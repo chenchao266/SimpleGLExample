@@ -2,7 +2,7 @@
 #include "VolumeIntegration.h"
 #include <stdio.h> 
 
-using namespace std;
+
 using namespace Eigen;
 using namespace Utilities;
 

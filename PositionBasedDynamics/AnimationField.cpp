@@ -76,13 +76,13 @@ void AnimationField::step()
 				const Vector3r &xi = fm->getPosition(i);
 				const Vector3r &vi = fm->getVelocity(i);
 
-				const Eigen::Vector3d xi_double = xi.cast<double>();
-				const Eigen::Vector3d vi_double = vi.cast<double>();
+				const EigenVec3d xi_double = xi.cast<double>();
+				const EigenVec3d vi_double = vi.cast<double>();
 
 				if (inShape(m_type, xi, m_x, m_rotation, m_scale))
 				{
 					Eigen::Map<Vector3r> value((Real*) particleField->getFct(i));
-					const Eigen::Vector3d value_double = Vector3r(value).cast<double>();
+					const EigenVec3d value_double = Vector3r(value).cast<double>();
 
 					const double t_double = static_cast<double>(t);
 					const double dt_double = static_cast<double>(dt);

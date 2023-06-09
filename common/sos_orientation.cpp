@@ -2,7 +2,7 @@
 
 #include <algorithm>
 #include <cassert>
-#include <cmath>
+#include <math.h>
 #include "fenv_include.h"
 #include <limits>
 #include "tunicate.h"

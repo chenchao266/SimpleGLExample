@@ -662,8 +662,8 @@ bool ImpactZoneSolver::calculate_rigid_motion(double dt, std::vector<size_t>& vs
     {
         for(size_t j = i+1; j < vs.size(); j++)
         {
-            min_dist_t0 = std::min( min_dist_t0, dist( m_surface.get_position(vs[i]), m_surface.get_position(vs[j]) ) );
-            min_dist_t1 = std::min( min_dist_t1, dist( m_surface.get_newposition(vs[i]), m_surface.get_newposition(vs[j]) ) );
+            min_dist_t0 = min( min_dist_t0, dist( m_surface.get_position(vs[i]), m_surface.get_position(vs[j]) ) );
+            min_dist_t1 = min( min_dist_t1, dist( m_surface.get_newposition(vs[i]), m_surface.get_newposition(vs[j]) ) );
         }
     }
     
@@ -751,7 +751,7 @@ bool ImpactZoneSolver::calculate_rigid_motion(double dt, std::vector<size_t>& vs
         
         m_surface.m_velocities[idx] = ( m_surface.get_newposition(idx) - m_surface.get_position(idx) ) / dt;
         
-        max_velocity_mag = std::max( max_velocity_mag,  ( m_surface.m_velocities[idx] ).norm());
+        max_velocity_mag = max( max_velocity_mag,  ( m_surface.m_velocities[idx] ).norm());
         
     }
     
@@ -760,7 +760,7 @@ bool ImpactZoneSolver::calculate_rigid_motion(double dt, std::vector<size_t>& vs
     {
         for(size_t j = i+1; j < vs.size(); j++)
         {
-            min_dist_t1 = std::min( min_dist_t1, dist( m_surface.get_newposition(vs[i]), m_surface.get_newposition(vs[j]) ) );
+            min_dist_t1 = min( min_dist_t1, dist( m_surface.get_newposition(vs[i]), m_surface.get_newposition(vs[j]) ) );
         }
     }
     

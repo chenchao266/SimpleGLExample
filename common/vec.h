@@ -1,8 +1,8 @@
 ﻿#ifndef LOSTOPOS_VEC_H
 #define LOSTOPOS_VEC_H
 
-#include <cassert>
-#include <cmath>
+#include <assert.h>
+#include <math.h>
 #include <hashtable.h>
 #include <iostream>
 #include <util.h>

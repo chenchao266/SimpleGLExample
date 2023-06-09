@@ -15,9 +15,9 @@
 
 #include <nondestructivetrimesh.h>
 
-#include <cmath>
-#include <cstdarg>
-#include <cstdlib>
+#include <math.h>
+#include <stdarg.h>
+
 #include <fstream>
 //#include <wallclocktime.h>
 #include <algorithm>
@@ -706,9 +706,9 @@ void NonDestructiveTriMesh::update_connectivity( )
     size_t nv = 0;
     for ( size_t i = 0; i < m_tris.size(); ++i )
     {
-        nv = std::max( nv, m_tris[i][0] + 1 );
-        nv = std::max( nv, m_tris[i][1] + 1 );
-        nv = std::max( nv, m_tris[i][2] + 1 );
+        nv = max( nv, m_tris[i][0] + 1 );
+        nv = max( nv, m_tris[i][1] + 1 );
+        nv = max( nv, m_tris[i][2] + 1 );
     }
     
     m_vertex_to_triangle_map.resize(nv);
