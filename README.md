@@ -1,16 +1,17 @@
 # SimpleGLExample
-from Bullet3 example
-vs2017
+from Bullet3 example  
+vs2017  
 
 
 
-zlib license
+zlib license 
 
-#dependency 
-TBB     tbb2019_20191006oss
-Eigen   eigen-3.3
-Boost   boost_1_69
-CUDA 11.6
+#dependency  
+TBB     tbb2019_20191006oss  
+Eigen   eigen-3.3  
+Boost   boost_1_69  
+CUDA 11.6  
+
 --------------------------------- 
 
 [![Travis Build Status](https://api.travis-ci.org/bulletphysics/bullet3.png?branch=master)](https://travis-ci.org/bulletphysics/bullet3)
