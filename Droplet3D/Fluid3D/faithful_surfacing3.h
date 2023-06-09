@@ -21,7 +21,7 @@ struct FaithfulSurfacing3
    MarchingTiles march;
    std::vector<Vec3i> &tri;
    std::vector<Vec3f> &x;
-   Array3<std::vector<unsigned int> > particle_bucket;
+   LosTopos::Array3<std::vector<unsigned int> > particle_bucket;
    SparseMatrixf A, B;
 
    FaithfulSurfacing3(void);

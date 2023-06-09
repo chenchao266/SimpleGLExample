@@ -9,7 +9,7 @@
 #include <vector>
  
  
-using namespace LosTopos;
+//using namespace LosTopos;
 struct FLIP_particle
 {
 	Vec3f pos;
@@ -79,28 +79,28 @@ public:
    
    //Fluid velocity
    std::vector<emitter> simple_emitters;
-   Array3f u, v, w;
-   Array3f u_solid, v_solid, w_solid;
-   Array3f u_save, v_save, w_save;
-   Array3f u_coef, v_coef, w_coef;
-   Array3f temp_u, temp_v, temp_w;
+   LosTopos::Array3f u, v, w;
+   LosTopos::Array3f u_solid, v_solid, w_solid;
+   LosTopos::Array3f u_save, v_save, w_save;
+   LosTopos::Array3f u_coef, v_coef, w_coef;
+   LosTopos::Array3f temp_u, temp_v, temp_w;
    
    //Static geometry representation
-   Array3f nodal_solid_phi;
-   Array3f u_weights, v_weights, w_weights;
-   Array3c u_valid, v_valid, w_valid;//, p_valid;
-   Array3c marker_cell;
+   LosTopos::Array3f nodal_solid_phi;
+   LosTopos::Array3f u_weights, v_weights, w_weights;
+   LosTopos::Array3c u_valid, v_valid, w_valid;//, p_valid;
+   LosTopos::Array3c marker_cell;
 
    std::vector<FLIP_particle> particles;
    std::vector<Vec3f> vort;
    float particle_radius;
 
-   Array3f liquid_phi;
+   LosTopos::Array3f liquid_phi;
 
-   //Array3f potential, temp_potential;
+   //LosTopos::Array3f potential, temp_potential;
 
    //Data arrays for extrapolation
-   Array3c valid, old_valid;
+   LosTopos::Array3c valid, old_valid;
 
    //Solver data
    PCGSolver<double> solver;
@@ -132,9 +132,9 @@ private:
 		Vec3f dd = gp - pp;
 		return H(dd[0]/dx)*H(dd[1]/dx)*H(dd[2]/dx);
 	}
-	void divide_weight(Array3f &u, Array3f & u_coef);
+	void divide_weight(LosTopos::Array3f &u, LosTopos::Array3f & u_coef);
 	Vec3f get_dvelocity(const Vec3f & position);
-	void compute_delta(Array3f & u, Array3f &u_old, Array3f &u_temp);
+	void compute_delta(LosTopos::Array3f & u, LosTopos::Array3f &u_old, LosTopos::Array3f &u_temp);
 	void particle_interpolate(float alpha);
 	void FLIP_advection(float dt); 
 
@@ -153,7 +153,7 @@ private:
    void compute_weights();
    void solve_pressure(float dt);
    void compute_phi(std::vector<std::vector<int>> & particle_hash, std::vector<Vec3i> cell_list);
-   //void computeGradPhi(Array3f & u_temp, int dir);
+   //void computeGradPhi(LosTopos::Array3f & u_temp, int dir);
    //void advectPotential(float dt);
 
 

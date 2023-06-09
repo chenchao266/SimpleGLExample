@@ -129,7 +129,7 @@ EigenVec2d BoundaryIntegral::duffyTransform(const EigenVec3d & x0, const EigenVe
     EigenVec2d t = EigenVec2d(s.x(), s.x() * s.y());  // coordinates in the triangle ref domain ((0,0), (1,0), (1,1)), after Duffy transform
     double jacobian_t = s.x();              // the jacobian dt/ds
     
-    Eigen::Matrix<double, 3, 2> defmap;     // deformation from the triangle ref domain to the world frame: mapping (0,0) to x0, (1,0) to x1, (1,1) to x2
+    EigenMat32d defmap;     // deformation from the triangle ref domain to the world frame: mapping (0,0) to x0, (1,0) to x1, (1,1) to x2
     defmap.col(0) = x1 - x0;
     defmap.col(1) = x2 - x1;
     
@@ -194,7 +194,7 @@ void BoundaryIntegral::lineTransform(const EigenVec3d & x0, const EigenVec3d & x
     x = x0 * c[0] + x1 * c[1];
 }
 
-void BoundaryIntegral::lineTransform(const Eigen::Matrix<double, 3, 2> & xs, double k, EigenVec3d & x, double & jacobian, EigenVec2d & c)
+void BoundaryIntegral::lineTransform(const EigenMat32d & xs, double k, EigenVec3d & x, double & jacobian, EigenVec2d & c)
 {
     lineTransform(xs.col(0), xs.col(1), k, x, jacobian, c);
 }

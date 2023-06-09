@@ -1,4 +1,4 @@
-#ifndef SDFGEN_H
+﻿#ifndef SDFGEN_H
 #define SDFGEN_H
 #include "makelevelset3.h"
 #include <fstream>
@@ -14,7 +14,7 @@ public:
 	~SDFGenerator(){}
 	int ni, nj, nk;
 
-	Array3f sdf;
+    LosTopos::Array3f sdf;
 	float dx;
 	
 	float getPhi(Vec3f pos)

@@ -2,7 +2,7 @@
 #include "SDFFunctions.h"
 #include "Timing.h"
 
-using namespace Eigen;
+
 
 using namespace Utilities;
 

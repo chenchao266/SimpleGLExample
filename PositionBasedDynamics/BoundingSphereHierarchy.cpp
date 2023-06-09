@@ -1,11 +1,11 @@
-
+﻿
 #include "BoundingSphereHierarchy.h"
 
 #include <iostream>
 #include <unordered_set>
 #include <set>
 
-using namespace Eigen;
+ 
 using pool_set = std::set<unsigned int>;
 using namespace PBD;
 

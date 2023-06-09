@@ -326,9 +326,6 @@
     <ClInclude Include="Droplet3D\Fluid3D\sparsemilu.h">
       <Filter>fluid</Filter>
     </ClInclude>
-    <ClInclude Include="Droplet3D\Fluid3D\blas_wrapper1.h">
-      <Filter>fluid</Filter>
-    </ClInclude>
     <ClInclude Include="Droplet3D\Fluid3D\sparse_matrix.h">
       <Filter>fluid</Filter>
     </ClInclude>

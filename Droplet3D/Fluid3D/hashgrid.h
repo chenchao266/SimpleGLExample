@@ -3,7 +3,7 @@
 
 #include "hashtable.h"
 #include "vec.h"
-using namespace LosTopos;
+//using namespace LosTopos;
 //========================================================= first do 2D ============================
 
 template<class DataType>

@@ -17,7 +17,7 @@ Multigrid Cycles.
 */
  
  
-using namespace LosTopos;
+//using namespace LosTopos;
 template<class T>
 void RBGS(const FixedSparseMatrix<T> &A, 
 	const std::vector<T> &b,

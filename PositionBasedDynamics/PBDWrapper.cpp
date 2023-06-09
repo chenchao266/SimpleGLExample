@@ -15,7 +15,7 @@
 #include "math.h"
 
 
-using namespace Eigen;
+
 
 
 

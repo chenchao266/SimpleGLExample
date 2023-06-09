@@ -11,7 +11,7 @@
 #include "math.h"
 
 
-using namespace Eigen;
+
 using namespace SPH;
 
 PoissonDiskSampling::PoissonDiskSampling()

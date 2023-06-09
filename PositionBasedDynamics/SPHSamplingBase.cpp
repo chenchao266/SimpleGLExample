@@ -11,7 +11,7 @@
 
 
 using namespace SPH;
-using namespace Eigen;
+
 
 using namespace Utilities;
 

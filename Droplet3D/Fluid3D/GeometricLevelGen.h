@@ -13,7 +13,7 @@
 #include "blas_wrapper.h"
 
  
-using namespace LosTopos;
+//using namespace LosTopos;
 template<class T>
 struct levelGen{
 	void generateRP(const FixedSparseMatrix<T> &A,

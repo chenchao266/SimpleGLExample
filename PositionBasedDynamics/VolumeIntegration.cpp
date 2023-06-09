@@ -3,7 +3,7 @@
 #include <stdio.h> 
 
 
-using namespace Eigen;
+
 using namespace Utilities;
 
 #define SQR(x) ((x)*(x))

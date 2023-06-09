@@ -1,6 +1,6 @@
 ﻿#include <iostream>
 #include "faithful_surfacing3.h"
-
+using namespace LosTopos;
 FaithfulSurfacing3::
 	FaithfulSurfacing3(void)
 	: inner_radius(0.5f),

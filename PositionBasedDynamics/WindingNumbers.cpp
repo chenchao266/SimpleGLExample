@@ -7,7 +7,7 @@
 
 using namespace Utilities;
 using namespace SPH;
-using namespace Eigen;
+
 
 
 Real WindingNumbers::computeGeneralizedWindingNumber(const Vector3r& p_, const Vector3r& a_, const Vector3r& b_, const Vector3r& c_)

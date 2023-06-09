@@ -141,7 +141,6 @@
     <ClInclude Include="Droplet3D\BoundaryIntegral.h" />
     <ClInclude Include="Droplet3D\BPS3D.h" />
     <ClInclude Include="Droplet3D\Fluid3D\AlgebraicMultigrid.h" />
-    <ClInclude Include="Droplet3D\Fluid3D\blas_wrapper1.h" />
     <ClInclude Include="Droplet3D\Fluid3D\cgsolver.h" />
     <ClInclude Include="Droplet3D\Fluid3D\crsolver.h" />
     <ClInclude Include="Droplet3D\Fluid3D\faithful_surfacing3.h" />

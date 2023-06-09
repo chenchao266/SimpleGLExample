@@ -3,7 +3,7 @@
 
 #include "array3.h"
 #include "vec.h"
-using namespace LosTopos;
+//using namespace LosTopos;
 // tri is a list of triangles in the mesh, and x is the positions of the vertices
 // absolute distances will be nearly correct for triangle soup, but a closed mesh is
 // needed for accurate signs. Distances for all grid cells within exact_band cells of
@@ -11,6 +11,6 @@ using namespace LosTopos;
 // be to the closest triangle - just one nearby.
 void make_level_set3(const std::vector<Vec3ui> &tri, const std::vector<Vec3f> &x,
                      const Vec3f &origin, float dx, int nx, int ny, int nz,
-                     Array3f &phi, const int exact_band=2);
+    LosTopos::Array3f &phi, const int exact_band=2);
 
 #endif

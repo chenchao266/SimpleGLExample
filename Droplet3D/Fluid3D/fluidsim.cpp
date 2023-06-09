@@ -6,6 +6,7 @@
 #include "pcg_solver.h"
 #include "tbb/tbb.h"
 #include "AlgebraicMultigrid.h"
+using namespace LosTopos;
 void extrapolate(Array3f& grid, Array3c& valid);
 
 void FluidSim::initialize(float width, int ni_, int nj_, int nk_) {

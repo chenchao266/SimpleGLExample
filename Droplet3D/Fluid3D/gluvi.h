@@ -5,7 +5,7 @@
 #include <vector>
  
 #include "vec.h"
-using namespace LosTopos;
+//using namespace LosTopos;
 namespace Gluvi{
 
 /*

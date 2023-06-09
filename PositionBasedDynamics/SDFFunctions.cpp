@@ -2,7 +2,7 @@
 #include "Timing.h"
 #include "OBJLoader.h"
 
-using namespace Eigen;
+
 
 using namespace Utilities;
 

@@ -35,7 +35,7 @@ public:
     static EigenVec2d duffyTransform(const EigenVec3d & x0, const EigenVec3d & x1, const EigenVec3d & x2, const EigenVec2d & k, EigenVec3d & x, double & jacobian, EigenVec3d & c);
     static EigenVec2d duffyTransform(const EigenMat3d & xs, int singularity, const EigenVec2d & k, EigenVec3d & x, double & jacobian, EigenVec3d & c);
     static void lineTransform(const EigenVec3d & x0, const EigenVec3d & x1, double k, EigenVec3d & x, double & jacobian, EigenVec2d & c);
-    static void lineTransform(const Eigen::Matrix<double, 3, 2> & xs, double k, EigenVec3d & x, double & jacobian, EigenVec2d & c);
+    static void lineTransform(const EigenMat32d & xs, double k, EigenVec3d & x, double & jacobian, EigenVec2d & c);
 
     inline static void nonSingularTransform(const EigenVec3d & x0, const EigenVec3d & x1, const EigenVec3d & x2, const EigenVec2d & k, EigenVec3d & x, double & jacobian, EigenVec3d & c)
     {
@@ -48,7 +48,7 @@ public:
         assert(a != 0);
         assert(n == n);
         
-        Eigen::Matrix<double, 3, 2> defmap;     // deformation from the triangle ref domain to the world frame: mapping (0,0) to x0, (1,0) to x1, (1,1) to x2
+        EigenMat32d defmap;     // deformation from the triangle ref domain to the world frame: mapping (0,0) to x0, (1,0) to x1, (1,1) to x2
         defmap.col(0) = x1 - x0;
         defmap.col(1) = x2 - x1;
         
