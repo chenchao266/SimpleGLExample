@@ -1,22 +1,21 @@
-
+﻿
 #include "point_triangle_distance.hpp"
 
 #include <iostream>
 
-using namespace Eigen;
-
+ 
 namespace Discregrid
 {
 
 double
-point_triangle_sqdistance(Vector3d const& point, 
-    std::array<Vector3d const*, 3> const& triangle, 
-    Vector3d* nearest_point,
+point_triangle_sqdistance(EigenVec3d const& point, 
+    std::array<EigenVec3d const*, 3> const& triangle,
+    EigenVec3d* nearest_point,
     NearestEntity* ne)
 {
-    Vector3d diff = *triangle[0] - point;
-    Vector3d edge0 = *triangle[1] - *triangle[0];
-    Vector3d edge1 = *triangle[2] - *triangle[0];
+    EigenVec3d diff = *triangle[0] - point;
+    EigenVec3d edge0 = *triangle[1] - *triangle[0];
+    EigenVec3d edge1 = *triangle[2] - *triangle[0];
     double a00 = edge0.dot(edge0);
     double a01 = edge0.dot(edge1);
     double a11 = edge1.dot(edge1);

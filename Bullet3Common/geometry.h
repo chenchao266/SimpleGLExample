@@ -6,7 +6,7 @@
 #include <math.h>
 #include <vector>
 #include <exception>
-//#include <algorithm>
+#include <limits>
 #ifdef _MSC_VER
 #undef min
 #undef max
@@ -463,7 +463,29 @@ struct vec
         return result;
     }
      
- 
+    inline T maxCoeff() const {
+        T res = std::numeric_limits<T>::lowest();
+        for (int i = 0; i < DimT; ++i)
+        {
+            if (res < u[i])
+            {
+                res = u[i];
+            }
+        }
+        return res;
+    }
+
+    inline T minCoeff() const {
+        T res = std::numeric_limits<T>::max();
+        for (int i = 0; i < DimT; ++i)
+        {
+            if (res > u[i])
+            {
+                res = u[i];
+            }
+        }
+        return res;
+    }
     inline void update_minmax( vec<N, T> &xmin, vec<N, T> &xmax)const
     {
         for (unsigned int i = 0; i < N; ++i) update_minmax(u[i], xmin[i], xmax[i]);
@@ -605,7 +627,8 @@ struct vec<2, T>
     { 
         return vec<2, T>(fabs(u[0]), fabs(u[1]));
     }
-
+    inline T maxCoeff() const { return max(x, y); } 
+    inline T minCoeff() const { return min(x, y); }
     union
     {
         struct
@@ -776,6 +799,8 @@ struct vec<3, T>
     {
         return vec<3, T>(fabs(u[0]), fabs(u[1]), fabs(u[2]));
     }
+    inline T maxCoeff() const { return max(max(x, y), z); }
+    inline T minCoeff() const { return min(min(x, y), z); }
 
     union
     {
@@ -946,6 +971,9 @@ struct vec<4, T>
     {
         return vec<4, T>(fabs(u[0]), fabs(u[1]), fabs(u[2]), fabs(u[3]));
     }
+    inline T maxCoeff() const { return  max(max(x, y), max(z, w)); }
+    inline T minCoeff() const { return  min(min(x, y), min(z, w)); }
+
     union
     {
         struct

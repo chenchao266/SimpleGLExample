@@ -1,29 +1,29 @@
-
-#include <acceleration/bounding_sphere_hierarchy.hpp>
+﻿
+#include "bounding_sphere_hierarchy.hpp"
 
 #include <iostream>
 #include <set>
 
-using namespace Eigen;
+ 
 
 namespace Discregrid
 {
 
 TriangleMeshBSH::TriangleMeshBSH(
-	std::vector<Vector3d> const& vertices,
-	std::vector<std::array<unsigned int, 3>> const& faces)
+	std::vector<EigenVec3d> const& vertices,
+	std::vector<Vec3ui > const& faces)
 	: super(faces.size()), m_faces(faces), m_vertices(vertices), 
 		m_tri_centers(faces.size())
 {
 	std::transform(m_faces.begin(), m_faces.end(), m_tri_centers.begin(),
-		[&](std::array<unsigned int, 3> const& f)
+		[&](Vec3ui const& f)
 		{
 			return 1.0 / 3.0 * (m_vertices[f[0]] + m_vertices[f[1]] +
 				m_vertices[f[2]]);
 		});
 }
 
-Vector3d const&
+EigenVec3d const&
 TriangleMeshBSH::entityPosition(unsigned int i) const
 {
 	return m_tri_centers[i];
@@ -32,7 +32,7 @@ TriangleMeshBSH::entityPosition(unsigned int i) const
 void
 TriangleMeshBSH::computeHull(unsigned int b, unsigned int n, BoundingSphere& hull) const
 {
-	auto vertices_subset = std::vector<Vector3d>(3 * n);
+	auto vertices_subset = std::vector<EigenVec3d>(3 * n);
 	for (unsigned int i(0); i < n; ++i)
 	{
 		auto const& f = m_faces[m_lst[b + i]];
@@ -50,33 +50,34 @@ TriangleMeshBSH::computeHull(unsigned int b, unsigned int n, BoundingSphere& hul
 }
 
 TriangleMeshBBH::TriangleMeshBBH(
-	std::vector<Vector3d> const& vertices,
-	std::vector<std::array<unsigned int, 3>> const& faces)
+	std::vector<EigenVec3d> const& vertices,
+	std::vector<Vec3ui> const& faces)
 	: super(faces.size()), m_faces(faces), m_vertices(vertices), 
 		m_tri_centers(faces.size())
 {
 	std::transform(m_faces.begin(), m_faces.end(), m_tri_centers.begin(),
-		[&](std::array<unsigned int, 3> const& f)
+		[&](Vec3ui const& f)
 		{
 			return 1.0 / 3.0 * (m_vertices[f[0]] + m_vertices[f[1]] +
 				m_vertices[f[2]]);
 		});
 }
 
-Vector3d const&
+EigenVec3d const&
 TriangleMeshBBH::entityPosition(unsigned int i) const
 {
 	return m_tri_centers[i];
 }
 
 void
-TriangleMeshBBH::computeHull(unsigned int b, unsigned int n, AlignedBox3d& hull) const
+TriangleMeshBBH::computeHull(unsigned int b, unsigned int n, Eigen::AlignedBox3d& hull) const
 {
 	for (auto i = 0u; i < n; ++i)
 	{
 		auto const& f = m_faces[m_lst[b + i]];
-		for (auto v : f)
-		{
+		for (int j=0; j<3; ++j)
+        {
+            auto v = f[j];
 			hull.extend(m_vertices[v]);
 		}
 	}
@@ -88,13 +89,13 @@ PointCloudBSH::PointCloudBSH()
 {
 }
 
-PointCloudBSH::PointCloudBSH(std::vector<Vector3d> const& vertices)
+PointCloudBSH::PointCloudBSH(std::vector<EigenVec3d> const& vertices)
 	: super(vertices.size()), m_vertices(&vertices)
 {
 
 }
 
-Vector3d const&
+EigenVec3d const&
 PointCloudBSH::entityPosition(unsigned int i) const
 {
 	return (*m_vertices)[i];
@@ -103,7 +104,7 @@ PointCloudBSH::entityPosition(unsigned int i) const
 void
 PointCloudBSH::computeHull(unsigned int b, unsigned int n, BoundingSphere& hull) const
 {
-	auto vertices_subset = std::vector<Vector3d>(n);
+	auto vertices_subset = std::vector<EigenVec3d>(n);
 	for (unsigned int i = b; i < n + b; ++i)
 		vertices_subset[i - b] = (*m_vertices)[m_lst[i]];
 

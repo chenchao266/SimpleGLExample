@@ -4,7 +4,7 @@
 #define _USE_MATH_DEFINES
 #include <math.h>
 #include "Common.h"
-#include <algorithm>
+//#include <algorithm>
 #ifdef USE_AVX
 #include "AVX_math.h"
 #endif

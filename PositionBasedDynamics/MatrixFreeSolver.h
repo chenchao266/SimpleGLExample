@@ -1,9 +1,7 @@
 ﻿#ifndef __MatrixFreeSolver_H__
 #define __MatrixFreeSolver_H__
 
-#include <Eigen/Core>
-#include <Eigen/Dense>
-#include <Eigen/Sparse>
+#include "eigenheaders.h"
 
 using SystemMatrixType = Eigen::SparseMatrix<Real>;
 

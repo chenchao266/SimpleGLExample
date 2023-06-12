@@ -4,6 +4,9 @@
     <Filter Include="common">
       <UniqueIdentifier>{1049bcca-5f52-439e-bbc5-45b0518abb35}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Discregrid">
+      <UniqueIdentifier>{02bf0598-dbec-4918-9563-4fe83b79875d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PositionBasedDynamics\AABB.h">
@@ -287,6 +290,57 @@
     <ClInclude Include="PositionBasedDynamics\SPHSamplingBase.h" />
     <ClInclude Include="PositionBasedDynamics\SPHVolumeSampling.h" />
     <ClInclude Include="PositionBasedDynamics\SPHVolumeSampling_Jiang2015.h" />
+    <ClInclude Include="Discregrid\cubic_lagrange_discrete_grid.hpp">
+      <Filter>Discregrid</Filter>
+    </ClInclude>
+    <ClInclude Include="Discregrid\discrete_grid.hpp">
+      <Filter>Discregrid</Filter>
+    </ClInclude>
+    <ClInclude Include="Discregrid\utility\lru_cache.hpp">
+      <Filter>Discregrid</Filter>
+    </ClInclude>
+    <ClInclude Include="Discregrid\utility\serialize.hpp">
+      <Filter>Discregrid</Filter>
+    </ClInclude>
+    <ClInclude Include="Discregrid\utility\spinlock.hpp">
+      <Filter>Discregrid</Filter>
+    </ClInclude>
+    <ClInclude Include="Discregrid\utility\timing.hpp">
+      <Filter>Discregrid</Filter>
+    </ClInclude>
+    <ClInclude Include="Discregrid\acceleration\bounding_sphere.hpp">
+      <Filter>Discregrid</Filter>
+    </ClInclude>
+    <ClInclude Include="Discregrid\acceleration\bounding_sphere_hierarchy.hpp">
+      <Filter>Discregrid</Filter>
+    </ClInclude>
+    <ClInclude Include="Discregrid\acceleration\kd_tree.hpp">
+      <Filter>Discregrid</Filter>
+    </ClInclude>
+    <ClInclude Include="Discregrid\data\z_sort_table.hpp">
+      <Filter>Discregrid</Filter>
+    </ClInclude>
+    <ClInclude Include="Discregrid\geometry\mesh_distance.hpp">
+      <Filter>Discregrid</Filter>
+    </ClInclude>
+    <ClInclude Include="Discregrid\geometry\point_triangle_distance.hpp">
+      <Filter>Discregrid</Filter>
+    </ClInclude>
+    <ClInclude Include="Discregrid\geometry\TriangleMeshDistance.h">
+      <Filter>Discregrid</Filter>
+    </ClInclude>
+    <ClInclude Include="Discregrid\mesh\entity_containers.hpp">
+      <Filter>Discregrid</Filter>
+    </ClInclude>
+    <ClInclude Include="Discregrid\mesh\entity_iterators.hpp">
+      <Filter>Discregrid</Filter>
+    </ClInclude>
+    <ClInclude Include="Discregrid\mesh\halfedge.hpp">
+      <Filter>Discregrid</Filter>
+    </ClInclude>
+    <ClInclude Include="Discregrid\mesh\triangle_mesh.hpp">
+      <Filter>Discregrid</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PositionBasedDynamics\BoundingSphereHierarchy.cpp">
@@ -486,10 +540,40 @@
     <ClCompile Include="PositionBasedDynamics\SPHSamplingBase.cpp" />
     <ClCompile Include="PositionBasedDynamics\SPHVolumeSampling.cpp" />
     <ClCompile Include="PositionBasedDynamics\SPHVolumeSampling_Jiang2015.cpp" />
+    <ClCompile Include="Discregrid\cubic_lagrange_discrete_grid.cpp">
+      <Filter>Discregrid</Filter>
+    </ClCompile>
+    <ClCompile Include="Discregrid\discrete_grid.cpp">
+      <Filter>Discregrid</Filter>
+    </ClCompile>
+    <ClCompile Include="Discregrid\utility\timing.cpp">
+      <Filter>Discregrid</Filter>
+    </ClCompile>
+    <ClCompile Include="Discregrid\acceleration\bounding_sphere_hierarchy.cpp">
+      <Filter>Discregrid</Filter>
+    </ClCompile>
+    <ClCompile Include="Discregrid\geometry\mesh_distance.cpp">
+      <Filter>Discregrid</Filter>
+    </ClCompile>
+    <ClCompile Include="Discregrid\geometry\point_triangle_distance.cpp">
+      <Filter>Discregrid</Filter>
+    </ClCompile>
+    <ClCompile Include="Discregrid\mesh\entity_containers.cpp">
+      <Filter>Discregrid</Filter>
+    </ClCompile>
+    <ClCompile Include="Discregrid\mesh\entity_iterators.cpp">
+      <Filter>Discregrid</Filter>
+    </ClCompile>
+    <ClCompile Include="Discregrid\mesh\triangle_mesh.cpp">
+      <Filter>Discregrid</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="PositionBasedDynamics\kdTree.inl">
       <Filter>common</Filter>
+    </None>
+    <None Include="Discregrid\acceleration\kd_tree.inl">
+      <Filter>Discregrid</Filter>
     </None>
   </ItemGroup>
 </Project>

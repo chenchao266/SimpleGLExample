@@ -1,9 +1,9 @@
-#ifndef __StringTools_h__
+﻿#ifndef __StringTools_h__
 #define __StringTools_h__
 
 #include <vector>
 #include <iostream>
-#include <algorithm>
+//#include <algorithm>
 #include <string>
 
 namespace Utilities

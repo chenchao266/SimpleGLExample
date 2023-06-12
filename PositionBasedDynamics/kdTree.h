@@ -1,9 +1,9 @@
-#ifndef __KDTREE_H__
+﻿#ifndef __KDTREE_H__
 #define __KDTREE_H__
 
 #include <vector>
 #include <functional>
-#include <algorithm>
+//#include <algorithm>
 #include <numeric>
 #include <queue>
 #include <iostream>

@@ -1,6 +1,6 @@
 ﻿#include "data/z_sort_table.hpp"
 #include "cubic_lagrange_discrete_grid.hpp"
-#include <utility/serialize.hpp>
+#include "utility/serialize.hpp"
 #include "utility/spinlock.hpp"
 #include "utility/timing.hpp"
 
@@ -91,10 +91,12 @@ double const abscissae_[32][3] = {
 	{1.000000000000, 1.000000000000, 0.333333333333}	 //31 --> 31
 };
 
-CoefficientVector
+} // namespace
+
+DiscreteGrid::CoefficientVector
 shape_function(EigenVec3d const &xi, Eigen::Matrix<double, 32, 3> *gradient = nullptr)
 {
-	auto res = CoefficientVector{};
+	auto res = DiscreteGrid::CoefficientVector{};
 
 	auto x = xi[0];
 	auto y = xi[1];
@@ -334,10 +336,10 @@ shape_function(EigenVec3d const &xi, Eigen::Matrix<double, 32, 3> *gradient = nu
 	return res;
 }
 
-CoefficientVector
-shape_function_(Vector3d const &xi, Eigen::Matrix<double, 32, 3> *gradient = nullptr)
+DiscreteGrid::CoefficientVector
+shape_function_(EigenVec3d const &xi, Eigen::Matrix<double, 32, 3> *gradient = nullptr)
 {
-	auto res = CoefficientVector{};
+	auto res = DiscreteGrid::CoefficientVector{};
 
 	auto x = xi[0];
 	auto y = xi[1];
@@ -581,7 +583,7 @@ shape_function_(Vector3d const &xi, Eigen::Matrix<double, 32, 3> *gradient = nul
 inline uint64_t
 zValue(EigenVec3d const &x, double invCellSize)
 {
-	std::array<int, 3> key;
+	Vec3i key;
 	for (unsigned int i(0); i < 3; ++i)
 	{
 		if (x[i] >= 0.0)
@@ -597,8 +599,6 @@ zValue(EigenVec3d const &x, double invCellSize)
 
 	return morton_lut(p);
 }
-} // namespace
-
 EigenVec3d
 CubicLagrangeDiscreteGrid::indexToNodePosition(unsigned int l) const
 {
@@ -615,10 +615,10 @@ CubicLagrangeDiscreteGrid::indexToNodePosition(unsigned int l) const
 	auto ijk = Vec3ui();
 	if (l < nv)
 	{
-		ijk(2) = l / ((n[1] + 1) * (n[0] + 1));
+		ijk[2] = l / ((n[1] + 1) * (n[0] + 1));
 		auto temp = l % ((n[1] + 1) * (n[0] + 1));
-		ijk(1) = temp / (n[0] + 1);
-		ijk(0) = temp % (n[0] + 1);
+		ijk[1] = temp / (n[0] + 1);
+		ijk[0] = temp % (n[0] + 1);
 
 		x = m_domain.min() + vc(m_cell_size*Vec3d(ijk.x, ijk.y, ijk.z));
 	}
@@ -626,10 +626,10 @@ CubicLagrangeDiscreteGrid::indexToNodePosition(unsigned int l) const
 	{
 		l -= nv;
 		auto e_ind = l / 2;
-		ijk(2) = e_ind / ((n[1] + 1) * n[0]);
+		ijk[2] = e_ind / ((n[1] + 1) * n[0]);
 		auto temp = e_ind % ((n[1] + 1) * n[0]);
-		ijk(1) = temp / n[0];
-		ijk(0) = temp % n[0];
+		ijk[1] = temp / n[0];
+		ijk[0] = temp % n[0];
 
 		x = m_domain.min() + vc(m_cell_size* Vec3d(ijk.x, ijk.y, ijk.z));
 		x(0) += (1.0 + static_cast<double>(l % 2)) / 3.0 * m_cell_size[0];
@@ -638,10 +638,10 @@ CubicLagrangeDiscreteGrid::indexToNodePosition(unsigned int l) const
 	{
 		l -= (nv + 2 * ne_x);
 		auto e_ind = l / 2;
-		ijk(0) = e_ind / ((n[2] + 1) * n[1]);
+		ijk[0] = e_ind / ((n[2] + 1) * n[1]);
 		auto temp = e_ind % ((n[2] + 1) * n[1]);
-		ijk(2) = temp / n[1];
-		ijk(1) = temp % n[1];
+		ijk[2] = temp / n[1];
+		ijk[1] = temp % n[1];
 
 		x = m_domain.min() + vc(m_cell_size* Vec3d(ijk.x, ijk.y, ijk.z));
 		x(1) += (1.0 + static_cast<double>(l % 2)) / 3.0 * m_cell_size[1];
@@ -650,10 +650,10 @@ CubicLagrangeDiscreteGrid::indexToNodePosition(unsigned int l) const
 	{
 		l -= (nv + 2 * (ne_x + ne_y));
 		auto e_ind = l / 2;
-		ijk(1) = e_ind / ((n[0] + 1) * n[2]);
+		ijk[1] = e_ind / ((n[0] + 1) * n[2]);
 		auto temp = e_ind % ((n[0] + 1) * n[2]);
-		ijk(0) = temp / n[2];
-		ijk(2) = temp % n[2];
+		ijk[0] = temp / n[2];
+		ijk[2] = temp % n[2];
 
 		x = m_domain.min() + vc(m_cell_size* Vec3d(ijk.x, ijk.y, ijk.z));
 		x(2) += (1.0 + static_cast<double>(l % 2)) / 3.0 * m_cell_size[2];
@@ -667,7 +667,7 @@ CubicLagrangeDiscreteGrid::CubicLagrangeDiscreteGrid(std::string const &filename
 	load(filename);
 }
 
-CubicLagrangeDiscreteGrid::CubicLagrangeDiscreteGrid(AlignedBox3d const &domain,
+CubicLagrangeDiscreteGrid::CubicLagrangeDiscreteGrid(Eigen::AlignedBox3d const &domain,
 													 Vec3ui const &resolution)
 	: DiscreteGrid(domain, resolution)
 {
@@ -904,14 +904,14 @@ CubicLagrangeDiscreteGrid::determineShapeFunctions(unsigned int field_id, EigenV
 	if (!m_domain.contains(x))
 		return false;
 
-	auto mi = (x - m_domain.min()).cwiseProduct(m_inv_cell_size).cast<unsigned int>().eval();
+	auto mi = (x - m_domain.min()).cwiseProduct(vc(m_inv_cell_size)).cast<unsigned int>().eval();
 	if (mi[0] >= m_resolution[0])
 		mi[0] = m_resolution[0] - 1;
 	if (mi[1] >= m_resolution[1])
 		mi[1] = m_resolution[1] - 1;
 	if (mi[2] >= m_resolution[2])
 		mi[2] = m_resolution[2] - 1;
-	auto i = multiToSingleIndex({ { mi(0), mi(1), mi(2) } });
+	auto i = multiToSingleIndex(Vec3ui(  mi(0), mi(1), mi(2) ));
 	auto i_ = m_cell_map[field_id][i];
 	if (i_ == std::numeric_limits<unsigned int>::max())
 		return false;
@@ -979,14 +979,14 @@ CubicLagrangeDiscreteGrid::interpolate(unsigned int field_id, EigenVec3d const &
 	if (!m_domain.contains(x))
 		return std::numeric_limits<double>::max();
 
-	auto mi = (x - m_domain.min()).cwiseProduct(m_inv_cell_size).cast<unsigned int>().eval();
+	auto mi = (x - m_domain.min()).cwiseProduct(vc(m_inv_cell_size)).cast<unsigned int>().eval();
 	if (mi[0] >= m_resolution[0])
 		mi[0] = m_resolution[0] - 1;
 	if (mi[1] >= m_resolution[1])
 		mi[1] = m_resolution[1] - 1;
 	if (mi[2] >= m_resolution[2])
 		mi[2] = m_resolution[2] - 1;
-	auto i = multiToSingleIndex({{mi(0), mi(1), mi(2)}});
+	auto i = multiToSingleIndex(Vec3ui(mi(0), mi(1), mi(2)));
 	auto i_ = m_cell_map[field_id][i];
 	if (i_ == std::numeric_limits<unsigned int>::max())
 		return std::numeric_limits<double>::max();
@@ -1172,12 +1172,12 @@ void CubicLagrangeDiscreteGrid::reduceField(unsigned int field_id, Predicate pre
 }
 
 void CubicLagrangeDiscreteGrid::forEachCell(unsigned int field_id,
-											std::function<void(unsigned int, AlignedBox3d const &, unsigned int)> const &cb) const
+											std::function<void(unsigned int, Eigen::AlignedBox3d const &, unsigned int)> const &cb) const
 {
 	auto n = m_resolution[0] * m_resolution[1] * m_resolution[2];
 	for (auto i = 0u; i < n; ++i)
 	{
-		auto domain = AlignedBox3d{};
+		auto domain = Eigen::AlignedBox3d{};
 		auto mi = singleToMultiIndex(i);
 		domain.min() = m_domain.min() +vc(Vec3d(mi.x, mi.y, mi.z)*(m_cell_size));
 		domain.max() = domain.min() + vc(m_cell_size);

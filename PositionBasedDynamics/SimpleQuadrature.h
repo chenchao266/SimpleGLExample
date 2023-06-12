@@ -1,7 +1,7 @@
 ﻿#ifndef __SimpleQuadrature_h__
 #define __SimpleQuadrature_h__
 
-#include <Eigen/Dense>
+#include "eigenheaders.h"
 #include <vector>
 #include "Common.h"
 

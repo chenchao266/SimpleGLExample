@@ -11,6 +11,23 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Discregrid\acceleration\bounding_sphere.hpp" />
+    <ClInclude Include="Discregrid\acceleration\bounding_sphere_hierarchy.hpp" />
+    <ClInclude Include="Discregrid\acceleration\kd_tree.hpp" />
+    <ClInclude Include="Discregrid\cubic_lagrange_discrete_grid.hpp" />
+    <ClInclude Include="Discregrid\data\z_sort_table.hpp" />
+    <ClInclude Include="Discregrid\discrete_grid.hpp" />
+    <ClInclude Include="Discregrid\geometry\mesh_distance.hpp" />
+    <ClInclude Include="Discregrid\geometry\point_triangle_distance.hpp" />
+    <ClInclude Include="Discregrid\geometry\TriangleMeshDistance.h" />
+    <ClInclude Include="Discregrid\mesh\entity_containers.hpp" />
+    <ClInclude Include="Discregrid\mesh\entity_iterators.hpp" />
+    <ClInclude Include="Discregrid\mesh\halfedge.hpp" />
+    <ClInclude Include="Discregrid\mesh\triangle_mesh.hpp" />
+    <ClInclude Include="Discregrid\utility\lru_cache.hpp" />
+    <ClInclude Include="Discregrid\utility\serialize.hpp" />
+    <ClInclude Include="Discregrid\utility\spinlock.hpp" />
+    <ClInclude Include="Discregrid\utility\timing.hpp" />
     <ClInclude Include="PositionBasedDynamics\AABB.h" />
     <ClInclude Include="PositionBasedDynamics\AnimationField.h" />
     <ClInclude Include="PositionBasedDynamics\AnimationFieldSystem.h" />
@@ -110,6 +127,15 @@
     <ClInclude Include="PositionBasedDynamics\XPBD.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Discregrid\acceleration\bounding_sphere_hierarchy.cpp" />
+    <ClCompile Include="Discregrid\cubic_lagrange_discrete_grid.cpp" />
+    <ClCompile Include="Discregrid\discrete_grid.cpp" />
+    <ClCompile Include="Discregrid\geometry\mesh_distance.cpp" />
+    <ClCompile Include="Discregrid\geometry\point_triangle_distance.cpp" />
+    <ClCompile Include="Discregrid\mesh\entity_containers.cpp" />
+    <ClCompile Include="Discregrid\mesh\entity_iterators.cpp" />
+    <ClCompile Include="Discregrid\mesh\triangle_mesh.cpp" />
+    <ClCompile Include="Discregrid\utility\timing.cpp" />
     <ClCompile Include="PositionBasedDynamics\AnimationField.cpp" />
     <ClCompile Include="PositionBasedDynamics\AnimationFieldSystem.cpp" />
     <ClCompile Include="PositionBasedDynamics\BoundaryModel.cpp" />
@@ -181,6 +207,7 @@
     <ClCompile Include="PositionBasedDynamics\XPBD.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Discregrid\acceleration\kd_tree.inl" />
     <None Include="PositionBasedDynamics\kdTree.inl" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

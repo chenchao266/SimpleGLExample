@@ -1,12 +1,11 @@
-
-#include <mesh/triangle_mesh.hpp>
+﻿
+#include "triangle_mesh.hpp"
 
 #include <unordered_set>
 #include <cassert>
 #include <fstream>
 #include <iostream>
-
-using namespace Eigen;
+ 
 
 namespace
 {
@@ -23,7 +22,7 @@ namespace Discregrid
 
 struct HalfedgeHasher
 {
-	HalfedgeHasher(std::vector<std::array<unsigned int, 3>> const& faces_)
+	HalfedgeHasher(std::vector<Vec3ui> const& faces_)
 		: faces(&faces_){}
 
 	std::size_t operator()(Halfedge const& he) const
@@ -40,12 +39,12 @@ struct HalfedgeHasher
 		return seed;
 	}
 
-	std::vector<std::array<unsigned int, 3>> const* faces;
+	std::vector<Vec3ui> const* faces;
 };
 
 struct HalfedgeEqualTo
 {
-	HalfedgeEqualTo(std::vector<std::array<unsigned int, 3>> const& faces_)
+	HalfedgeEqualTo(std::vector<Vec3ui> const& faces_)
 		: faces(&faces_){}
 
 	bool operator()(Halfedge const& a, Halfedge const& b) const
@@ -61,15 +60,15 @@ struct HalfedgeEqualTo
 		return va[0] == vb[1] && va[1] == vb[0];
 	}
 
-	std::vector<std::array<unsigned int, 3>> const* faces;
+	std::vector<Vec3ui> const* faces;
 };
 
 typedef std::unordered_set<Halfedge, HalfedgeHasher, HalfedgeEqualTo>
 	FaceSet;
 
 TriangleMesh::TriangleMesh(
-	std::vector<Vector3d> const& vertices,
-	std::vector<std::array<unsigned int, 3>> const& faces)
+	std::vector<EigenVec3d> const& vertices,
+	std::vector<Vec3ui> const& faces)
 	: m_faces(faces), m_e2e(3 * faces.size()), m_vertices(vertices)
 	, m_v2e(vertices.size())
 {
@@ -82,7 +81,7 @@ TriangleMesh::TriangleMesh(double const* vertices,
 	: m_faces(nf), m_vertices(nv), m_e2e(3 * nf), m_v2e(nv)
 {
 	std::copy(vertices, vertices + 3 * nv, m_vertices[0].data());
-	std::copy(faces, faces + 3 * nf, m_faces[0].data());
+	std::copy(faces, faces + 3 * nf, m_faces[0].u);
 	construct();
 }
 
@@ -101,12 +100,12 @@ TriangleMesh::TriangleMesh(std::string const& path)
 	while (getline(in, line)) {
 	    if (line.substr(0, 2) == "v ") {
 	        std::istringstream s(line.substr(2));
-	        Vector3d v; s >> v.x(); s >> v.y(); s >> v.z();
+	        EigenVec3d v; s >> v.x(); s >> v.y(); s >> v.z();
 	        m_vertices.push_back(v);
 	    }
 	    else if (line.substr(0, 2) == "f ") {
 	        std::istringstream s(line.substr(2));
-	        std::array<unsigned int, 3> f;
+	        Vec3ui f;
 	        for (unsigned int j(0); j < 3; ++j)
 	        {
 	            std::string buf;
@@ -138,8 +137,11 @@ TriangleMesh::exportOBJ(std::string const& filename) const
 	for (auto const& f : m_faces)
 	{
 		outfile << "f";
-		for (auto v : f)
-			outfile << " " << v + 1;
+        for (int j=0; j<3; ++j)
+        {
+            auto v = f[j];
+            outfile << " " << v + 1;
+        }
 		outfile << std::endl;
 	}
 
@@ -204,12 +206,12 @@ TriangleMesh::construct()
 	}
 }
 
-Vector3d
+EigenVec3d
 TriangleMesh::computeFaceNormal(unsigned int f) const
 {
-	Vector3d const& x0 = vertex(faceVertex(f, 0));
-	Vector3d const& x1 = vertex(faceVertex(f, 1));
-	Vector3d const& x2 = vertex(faceVertex(f, 2));
+	EigenVec3d const& x0 = vertex(faceVertex(f, 0));
+	EigenVec3d const& x1 = vertex(faceVertex(f, 1));
+	EigenVec3d const& x2 = vertex(faceVertex(f, 2));
 
 	return (x1 - x0).cross(x2 - x0).normalized();
 }

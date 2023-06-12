@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 #include <Discregrid/mesh/triangle_mesh.hpp>
 
@@ -42,7 +42,7 @@ namespace std {
 #include <map>
 #include <unordered_map>
 
-#include <Eigen/Dense>
+#include "eigenheaders.h"
 
 namespace Discregrid
 {

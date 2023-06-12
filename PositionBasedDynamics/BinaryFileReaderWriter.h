@@ -5,7 +5,7 @@
 #include <fstream>
 
 #include "Common.h"
-#include <Eigen/Sparse>
+#include "eigenheaders.h"
 
 namespace SPH
 {

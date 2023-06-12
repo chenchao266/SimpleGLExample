@@ -1,4 +1,4 @@
-/*
+﻿/*
 	The MIT License (MIT)
 
 	Copyright (c) 2021 José Antonio Fernández Fernández
@@ -29,46 +29,51 @@
 #include <iostream>
 #include <vector>
 #include <array>
-#include <algorithm>
+#include <limits>
 #include <unordered_map>
 
-#include "../mesh/triangle_mesh.hpp"
+#include "vec.h"
+#include "Discregrid/mesh/triangle_mesh.hpp"
+#ifdef _MSC_VER
+#undef min
+#undef max
+#endif
 namespace Discregrid
 {
 	/* ==========================================  DEFINITIONS  ========================================== */
 	// Small vector 3D class class
-	template<typename FLOAT>
-	class Vec3r
-	{
-	public:
-		std::array<FLOAT, 3> v;
-		
-		Vec3r() {};
-		template<typename FLOAT_I>
-		Vec3r(const FLOAT_I& x, const FLOAT_I& y, const FLOAT_I& z) { v[0] = static_cast<FLOAT>(x); v[1] = static_cast<FLOAT>(y); v[2] = static_cast<FLOAT>(z); }
-		template<typename SIZE_T>
-		const FLOAT& operator[](const SIZE_T& i) const { return v[i]; }
-		template<typename SIZE_T>
-		FLOAT& operator[](const SIZE_T& i) { return v[i]; }
-		FLOAT dot(const Vec3r &u) const { return v[0]*u[0] + v[1]*u[1] + v[2]*u[2]; }
-		Vec3r<FLOAT> cross(const Vec3r &u) const { return Vec3r(v[1]*u[2] - v[2]*u[1], -v[0]*u[2] + v[2]*u[0], v[0]*u[1] - v[1]*u[0]); }
-		Vec3r<FLOAT> operator+(const Vec3r &u) const { return Vec3r(v[0]+u[0], v[1]+u[1], v[2]+u[2]); }
-		Vec3r<FLOAT> operator-(const Vec3r &u) const { return Vec3r(v[0]-u[0], v[1]-u[1], v[2]-u[2]); }
-		void operator+=(const Vec3r& u) { v[0] += u[0]; v[1] += u[1]; v[2] += u[2]; }
-		template<typename FLOAT_I>
-		Vec3r<FLOAT> operator*(const FLOAT_I &a) const { return Vec3r(static_cast<FLOAT>(a)*v[0], static_cast<FLOAT>(a)*v[1], static_cast<FLOAT>(a)*v[2]); }
-		template<typename FLOAT_I>
-		Vec3r<FLOAT> operator/(const FLOAT_I &a) const { return Vec3r(v[0]/static_cast<FLOAT>(a), v[1]/static_cast<FLOAT>(a), v[2]/static_cast<FLOAT>(a)); }
-		template<typename FLOAT_I>
-		void operator/=(const FLOAT_I& a) { v[0] /= static_cast<FLOAT>(a); v[1] /= static_cast<FLOAT>(a); v[2] /= static_cast<FLOAT>(a); }
-		FLOAT squaredNorm() const { return this->dot(*this); }
-		FLOAT norm() const { return std::sqrt(this->squaredNorm()); }
-		Vec3r<FLOAT> normalized() const { return (*this) / this->norm(); }
-		void normalize() { const FLOAT norm = this->norm(); v[0] /= norm; v[1] /= norm; v[2] /= norm; }
-	};
-	template<typename FLOAT, typename FLOAT_I>
-	static inline Vec3r<FLOAT> operator*(const FLOAT_I& a, const Vec3r<FLOAT>& v) { return Vec3r<FLOAT>(static_cast<FLOAT>(a) * v[0], static_cast<FLOAT>(a) * v[1], static_cast<FLOAT>(a) * v[2]); }
-	using Vec3d = Vec3r<double>;
+	//template<typename FLOAT>
+	//class Vec3r
+	//{
+	//public:
+	//	std::array<FLOAT, 3> v;
+	//	
+	//	Vec3r() {};
+	//	template<typename FLOAT_I>
+	//	Vec3r(const FLOAT_I& x, const FLOAT_I& y, const FLOAT_I& z) { v[0] = static_cast<FLOAT>(x); v[1] = static_cast<FLOAT>(y); v[2] = static_cast<FLOAT>(z); }
+	//	template<typename SIZE_T>
+	//	const FLOAT& operator[](const SIZE_T& i) const { return v[i]; }
+	//	template<typename SIZE_T>
+	//	FLOAT& operator[](const SIZE_T& i) { return v[i]; }
+	//	FLOAT dot(const Vec3r &u) const { return v[0]*u[0] + v[1]*u[1] + v[2]*u[2]; }
+	//	Vec3r<FLOAT> cross(const Vec3r &u) const { return Vec3r(v[1]*u[2] - v[2]*u[1], -v[0]*u[2] + v[2]*u[0], v[0]*u[1] - v[1]*u[0]); }
+	//	Vec3r<FLOAT> operator+(const Vec3r &u) const { return Vec3r(v[0]+u[0], v[1]+u[1], v[2]+u[2]); }
+	//	Vec3r<FLOAT> operator-(const Vec3r &u) const { return Vec3r(v[0]-u[0], v[1]-u[1], v[2]-u[2]); }
+	//	void operator+=(const Vec3r& u) { v[0] += u[0]; v[1] += u[1]; v[2] += u[2]; }
+	//	template<typename FLOAT_I>
+	//	Vec3r<FLOAT> operator*(const FLOAT_I &a) const { return Vec3r(static_cast<FLOAT>(a)*v[0], static_cast<FLOAT>(a)*v[1], static_cast<FLOAT>(a)*v[2]); }
+	//	template<typename FLOAT_I>
+	//	Vec3r<FLOAT> operator/(const FLOAT_I &a) const { return Vec3r(v[0]/static_cast<FLOAT>(a), v[1]/static_cast<FLOAT>(a), v[2]/static_cast<FLOAT>(a)); }
+	//	template<typename FLOAT_I>
+	//	void operator/=(const FLOAT_I& a) { v[0] /= static_cast<FLOAT>(a); v[1] /= static_cast<FLOAT>(a); v[2] /= static_cast<FLOAT>(a); }
+	//	FLOAT squaredNorm() const { return this->dot(*this); }
+	//	FLOAT norm() const { return std::sqrt(this->squaredNorm()); }
+	//	Vec3r<FLOAT> normalized() const { return (*this) / this->norm(); }
+	//	void normalize() { const FLOAT norm = this->norm(); v[0] /= norm; v[1] /= norm; v[2] /= norm; }
+	//};
+	//template<typename FLOAT, typename FLOAT_I>
+	//static inline Vec3r<FLOAT> operator*(const FLOAT_I& a, const Vec3r<FLOAT>& v) { return Vec3r<FLOAT>(static_cast<FLOAT>(a) * v[0], static_cast<FLOAT>(a) * v[1], static_cast<FLOAT>(a) * v[2]); }
+	//using Vec3d = Vec3r<double>;
 	// -----------------------------------
 
 	// Point-Triangle distance definitions
@@ -117,7 +122,7 @@ namespace Discregrid
 
 		/* Fields */
 		std::vector<Vec3d> vertices;
-		std::vector<std::array<int, 3>> triangles;
+		std::vector<Vec3i> triangles;
 		std::vector<Node> nodes;
 		std::vector<Vec3d> pseudonormals_triangles;
 		std::vector<std::array<Vec3d, 3>> pseudonormals_edges;
@@ -271,7 +276,7 @@ inline Discregrid::Result Discregrid::TriangleMeshDistance::signed_distance(cons
 	const Vec3d p(point[0], point[1], point[2]);
 	Result result = this->unsigned_distance(p);
 
-	const std::array<int, 3>& triangle = this->triangles[result.triangle_id];
+	const Vec3i& triangle = this->triangles[result.triangle_id];
 	Vec3d pseudonormal;
 	switch (result.nearest_entity)
 	{
@@ -347,7 +352,7 @@ inline void Discregrid::TriangleMeshDistance::_construct()
 	for (int i = 0; i < (int)this->triangles.size(); i++) {
 		triangles[i].id = i;
 
-		const std::array<int, 3>& triangle = this->triangles[i];
+		const Vec3i& triangle = this->triangles[i];
 		triangles[i].vertices[0] = this->vertices[triangle[0]];
 		triangles[i].vertices[1] = this->vertices[triangle[1]];
 		triangles[i].vertices[2] = this->vertices[triangle[2]];
@@ -386,7 +391,7 @@ inline void Discregrid::TriangleMeshDistance::_construct()
 	for (int i = 0; i < (int)this->triangles.size(); i++) {
 
 		// Triangle
-		const std::array<int, 3>& triangle = this->triangles[i];
+		const Vec3i& triangle = this->triangles[i];
 		const Vec3d& a = this->vertices[triangle[0]];
 		const Vec3d& b = this->vertices[triangle[1]];
 		const Vec3d& c = this->vertices[triangle[2]];
@@ -413,7 +418,7 @@ inline void Discregrid::TriangleMeshDistance::_construct()
 	}
 
 	for (int tri_i = 0; tri_i < (int)this->triangles.size(); tri_i++) {
-		const std::array<int, 3>& triangle = this->triangles[tri_i];
+		const Vec3i& triangle = this->triangles[tri_i];
 		this->pseudonormals_edges[tri_i][0] = get_edge_normal(triangle[0], triangle[1]).normalized();
 		this->pseudonormals_edges[tri_i][1] = get_edge_normal(triangle[1], triangle[2]).normalized();
 		this->pseudonormals_edges[tri_i][2] = get_edge_normal(triangle[0], triangle[2]).normalized();
@@ -484,7 +489,7 @@ inline void Discregrid::TriangleMeshDistance::_build_tree(const int node_id, Bou
 		double radius_sq = 0.0;
 		for (int tri_i = begin; tri_i < end; tri_i++) {
 			for (int i = 0; i < 3; i++) {
-				radius_sq = std::max(radius_sq, (center - triangles[tri_i].vertices[i]).squaredNorm());
+				radius_sq = max(radius_sq, (center - triangles[tri_i].vertices[i]).norm2());
 			}
 		}
 		bounding_sphere.center = center;
@@ -516,7 +521,7 @@ inline void Discregrid::TriangleMeshDistance::_query(Result& result, const Node&
 	// End of recursion
 	if (node.left == -1) {
 		const int triangle_id = node.right;
-		const std::array<int, 3>& triangle = this->triangles[node.right]; // If left == -1, right is the triangle_id
+		const Vec3i& triangle = this->triangles[node.right]; // If left == -1, right is the triangle_id
 		const Vec3d& v0 = this->vertices[triangle[0]];
 		const Vec3d& v1 = this->vertices[triangle[1]];
 		const Vec3d& v2 = this->vertices[triangle[2]];

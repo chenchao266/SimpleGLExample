@@ -1,10 +1,10 @@
-#ifndef SPHKERNELS_H
+﻿#ifndef SPHKERNELS_H
 #define SPHKERNELS_H
 
 #define _USE_MATH_DEFINES
 #include <math.h>
 #include "Common.h"
-#include <algorithm>
+//#include <algorithm>
 
 #define NO_DISTANCE_TEST
 

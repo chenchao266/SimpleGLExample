@@ -1,6 +1,6 @@
 ﻿#include "GaussQuadrature.h"
 
-#include <algorithm>
+//#include <algorithm>
 #include <numeric>
 
 using namespace SPH;

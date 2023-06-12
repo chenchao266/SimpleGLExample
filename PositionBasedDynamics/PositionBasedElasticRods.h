@@ -1,7 +1,7 @@
-#ifndef POSITION_BASED_ELASTIC_RODS_H
+﻿#ifndef POSITION_BASED_ELASTIC_RODS_H
 #define POSITION_BASED_ELASTIC_RODS_H
 
-#include <Eigen/Dense>
+#include "eigenheaders.h"
 #include "Common.h"
 #include "DirectPositionBasedSolverForStiffRodsInterface.h"
 
@@ -18,7 +18,7 @@ namespace PBD
 	//
 	//	Crispin Deul
 	//	Graduate School CE
-	//	Technische Universit�t Darmstadt
+	//	Technische Universit鋞 Darmstadt
 	//
 	//  deul[at] gsc.tu-darmstadt.de
 	//

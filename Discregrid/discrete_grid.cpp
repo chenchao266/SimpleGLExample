@@ -1,4 +1,4 @@
-﻿#include <discrete_grid.hpp>
+﻿#include "discrete_grid.hpp"
 
  
 namespace Discregrid
@@ -13,7 +13,7 @@ DiscreteGrid::singleToMultiIndex(unsigned int l) const
 	auto temp = l % n01;
 	auto j = temp / m_resolution[0];
 	auto i = temp % m_resolution[0];
-	return {{i, j, k}};
+	return Vec3ui(i, j, k);
 }
 
 unsigned int
@@ -26,7 +26,7 @@ Eigen::AlignedBox3d
 DiscreteGrid::subdomain(MultiIndex const& ijk) const
 {
 	auto origin = m_domain.min() + vc(Vec3d(ijk.x, ijk.y, ijk.z)*(m_cell_size));
-	return { origin, origin + m_cell_size};
+	return { origin, origin + vc(m_cell_size)};
 }
 
 Eigen::AlignedBox3d

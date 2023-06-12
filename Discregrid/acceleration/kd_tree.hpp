@@ -1,13 +1,13 @@
-#pragma once
+﻿#pragma once
 
 #include <vector>
 #include <functional>
-#include <algorithm>
+//#include <algorithm>
 #include <numeric>
 #include <queue>
 #include <iostream>
 
-#include <Eigen/Dense>
+#include "eigenheaders.h"
 
 #include <array>
 #include <list>
@@ -75,7 +75,7 @@ protected:
 
     unsigned int addNode(unsigned int b, unsigned int n);
 
-    virtual Eigen::Vector3d const& entityPosition(unsigned int i) const = 0;
+    virtual EigenVec3d const& entityPosition(unsigned int i) const = 0;
     virtual void computeHull(unsigned int b, unsigned int n, HullType& hull) const = 0;
 
 protected:

@@ -1,6 +1,6 @@
 ﻿#include "PoissonDiskSampling.h"
 
-#include <algorithm>
+//#include <algorithm>
 #include <limits>
 
 #include <iostream>

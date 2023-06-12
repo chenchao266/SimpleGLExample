@@ -1,6 +1,6 @@
 ﻿#include "CubicSDFCollisionDetection.h"
 #include "IDFactory.h"
-#include "Eigen/Dense"
+#include "eigenheaders.h"
 
 using namespace PBD;
 

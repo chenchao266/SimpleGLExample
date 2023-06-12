@@ -1,6 +1,6 @@
 ﻿#include "WindingNumbers.h"
 #include "Common.h"
-#include <Eigen/Dense>
+#include "eigenheaders.h"
 
 #define _USE_MATH_DEFINES
 #include "math.h"

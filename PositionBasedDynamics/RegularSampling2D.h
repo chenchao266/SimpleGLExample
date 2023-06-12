@@ -1,10 +1,11 @@
-#ifndef __RegularSampling2D_H__
+﻿#ifndef __RegularSampling2D_H__
 #define __RegularSampling2D_H__
 
 #include "../Common.h"
 
 #include <vector>
-#include <Eigen/src/Core/util/ForwardDeclarations.h>
+
+#include "eigenheaders.h"
 
 namespace SPH
 {

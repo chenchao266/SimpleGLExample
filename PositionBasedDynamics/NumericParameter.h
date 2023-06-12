@@ -1,4 +1,4 @@
-#ifndef __NumericParameter_h__
+﻿#ifndef __NumericParameter_h__
 #define __NumericParameter_h__
 
 #include <functional>
@@ -6,7 +6,7 @@
 #include "Parameter.h"
 #include <iostream>
 #include <float.h>
-#include <algorithm>
+//#include <algorithm>
 
 namespace GenParam
 {

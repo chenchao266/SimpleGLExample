@@ -1,10 +1,11 @@
-#pragma once
+﻿#pragma once
 
 #include "halfedge.hpp"
+#include "vec.h"
 
 #include <iterator>
 #include <array>
-#include <Eigen/Core>
+#include "eigenheaders.h"
 
 namespace Discregrid
 {
@@ -13,7 +14,7 @@ class TriangleMesh;
 
 class FaceContainer;
 class FaceIterator : public
-	std::iterator<std::random_access_iterator_tag, std::array<unsigned int, 3>>
+	std::iterator<std::random_access_iterator_tag, Vec3ui>
 {
 public:
 
@@ -66,7 +67,7 @@ private:
 	TriangleMesh* m_mesh;
 };
 class FaceConstIterator : public
-	std::iterator<std::random_access_iterator_tag, std::array<unsigned int, 3> const>
+	std::iterator<std::random_access_iterator_tag, Vec3ui const>
 {
 
 public:
@@ -152,7 +153,7 @@ private:
 
 
 class VertexContainer;
-class VertexIterator : public std::iterator<std::random_access_iterator_tag, Eigen::Vector3d>
+class VertexIterator : public std::iterator<std::random_access_iterator_tag, EigenVec3d>
 {
 
 public:
@@ -208,7 +209,7 @@ private:
 
 class VertexConstContainer;
 class VertexConstIterator : 
-	public std::iterator<std::random_access_iterator_tag, Eigen::Vector3d const>
+	public std::iterator<std::random_access_iterator_tag, EigenVec3d const>
 {
 
 public:

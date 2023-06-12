@@ -1,13 +1,11 @@
-#pragma once
+﻿#pragma once
 
 #if USE_AVX
 
 #include <iostream>
 #include <vector>
 #include <array>
-#include <Eigen/Core>
-#include <Eigen/Dense>
-#include <Eigen/Sparse>
+#include "eigenheaders.h"
 
 #include "AVX_math.h"
 #include "BinaryFileReaderWriter.h"

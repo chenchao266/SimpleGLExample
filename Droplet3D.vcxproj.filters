@@ -2,124 +2,124 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <ClCompile Include="Droplet3D\BoundaryIntegral.cpp">
-      <Filter>droplet3D</Filter>
+      <Filter>Droplet3D</Filter>
     </ClCompile>
     <ClCompile Include="Droplet3D\BPS3D.cpp">
-      <Filter>droplet3D</Filter>
+      <Filter>Droplet3D</Filter>
     </ClCompile>
     <ClCompile Include="Droplet3D\BPS3DExplicit.cpp">
-      <Filter>droplet3D</Filter>
+      <Filter>Droplet3D</Filter>
     </ClCompile>
     <ClCompile Include="Droplet3D\BPS3DHelmholtzDecomposition.cpp">
-      <Filter>droplet3D</Filter>
+      <Filter>Droplet3D</Filter>
     </ClCompile>
     <ClCompile Include="Droplet3D\BPS3DImplicit.cpp">
-      <Filter>droplet3D</Filter>
+      <Filter>Droplet3D</Filter>
     </ClCompile>
     <ClCompile Include="Droplet3D\BPS3DPressureSolve.cpp">
-      <Filter>droplet3D</Filter>
+      <Filter>Droplet3D</Filter>
     </ClCompile>
     <ClCompile Include="Droplet3D\BPS3DPressureSolveIterative.cpp">
-      <Filter>droplet3D</Filter>
+      <Filter>Droplet3D</Filter>
     </ClCompile>
     <ClCompile Include="Droplet3D\FMMTLWrapper.cpp">
-      <Filter>droplet3D</Filter>
+      <Filter>Droplet3D</Filter>
     </ClCompile>
     <ClCompile Include="Droplet3D\MeshIO.cpp">
-      <Filter>droplet3D</Filter>
+      <Filter>Droplet3D</Filter>
     </ClCompile>
     <ClCompile Include="Droplet3D\Scenes.cpp">
-      <Filter>droplet3D</Filter>
+      <Filter>Droplet3D</Filter>
     </ClCompile>
     <ClCompile Include="Droplet3D\Sim.cpp">
-      <Filter>droplet3D</Filter>
+      <Filter>Droplet3D</Filter>
     </ClCompile>
     <ClCompile Include="Droplet3D\SimOptions.cpp">
-      <Filter>droplet3D</Filter>
+      <Filter>Droplet3D</Filter>
     </ClCompile>
     <ClCompile Include="Droplet3D\LosTopos3D\accelerationgrid.cpp">
-      <Filter>los</Filter>
+      <Filter>LosTopos3D</Filter>
     </ClCompile>
     <ClCompile Include="Droplet3D\LosTopos3D\broadphasegrid.cpp">
-      <Filter>los</Filter>
+      <Filter>LosTopos3D</Filter>
     </ClCompile>
     <ClCompile Include="Droplet3D\LosTopos3D\collisionpipeline.cpp">
-      <Filter>los</Filter>
+      <Filter>LosTopos3D</Filter>
     </ClCompile>
     <ClCompile Include="Droplet3D\LosTopos3D\dynamicsurface.cpp">
-      <Filter>los</Filter>
+      <Filter>LosTopos3D</Filter>
     </ClCompile>
     <ClCompile Include="Droplet3D\LosTopos3D\edgecollapser.cpp">
-      <Filter>los</Filter>
+      <Filter>LosTopos3D</Filter>
     </ClCompile>
     <ClCompile Include="Droplet3D\LosTopos3D\edgeflipper.cpp">
-      <Filter>los</Filter>
+      <Filter>LosTopos3D</Filter>
     </ClCompile>
     <ClCompile Include="Droplet3D\LosTopos3D\edgesplitter.cpp">
-      <Filter>los</Filter>
+      <Filter>LosTopos3D</Filter>
     </ClCompile>
     <ClCompile Include="Droplet3D\LosTopos3D\facesplitter.cpp">
-      <Filter>los</Filter>
+      <Filter>LosTopos3D</Filter>
     </ClCompile>
     <ClCompile Include="Droplet3D\LosTopos3D\impactzonesolver.cpp">
-      <Filter>los</Filter>
+      <Filter>LosTopos3D</Filter>
     </ClCompile>
     <ClCompile Include="Droplet3D\LosTopos3D\iomesh.cpp">
-      <Filter>los</Filter>
+      <Filter>LosTopos3D</Filter>
     </ClCompile>
     <ClCompile Include="Droplet3D\LosTopos3D\meshcutter.cpp">
-      <Filter>los</Filter>
+      <Filter>LosTopos3D</Filter>
     </ClCompile>
     <ClCompile Include="Droplet3D\LosTopos3D\meshmerger.cpp">
-      <Filter>los</Filter>
+      <Filter>LosTopos3D</Filter>
     </ClCompile>
     <ClCompile Include="Droplet3D\LosTopos3D\meshpincher.cpp">
-      <Filter>los</Filter>
+      <Filter>LosTopos3D</Filter>
     </ClCompile>
     <ClCompile Include="Droplet3D\LosTopos3D\meshsmoother.cpp">
-      <Filter>los</Filter>
+      <Filter>LosTopos3D</Filter>
     </ClCompile>
     <ClCompile Include="Droplet3D\LosTopos3D\meshsnapper.cpp">
-      <Filter>los</Filter>
+      <Filter>LosTopos3D</Filter>
     </ClCompile>
     <ClCompile Include="Droplet3D\LosTopos3D\nondestructivetrimesh.cpp">
-      <Filter>los</Filter>
+      <Filter>LosTopos3D</Filter>
     </ClCompile>
     <ClCompile Include="Droplet3D\LosTopos3D\subdivisionscheme.cpp">
-      <Filter>los</Filter>
+      <Filter>LosTopos3D</Filter>
     </ClCompile>
     <ClCompile Include="Droplet3D\LosTopos3D\surftrack.cpp">
-      <Filter>los</Filter>
+      <Filter>LosTopos3D</Filter>
     </ClCompile>
     <ClCompile Include="Droplet3D\LosTopos3D\t1transition.cpp">
-      <Filter>los</Filter>
+      <Filter>LosTopos3D</Filter>
     </ClCompile>
     <ClCompile Include="Droplet3D\LosTopos3D\trianglequality.cpp">
-      <Filter>los</Filter>
+      <Filter>LosTopos3D</Filter>
     </ClCompile>
     <ClCompile Include="Droplet3D\Fluid3D\faithful_surfacing3.cpp">
-      <Filter>fluid</Filter>
+      <Filter>Fluid3D</Filter>
     </ClCompile>
     <ClCompile Include="Droplet3D\Fluid3D\fluidsim.cpp">
-      <Filter>fluid</Filter>
+      <Filter>Fluid3D</Filter>
     </ClCompile>
     <ClCompile Include="Droplet3D\Fluid3D\GeometricLevelGen.cpp">
-      <Filter>fluid</Filter>
+      <Filter>Fluid3D</Filter>
     </ClCompile>
     <ClCompile Include="Droplet3D\Fluid3D\incomplete_qr.cpp">
-      <Filter>fluid</Filter>
+      <Filter>Fluid3D</Filter>
     </ClCompile>
     <ClCompile Include="Droplet3D\Fluid3D\levelset_util.cpp">
-      <Filter>fluid</Filter>
+      <Filter>Fluid3D</Filter>
     </ClCompile>
     <ClCompile Include="Droplet3D\Fluid3D\makelevelset3.cpp">
-      <Filter>fluid</Filter>
+      <Filter>Fluid3D</Filter>
     </ClCompile>
     <ClCompile Include="Droplet3D\Fluid3D\marching_tiles.cpp">
-      <Filter>fluid</Filter>
+      <Filter>Fluid3D</Filter>
     </ClCompile>
     <ClCompile Include="Droplet3D\Fluid3D\main1.cpp">
-      <Filter>fluid</Filter>
+      <Filter>Fluid3D</Filter>
     </ClCompile>
     <ClCompile Include="common\bfstream.cpp">
       <Filter>common</Filter>
@@ -177,157 +177,157 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <Filter Include="droplet3D">
-      <UniqueIdentifier>{abd3da64-d6f0-474c-9a6c-95bebfa3c612}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="los">
-      <UniqueIdentifier>{710253f8-5816-4875-a7d9-a2dc6c1068a5}</UniqueIdentifier>
-    </Filter>
     <Filter Include="common">
       <UniqueIdentifier>{1049bcca-5f52-439e-bbc5-45b0518abb35}</UniqueIdentifier>
     </Filter>
-    <Filter Include="fluid">
+    <Filter Include="LosTopos3D">
+      <UniqueIdentifier>{710253f8-5816-4875-a7d9-a2dc6c1068a5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Fluid3D">
       <UniqueIdentifier>{8adc6d35-291a-408c-ae85-c5747661c4b3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Droplet3D">
+      <UniqueIdentifier>{abd3da64-d6f0-474c-9a6c-95bebfa3c612}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Droplet3D\BoundaryIntegral.h">
-      <Filter>droplet3D</Filter>
+      <Filter>Droplet3D</Filter>
     </ClInclude>
     <ClInclude Include="Droplet3D\BPS3D.h">
-      <Filter>droplet3D</Filter>
+      <Filter>Droplet3D</Filter>
     </ClInclude>
     <ClInclude Include="Droplet3D\FMMTLWrapper.h">
-      <Filter>droplet3D</Filter>
+      <Filter>Droplet3D</Filter>
     </ClInclude>
     <ClInclude Include="Droplet3D\MeshIO.h">
-      <Filter>droplet3D</Filter>
+      <Filter>Droplet3D</Filter>
     </ClInclude>
     <ClInclude Include="Droplet3D\Scenes.h">
-      <Filter>droplet3D</Filter>
+      <Filter>Droplet3D</Filter>
     </ClInclude>
     <ClInclude Include="Droplet3D\Sim.h">
-      <Filter>droplet3D</Filter>
+      <Filter>Droplet3D</Filter>
     </ClInclude>
     <ClInclude Include="Droplet3D\SimOptions.h">
-      <Filter>droplet3D</Filter>
+      <Filter>Droplet3D</Filter>
     </ClInclude>
     <ClInclude Include="Droplet3D\LosTopos3D\accelerationgrid.h">
-      <Filter>los</Filter>
+      <Filter>LosTopos3D</Filter>
     </ClInclude>
     <ClInclude Include="Droplet3D\LosTopos3D\broadphase.h">
-      <Filter>los</Filter>
+      <Filter>LosTopos3D</Filter>
     </ClInclude>
     <ClInclude Include="Droplet3D\LosTopos3D\broadphasegrid.h">
-      <Filter>los</Filter>
+      <Filter>LosTopos3D</Filter>
     </ClInclude>
     <ClInclude Include="Droplet3D\LosTopos3D\collisionpipeline.h">
-      <Filter>los</Filter>
+      <Filter>LosTopos3D</Filter>
     </ClInclude>
     <ClInclude Include="Droplet3D\LosTopos3D\dynamicsurface.h">
-      <Filter>los</Filter>
+      <Filter>LosTopos3D</Filter>
     </ClInclude>
     <ClInclude Include="Droplet3D\LosTopos3D\edgecollapser.h">
-      <Filter>los</Filter>
+      <Filter>LosTopos3D</Filter>
     </ClInclude>
     <ClInclude Include="Droplet3D\LosTopos3D\edgeflipper.h">
-      <Filter>los</Filter>
+      <Filter>LosTopos3D</Filter>
     </ClInclude>
     <ClInclude Include="Droplet3D\LosTopos3D\edgesplitter.h">
-      <Filter>los</Filter>
+      <Filter>LosTopos3D</Filter>
     </ClInclude>
     <ClInclude Include="Droplet3D\LosTopos3D\facesplitter.h">
-      <Filter>los</Filter>
+      <Filter>LosTopos3D</Filter>
     </ClInclude>
     <ClInclude Include="Droplet3D\LosTopos3D\impactzonesolver.h">
-      <Filter>los</Filter>
+      <Filter>LosTopos3D</Filter>
     </ClInclude>
     <ClInclude Include="Droplet3D\LosTopos3D\iomesh.h">
-      <Filter>los</Filter>
+      <Filter>LosTopos3D</Filter>
     </ClInclude>
     <ClInclude Include="Droplet3D\LosTopos3D\meshcutter.h">
-      <Filter>los</Filter>
+      <Filter>LosTopos3D</Filter>
     </ClInclude>
     <ClInclude Include="Droplet3D\LosTopos3D\meshmerger.h">
-      <Filter>los</Filter>
+      <Filter>LosTopos3D</Filter>
     </ClInclude>
     <ClInclude Include="Droplet3D\LosTopos3D\meshpincher.h">
-      <Filter>los</Filter>
+      <Filter>LosTopos3D</Filter>
     </ClInclude>
     <ClInclude Include="Droplet3D\LosTopos3D\meshsmoother.h">
-      <Filter>los</Filter>
+      <Filter>LosTopos3D</Filter>
     </ClInclude>
     <ClInclude Include="Droplet3D\LosTopos3D\meshsnapper.h">
-      <Filter>los</Filter>
+      <Filter>LosTopos3D</Filter>
     </ClInclude>
     <ClInclude Include="Droplet3D\LosTopos3D\nondestructivetrimesh.h">
-      <Filter>los</Filter>
+      <Filter>LosTopos3D</Filter>
     </ClInclude>
     <ClInclude Include="Droplet3D\LosTopos3D\options.h">
-      <Filter>los</Filter>
+      <Filter>LosTopos3D</Filter>
     </ClInclude>
     <ClInclude Include="Droplet3D\LosTopos3D\subdivisionscheme.h">
-      <Filter>los</Filter>
+      <Filter>LosTopos3D</Filter>
     </ClInclude>
     <ClInclude Include="Droplet3D\LosTopos3D\surftrack.h">
-      <Filter>los</Filter>
+      <Filter>LosTopos3D</Filter>
     </ClInclude>
     <ClInclude Include="Droplet3D\LosTopos3D\t1transition.h">
-      <Filter>los</Filter>
+      <Filter>LosTopos3D</Filter>
     </ClInclude>
     <ClInclude Include="Droplet3D\LosTopos3D\trianglequality.h">
-      <Filter>los</Filter>
+      <Filter>LosTopos3D</Filter>
     </ClInclude>
     <ClInclude Include="Droplet3D\Fluid3D\AlgebraicMultigrid.h">
-      <Filter>fluid</Filter>
+      <Filter>Fluid3D</Filter>
     </ClInclude>
     <ClInclude Include="Droplet3D\Fluid3D\cgsolver.h">
-      <Filter>fluid</Filter>
+      <Filter>Fluid3D</Filter>
     </ClInclude>
     <ClInclude Include="Droplet3D\Fluid3D\crsolver.h">
-      <Filter>fluid</Filter>
+      <Filter>Fluid3D</Filter>
     </ClInclude>
     <ClInclude Include="Droplet3D\Fluid3D\faithful_surfacing3.h">
-      <Filter>fluid</Filter>
+      <Filter>Fluid3D</Filter>
     </ClInclude>
     <ClInclude Include="Droplet3D\Fluid3D\fluidsim.h">
-      <Filter>fluid</Filter>
+      <Filter>Fluid3D</Filter>
     </ClInclude>
     <ClInclude Include="Droplet3D\Fluid3D\GeometricLevelGen.h">
-      <Filter>fluid</Filter>
+      <Filter>Fluid3D</Filter>
     </ClInclude>
     <ClInclude Include="Droplet3D\Fluid3D\gluvi.h">
-      <Filter>fluid</Filter>
+      <Filter>Fluid3D</Filter>
     </ClInclude>
     <ClInclude Include="Droplet3D\Fluid3D\hashgrid.h">
-      <Filter>fluid</Filter>
+      <Filter>Fluid3D</Filter>
     </ClInclude>
     <ClInclude Include="Droplet3D\Fluid3D\incomplete_qr.h">
-      <Filter>fluid</Filter>
+      <Filter>Fluid3D</Filter>
     </ClInclude>
     <ClInclude Include="Droplet3D\Fluid3D\levelset_util.h">
-      <Filter>fluid</Filter>
+      <Filter>Fluid3D</Filter>
     </ClInclude>
     <ClInclude Include="Droplet3D\Fluid3D\makelevelset3.h">
-      <Filter>fluid</Filter>
+      <Filter>Fluid3D</Filter>
     </ClInclude>
     <ClInclude Include="Droplet3D\Fluid3D\marching_tiles.h">
-      <Filter>fluid</Filter>
+      <Filter>Fluid3D</Filter>
     </ClInclude>
     <ClInclude Include="Droplet3D\Fluid3D\pcg_solver.h">
-      <Filter>fluid</Filter>
+      <Filter>Fluid3D</Filter>
     </ClInclude>
     <ClInclude Include="Droplet3D\Fluid3D\SDFGen.h">
-      <Filter>fluid</Filter>
+      <Filter>Fluid3D</Filter>
     </ClInclude>
     <ClInclude Include="Droplet3D\Fluid3D\sparseilu.h">
-      <Filter>fluid</Filter>
+      <Filter>Fluid3D</Filter>
     </ClInclude>
     <ClInclude Include="Droplet3D\Fluid3D\sparsemilu.h">
-      <Filter>fluid</Filter>
+      <Filter>Fluid3D</Filter>
     </ClInclude>
     <ClInclude Include="Droplet3D\Fluid3D\sparse_matrix.h">
-      <Filter>fluid</Filter>
+      <Filter>Fluid3D</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
