@@ -1,4 +1,4 @@
-#ifndef PoissonDiskSampling_H
+﻿#ifndef PoissonDiskSampling_H
 #define PoissonDiskSampling_H
 
 #include "../Common.h"
@@ -14,7 +14,7 @@ namespace SPH
 	*/
 	class PoissonDiskSampling
 	{
-		typedef Eigen::Matrix<int, 3, 1, Eigen::DontAlign> CellPos;
+		typedef Vec3i CellPos;
 
 		struct CellPosHasher
 		{

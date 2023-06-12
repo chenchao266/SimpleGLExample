@@ -1,4 +1,4 @@
-#include "RegularSampling2D.h"
+﻿#include "RegularSampling2D.h"
 
 #include <vector>
 
@@ -10,7 +10,7 @@ RegularSampling2D::RegularSampling2D()
 
 void RegularSampling2D::sampleMesh(const Matrix3r& rotation, const Vector3r & translation, const unsigned numVertices, const Vector3r * vertices, const unsigned int numFaces, const unsigned int * faces, const Real maxDistance, std::vector<Vector3r>& samples)
 {
-	using Vector3ui = Eigen::Matrix<unsigned int, 3, 1>;
+	//using Vector3ui = Eigen::Matrix<unsigned int, 3, 1>;
 	using Vector3b = Eigen::Matrix<bool, 3, 1>;
 
 	// transform vertices
@@ -27,7 +27,7 @@ void RegularSampling2D::sampleMesh(const Matrix3r& rotation, const Vector3r & tr
 		for (int i = 0; i < (int) numFaces; i++)
 		{
 			// get face indices
-			const Vector3ui & face = Eigen::Map<const Vector3ui>(faces + 3 * i);
+			const Vec3ui  face = Vec3ui(faces + 3 * i);
 			// find edges that cut the z=0 plane
 			Vector3b cutsZ;
 			for (unsigned int c = 0; c < 3; c++)

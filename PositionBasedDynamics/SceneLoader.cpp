@@ -1,4 +1,4 @@
-#include "SceneLoader.h"
+﻿#include "SceneLoader.h"
 #include <iostream>
 #include <fstream>
 #include "FileSystem.h"
@@ -302,7 +302,7 @@ void SceneLoader::readRigidBodies(const nlohmann::json &j, const std::string &ke
 			rbd.m_thicknessSDF = 0.1;
 			readValue(rigidBody, "thicknessSDF", rbd.m_thicknessSDF);
 
-			rbd.m_resolutionSDF = Eigen::Matrix<unsigned int, 3, 1, Eigen::DontAlign>(10, 10, 10);
+			rbd.m_resolutionSDF = Vec3ui(10, 10, 10);
 			readVector(rigidBody, "resolutionSDF", rbd.m_resolutionSDF);
 			
 			rbd.m_json = rigidBody;
@@ -473,7 +473,7 @@ void SceneLoader::readTetModels(const nlohmann::json &j, const std::string &key,
 			data.m_thicknessSDF = 0.1;
 			readValue(tetModel, "thicknessSDF", data.m_thicknessSDF);
 
-			data.m_resolutionSDF = Eigen::Matrix<unsigned int, 3, 1, Eigen::DontAlign>(10, 10, 10);
+			data.m_resolutionSDF = Vec3ui(10, 10, 10);
 			readVector(tetModel, "resolutionSDF", data.m_resolutionSDF);
 
 			data.m_json = tetModel;

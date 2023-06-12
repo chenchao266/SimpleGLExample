@@ -1,4 +1,4 @@
-#ifndef __RegularTriangleSampling_H__
+﻿#ifndef __RegularTriangleSampling_H__
 #define __RegularTriangleSampling_H__
 
 #include "../Common.h"
@@ -30,13 +30,13 @@ namespace SPH
 			const Real maxDistance, std::vector<Vector3r> &samples);
 		
 	private:
-		using Vector2ui = Eigen::Matrix<unsigned int, 2, 1, Eigen::DontAlign>;
+		//using Vector2ui = Eigen::Matrix<unsigned int, 2, 1, Eigen::DontAlign>;
 
 		static void appendVertexSamples(const unsigned int numVertices, const Vector3r * vertices, std::vector<Vector3r> &samples);
-		static void appendEdgeSamples(const Real d, const Vector3r * vertices, const std::vector<Vector2ui> & edges, std::vector<Vector3r> &samples, bool skipVertices = true);
+		static void appendEdgeSamples(const Real d, const Vector3r * vertices, const std::vector<Vec2ui> & edges, std::vector<Vector3r> &samples, bool skipVertices = true);
 		static void appendFaceSamples(const Real d, const Vector3r * vertices, const unsigned int numFaces, const unsigned int * faces, std::vector<Vector3r> &samples, bool skipEdges = true);
 		
-		static std::vector<Vector2ui> uniqueEdges(unsigned int numFaces, const unsigned int *faces);
+		static std::vector<Vec2ui> uniqueEdges(unsigned int numFaces, const unsigned int *faces);
 		
 
 	};

@@ -1,4 +1,4 @@
-#include "RegularTriangleSampling.h"
+﻿#include "RegularTriangleSampling.h"
 
 #include <set>
 #include <vector>
@@ -11,7 +11,7 @@ RegularTriangleSampling::RegularTriangleSampling()
 
 void RegularTriangleSampling::sampleMesh(const unsigned int numVertices, const Vector3r * vertices, const unsigned int numFaces, const unsigned int * faces, const Real maxDistance, std::vector<Vector3r>& samples)
 {
-	const std::vector<Vector2ui> edges = uniqueEdges(numFaces, faces);
+	const std::vector<Vec2ui> edges = uniqueEdges(numFaces, faces);
 	
 	appendVertexSamples(numVertices, vertices, samples);
 	appendEdgeSamples(maxDistance, vertices, edges, samples);
@@ -24,11 +24,11 @@ void RegularTriangleSampling::appendVertexSamples(const unsigned int  numVertice
 	samples.insert(samples.end(), vertices, vertices + numVertices);
 }
 
-void RegularTriangleSampling::appendEdgeSamples(const Real d, const Vector3r* vertices, const std::vector<Vector2ui> & edges,
+void RegularTriangleSampling::appendEdgeSamples(const Real d, const Vector3r* vertices, const std::vector<Vec2ui> & edges,
 	std::vector<Vector3r>& samples, bool skipVertices)
 {
 	const auto iSkip = static_cast<unsigned int>(skipVertices);
-	for (const Vector2ui & edge : edges)
+	for (const Vec2ui & edge : edges)
 	{
 		const Vector3r & v0 = vertices[edge[0]];
 		const Vector3r dir = vertices[edge[1]] - v0;
@@ -52,8 +52,8 @@ void RegularTriangleSampling::appendFaceSamples(const Real d, const Vector3r* ve
 	const auto iSkip = static_cast<unsigned int>(skipEdges);
 	for (unsigned int iFace = 0; iFace < numFaces; iFace++)
 	{
-		using Matrix3ui = Eigen::Matrix<unsigned int, 3, 1, Eigen::DontAlign>;
-		const auto face = Eigen::Map<const Matrix3ui>(faces + 3 * iFace);
+		//using Matrix3ui = Eigen::Matrix<unsigned int, 3, 1, Eigen::DontAlign>;
+		const Vec3ui face = Vec3ui(faces + 3 * iFace);
 		// chose longest edge as base
 		Vector3r v0, base, toTop;
 		Real l2 = 0;
@@ -94,9 +94,9 @@ void RegularTriangleSampling::appendFaceSamples(const Real d, const Vector3r* ve
 	}
 }
 
-std::vector<RegularTriangleSampling::Vector2ui> RegularTriangleSampling::uniqueEdges(unsigned int numFaces, const unsigned int * faces)
+std::vector<Vec2ui> RegularTriangleSampling::uniqueEdges(unsigned int numFaces, const unsigned int * faces)
 {
-	std::vector<Vector2ui> edges;
+	std::vector<Vec2ui> edges;
 	edges.reserve(3 * numFaces);
 	for (unsigned int i = 0; i < numFaces; ++i)
 	{
@@ -110,7 +110,7 @@ std::vector<RegularTriangleSampling::Vector2ui> RegularTriangleSampling::uniqueE
 			edges.emplace_back(ia, ib);
 		}
 	}
-	const auto less = [](const Vector2ui & a, const Vector2ui & b) -> bool { return (a[0] < b[0]) || (a[0] == b[0] && a[1] < b[1]); };
+	const auto less = [](const Vec2ui & a, const Vec2ui & b) -> bool { return (a[0] < b[0]) || (a[0] == b[0] && a[1] < b[1]); };
 	std::sort(edges.begin(), edges.end(), less);
 	edges.erase(std::unique(edges.begin(), edges.end()), edges.end());
 	return edges;

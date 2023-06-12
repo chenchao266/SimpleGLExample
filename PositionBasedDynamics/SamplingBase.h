@@ -33,7 +33,7 @@ namespace SPH
 		Vector3r m_scale;
 		Real m_diameter;
 		bool m_invert;
-		Eigen::Matrix<unsigned int, 3, 1> m_resolutionSDF;
+        Vec3ui m_resolutionSDF;
 		Region m_region;
 		bool m_useRegion;
 		std::vector<Vector3r> m_x;
@@ -76,8 +76,8 @@ namespace SPH
 		void setRadius(const Real radius) { this->m_radius = radius; m_diameter = static_cast<Real>(2.0)*m_radius; }
 		const Vector3r& getScale() const {	return m_scale;	}
 		void setScale(const Vector3r& scale) { m_scale = scale;	}
-		const Eigen::Matrix<unsigned, 3, 1>& getResolutionSdf() const {	return m_resolutionSDF; }
-		void setResolutionSdf(const Eigen::Matrix<unsigned, 3, 1>& resolution_sdf) { m_resolutionSDF = resolution_sdf; }
+		const Vec3ui& getResolutionSdf() const {	return m_resolutionSDF; }
+		void setResolutionSdf(const Vec3ui& resolution_sdf) { m_resolutionSDF = resolution_sdf; }
 		const Region& get_m_region() const { return m_region; }
 		void setRegion(const Region& region) { m_region = region; }
 		bool useRegion() const { return m_useRegion; }

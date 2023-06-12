@@ -505,6 +505,12 @@ struct vec<2, T>
 	vec(T X, T Y) : x(X), y(Y) {}
 	template <class U>
 	vec<2, T>(const vec<2, U>& v);
+    template<class S>
+    explicit vec<2, T>(const S *source)
+    {
+         u[0] = (T)source[0];
+         u[1] = (T)source[1];
+    }
     inline void assign(T &a0, T &a1) const
     {
         a0 = u[0]; a1 = u[1];
@@ -654,6 +660,13 @@ struct vec<3, T>
 	vec(const vec<2, T>& xy, T Z) : x(xy.x), y(xy.y), z(Z) {}
 	template <class U>
 	vec<3, T>(const vec<3, U>& v);
+    template<class S>
+    explicit vec<3, T>(const S *source)
+    {
+        u[0] = (T)source[0];
+        u[1] = (T)source[1];
+        u[2] = (T)source[2];
+    }
     inline void assign(T &a0, T &a1, T &a2)const
     { 
         a0 = u[0]; a1 = u[1]; a2 = u[2];
@@ -825,7 +838,14 @@ struct vec<4, T>
     vec(const vec<3, T>& xyz, T W) : x(xyz.x), y(xyz.y), z(xyz.z), w(W) {}
     template <class U>
     vec<4, T>(const vec<4, U>& v);
-
+    template<class S>
+    explicit vec<4, T>(const S *source)
+    {
+        u[0] = (T)source[0];
+        u[1] = (T)source[1];
+        u[2] = (T)source[2];
+        u[3] = (T)source[3];
+    }
     inline void assign(T &a0, T &a1, T &a2, T &a3) const
     { 
         a0 = u[0]; a1 = u[1]; a2 = u[2]; a3 = u[3];

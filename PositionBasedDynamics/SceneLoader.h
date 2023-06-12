@@ -1,4 +1,4 @@
-#ifndef __SCENELOADER_H__
+﻿#ifndef __SCENELOADER_H__
 #define __SCENELOADER_H__
 
 #include <string>
@@ -38,7 +38,7 @@ namespace Utilities
 			Vector3r m_collisionObjectScale;
 			bool m_invertSDF;
 			Real m_thicknessSDF;
-			Eigen::Matrix<unsigned int, 3, 1, Eigen::DontAlign> m_resolutionSDF;
+            Vec3ui m_resolutionSDF;
 
 			nlohmann::json m_json;
 		};
@@ -75,7 +75,7 @@ namespace Utilities
 			Vector3r m_collisionObjectScale;
 			bool m_invertSDF;
 			Real m_thicknessSDF;
-			Eigen::Matrix<unsigned int, 3, 1, Eigen::DontAlign> m_resolutionSDF;
+            Vec3ui m_resolutionSDF;
 			nlohmann::json m_json;
 		};
 
@@ -274,6 +274,18 @@ namespace Utilities
 				vec[i] = values[i];
 			return true;
 		}
+
+        template <typename T, int size>
+        static bool readVector(const nlohmann::json &j, const std::string &key, vec<size, T> &vec_)
+        {
+            if (j.find(key) == j.end())
+                return false;
+
+            std::vector<T> values = j[key].get<std::vector<T>>();
+            for (unsigned int i = 0; i < values.size(); i++)
+                vec_[i] = values[i];
+            return true;
+        }
 
 		void readParameterObject(GenParam::ParameterObject *paramObj);
 	};

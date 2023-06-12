@@ -215,7 +215,7 @@ void PBDWrapper::readScene(const std::string &sceneFileName, const std::vector< 
 		rbd.m_isDynamic = false;
 		rbd.m_omega.setZero();
 		rbd.m_v.setZero();
-		rbd.m_resolutionSDF = Eigen::Matrix<unsigned int, 3, 1, Eigen::DontAlign>(10, 10, 10);
+		rbd.m_resolutionSDF = Vec3ui(10, 10, 10);
 		rbd.m_thicknessSDF = 0.0;
 		rbd.m_testMesh = false;
 		data.m_rigidBodyData.push_back(rbd);

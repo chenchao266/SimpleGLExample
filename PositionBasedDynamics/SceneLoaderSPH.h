@@ -135,7 +135,7 @@ namespace Utilities
 		void readScene(const char *fileName, Scene &scene);
 
 		template <typename T>
-		bool readValue(const nlohmann::json &j, T &v)
+		static bool readValue(const nlohmann::json &j, T &v)
 		{
 			if (j.is_null())
 				return false;
@@ -145,7 +145,7 @@ namespace Utilities
 		}
 
 		template <typename T, int size>
-		bool readVector(const nlohmann::json &j, Eigen::Matrix<T, size, 1, Eigen::DontAlign> &vec)
+        static bool readVector(const nlohmann::json &j, Eigen::Matrix<T, size, 1, Eigen::DontAlign> &vec)
 		{
 			if (j.is_null())
 				return false;
@@ -156,7 +156,7 @@ namespace Utilities
 			return true;
 		}
         template <typename T, int size>
-        bool readVector(const nlohmann::json &j, vec<size, T> &vec_)
+        static bool readVector(const nlohmann::json &j, vec<size, T> &vec_)
         {
             if (j.is_null())
                 return false;

@@ -831,7 +831,7 @@ extern "C"
 
 		for (int i = 0; i < num_rigid_bodies; ++i)
 		{
-			Vector3f new_pos(h_rigid_bodies[i].pos.x, h_rigid_bodies[i].pos.y, h_rigid_bodies[i].pos.z);
+			b3Vector3 new_pos(h_rigid_bodies[i].pos.x, h_rigid_bodies[i].pos.y, h_rigid_bodies[i].pos.z);
 			b3Matrix3x3 new_rotation_matrix;
 			new_rotation_matrix[0][0] = h_rigid_bodies[i].rotation_matrix.m_row[0].x;
 			new_rotation_matrix[0][1] = h_rigid_bodies[i].rotation_matrix.m_row[0].y;

@@ -66,7 +66,7 @@ public:
 		const EigenVec3d ca = c - a;
 		const EigenVec3d baxca = ba.cross(ca);
 		EigenVec3d r;
-		Eigen::Matrix3d T;
+        EigenMat3d T;
 		T << ba[0], ba[1], ba[2],
 			ca[0], ca[1], ca[2],
 			baxca[0], baxca[1], baxca[2];
@@ -94,7 +94,7 @@ public:
 		const EigenVec3d ca = c - a;
 		const EigenVec3d da = d - a;
 		EigenVec3d r;
-		Eigen::Matrix3d T;
+        EigenMat3d T;
 		T << ba[0], ba[1], ba[2],
 			ca[0], ca[1], ca[2],
 			da[0], da[1], da[2];

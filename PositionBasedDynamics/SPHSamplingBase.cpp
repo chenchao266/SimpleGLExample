@@ -77,7 +77,7 @@ void SPHSamplingBase::writeParticleDataVTK(const std::string& fileName)
 	//////////////////////////////////////////////////////////////////////////
 	// export particle IDs as CELLS
 	{
-		std::vector<Eigen::Vector2i> cells;
+		std::vector<Vec2i> cells;
 		cells.reserve(numParticles);
 		unsigned int nodes_per_cell_swapped = 1;
 		swapByteOrder(&nodes_per_cell_swapped);
@@ -90,7 +90,7 @@ void SPHSamplingBase::writeParticleDataVTK(const std::string& fileName)
 
 		// particles are cells with one element and the index of the particle
 		outfile << "CELLS " << numParticles << " " << 2 * numParticles << "\n";
-		outfile.write(reinterpret_cast<char*>(cells[0].data()), 2 * numParticles * sizeof(unsigned int));
+		outfile.write(reinterpret_cast<char*>(cells[0].u), 2 * numParticles * sizeof(unsigned int));
 		outfile << "\n";
 	}
 	//////////////////////////////////////////////////////////////////////////

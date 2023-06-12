@@ -18,7 +18,7 @@ SamplingBase::SamplingBase()
 	m_radius = static_cast<Real>(0.025);
 	m_scale = Vector3r::Ones();
 	m_diameter = m_radius * static_cast<Real>(2.0);
-	m_resolutionSDF = Eigen::Matrix<unsigned int, 3, 1>(30, 30, 30);
+	m_resolutionSDF = Vec3ui(30, 30, 30);
 	m_useRegion = false;
 	m_output_format = 0;
 }
@@ -135,7 +135,7 @@ void SamplingBase::writeParticlesVTK(const std::string& fileName, std::vector<Ve
 	//////////////////////////////////////////////////////////////////////////
 	// export particle IDs as CELLS
 	{
-		std::vector<Eigen::Vector2i> cells;
+		std::vector<Vec2i> cells;
 		cells.reserve(numParticles);
 		unsigned int nodes_per_cell_swapped = 1;
 		swapByteOrder(&nodes_per_cell_swapped);
@@ -148,7 +148,7 @@ void SamplingBase::writeParticlesVTK(const std::string& fileName, std::vector<Ve
 
 		// particles are cells with one element and the index of the particle
 		outfile << "CELLS " << numParticles << " " << 2 * numParticles << "\n";
-		outfile.write(reinterpret_cast<char*>(cells[0].data()), 2 * numParticles * sizeof(unsigned int));
+		outfile.write(reinterpret_cast<char*>(cells[0].u), 2 * numParticles * sizeof(unsigned int));
 		outfile << "\n";
 	}
 	//////////////////////////////////////////////////////////////////////////

@@ -5,7 +5,7 @@
 #include <vector>
 #include "Common.h"
 
-typedef Eigen::Vector3i NeighborhoodSearchCellPos;
+typedef Vec3i NeighborhoodSearchCellPos;
 
 namespace Utilities
 {
