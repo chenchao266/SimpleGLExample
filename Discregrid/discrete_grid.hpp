@@ -13,7 +13,9 @@ class DiscreteGrid
 {
 public:
 
+	using CellArray = std::array<unsigned int, 32>;
 	using CoefficientVector = Eigen::Matrix<double, 32, 1>;
+	using CoefficientDerivative = Eigen::Matrix<double, 32, 3>;
 	using ContinuousFunction = std::function<double(EigenVec3d const&)>;
 	using MultiIndex = Vec3ui;
 	using Predicate = std::function<bool(EigenVec3d const&, double)>;
@@ -56,8 +58,8 @@ public:
 	 * @return Success of the function.
 	 */
 	virtual bool determineShapeFunctions(unsigned int field_id, EigenVec3d const &x,
-		std::array<unsigned int, 32> &cell, EigenVec3d &c0, CoefficientVector &N,
-		Eigen::Matrix<double, 32, 3> *dN = nullptr) const = 0;
+        CellArray &cell, EigenVec3d &c0, CoefficientVector &N,
+		CoefficientDerivative *dN = nullptr) const = 0;
 
 	/**
 	 * @brief Evaluates the given discretization with ID field_id at point xi.
@@ -71,8 +73,8 @@ public:
 	 * @param dN (Optional) derivatives of the shape functions, required to compute the gradient
 	 * @return double Results of the evaluation of the discrete function at point xi
 	 */
-	virtual double interpolate(unsigned int field_id, EigenVec3d const& xi, const std::array<unsigned int, 32> &cell, const EigenVec3d &c0, const CoefficientVector &N,
-		EigenVec3d* gradient = nullptr, Eigen::Matrix<double, 32, 3> *dN = nullptr) const = 0;
+	virtual double interpolate(unsigned int field_id, EigenVec3d const& xi, const CellArray &cell, const EigenVec3d &c0, const CoefficientVector &N,
+		EigenVec3d* gradient = nullptr, CoefficientDerivative *dN = nullptr) const = 0;
 
 	virtual void reduceField(unsigned int field_id, Predicate pred) {}
 

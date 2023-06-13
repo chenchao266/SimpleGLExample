@@ -84,7 +84,7 @@ MeshDistance::distance(EigenVec3d const& x, EigenVec3d* nearest_point,
 		return callback(node_index, m_bsh, x, dist_candidate);
 	};
 
-	auto pless = [&](std::array<int, 2> const& c)
+	auto pless = [&](Vec2i const& c)
 	{
 		//return true;
 		auto const& hull0 = m_bsh.hull(c[0]);

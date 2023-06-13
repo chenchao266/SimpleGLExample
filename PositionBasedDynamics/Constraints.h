@@ -476,7 +476,7 @@ namespace PBD
 	public:
 		static int TYPE_ID;
 		/** indices of the linked bodies */
-		std::array<unsigned int, 2> m_bodies;
+		Vec2ui m_bodies;
 		Real m_stiffness; 
 		Real m_frictionCoeff;
 		Real m_sum_impulses;
@@ -498,7 +498,7 @@ namespace PBD
 	public:
 		static int TYPE_ID;
 		/** indices of the linked bodies */
-		std::array<unsigned int, 2> m_bodies;
+        Vec2ui m_bodies;
 		Real m_stiffness;
 		Real m_frictionCoeff;
 		Real m_sum_impulses;
@@ -520,7 +520,7 @@ namespace PBD
 	public:
 		static int TYPE_ID;
 		/** indices of the linked bodies */
-		std::array<unsigned int, 2> m_bodies;
+        Vec2ui m_bodies;
 		unsigned int m_solidIndex;
 		unsigned int m_tetIndex; 
 		Vector3r m_bary;

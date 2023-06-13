@@ -7,6 +7,7 @@
 #include "BoundaryModel_Akinci2012.h"
 #include "BoundaryModel_Koschier2017.h"
 #include "BoundaryModel_Bender2019.h"
+//#include "Discregrid/discrete_grid.hpp"
 
 using namespace SPH;
 
@@ -278,13 +279,13 @@ void TimeStep::computeVolumeAndBoundaryX(const unsigned int fluidModelIndex, con
 		const EigenVec3d localXi = (R.transpose() * (xi - t)).cast<double>();
 
 
-		std::array<unsigned int, 32> cell;
+        Discregrid::DiscreteGrid::CellArray cell;
 		EigenVec3d c0;
-		Eigen::Matrix<double, 32, 1> N;
+        Discregrid::DiscreteGrid::CoefficientVector N;
 #ifdef USE_FD_NORMAL
 		bool chk = bm->getMap()->determineShapeFunctions(0, localXi, cell, c0, N);
 #else
-		Eigen::Matrix<double, 32, 3> dN;
+        Discregrid::DiscreteGrid::CoefficientDerivative dN;
 		bool chk = bm->getMap()->determineShapeFunctions(0, localXi, cell, c0, N, &dN);
 #endif
 		double dist = std::numeric_limits<double>::max();
@@ -421,10 +422,10 @@ void TimeStep::computeDensityAndGradient(const unsigned int fluidModelIndex, con
 		const EigenVec3d localXi = (R.transpose() * (xi - t)).cast<double>();
 
 		Vector3r &boundaryXj = bm->getBoundaryXj(fluidModelIndex, i);		
- 		std::array<unsigned int, 32> cell; 
+        Discregrid::DiscreteGrid::CellArray cell;
  		EigenVec3d c0;
- 		Eigen::Matrix<double, 32, 1> N;
-		Eigen::Matrix<double, 32, 3> dN;
+        Discregrid::DiscreteGrid::CoefficientVector N;
+        Discregrid::DiscreteGrid::CoefficientDerivative dN;
 		bool chk = bm->getMap()->determineShapeFunctions(0, localXi, cell, c0, N, &dN);
 		Real dist = std::numeric_limits<Real>::max();
 		if (chk)

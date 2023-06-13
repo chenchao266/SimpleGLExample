@@ -1,4 +1,4 @@
-#ifndef __INDEXEDFACEMESH_H__
+﻿#ifndef __INDEXEDFACEMESH_H__
 #define __INDEXEDFACEMESH_H__
 
 #include <vector>
@@ -13,8 +13,8 @@ namespace Utilities
 	public:
 		struct Edge
 		{
-			std::array<unsigned int, 2> m_face;
-			std::array<unsigned int, 2> m_vert;
+            Vec2ui m_face;
+            Vec2ui m_vert;
 		};
 
 	public:

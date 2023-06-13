@@ -23,12 +23,12 @@ namespace PBD
 
 		using TraversalPredicate = std::function<bool(unsigned int node_index, unsigned int depth)>;
 		using TraversalCallback = std::function <void(unsigned int node_index, unsigned int depth)>;
-		using TraversalPriorityLess = std::function<bool(std::array<int, 2> const& nodes)>;
+		using TraversalPriorityLess = std::function<bool(Vec2i const& nodes)>;
 
 		struct Node
 		{
 			Node(unsigned int b_, unsigned int n_)
-				: children({ { -1, -1 } })
+				: children(-1, -1)
 				, begin(b_), n(n_) {}
 
 			Node() = default;
@@ -37,7 +37,7 @@ namespace PBD
 
 			// Index of child nodes in nodes array.
 			// -1 if child does not exist.
-			std::array<int, 2> children;
+            Vec2i children;
 
 			// Index according entries in entity list.
 			unsigned int begin;

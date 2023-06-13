@@ -29,7 +29,7 @@ struct HalfedgeHasher
 	{
 		unsigned int f = he.face();
 		unsigned int e = he.edge();
-		std::array<unsigned int, 2> v = { (*faces)[f][e], (*faces)[f][(e + 1) % 3] };
+        Vec2ui v = { (*faces)[f][e], (*faces)[f][(e + 1) % 3] };
 		if (v[0] > v[1])
 			std::swap(v[0], v[1]);
 
@@ -51,11 +51,11 @@ struct HalfedgeEqualTo
 	{
 		unsigned int fa = a.face();
 		unsigned int ea = a.edge();
-		std::array<unsigned int, 2> va = { (*faces)[fa][ea], (*faces)[fa][(ea + 1) % 3] };
+        Vec2ui va = { (*faces)[fa][ea], (*faces)[fa][(ea + 1) % 3] };
 
 		unsigned int fb = b.face();
 		unsigned int eb = b.edge();
-		std::array<unsigned int, 2> vb = { (*faces)[fb][eb], (*faces)[fb][(eb + 1) % 3] };
+        Vec2ui vb = { (*faces)[fb][eb], (*faces)[fb][(eb + 1) % 3] };
 
 		return va[0] == vb[1] && va[1] == vb[0];
 	}

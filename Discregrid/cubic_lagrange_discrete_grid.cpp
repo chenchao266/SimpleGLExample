@@ -94,7 +94,7 @@ double const abscissae_[32][3] = {
 } // namespace
 
 DiscreteGrid::CoefficientVector
-shape_function(EigenVec3d const &xi, Eigen::Matrix<double, 32, 3> *gradient = nullptr)
+shape_function(EigenVec3d const &xi, DiscreteGrid::CoefficientDerivative *gradient = nullptr)
 {
 	auto res = DiscreteGrid::CoefficientVector{};
 
@@ -337,7 +337,7 @@ shape_function(EigenVec3d const &xi, Eigen::Matrix<double, 32, 3> *gradient = nu
 }
 
 DiscreteGrid::CoefficientVector
-shape_function_(EigenVec3d const &xi, Eigen::Matrix<double, 32, 3> *gradient = nullptr)
+shape_function_(EigenVec3d const &xi, DiscreteGrid::CoefficientDerivative *gradient = nullptr)
 {
 	auto res = DiscreteGrid::CoefficientVector{};
 
@@ -898,8 +898,8 @@ CubicLagrangeDiscreteGrid::addFunction(ContinuousFunction const &func, bool verb
 
 bool
 CubicLagrangeDiscreteGrid::determineShapeFunctions(unsigned int field_id, EigenVec3d const &x,
-	std::array<unsigned int, 32> &cell, EigenVec3d &c0, CoefficientVector &N,
-	Eigen::Matrix<double, 32, 3> *dN) const
+    CellArray &cell, EigenVec3d &c0, DiscreteGrid::CoefficientVector &N,
+    DiscreteGrid::CoefficientDerivative *dN) const
 {
 	if (!m_domain.contains(x))
 		return false;
@@ -931,8 +931,8 @@ CubicLagrangeDiscreteGrid::determineShapeFunctions(unsigned int field_id, EigenV
 }
 
 double 
-CubicLagrangeDiscreteGrid::interpolate(unsigned int field_id, EigenVec3d const& xi, const std::array<unsigned int, 32> &cell, const EigenVec3d &c0, const CoefficientVector &N,
-	EigenVec3d* gradient, Eigen::Matrix<double, 32, 3> *dN) const
+CubicLagrangeDiscreteGrid::interpolate(unsigned int field_id, EigenVec3d const& xi, const CellArray &cell, const EigenVec3d &c0, const DiscreteGrid::CoefficientVector &N,
+	EigenVec3d* gradient, DiscreteGrid::CoefficientDerivative *dN) const
 {
 	if (!gradient)
 	{
@@ -1020,12 +1020,12 @@ CubicLagrangeDiscreteGrid::interpolate(unsigned int field_id, EigenVec3d const &
 		return phi;
 	}
 
-	auto dN = Eigen::Matrix<double, 32, 3>{};
+	auto dN = DiscreteGrid::CoefficientDerivative{};
 	auto N = shape_function_(xi, &dN);
 
 	// TEST
 	//auto eps = 1.0e-6;
-	//auto ndN = Eigen::Matrix<double, 32, 3>{};
+	//auto ndN = DiscreteGrid::CoefficientDerivative{};
 	//for (auto j = 0u; j < 3u; ++j)
 	//{
 	//    auto xip = xi;

@@ -36,8 +36,8 @@ public:
 	 * @return Success of the function.
 	 */
 	bool determineShapeFunctions(unsigned int field_id, EigenVec3d const &x,
-		std::array<unsigned int, 32> &cell, EigenVec3d &c0, CoefficientVector &N, 
-		Eigen::Matrix<double, 32, 3> *dN = nullptr) const override;
+        CellArray &cell, EigenVec3d &c0, CoefficientVector &N,
+		CoefficientDerivative *dN = nullptr) const override;
 
 	/**
 	 * @brief Evaluates the given discretization with ID field_id at point xi.
@@ -51,8 +51,8 @@ public:
 	 * @param dN (Optional) derivatives of the shape functions, required to compute the gradient
 	 * @return double Results of the evaluation of the discrete function at point xi
 	 */
-	double interpolate(unsigned int field_id, EigenVec3d const& xi, const std::array<unsigned int, 32> &cell, const EigenVec3d &c0, const CoefficientVector &N,
-		EigenVec3d* gradient = nullptr, Eigen::Matrix<double, 32, 3> *dN = nullptr) const override;
+	double interpolate(unsigned int field_id, EigenVec3d const& xi, const CellArray &cell, const EigenVec3d &c0, const CoefficientVector &N,
+		EigenVec3d* gradient = nullptr, CoefficientDerivative *dN = nullptr) const override;
 
 	void reduceField(unsigned int field_id, Predicate pred) override;
 
@@ -67,7 +67,7 @@ private:
 private:
 
 	std::vector<std::vector<double>> m_nodes;
-	std::vector<std::vector<std::array<unsigned int, 32>>> m_cells;
+	std::vector<std::vector<CellArray>> m_cells;
 	std::vector<std::vector<unsigned int>> m_cell_map;
 };
 
