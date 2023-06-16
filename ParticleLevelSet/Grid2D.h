@@ -71,7 +71,7 @@ public:
 		{ size = (nx+2) * (ny+2); grid = new Double[size]; std::fill(grid, grid+size, 0.); }
 	Grid2D(const Grid2D &gi) 
 		{ gi.GetSize(Nx, Ny, size); if(!size) grid = NULL;
-		  else { grid = new Double[size]; FOR_GRID2D grid[i] = gi[i];} }
+		  else { grid = new Double[size]; for (int i = 0; i < size; i++) grid[i] = gi[i];} }
 	Grid2D(int nx, int ny, const Double val[]) : Nx(nx), Ny(ny)
 		{ size = (nx+2) * (ny+2); grid = new Double[size]; 
 		  for(int j=1; j<=ny; j++) for(int i=1; i<=nx; i++) grid[GI(i,j)] = val[(j-1)*nx + (i-1)]; }
@@ -85,17 +85,17 @@ public:
 	operator Double*() { return &grid[0]; }
 	operator const Double*() { return &grid[0]; }
 
-	inline Grid2D& operator=(const Grid2D &gi)  { FOR_GRID2D grid[i] = gi[i]; return *this; }
-	inline Grid2D& operator+=(const Grid2D &gi) { FOR_GRID2D grid[i] += gi[i]; return *this;}
-	inline Grid2D& operator-=(const Grid2D &gi) { FOR_GRID2D grid[i] -= gi[i]; return *this;}
-	inline Grid2D& operator*=(Double c)		 { FOR_GRID2D grid[i] *= c; return *this; }
+	inline Grid2D& operator=(const Grid2D &gi)  { for (int i = 0; i < size; i++) grid[i] = gi[i]; return *this; }
+	inline Grid2D& operator+=(const Grid2D &gi) { for (int i = 0; i < size; i++) grid[i] += gi[i]; return *this;}
+	inline Grid2D& operator-=(const Grid2D &gi) { for (int i = 0; i < size; i++) grid[i] -= gi[i]; return *this;}
+	inline Grid2D& operator*=(Double c)		 { for (int i = 0; i < size; i++) grid[i] *= c; return *this; }
 	inline Grid2D& operator/=(Double c) 
-		{ Double cInv = 1. / c; FOR_GRID2D grid[i] *= cInv; return *this; }
+		{ Double cInv = 1. / c; for (int i = 0; i < size; i++) grid[i] *= cInv; return *this; }
 
 	inline void set(const Double val[])
 		{ for(int j=1; j<=Ny; j++) for(int i=1; i<=Nx; i++) grid[GI(i,j)] = val[(j-1)*Nx + (i-1)]; }
 	inline Double dot(const Grid2D& gi) const
-		{ Double ret = 0; FOR_GRID2D ret += grid[i] * gi[i]; return ret; }
+		{ Double ret = 0; for (int i = 0; i < size; i++) ret += grid[i] * gi[i]; return ret; }
 	Double SquaredLength() const { return (*this).dot(*this); }
 	Double Length() const { return sqrt(SquaredLength()); }
 	void Normalize() { (*this) /= Length();}

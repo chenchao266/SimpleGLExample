@@ -11,12 +11,12 @@ FastMarch::FastMarch(int nx,int ny, int nz, Double hi)
 
 void FastMarch::Reinitialize(Grid &lset) {
     //Negative Phi first
-    FOR_GRID Set(i, lset[i]);
+    for (int i = 0; i < size; i++) Set(i, lset[i]);
 	ReinitHalf();
     //Then Positive Phi
-    FOR_GRID Set(i, grid[i].value);
+    for (int i = 0; i < size; i++) Set(i, grid[i].value);
     ReinitHalf();
-    FOR_GRID lset[i] = grid[i].value;
+    for (int i = 0; i < size; i++) lset[i] = grid[i].value;
 }
 
 inline void FastMarch::ReinitHalf() {
@@ -38,9 +38,21 @@ inline void FastMarch::Set(int index, const Double &value) {
 
 void FastMarch::SetBoundary()
 {
-    FOR_GRIDZY grid[GI(0,j,k)].DoneFlag = grid[GI(Nx+1,j,k)].DoneFlag = -1; END_FOR_TWO
-    FOR_GRIDZX grid[GI(i,0,k)].DoneFlag = grid[GI(i,Ny+1,k)].DoneFlag = -1; END_FOR_TWO
-    FOR_GRIDYX grid[GI(i,j,0)].DoneFlag = grid[GI(i,j,Nz+1)].DoneFlag = -1; END_FOR_TWO
+    for (int k = 0; k <= Nz; k++) {
+        for (int j = 0; j <= Ny; j++) {
+            grid[GI(0, j, k)].DoneFlag = grid[GI(Nx + 1, j, k)].DoneFlag = -1;
+        }
+    }
+    for (int k = 0; k <= Nz; k++) {
+        for (int i = 0; i <= Nx; i++) {
+            grid[GI(i, 0, k)].DoneFlag = grid[GI(i, Ny + 1, k)].DoneFlag = -1;
+        }
+    }
+    for (int j = 0; j <= Ny; j++) {
+        for (int i = 0; i <= Nx; i++) {
+            grid[GI(i, j, 0)].DoneFlag = grid[GI(i, j, Nz + 1)].DoneFlag = -1;
+        }
+    }
     for(int k=1 ; k<=Nz ; k++ ) {
 		grid[GI(0,0   ,k)].DoneFlag = grid[GI(Nx+1,0   ,k)].DoneFlag = -1;
         grid[GI(0,Ny+1,k)].DoneFlag = grid[GI(Nx+1,Ny+1,k)].DoneFlag = -1;

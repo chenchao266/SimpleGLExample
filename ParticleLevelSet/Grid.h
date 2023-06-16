@@ -75,7 +75,7 @@ public:
 		{ size = (nx+2) * (ny+2) * (nz+2); grid = new Double[size]; std::fill(grid, grid+size, c); }
 	Grid(const Grid &gi) 
 		{ gi.GetSize(Nx, Ny, Nz, size); dj = Nx+2; dk = (Nx+2) * (Ny+2);
-          grid = new Double[size]; FOR_GRID grid[i] = gi[i]; }
+          grid = new Double[size]; for (int i = 0; i < size; i++) grid[i] = gi[i]; }
 	Grid(int nx, int ny, int nz, const Double val[]) : Nx(nx), Ny(ny), Nz(nz)
 		{ size = (nx+2) * (ny+2) * (nz+2); grid = new Double[size]; 
 		  for (int k=1; k<=nz; k++) for(int j=1; j<=ny; j++) for(int i=1; i<=nx; i++) 
@@ -90,12 +90,12 @@ public:
 	operator Double*() { return &grid[0]; }
 	operator const Double*() { return &grid[0]; }
 
-	inline Grid& operator=(const Grid &gi)  { FOR_GRID grid[i] = gi[i]; return *this; }
-	inline Grid& operator+=(const Grid &gi) { FOR_GRID grid[i] += gi[i]; return *this;}
-	inline Grid& operator-=(const Grid &gi) { FOR_GRID grid[i] -= gi[i]; return *this;}
-	inline Grid& operator*=(Double c)		 { FOR_GRID grid[i] *= c; return *this; }
+	inline Grid& operator=(const Grid &gi)  { for (int i = 0; i < size; i++) grid[i] = gi[i]; return *this; }
+	inline Grid& operator+=(const Grid &gi) { for (int i = 0; i < size; i++) grid[i] += gi[i]; return *this;}
+	inline Grid& operator-=(const Grid &gi) { for (int i = 0; i < size; i++) grid[i] -= gi[i]; return *this;}
+	inline Grid& operator*=(Double c)		 { for (int i = 0; i < size; i++) grid[i] *= c; return *this; }
 	inline Grid& operator/=(Double c) 
-		{ Double cInv = 1. / c; FOR_GRID grid[i] *= cInv; return *this; }
+		{ Double cInv = 1. / c; for (int i = 0; i < size; i++) grid[i] *= cInv; return *this; }
 
     inline int GetNx() const { return Nx; }
     inline int GetNy() const { return Ny; }
@@ -105,7 +105,7 @@ public:
 		{ for (int k=1; k<=Nz; k++) for(int j=1; j<=Ny; j++) for(int i=1; i<=Nx; i++) 
 		  grid[GI(i,j,k)] = val[(k-1)*Ny*Nx + (j-1)*Nx + (i-1)]; }
 	inline Double dot(const Grid& gi) const
-		{ Double ret = 0; FOR_GRID ret += grid[i] * gi[i]; return ret; }
+		{ Double ret = 0; for (int i = 0; i < size; i++) ret += grid[i] * gi[i]; return ret; }
 	inline Double normSqrd() const { return (*this).dot(*this); }
 	inline Double norm() const { return sqrt(normSqrd()); }
 	void Normalize() { (*this) /= norm();}
@@ -137,9 +137,21 @@ public:
 
 inline void Grid::SetBoundaryDirichlet()
 {
-    FOR_GRIDZY grid[GI(0,j,k)] = grid[GI(Nx+1,j,k)] = 0; END_FOR_TWO
-    FOR_GRIDZX grid[GI(i,0,k)] = grid[GI(i,Ny+1,k)] = 0; END_FOR_TWO
-    FOR_GRIDYX grid[GI(i,j,0)] = grid[GI(i,j,Nz+1)] = 0; END_FOR_TWO
+    for (int k = 0; k <= Nz; k++) {
+        for (int j = 0; j <= Ny; j++) {
+            grid[GI(0, j, k)] = grid[GI(Nx + 1, j, k)] = 0;
+        }
+    }
+    for (int k = 0; k <= Nz; k++) {
+        for (int i = 0; i <= Nx; i++) {
+            grid[GI(i, 0, k)] = grid[GI(i, Ny + 1, k)] = 0;
+        }
+    }
+    for (int j = 0; j <= Ny; j++) {
+        for (int i = 0; i <= Nx; i++) {
+            grid[GI(i, j, 0)] = grid[GI(i, j, Nz + 1)] = 0;
+        }
+    }
     for(int k=1 ; k<=Nz ; k++ ) {
 		grid[GI(0,0   ,k)] = grid[GI(Nx+1,0   ,k)] = 0;
         grid[GI(0,Ny+1,k)] = grid[GI(Nx+1,Ny+1,k)] = 0;
@@ -160,78 +172,114 @@ inline void Grid::SetBoundaryDirichlet()
 
 inline void Grid::SetBoundaryNeumann()
 {
-    FOR_GRIDZY
-        grid[GI(0   ,j,k)] = grid[GI(1 ,j,k)];
-        grid[GI(Nx+1,j,k)] = grid[GI(Nx,j,k)];
-    END_FOR_TWO
-    FOR_GRIDZX
-        grid[GI(i,0   ,k)] = grid[GI(i,1 ,k)];
-        grid[GI(i,Ny+1,k)] = grid[GI(i,Ny,k)];
-    END_FOR_TWO
-    FOR_GRIDYX
-        grid[GI(i,j,0   )] = grid[GI(i,j,1 )];
-        grid[GI(i,j,Nz+1)] = grid[GI(i,j,Nz)];
-    END_FOR_TWO
+    for (int k = 0; k <= Nz; k++) {
+        for (int j = 0; j <= Ny; j++) {
+            grid[GI(0, j, k)] = grid[GI(1, j, k)];
+            grid[GI(Nx + 1, j, k)] = grid[GI(Nx, j, k)];
+        }
+    }
+    for (int k = 0; k <= Nz; k++) {
+        for (int i = 0; i <= Nx; i++) {
+            grid[GI(i, 0, k)] = grid[GI(i, 1, k)];
+            grid[GI(i, Ny + 1, k)] = grid[GI(i, Ny, k)];
+        }
+    }
+    for (int j = 0; j <= Ny; j++) {
+        for (int i = 0; i <= Nx; i++) {
+            grid[GI(i, j, 0)] = grid[GI(i, j, 1)];
+            grid[GI(i, j, Nz + 1)] = grid[GI(i, j, Nz)];
+        }
+    }
 	SetBoundaryCorner();
 }
 
 inline void Grid::SetBoundaryU()
 {
-    FOR_GRIDZY
-        grid[GI(0   ,j,k)] = -grid[GI(1 ,j,k)];
-        grid[GI(Nx+1,j,k)] = -grid[GI(Nx,j,k)];
-    END_FOR_TWO
-    FOR_GRIDZX
-        grid[GI(i,0   ,k)] = grid[GI(i,1 ,k)];
-        grid[GI(i,Ny+1,k)] = grid[GI(i,Ny,k)];
-    END_FOR_TWO
-    FOR_GRIDYX
-        grid[GI(i,j,0   )] = grid[GI(i,j,1 )];
-        grid[GI(i,j,Nz+1)] = grid[GI(i,j,Nz)];
-    END_FOR_TWO
+    for (int k = 0; k <= Nz; k++) {
+        for (int j = 0; j <= Ny; j++) {
+            grid[GI(0, j, k)] = -grid[GI(1, j, k)];
+            grid[GI(Nx + 1, j, k)] = -grid[GI(Nx, j, k)];
+        }
+    }
+    for (int k = 0; k <= Nz; k++) {
+        for (int i = 0; i <= Nx; i++) {
+            grid[GI(i, 0, k)] = grid[GI(i, 1, k)];
+            grid[GI(i, Ny + 1, k)] = grid[GI(i, Ny, k)];
+        }
+    }
+    for (int j = 0; j <= Ny; j++) {
+        for (int i = 0; i <= Nx; i++) {
+            grid[GI(i, j, 0)] = grid[GI(i, j, 1)];
+            grid[GI(i, j, Nz + 1)] = grid[GI(i, j, Nz)];
+        }
+    }
 	SetBoundaryCorner();
 }
 
 inline void Grid::SetBoundaryV()
 {
-    FOR_GRIDZY
-        grid[GI(0   ,j,k)] = grid[GI(1 ,j,k)];
-        grid[GI(Nx+1,j,k)] = grid[GI(Nx,j,k)];
-    END_FOR_TWO
-    FOR_GRIDZX
-        grid[GI(i,0   ,k)] = -grid[GI(i,1 ,k)];
-        grid[GI(i,Ny+1,k)] = -grid[GI(i,Ny,k)];
-    END_FOR_TWO
-    FOR_GRIDYX
-        grid[GI(i,j,0   )] = grid[GI(i,j,1 )];
-        grid[GI(i,j,Nz+1)] = grid[GI(i,j,Nz)];
-    END_FOR_TWO
+    for (int k = 0; k <= Nz; k++) {
+        for (int j = 0; j <= Ny; j++) {
+            grid[GI(0, j, k)] = grid[GI(1, j, k)];
+            grid[GI(Nx + 1, j, k)] = grid[GI(Nx, j, k)];
+        }
+    }
+    for (int k = 0; k <= Nz; k++) {
+        for (int i = 0; i <= Nx; i++) {
+            grid[GI(i, 0, k)] = -grid[GI(i, 1, k)];
+            grid[GI(i, Ny + 1, k)] = -grid[GI(i, Ny, k)];
+        }
+    }
+    for (int j = 0; j <= Ny; j++) {
+        for (int i = 0; i <= Nx; i++) {
+            grid[GI(i, j, 0)] = grid[GI(i, j, 1)];
+            grid[GI(i, j, Nz + 1)] = grid[GI(i, j, Nz)];
+        }
+    }
 	SetBoundaryCorner();
 }
 
 inline void Grid::SetBoundaryW()
 {
-    FOR_GRIDZY
-        grid[GI(0   ,j,k)] = grid[GI(1 ,j,k)];
-        grid[GI(Nx+1,j,k)] = grid[GI(Nx,j,k)];
-    END_FOR_TWO
-    FOR_GRIDZX
-        grid[GI(i,0   ,k)] = grid[GI(i,1 ,k)];
-        grid[GI(i,Ny+1,k)] = grid[GI(i,Ny,k)];
-    END_FOR_TWO
-    FOR_GRIDYX
-        grid[GI(i,j,0   )] = -grid[GI(i,j,1 )];
-        grid[GI(i,j,Nz+1)] = -grid[GI(i,j,Nz)];
-    END_FOR_TWO
+    for (int k = 0; k <= Nz; k++) {
+        for (int j = 0; j <= Ny; j++) {
+            grid[GI(0, j, k)] = grid[GI(1, j, k)];
+            grid[GI(Nx + 1, j, k)] = grid[GI(Nx, j, k)];
+        }
+    }
+    for (int k = 0; k <= Nz; k++) {
+        for (int i = 0; i <= Nx; i++) {
+            grid[GI(i, 0, k)] = grid[GI(i, 1, k)];
+            grid[GI(i, Ny + 1, k)] = grid[GI(i, Ny, k)];
+        }
+    }
+    for (int j = 0; j <= Ny; j++) {
+        for (int i = 0; i <= Nx; i++) {
+            grid[GI(i, j, 0)] = -grid[GI(i, j, 1)];
+            grid[GI(i, j, Nz + 1)] = -grid[GI(i, j, Nz)];
+        }
+    }
 	SetBoundaryCorner();
 }
 
 inline void Grid::SetBoundarySignedDist()
 {
     static Double phi = 3. * HH;
-    FOR_GRIDZY grid[GI(0,j,k)] = grid[GI(Nx+1,j,k)] = phi; END_FOR_TWO
-    FOR_GRIDZX grid[GI(i,0,k)] = grid[GI(i,Ny+1,k)] = phi; END_FOR_TWO
-    FOR_GRIDYX grid[GI(i,j,0)] = grid[GI(i,j,Nz+1)] = phi; END_FOR_TWO
+    for (int k = 0; k <= Nz; k++) {
+        for (int j = 0; j <= Ny; j++) {
+            grid[GI(0, j, k)] = grid[GI(Nx + 1, j, k)] = phi;
+        }
+    }
+    for (int k = 0; k <= Nz; k++) {
+        for (int i = 0; i <= Nx; i++) {
+            grid[GI(i, 0, k)] = grid[GI(i, Ny + 1, k)] = phi;
+        }
+    }
+    for (int j = 0; j <= Ny; j++) {
+        for (int i = 0; i <= Nx; i++) {
+            grid[GI(i, j, 0)] = grid[GI(i, j, Nz + 1)] = phi;
+        }
+    }
     for(int k=1 ; k<=Nz ; k++ ) {
 		grid[GI(0,0   ,k)] = grid[GI(Nx+1,0   ,k)] = phi;
         grid[GI(0,Ny+1,k)] = grid[GI(Nx+1,Ny+1,k)] = phi;

@@ -5,9 +5,13 @@
 void LevelSet::Update(const Velocity& grid, const Double &dt)
 {
 	//First Order time integration
-	FOR_LS
-		SemiLagrangianStep(i,j,k,grid,dt);
-	END_FOR_THREE
+    for (int k = 1; k <= NZ; k++) {
+        for (int j = 1; j <= NY; j++) {
+            for (int i = 1; i <= NX; i++) {//FOR_LS
+                SemiLagrangianStep(i, j, k, grid, dt);
+            }
+        }
+    }//END_FOR_THREE
 
         std::swap(gridPhi, gridTmp);
 	gridPhi.SetBoundarySignedDist();
@@ -78,10 +82,14 @@ void LevelSet::Fix(const ParticleSet& particleSet)
 	}
 	//Merge gridPos & gridNeg
 	static Double phiPos, phiNeg;
-	FOR_ALL_LS
-		phiPos = gridPos(i,j,k); phiNeg = gridNeg(i,j,k);
-		gridPhi(i,j,k) = abs(phiPos) < abs(phiNeg) ? phiPos : phiNeg;
-	END_FOR_THREE
+    for (int k = 0; k < (NZ + 2); k++) {
+        for (int j = 0; j < (NY + 2); j++) {
+            for (int i = 0; i < (NX + 2); i++) {//FOR_ALL_LS
+                phiPos = gridPos(i, j, k); phiNeg = gridNeg(i, j, k);
+                gridPhi(i, j, k) = abs(phiPos) < abs(phiNeg) ? phiPos : phiNeg;
+            }
+        }
+    }//END_FOR_THREE
 }
 
 inline void LevelSet::FixNeg(const Particle &particle, int i, int j, int k)

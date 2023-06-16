@@ -1,4 +1,4 @@
-#include "main.h"
+﻿#include "main.h"
 
 // Random Number State
 /*
@@ -32,11 +32,11 @@
    NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
    SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
-#define N 624
-#define M 397
-#define MATRIX_A 0x9908b0dfUL   /* constant vector a */
-#define UPPER_MASK 0x80000000UL /* most significant w-r bits */
-#define LOWER_MASK 0x7fffffffUL /* least significant r bits */
+const int N = 624;
+const int M = 397;
+const unsigned long MATRIX_A = 0x9908b0dfUL;   /* constant vector a */
+const unsigned long UPPER_MASK = 0x80000000UL; /* most significant w-r bits */
+const unsigned long LOWER_MASK = 0x7fffffffUL; /* least significant r bits */
 
 static bool flag = 0;
 static unsigned long mt[N]; /* the array for the state vector  */

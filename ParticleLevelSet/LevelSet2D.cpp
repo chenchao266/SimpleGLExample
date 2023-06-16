@@ -5,9 +5,11 @@
 void LevelSet2D::Update(const Velocity2D& grid, const Double &dt)
 {
 	//First Order time integration
-	FOR_LS2D
-		SemiLagrangianStep(i,j,grid,dt);
-	END_FOR_TWO
+    for (int j = 1; j <= NY; j++) {
+        for (int i = 1; i <= NX; i++) {
+            SemiLagrangianStep(i, j, grid, dt);
+        }
+    }
 
         std::swap(gridPhi, gridTmp);
 	gridPhi.SetBoundarySignedDist();
@@ -41,9 +43,9 @@ void LevelSet2D::SemiLagrangianStep(int x, int y, const Velocity2D &grid, const 
 }
 
 void LevelSet2D::ReInitialize() {
-    FOR_GRID2D gridFM.Set(i, gridPhi[i]);
+    for (int i = 0; i < size; i++) gridFM.Set(i, gridPhi[i]);
     gridFM.Reinitialize();
-    FOR_GRID2D gridPhi[i] = gridFM[i];
+    for (int i = 0; i < size; i++) gridPhi[i] = gridFM[i];
     gridPhi.SetBoundarySignedDist();
 }
     
@@ -74,12 +76,14 @@ void LevelSet2D::Fix(const ParticleSet2D& particleSet)
 	//Merge gridPos & gridNeg
 	static Double phiPos, phiNeg;
     //cout << endl;
-	FOR_ALL_LS2D
-		phiPos = gridPos(i,j); phiNeg = gridNeg(i,j);
-        //if(phiPos * phiNeg < 0) cout << i << " " << j << "  +: " << phiPos << "  -: " << phiNeg << endl; 
-		gridPhi(i,j) = abs(phiPos) < abs(phiNeg) ? phiPos : phiNeg;
-        //gridPhi(i,j) = phiNeg;
-	END_FOR_TWO
+    for (int j = 1; j < (NY + 2); j++) {
+        for (int i = 1; i < (NX + 2); i++) {//FOR_ALL_LS2D
+            phiPos = gridPos(i, j); phiNeg = gridNeg(i, j);
+            //if(phiPos * phiNeg < 0) cout << i << " " << j << "  +: " << phiPos << "  -: " << phiNeg << endl; 
+            gridPhi(i, j) = abs(phiPos) < abs(phiNeg) ? phiPos : phiNeg;
+            //gridPhi(i,j) = phiNeg;
+        }
+    }//END_FOR_TWO
 }
 
 inline void LevelSet2D::FixNeg(const Particle2D &particle, int i, int j)

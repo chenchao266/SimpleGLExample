@@ -83,12 +83,12 @@ const Float INV_255 = 1. / 255;
 const Float SQRT_TWO = sqrt(2.);
 //-------------------------2D LEVEL SET CONSTANTS---------------------------------------------
  
-#define HH					1
-#define PARTICLES_PER_NODE2D	16
-#define PARTICLES_PER_NODE		32
-#define NX                  100
-#define NY                  100
-#define NZ                  100
+const Double HH = 1;
+const int  PARTICLES_PER_NODE2D = 16;
+const int  PARTICLES_PER_NODE = 32;
+const int  NX = 100;
+const int  NY = 100;
+const int  NZ = 100;
 
 const Float MAX_U               = NX * 0.005;
 const Float MAX_V               = NY * 0.005;
@@ -107,17 +107,17 @@ const int PARTICLES_PER_INTERFACE_NODE = 2 * PARTICLES_PER_NODE;
 
 #define SAMPLEPHI                  LinearSample      
 //#define SAMPLEPHI                  CubicSample
-#define FOR_LS2D for(int j=1; j<=NY; j++) { for(int i=1; i<=NX; i++) {
-#define FOR_ALL_LS2D for(int j=1; j<(NY+2); j++) { for(int i=1; i<(NX+2); i++) {
-#define FOR_LS     for(int k=1; k<=NZ; k++) { for(int j=1; j<=NY; j++) { for(int i=1; i<=NX; i++) {
-#define FOR_ALL_LS for(int k=0; k<(NZ+2); k++) { for(int j=0; j<(NY+2); j++) { for(int i=0; i<(NX+2); i++) {
-#define END_FOR_THREE }}}
-#define END_FOR_TWO }}
-#define FOR_GRID2D  for(int i=0; i < size; i++)
-#define FOR_GRID   for(int i=0; i < size; i++)
-#define FOR_GRIDZY for(int k=0; k <= Nz; k++) { for(int j=0; j <= Ny; j++) { 
-#define FOR_GRIDZX for(int k=0; k <= Nz; k++) { for(int i=0; i <= Nx; i++) { 
-#define FOR_GRIDYX for(int j=0; j <= Ny; j++) { for(int i=0; i <= Nx; i++) { 
+//#define FOR_LS2D for(int j=1; j<=NY; j++) { for(int i=1; i<=NX; i++) {
+//#define FOR_ALL_LS2D for(int j=1; j<(NY+2); j++) { for(int i=1; i<(NX+2); i++) {
+//#define FOR_LS     for(int k=1; k<=NZ; k++) { for(int j=1; j<=NY; j++) { for(int i=1; i<=NX; i++) {
+//#define FOR_ALL_LS for(int k=0; k<(NZ+2); k++) { for(int j=0; j<(NY+2); j++) { for(int i=0; i<(NX+2); i++) {
+//#define END_FOR_THREE }}}
+//#define END_FOR_TWO }}
+//#define FOR_GRID2D  for(int i=0; i < size; i++)
+//#define FOR_GRID   for(int i=0; i < size; i++)
+//#define FOR_GRIDZY for(int k=0; k <= Nz; k++) { for(int j=0; j <= Ny; j++) { 
+//#define FOR_GRIDZX for(int k=0; k <= Nz; k++) { for(int i=0; i <= Nx; i++) { 
+//#define FOR_GRIDYX for(int j=0; j <= Ny; j++) { for(int i=0; i <= Nx; i++) { 
 
 class FastMarch2D;
 class Grid2D;
@@ -139,18 +139,19 @@ class Timer;
 class Velocity;
 class Water;
  
-
-inline bool CmpFtoZero(Float compare) {
+template<typename T>
+inline bool CmpFtoZero(T compare) {
     if((compare < 0.00001) && (compare > -0.00001)) return true;
     else return false;
 }
   
 // Monotonic Cubic Interpolation
 // interpolation between fk1 and fk2. alpha = position - k1;
-inline Float MCerp(const Float &alpha, const Float &fk0, const Float &fk1, 
-                                       const Float &fk2, const Float &fk3) 
+template<typename T>
+inline T MCerp(const T &alpha, const T &fk0, const T &fk1,
+                                       const T &fk2, const T &fk3)
 {
-    static Float dk02, dk13, delk;
+    static T dk02, dk13, delk;
     delk = fk2 - fk1;
     if(CmpFtoZero(delk)) dk02 = dk13 = 0;
     else {
@@ -162,36 +163,33 @@ inline Float MCerp(const Float &alpha, const Float &fk0, const Float &fk1,
     return (dk02 + dk13 - 2 * delk) * alpha * alpha * alpha 
             + (3. * delk - 2. * dk02 - dk13) * alpha * alpha + dk02 * alpha + fk1;
 }
+template<typename T>
+inline T Lerp(T alpha, T a, T b) { return (1.0 - alpha) * a + alpha * b; }
 
-inline Float Lerp(Float alpha, Float a, Float b) { return (1.0 - alpha) * a + alpha * b; }
-
-inline int Step(Float x, Float alpha) { if(alpha < x) return 0; return 1; }
-
-inline int Round(Float alpha) { return (int)floor(alpha+0.5); }
-
-inline Double square(Double x) { return x*x; }
-
-inline Float Radians(Float deg) {return PI_INV180 * deg; }
-inline Float Degrees(Float rad) {return INV_PI180 * rad; }
-
-inline Float Clamp(Float alpha, Float a, Float b) { 
+template<typename T>
+inline int Step(T x, T alpha) { if(alpha < x) return 0; return 1; }
+template<typename T>
+inline int Round(T alpha) { return (int)floor(alpha+0.5); }
+template<typename T>
+inline T square(T x) { return x*x; }
+template<typename T>
+inline T Radians(T deg) {return PI_INV180 * deg; }
+template<typename T>
+inline T Degrees(T rad) {return INV_PI180 * rad; }
+template<typename T>
+inline T Clamp(T alpha, T a, T b) { 
 	if(alpha < a) return a;
 	if(alpha > b) return b;
 	return alpha;
 }
-
-inline int Clamp(int alpha, int a, int b) {
-	if(alpha < a) return a;
-	if(alpha > b) return b;
-	return alpha;
-}
-
-inline Float SmoothStep(Float min, Float max, Float alpha) {
-	Float temp = Clamp((alpha - min) / (max - min), 0.0, 1.0);
+template<typename T>
+inline T SmoothStep(T min, T max, T alpha) {
+	T temp = Clamp((alpha - min) / (max - min), (T)0.0, (T)1.0);
 	return -2.0 * temp * temp * temp + 3.0 * temp * temp;
 }
 
-inline int Mod(int a, int b, const Double &bInv) {
+template<typename T>
+inline int Mod(int a, int b, const T &bInv) {
 	int n = int(a*bInv);
 	a -= n*b;
 	if (a < 0)

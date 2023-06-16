@@ -106,30 +106,34 @@ public:
 		for(Iterator it = particles.begin(); it != particles.end(); it++) delete *it;
 		particles.clear();
 
-		FOR_LS
-			reseed = false;
-            reseed2 = false; 
-            for(int dx=0; dx < 2; dx++) {
-                for(int dy=0; dy < 2; dy++) {
-                    for(int dz=0; dz < 2; dz++) {
-                    phi = abs(levelSet(i+dx,j+dy,k+dz));
-					if(phi < RESEED_THRESHOLD) reseed = true;
-                    if(phi < h) reseed2 = true;
+        for (int k = 1; k <= NZ; k++) {
+            for (int j = 1; j <= NY; j++) {
+                for (int i = 1; i <= NX; i++) {//FOR_LS
+                    reseed = false;
+                    reseed2 = false;
+                    for (int dx = 0; dx < 2; dx++) {
+                        for (int dy = 0; dy < 2; dy++) {
+                            for (int dz = 0; dz < 2; dz++) {
+                                phi = abs(levelSet(i + dx, j + dy, k + dz));
+                                if (phi < RESEED_THRESHOLD) reseed = true;
+                                if (phi < h) reseed2 = true;
+                            }
+                        }
                     }
+                    if (reseed2) ppn = PARTICLES_PER_INTERFACE_NODE;
+                    else        ppn = PARTICLES_PER_NODE;
+                    if (reseed) {
+                        for (int x = 0; x < ppn; x++) {
+                            Vec3d pos(Double(i) + RandomFloat(),
+                                Double(j) + RandomFloat(),
+                                Double(k) + RandomFloat());
+                            particles.push_back(new Particle(pos, levelSet.SAMPLEPHI(pos), hInv));
+                        }
+                    }
+
                 }
             }
-            if(reseed2) ppn = PARTICLES_PER_INTERFACE_NODE;
-            else        ppn = PARTICLES_PER_NODE;
-			if(reseed) {
-				for(int x=0; x < ppn; x++) {
-					Vec3d pos(Double(i) + RandomFloat(), 
-							   Double(j) + RandomFloat(),
-                               Double(k) + RandomFloat());
-					particles.push_back(new Particle(pos, levelSet.SAMPLEPHI(pos), hInv));
-				}
-			}
-               
-        END_FOR_THREE
+        }//END_FOR_THREE
 	}
 };
 

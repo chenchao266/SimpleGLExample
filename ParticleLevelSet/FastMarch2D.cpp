@@ -34,7 +34,7 @@ void FastMarch2D::Reinitialize() {
     //Negative Phi first
 	ReinitHalf();
     //Then Positive Phi
-    FOR_GRID2D Set(i, grid[i].value);
+    for (int i = 0; i < size; i++) Set(i, grid[i].value);
     ReinitHalf();
 }
 

@@ -104,20 +104,22 @@ public:
 		particles.clear();
 		static bool reseed;
 
-		FOR_LS2D
-			reseed = false;
-			for(int dx=0; dx < 2; dx++)
-				for(int dy=0; dy < 2; dy++)
-					if(abs(levelSet(i+dx,j+dy)) < RESEED_THRESHOLD)
-						reseed = true;
-			if(reseed) {
-				for(int x=0; x < PARTICLES_PER_NODE; x++) {
-					Vec2d pos(Double(i) + RandomFloat(), 
-							  Double(j) + RandomFloat());
-					particles.push_back(new Particle2D(pos, levelSet.LinearSample(pos), hInv));
-				}
-			}
-        END_FOR_TWO
+        for (int j = 1; j <= NY; j++) {
+            for (int i = 1; i <= NX; i++) {//FOR_LS2D
+                reseed = false;
+                for (int dx = 0; dx < 2; dx++)
+                    for (int dy = 0; dy < 2; dy++)
+                        if (abs(levelSet(i + dx, j + dy)) < RESEED_THRESHOLD)
+                            reseed = true;
+                if (reseed) {
+                    for (int x = 0; x < PARTICLES_PER_NODE; x++) {
+                        Vec2d pos(Double(i) + RandomFloat(),
+                            Double(j) + RandomFloat());
+                        particles.push_back(new Particle2D(pos, levelSet.LinearSample(pos), hInv));
+                    }
+                }
+            }
+        }//END_FOR_TWO
 	}
 };
 

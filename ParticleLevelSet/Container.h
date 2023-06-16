@@ -117,54 +117,58 @@ public:
 
 void MakeSphere(Grid &init, Double h, const Vec3d &pos, Double radius)
 {
-	FOR_ALL_LS
-		Double val1 = ((pos - Vec3d(i,j,k)).norm() - radius) * h; 
-        
-        //Double val3 = (pos - Vec3d(i,j)).Length() - (radius - (radius*0.2));
-        //val1 = max(-val3, val1);
+    for (int k = 0; k < (NZ + 2); k++) {
+        for (int j = 0; j < (NY + 2); j++) {
+            for (int i = 0; i < (NX + 2); i++) {
+                Double val1 = ((pos - Vec3d(i, j, k)).norm() - radius) * h;
 
-		Double leftWall = (pos[0] - radius/6);// * h;
-		Double rightWall = (pos[0] + radius/6);// * h;
-		Double topWall = (pos[1] + radius/1.5);// * h;
-		Double bottomWall = (pos[1] - radius);// * h;
+                //Double val3 = (pos - Vec3d(i,j)).Length() - (radius - (radius*0.2));
+                //val1 = max(-val3, val1);
 
-		Double val2 = INFINITY;
-		
-		if(bottomWall <= j && j <= topWall && leftWall <= i && i <= rightWall)
-		{
-			Double top = topWall - j;
-			Double bottom = j - bottomWall;
-			Double left = i - leftWall;
-			Double right = rightWall - i;
-			if(abs(val2) > abs(top))	val2 = top;
-			if(abs(val2) > abs(bottom)) val2 = bottom;
-			if(abs(val2) > abs(left))	val2 = left;
-			if(abs(val2) > abs(right))	val2 = right;
-		}
-		else if(leftWall <= i && i <= rightWall)
-		{
-			if(abs(val2) > abs(j-bottomWall))	val2 = j-bottomWall;
-			if(abs(val2) > abs(j-topWall))		val2 = topWall-j;
-		}
-		else if(bottomWall <= j && j <= topWall)
-		{
-			if(abs(val2) > abs(i-leftWall))		val2 = i-leftWall;
-			if(abs(val2) > abs(i-rightWall))	val2 = rightWall-i;
-		}
-		else
-		{
-			Double ul = sqrt((i-leftWall)*(i-leftWall)+(j-topWall)*(j-topWall));
-			Double ur = sqrt((i-rightWall)*(i-rightWall)+(j-topWall)*(j-topWall));
-			Double bl = sqrt((i-leftWall)*(i-leftWall)+(j-bottomWall)*(j-bottomWall));
-			Double br = sqrt((i-rightWall)*(i-rightWall)+(j-bottomWall)*(j-bottomWall));
-			val2 = -min(min(min(ul,ur),bl),br);
-		}
-        val2 *= h;
+                Double leftWall = (pos[0] - radius / 6);// * h;
+                Double rightWall = (pos[0] + radius / 6);// * h;
+                Double topWall = (pos[1] + radius / 1.5);// * h;
+                Double bottomWall = (pos[1] - radius);// * h;
 
-		//val = 10*cos(i/Double(size[0])*10) + 10*sin(j/Double(size[1])*10) ;
-		//gridPhi(i,j,k) = val1;
-		init(i,j,k) = max(val1,val2);
-	END_FOR_THREE
+                Double val2 = INFINITY;
+
+                if (bottomWall <= j && j <= topWall && leftWall <= i && i <= rightWall)
+                {
+                    Double top = topWall - j;
+                    Double bottom = j - bottomWall;
+                    Double left = i - leftWall;
+                    Double right = rightWall - i;
+                    if (abs(val2) > abs(top))	val2 = top;
+                    if (abs(val2) > abs(bottom)) val2 = bottom;
+                    if (abs(val2) > abs(left))	val2 = left;
+                    if (abs(val2) > abs(right))	val2 = right;
+                }
+                else if (leftWall <= i && i <= rightWall)
+                {
+                    if (abs(val2) > abs(j - bottomWall))	val2 = j - bottomWall;
+                    if (abs(val2) > abs(j - topWall))		val2 = topWall - j;
+                }
+                else if (bottomWall <= j && j <= topWall)
+                {
+                    if (abs(val2) > abs(i - leftWall))		val2 = i - leftWall;
+                    if (abs(val2) > abs(i - rightWall))	val2 = rightWall - i;
+                }
+                else
+                {
+                    Double ul = sqrt((i - leftWall)*(i - leftWall) + (j - topWall)*(j - topWall));
+                    Double ur = sqrt((i - rightWall)*(i - rightWall) + (j - topWall)*(j - topWall));
+                    Double bl = sqrt((i - leftWall)*(i - leftWall) + (j - bottomWall)*(j - bottomWall));
+                    Double br = sqrt((i - rightWall)*(i - rightWall) + (j - bottomWall)*(j - bottomWall));
+                    val2 = -min(min(min(ul, ur), bl), br);
+                }
+                val2 *= h;
+
+                //val = 10*cos(i/Double(size[0])*10) + 10*sin(j/Double(size[1])*10) ;
+                //gridPhi(i,j,k) = val1;
+                init(i, j, k) = max(val1, val2);
+            }
+        }
+    }
 }
 
 #endif
