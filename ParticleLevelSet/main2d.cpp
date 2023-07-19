@@ -1,4 +1,11 @@
 ﻿#include "glad/gl.h"
+#include "CommonInterfaces/CommonGraphicsAppInterface.h"
+#include "Bullet3Common/b3Quaternion.h"
+#include "Bullet3Common/b3AlignedObjectArray.h"
+#include "CommonInterfaces/CommonRenderInterface.h"
+#include "CommonInterfaces/CommonExampleInterface.h"
+#include "CommonInterfaces/CommonGUIHelperInterface.h"
+
 #include "main.h"
 #include "container2d.h"
 #include "Component/timer.h"
@@ -7,49 +14,57 @@
 #include "Bullet3Common/geometry.h"
 
 /* global variables */
-
-Container2D container(NX, NY, HH, DT2D);
-
-//static int win_x = 6*NX, win_y = 6*NY;
-static int win_x = 600, win_y = 600;
-static int dvel = 3, pause = 1, area = 0, rate = 0;
-
-static int win_id;
-
-static int mouse_down[3];
-static int omx, omy, mx, my;
-Double dt = 0;
-
-static Double rot_time = 0.0;
-static Double fps_time = 0.0;
-static int frames = 0;
-Timer timer;
-
-/*
-  ----------------------------------------------------------------------
-   OpenGL specific drawing routines
-  ----------------------------------------------------------------------
-*/
-
-static void pre_display ( void )
+class ParticleLevelSet2D : public CommonExampleInterface
 {
-	glViewport ( 0, 0, win_x, win_y );
-	glMatrixMode ( GL_PROJECTION );
-	glLoadIdentity ();
-	//gluOrtho2D ( 0.0, 1.0, 0.0, 1.0 );
-	//gluOrtho2D ( HH, (HH*NX), HH, (HH*NY) );
-	glClearColor ( 0.0f, 0.0f, 0.0f, 1.0f );
-	glClear ( GL_COLOR_BUFFER_BIT );
-}
+    CommonGraphicsApp* m_app;
+    GUIHelperInterface* m_guiHelper;
+    Container2D container;
+     
+    int dvel = 3, pause = 1, area = 0, rate = 0;
+       
+    Double dt = 0;
 
-static void post_display ( void )
-{
-	//glutSwapBuffers ();
-}
+    Double rot_time = 0.0;
+    Double fps_time = 0.0;
+    int frames = 0;
+    Timer timer;
 
-static void draw_velocity ( void )
+public:
+    ParticleLevelSet2D(GUIHelperInterface* app);
+    ~ParticleLevelSet2D();
+
+    virtual void physicsDebugDraw(int debugDrawMode)
+    {
+    }
+    virtual void initPhysics();
+
+    virtual void exitPhysics()
+    {
+    }
+
+    virtual void stepSimulation(float deltaTime);
+
+    virtual void renderScene();
+    // GLUT callbacks
+
+
+    virtual bool keyboardCallback(int key, int state);
+
+    virtual bool mouseButtonCallback(int button, int state, float x, float y);
+
+    virtual bool mouseMoveCallback(float x, float y);
+protected:
+    void draw_velocity();
+    void draw_density();
+    void draw_points();
+    void FindArea();
+    void draw_particles();
+};
+
+ 
+void ParticleLevelSet2D::draw_velocity ( void )
 {
-	static Float x, y, u, v;
+	Float x, y, u, v;
 
 	glColor3f ( 1.0f, 1.0f, 1.0f );
 	glLineWidth ( 1.0f );
@@ -69,9 +84,9 @@ static void draw_velocity ( void )
 	glEnd ();
 }
 
-static void draw_density ( void )
+void ParticleLevelSet2D::draw_density ( void )
 {
-	static Float x, y, d00, d01, d10, d11;
+	Float x, y, d00, d01, d10, d11;
 	glBegin ( GL_QUADS );
 
 		for (int i=1 ; i<=NX ; i++ ) {
@@ -94,9 +109,9 @@ static void draw_density ( void )
 	glEnd ();
 }
 
-static void draw_points ( void )
+void ParticleLevelSet2D::draw_points ( void )
 {
-	static Float x, y, d00;
+	Float x, y, d00;
 	glBegin ( GL_POINTS );
 
 		for (int i=1 ; i<=NX ; i++ ) {
@@ -111,7 +126,7 @@ static void draw_points ( void )
 	glEnd ();
 }
 
-static void FindArea()
+void ParticleLevelSet2D::FindArea()
 {
     int a = 0;
 	for (int i=1 ; i<=NX ; i++ ) 
@@ -121,9 +136,9 @@ static void FindArea()
     area = 0;
 }
 
-static void draw_particles (void)
+void ParticleLevelSet2D::draw_particles (void)
 {
-    static Float x,y;
+    Float x,y;
     glBegin ( GL_POINTS );
 
         ParticleSet2D::cIterator pit, end = container.pset.end();
@@ -151,13 +166,21 @@ static void draw_particles (void)
     glEnd();
 }
 
-/*
-  ----------------------------------------------------------------------
-   GLUT callback routines
-  ----------------------------------------------------------------------
-*/
+ParticleLevelSet2D::ParticleLevelSet2D(GUIHelperInterface* gui) :container(NX, NY, HH, DT2D)
+{
+    m_guiHelper = gui;
+    m_app = gui->getAppInterface();
+     
+    timer.setStartTick();
+}
 
-static void key_func ( unsigned char key, int x, int y )
+
+ParticleLevelSet2D::~ParticleLevelSet2D()
+{
+
+ 
+}
+bool ParticleLevelSet2D::keyboardCallback(int key, int state)
 {
 	switch ( key )
 	{
@@ -188,28 +211,19 @@ static void key_func ( unsigned char key, int x, int y )
             rate = rate ? 0 : 1;
             break;
 	}
+    return true;
 }
-
-static void reshape_func ( int width, int height )
-{
-	//glutSetWindow ( win_id );
-	//glutReshapeWindow ( width, height );
-
-	win_x = width;
-	win_y = height;
-}
-
-static void idle_func ( void )
+ 
+void ParticleLevelSet2D::stepSimulation(float deltaTime)
 {
     if(!pause) { container.Update(); pause = 0; dt += DT2D; }
     if(dt > (628 * HH)) { pause = 0; dt = 0; std::cout << rot_time << std::endl; rot_time = 0; }
     if(area) FindArea();
 
-	//glutSetWindow ( win_id );
-	//glutPostRedisplay ();
+ 
 }
 
-static void display_func ( void )
+void ParticleLevelSet2D::renderScene( )
 {	
 	fps_time += timer.time_s();
     rot_time += timer.time_s();
@@ -222,67 +236,13 @@ static void display_func ( void )
 		frames = 0;
 		fps_time = 0;
 	}
-	pre_display ();
-
+ 
 		if      ( dvel==0 ) draw_velocity ();
 		else if	( dvel==1 )	draw_density ();
         else if ( dvel==2 ) draw_points ();
         else if ( dvel==3 ) draw_particles ();
 
-	post_display ();
+ 
 }
 
-
-/*
-  ----------------------------------------------------------------------
-   open_glut_window --- open a glut compatible window and set callbacks
-  ----------------------------------------------------------------------
-*/
-
-static void open_glut_window ( void )
-{
-	//glutInitDisplayMode ( GLUT_RGBA | GLUT_DOUBLE );
-
-	//glutInitWindowPosition ( 0, 0 );
-	//glutInitWindowSize ( win_x, win_y );
-	//win_id = glutCreateWindow ( "2D Level Set Library" );
-
-	//glClearColor ( 0.0f, 0.0f, 0.0f, 1.0f );
-	//glClear ( GL_COLOR_BUFFER_BIT );
-	//glutSwapBuffers ();
-	//glClear ( GL_COLOR_BUFFER_BIT );
-	//glutSwapBuffers ();
-
-	pre_display ();
-
-	//glutKeyboardFunc ( key_func );
-	//glutReshapeFunc ( reshape_func );
-	//glutIdleFunc ( idle_func );
-	//glutDisplayFunc ( display_func );
-}
-
-
-/*
-  ----------------------------------------------------------------------
-   main --- main routine
-  ----------------------------------------------------------------------
-*/
-
-int main2d ( int argc, char ** argv )
-{
-	//glutInit ( &argc, argv );
-
-	printf ( "\n\nHow to use this demo:\n\n" );
-	printf ( "\t Start and Stop the demo with the 'p' key\n" );
-	printf ( "\t Toggle density/velocity display with the 'x' key\n" );
-	printf ( "\t Clear the simulation by pressing the 'c' key\n" );
-	printf ( "\t Quit by pressing the 'q' key\n" );
-
-	open_glut_window ();
-
-	timer.setStartTick();
-	//glutMainLoop ();
-
-	//exit ( 0 );
-    return 0;
-}
+ 

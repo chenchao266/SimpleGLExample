@@ -17,7 +17,7 @@
 class WaterSimulator3D : public CommonExampleInterface
 {
     CommonGraphicsApp* m_app;
-      GUIHelperInterface* m_guiHelper;
+    GUIHelperInterface* m_guiHelper;
 	bool bfill;
 	bool pause;
 	bool step;
@@ -60,10 +60,7 @@ public:
     }
     virtual void stepSimulation(float deltaTime);
  
-    virtual void renderScene()
-    {
-        
-    }
+    virtual void renderScene();
 	// GLUT callbacks
  
 

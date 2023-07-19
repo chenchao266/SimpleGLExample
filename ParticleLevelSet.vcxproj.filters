@@ -1,108 +1,105 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="common">
+    <Filter Include="2d">
+      <UniqueIdentifier>{6d030634-b564-40db-a2fb-121ce6b486dc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="3d">
       <UniqueIdentifier>{1049bcca-5f52-439e-bbc5-45b0518abb35}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="ParticleLevelSet\Camera.cpp">
-      <Filter>common</Filter>
-    </ClCompile>
     <ClCompile Include="ParticleLevelSet\FastMarch.cpp">
-      <Filter>common</Filter>
-    </ClCompile>
-    <ClCompile Include="ParticleLevelSet\FastMarch2D.cpp">
-      <Filter>common</Filter>
+      <Filter>3d</Filter>
     </ClCompile>
     <ClCompile Include="ParticleLevelSet\impsurface.cpp">
-      <Filter>common</Filter>
+      <Filter>3d</Filter>
     </ClCompile>
     <ClCompile Include="ParticleLevelSet\LevelSet.cpp">
-      <Filter>common</Filter>
-    </ClCompile>
-    <ClCompile Include="ParticleLevelSet\LevelSet2D.cpp">
-      <Filter>common</Filter>
-    </ClCompile>
-    <ClCompile Include="ParticleLevelSet\main2d.cpp">
-      <Filter>common</Filter>
+      <Filter>3d</Filter>
     </ClCompile>
     <ClCompile Include="ParticleLevelSet\MAIN3d.CPP">
-      <Filter>common</Filter>
+      <Filter>3d</Filter>
     </ClCompile>
     <ClCompile Include="ParticleLevelSet\marchcubes.cpp">
-      <Filter>common</Filter>
+      <Filter>3d</Filter>
     </ClCompile>
     <ClCompile Include="ParticleLevelSet\PPM.CPP">
-      <Filter>common</Filter>
+      <Filter>3d</Filter>
     </ClCompile>
     <ClCompile Include="ParticleLevelSet\Random.cpp">
-      <Filter>common</Filter>
+      <Filter>3d</Filter>
     </ClCompile>
     <ClCompile Include="ParticleLevelSet\MeshTriangle.CPP">
-      <Filter>common</Filter>
+      <Filter>3d</Filter>
+    </ClCompile>
+    <ClCompile Include="ParticleLevelSet\FastMarch2D.cpp">
+      <Filter>2d</Filter>
+    </ClCompile>
+    <ClCompile Include="ParticleLevelSet\LevelSet2D.cpp">
+      <Filter>2d</Filter>
+    </ClCompile>
+    <ClCompile Include="ParticleLevelSet\main2d.cpp">
+      <Filter>2d</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="ParticleLevelSet\Camera.h">
-      <Filter>common</Filter>
-    </ClInclude>
     <ClInclude Include="ParticleLevelSet\Container.h">
-      <Filter>common</Filter>
-    </ClInclude>
-    <ClInclude Include="ParticleLevelSet\Container2D.h">
-      <Filter>common</Filter>
+      <Filter>3d</Filter>
     </ClInclude>
     <ClInclude Include="ParticleLevelSet\FastMarch.h">
-      <Filter>common</Filter>
-    </ClInclude>
-    <ClInclude Include="ParticleLevelSet\FastMarch2D.h">
-      <Filter>common</Filter>
+      <Filter>3d</Filter>
     </ClInclude>
     <ClInclude Include="ParticleLevelSet\Grid.h">
-      <Filter>common</Filter>
-    </ClInclude>
-    <ClInclude Include="ParticleLevelSet\Grid2D.h">
-      <Filter>common</Filter>
+      <Filter>3d</Filter>
     </ClInclude>
     <ClInclude Include="ParticleLevelSet\impsurface.h">
-      <Filter>common</Filter>
+      <Filter>3d</Filter>
     </ClInclude>
     <ClInclude Include="ParticleLevelSet\LevelSet.h">
-      <Filter>common</Filter>
-    </ClInclude>
-    <ClInclude Include="ParticleLevelSet\LevelSet2D.h">
-      <Filter>common</Filter>
+      <Filter>3d</Filter>
     </ClInclude>
     <ClInclude Include="ParticleLevelSet\marchcubes.h">
-      <Filter>common</Filter>
+      <Filter>3d</Filter>
     </ClInclude>
     <ClInclude Include="ParticleLevelSet\Particle.h">
-      <Filter>common</Filter>
-    </ClInclude>
-    <ClInclude Include="ParticleLevelSet\Particle2D.h">
-      <Filter>common</Filter>
+      <Filter>3d</Filter>
     </ClInclude>
     <ClInclude Include="ParticleLevelSet\ParticleSet.h">
-      <Filter>common</Filter>
-    </ClInclude>
-    <ClInclude Include="ParticleLevelSet\ParticleSet2D.h">
-      <Filter>common</Filter>
+      <Filter>3d</Filter>
     </ClInclude>
     <ClInclude Include="ParticleLevelSet\PPM.H">
-      <Filter>common</Filter>
+      <Filter>3d</Filter>
     </ClInclude>
     <ClInclude Include="ParticleLevelSet\Velocity.h">
-      <Filter>common</Filter>
-    </ClInclude>
-    <ClInclude Include="ParticleLevelSet\Velocity2D.h">
-      <Filter>common</Filter>
+      <Filter>3d</Filter>
     </ClInclude>
     <ClInclude Include="ParticleLevelSet\main.h">
-      <Filter>common</Filter>
+      <Filter>3d</Filter>
     </ClInclude>
     <ClInclude Include="ParticleLevelSet\MeshTriangle.H">
-      <Filter>common</Filter>
+      <Filter>3d</Filter>
+    </ClInclude>
+    <ClInclude Include="ParticleLevelSet\Container2D.h">
+      <Filter>2d</Filter>
+    </ClInclude>
+    <ClInclude Include="ParticleLevelSet\FastMarch2D.h">
+      <Filter>2d</Filter>
+    </ClInclude>
+    <ClInclude Include="ParticleLevelSet\Grid2D.h">
+      <Filter>2d</Filter>
+    </ClInclude>
+    <ClInclude Include="ParticleLevelSet\LevelSet2D.h">
+      <Filter>2d</Filter>
+    </ClInclude>
+    <ClInclude Include="ParticleLevelSet\Particle2D.h">
+      <Filter>2d</Filter>
+    </ClInclude>
+    <ClInclude Include="ParticleLevelSet\ParticleSet2D.h">
+      <Filter>2d</Filter>
+    </ClInclude>
+    <ClInclude Include="ParticleLevelSet\Velocity2D.h">
+      <Filter>2d</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

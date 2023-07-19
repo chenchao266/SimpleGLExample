@@ -11,7 +11,6 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="ParticleLevelSet\Camera.cpp" />
     <ClCompile Include="ParticleLevelSet\FastMarch.cpp" />
     <ClCompile Include="ParticleLevelSet\FastMarch2D.cpp" />
     <ClCompile Include="ParticleLevelSet\MeshTriangle.CPP" />
@@ -25,7 +24,6 @@
     <ClCompile Include="ParticleLevelSet\Random.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="ParticleLevelSet\Camera.h" />
     <ClInclude Include="ParticleLevelSet\Container.h" />
     <ClInclude Include="ParticleLevelSet\Container2D.h" />
     <ClInclude Include="ParticleLevelSet\FastMarch.h" />

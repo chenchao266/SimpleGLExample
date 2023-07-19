@@ -70,40 +70,40 @@
 typedef double Float;
 typedef double Double;
  
-const Float HALF_PI = 2.0 * atan(1.0);
-const Float M_PI = 4.0 * atan(1.0);
-const Float TWO_PI = 8.0 * atan(1.0);
-const Float INV_PI = 1.0/M_PI; 
-const Float INV_TWO_PI = 1.0/TWO_PI;
-const Float PI_INV180 = M_PI   / 180.;
-const Float INV_PI180 = INV_PI * 180;
+const static Float HALF_PI = 2.0 * atan(1.0);
+const static Float _PI = 4.0 * atan(1.0);
+const static Float TWO_PI = 8.0 * atan(1.0);
+const static Float INV_PI = 1.0/_PI;
+const static Float INV_TWO_PI = 1.0/TWO_PI;
+const static Float PI_INV180 = _PI   / 180.;
+const static Float INV_PI180 = INV_PI * 180;
 
-const Float ONE_THIRD = 1./3.;
-const Float INV_255 = 1. / 255;
-const Float SQRT_TWO = sqrt(2.);
+const static Float ONE_THIRD = 1./3.;
+const static Float INV_255 = 1. / 255;
+const static Float SQRT_TWO = sqrt(2.);
 //-------------------------2D LEVEL SET CONSTANTS---------------------------------------------
  
-const Double HH = 1;
-const int  PARTICLES_PER_NODE2D = 16;
-const int  PARTICLES_PER_NODE = 32;
-const int  NX = 100;
-const int  NY = 100;
-const int  NZ = 100;
+const static Double HH = 1;
+const static int  PARTICLES_PER_NODE2D = 16;
+const static int  PARTICLES_PER_NODE = 32;
+const static int  NX = 100;
+const static int  NY = 100;
+const static int  NZ = 100;
 
-const Float MAX_U               = NX * 0.005;
-const Float MAX_V               = NY * 0.005;
-const Float MAX_W               = NZ * 0.005;
-const Float RADIUS_MIN			= 0.1;
-const Float RADIUS_MAX			= 0.5;
-const Float RESEED_THRESHOLD	= 2.0 * HH;  
-//const Float PARTICLE_DELETE		= 1.5 * RADIUS_MIN;
-const Float PARTICLE_DELETE		= 100 * RADIUS_MIN;
-const Float DT2D				= 4.9 / ((MAX_U + MAX_V) / HH);
-const Float DT					= 4.9 / ((MAX_U + MAX_V + MAX_W) / HH);
-const Float FASTMARCH_LIMIT		= 6.0 * HH; // extent of influence of fast marching
-const Float SEMILAGRA_LIMIT		= 5.0 * HH; // extent of influence of semi-lagrangian
-//const Float SEMILAGRA_LIMIT		= 100.0 * HH; // extent of influence of semi-lagrangian
-const int PARTICLES_PER_INTERFACE_NODE = 2 * PARTICLES_PER_NODE;
+const static Float MAX_U               = NX * 0.005;
+const static Float MAX_V               = NY * 0.005;
+const static Float MAX_W               = NZ * 0.005;
+const static Float RADIUS_MIN			= 0.1;
+const static Float RADIUS_MAX			= 0.5;
+const static Float RESEED_THRESHOLD	= 2.0 * HH;
+//const static Float PARTICLE_DELETE		= 1.5 * RADIUS_MIN;
+const static Float PARTICLE_DELETE		= 100 * RADIUS_MIN;
+const static Float DT2D				= 4.9 / ((MAX_U + MAX_V) / HH);
+const static Float DT					= 4.9 / ((MAX_U + MAX_V + MAX_W) / HH);
+const static Float FASTMARCH_LIMIT		= 6.0 * HH; // extent of influence of fast marching
+const static Float SEMILAGRA_LIMIT		= 5.0 * HH; // extent of influence of semi-lagrangian
+//const static Float SEMILAGRA_LIMIT		= 100.0 * HH; // extent of influence of semi-lagrangian
+const static int PARTICLES_PER_INTERFACE_NODE = 2 * PARTICLES_PER_NODE;
 
 #define SAMPLEPHI                  LinearSample      
 //#define SAMPLEPHI                  CubicSample

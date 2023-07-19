@@ -77,9 +77,6 @@
     <ClInclude Include="ExampleEntries.h">
       <Filter>app</Filter>
     </ClInclude>
-    <ClInclude Include="TinyRendererGUIHelper.h">
-      <Filter>app</Filter>
-    </ClInclude>
     <ClInclude Include="TinyRendererSetup.h">
       <Filter>app</Filter>
     </ClInclude>
@@ -118,6 +115,15 @@
     </ClInclude>
     <ClInclude Include="fft\FFTSimulation.h">
       <Filter>fft</Filter>
+    </ClInclude>
+    <ClInclude Include="TinyVRGui.h">
+      <Filter>app</Filter>
+    </ClInclude>
+    <ClInclude Include="DynamicTexturedCubeDemo.h">
+      <Filter>app</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderInstancingDemo.h">
+      <Filter>app</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

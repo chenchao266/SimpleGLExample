@@ -133,106 +133,6 @@ void WaterSimulator2D::stepSimulation(float deltaTime)
 		marchingSquares.Draw();
 	}
 
-	if (writePOVRAYFile)
-	{
-        std::ostringstream outs;
-		outs << "povray/water" << frame << ".pov";
-
-        std::ofstream out(outs.str().c_str());;
-		//	out << *surface << endl;
-		out.close();
-
-
-
-        std::ostringstream cmds;
-		cmds << "\"C:\\Users\\alanga\\AppData\\Roaming\\POV-Ray\\v3.6\\bin\\pvengine64.exe\" /exit -w1600 -h1200 +a0.3 -d +Ipovray/water";
-		cmds << frame;
-		cmds << ".pov +f +opovray/water";
-		cmds << frame;
-		cmds << ".bmp -p";
-		system(cmds.str().c_str());
-	}
-
-	if (particle_mode)
-	{
-		glDisable(GL_LIGHTING);
-		glBegin(GL_POINTS);
-		for (int i = 0; i<gridSizeX; i++)
-		{
-			for (int j = 0; j<gridSizeY; j++)
-			{
-				ParticleSet2D::Iterator it = pset.begin(i, j);
-				while (it != pset.end(i, j))
-				{
-					double x, y;
-
-					(*it)->GetPosition(x, y);
-					x = x * 2 / gridSizeX - 1;
-					y = y * 2 / gridSizeY - 1;
-
-					if ((*it)->Sign() < 0)
-					{
-						glColor3f(1, 0, 0);
-						if (particle_mode & 1)
-							glVertex3d(x, y, 0);
-					}
-					else
-					{
-						glColor3f(0, 0, 1);
-						if (particle_mode & 2)
-							glVertex3d(x, y, 0);
-					}
-
-
-					it++;
-				}
-				
-			}
-		}
-		glEnd();
-	}
-	if (render_pressure)
-	{
-		glDisable(GL_LIGHTING);
-		glBegin(GL_POINTS);
-		for (int i = 0; i<gridSizeX; i++)
-		{
-			for (int j = 0; j<gridSizeY; j++)
-			{
-				double x = i, y = j;
-				x = x * 2 / gridSizeX - 1;
-				y = y * 2 / gridSizeY - 1;
-
-				double pressureVal = grid0.pressure[grid0.makeIndex(i, j)];
-				//cout << i << " " << j << " " << k << " " << pressureVal << endl;
-				double r = pressureVal / 20;
-				double g = 0;
-				double b = (20 - pressureVal) / 20;
-				glColor3f(r, g, b);
-				glVertex3d(x, y, 0);
-				
-			}
-
-		}
-		glEnd();
-	}
-
-	glColor3f(1, 1, 1);
-	//glutSwapBuffers();
-	/*
-	if (OUTPUT_FILE)
-	{
-	static int frame = 0;
-	ostringstream out;
-	out << "movie/water" << frame << ".ppm";
-	frame++;
-	FILE* fp;
-	fopen_s(&fp, out.str().c_str(), "w");
-
-	DumpPPM(fp, 0, v_width, v_height);
-	fclose(fp);
-	}
-	*/
 
 #ifdef OSGOCEAN_TIMING
     endTime = Timer::instance()->tick();
@@ -242,6 +142,109 @@ void WaterSimulator2D::stepSimulation(float deltaTime)
 #endif /*OSGOCEAN_TIMING*/
 }
   
+void WaterSimulator2D::renderScene()
+{
+    if (writePOVRAYFile)
+    {
+        std::ostringstream outs;
+        outs << "povray/water" << frame << ".pov";
+
+        std::ofstream out(outs.str().c_str());;
+        //	out << *surface << endl;
+        out.close();
+
+
+
+        //std::ostringstream cmds;
+        //cmds << "\"C:\\Users\\alanga\\AppData\\Roaming\\POV-Ray\\v3.6\\bin\\pvengine64.exe\" /exit -w1600 -h1200 +a0.3 -d +Ipovray/water";
+        //cmds << frame;
+        //cmds << ".pov +f +opovray/water";
+        //cmds << frame;
+        //cmds << ".bmp -p";
+        //system(cmds.str().c_str());
+    }
+
+    if (particle_mode)
+    {
+        glDisable(GL_LIGHTING);
+        glBegin(GL_POINTS);
+        for (int i = 0; i < gridSizeX; i++)
+        {
+            for (int j = 0; j < gridSizeY; j++)
+            {
+                ParticleSet2D::Iterator it = pset.begin(i, j);
+                while (it != pset.end(i, j))
+                {
+                    double x, y;
+
+                    (*it)->GetPosition(x, y);
+                    x = x * 2 / gridSizeX - 1;
+                    y = y * 2 / gridSizeY - 1;
+
+                    if ((*it)->Sign() < 0)
+                    {
+                        glColor3f(1, 0, 0);
+                        if (particle_mode & 1)
+                            glVertex3d(x, y, 0);
+                    }
+                    else
+                    {
+                        glColor3f(0, 0, 1);
+                        if (particle_mode & 2)
+                            glVertex3d(x, y, 0);
+                    }
+
+
+                    it++;
+                }
+
+            }
+        }
+        glEnd();
+    }
+    if (render_pressure)
+    {
+        glDisable(GL_LIGHTING);
+        glBegin(GL_POINTS);
+        for (int i = 0; i < gridSizeX; i++)
+        {
+            for (int j = 0; j < gridSizeY; j++)
+            {
+                double x = i, y = j;
+                x = x * 2 / gridSizeX - 1;
+                y = y * 2 / gridSizeY - 1;
+
+                double pressureVal = grid0.pressure[grid0.makeIndex(i, j)];
+                //cout << i << " " << j << " " << k << " " << pressureVal << endl;
+                double r = pressureVal / 20;
+                double g = 0;
+                double b = (20 - pressureVal) / 20;
+                glColor3f(r, g, b);
+                glVertex3d(x, y, 0);
+
+            }
+
+        }
+        glEnd();
+    }
+
+    glColor3f(1, 1, 1);
+    //glutSwapBuffers();
+   
+    //if (OUTPUT_FILE)
+    //{
+    //static int frame = 0;
+    //ostringstream out;
+    //out << "movie/water" << frame << ".ppm";
+    //frame++;
+    //FILE* fp;
+    //fopen_s(&fp, out.str().c_str(), "w");
+    //DumpPPM(fp, 0, v_width, v_height);
+    //fclose(fp);
+    //}
+    //
+}
+
 bool WaterSimulator2D::keyboardCallback(int key, int state)
 {
 	switch (key)

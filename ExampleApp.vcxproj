@@ -137,6 +137,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="cloth.h" />
+    <ClInclude Include="DynamicTexturedCubeDemo.h" />
     <ClInclude Include="ExampleEntries.h" />
     <ClInclude Include="fft\FFTOceanSurface.h" />
     <ClInclude Include="fft\FFTOceanSurfaceVBO.h" />
@@ -150,8 +151,9 @@
     <ClInclude Include="fft\ScreenAlignedQuad.h" />
     <ClInclude Include="fft\WaterTrochoids.h" />
     <ClInclude Include="OpenGLExampleBrowser.h" />
-    <ClInclude Include="TinyRendererGUIHelper.h" />
+    <ClInclude Include="RenderInstancingDemo.h" />
     <ClInclude Include="TinyRendererSetup.h" />
+    <ClInclude Include="TinyVRGui.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="cloth.cpp" />
