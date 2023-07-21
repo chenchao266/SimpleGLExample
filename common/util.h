@@ -9,13 +9,10 @@
 #include <vector>
 
 #include <time.h>
+#include "Bullet3Common/b3Scalar.h"
 #include "Bullet3Common/geometry.h"
 
-#ifndef M_PI
-const double M_PI = 3.1415926535897932384626433832795;
-#endif
-
-
+ 
 // a useful core hash function
 inline unsigned int hash(unsigned int k)
 {

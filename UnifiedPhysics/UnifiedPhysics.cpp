@@ -23,6 +23,9 @@
 
 #include "Component/Timer.h"
 
+const static int WINDOW_WIDTH = 800;
+const static int WINDOW_HEIGHT = 600;
+
 
 void (*QuickSort)(std::vector< std::pair<unsigned int,unsigned int> >::iterator, std::vector< std::pair<unsigned int,unsigned int> >::iterator) 
 	= QuickSortTemplate< std::pair<unsigned int,unsigned int>, 

@@ -152,6 +152,7 @@
     <ClInclude Include="fft\WaterTrochoids.h" />
     <ClInclude Include="OpenGLExampleBrowser.h" />
     <ClInclude Include="RenderInstancingDemo.h" />
+    <ClInclude Include="TimeSeriesExample.h" />
     <ClInclude Include="TinyRendererSetup.h" />
     <ClInclude Include="TinyVRGui.h" />
   </ItemGroup>

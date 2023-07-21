@@ -160,6 +160,7 @@
     <ClCompile Include="PositionBasedDynamics\IndexedFaceMesh.cpp" />
     <ClCompile Include="PositionBasedDynamics\IndexedTetMesh.cpp" />
     <ClCompile Include="PositionBasedDynamics\LineModel.cpp" />
+    <ClCompile Include="PositionBasedDynamics\maingl.cpp" />
     <ClCompile Include="PositionBasedDynamics\MathFunctions.cpp" />
     <ClCompile Include="PositionBasedDynamics\NeighborhoodSearchSpatialHashing.cpp" />
     <ClCompile Include="PositionBasedDynamics\NonPressureForceBase.cpp" />

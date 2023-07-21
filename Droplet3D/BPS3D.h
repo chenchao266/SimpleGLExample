@@ -131,11 +131,15 @@ public:
     EigenVec3d edge_tangent(size_t e)  const { return (pos(mesh().m_edges[e][1]) - pos(mesh().m_edges[e][0])).normalized(); }
     
     // compute edge/vertex neighborhood areas (for manifold regions)
-    double edge_area(size_t e)    const { double a = 0; 
+    double edge_area(size_t e)    const 
+    { 
+        double a = 0; 
     for (size_t i = 0; i < mesh().m_edge_to_triangle_map[e].size(); i++) 
         a += face_area(mesh().m_edge_to_triangle_map[e][i]);
     return a / 3; }
-    double vert_area(size_t v)    const { double a = 0; 
+    double vert_area(size_t v)    const 
+    { 
+        double a = 0; 
     for (size_t i = 0; i < mesh().m_vertex_to_triangle_map[v].size(); i++)
         a += face_area(mesh().m_vertex_to_triangle_map[v][i]);
     return a / 3; }
@@ -150,11 +154,14 @@ public:
     
     // find the outward normal by assuming the liquid interior has a smaller region label than the exterior
     // note that the normal is not necessarily the same as m_st->get_triangle_normal (depending on the region labels)
-    EigenVec3d  face_outward_normal(size_t f)  const { Vec3st t = mesh().m_tris[f];
+    EigenVec3d  face_outward_normal(size_t f)  const
+    { 
+        Vec3st t = mesh().m_tris[f];
     EigenVec3d n = (pos(t[1]) - pos(t[0])).cross(pos(t[2]) - pos(t[0])).normalized();
     Vec2i l = mesh().get_triangle_label(f); 
     if (l[0] < l[1]) return -n; else return n; }
-    EigenVec3d  vert_outward_normal(size_t v)  const {
+    EigenVec3d  vert_outward_normal(size_t v)  const 
+    {
         EigenVec3d n = EigenVec3d::Zero();
     for (size_t i = 0; i < mesh().m_vertex_to_triangle_map[v].size(); i++) 
         n += face_area(mesh().m_vertex_to_triangle_map[v][i]) * face_outward_normal(mesh().m_vertex_to_triangle_map[v][i]);
@@ -170,10 +177,14 @@ public:
     bool vertex_is_solid(size_t v) const { return m_st->vertex_is_any_solid(v); }
     bool face_is_solid(size_t f)   const { Vec3st t = mesh().m_tris[f]; return (vertex_is_solid(t[0]) && vertex_is_solid(t[1]) && vertex_is_solid(t[2])); }
     
-    bool vertex_is_on_triple_junction(size_t v) const { if (!vertex_is_solid(v)) return false; 
+    bool vertex_is_on_triple_junction(size_t v) const 
+    { 
+        if (!vertex_is_solid(v)) return false; 
     for (size_t i = 0; i < mesh().m_vertex_to_triangle_map[v].size(); i++)
         if (!face_is_solid(mesh().m_vertex_to_triangle_map[v][i])) return true; return false; }
-    bool edge_is_on_triple_junction(size_t e) const { bool solid = false; bool air = false; 
+    bool edge_is_on_triple_junction(size_t e) const 
+    { 
+        bool solid = false; bool air = false; 
     for (size_t i = 0; i < mesh().m_edge_to_triangle_map[e].size(); i++) 
         if (face_is_solid(mesh().m_edge_to_triangle_map[e][i])) solid = true; else air = true; return (solid && air); }
     // note that just testing if both endpoints of the edge are on the tirple junction won't work.

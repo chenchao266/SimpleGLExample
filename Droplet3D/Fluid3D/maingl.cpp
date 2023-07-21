@@ -4,37 +4,73 @@
 #include <fstream>
 #include <string>
 #include <glad/gl.h>
-#include "gluvi.h"
- 
-
-#include "render_particles.h"
+//#include "gluvi.h"
+   
+#include "CommonInterfaces/CommonGraphicsAppInterface.h"
+#include "Bullet3Common/b3Quaternion.h"
+#include "Bullet3Common/b3AlignedObjectArray.h"
+#include "CommonInterfaces/CommonRenderInterface.h"
+#include "CommonInterfaces/CommonExampleInterface.h"
+#include "CommonInterfaces/CommonGUIHelperInterface.h"
+#include "../UnifiedPhysics/render_particles.h"
 //Simple viewer for liquid simulator data
 //Hold shift and use the mouse buttons to manipulate the camera
 
 //using namespace std;
+class Fluid3D : public CommonExampleInterface
+{
+    CommonGraphicsApp* m_app;
+    GUIHelperInterface* m_guiHelper;
+    std::string frame_number = "frame 0";
 
-string frame_number="frame 0";
+    std::string file_path;
 
-string file_path;
+    unsigned int frame = 0;
+    unsigned int highest_frame = 0;
 
-unsigned int frame= 0;
-unsigned int highest_frame = 0;
+    bool filming = false;
+    bool running = false;
 
-bool filming = false;
-bool running = false;
+    char * ppmfileformat;
 
-char * ppmfileformat;
+    std::vector<Vec3f> particles;
+    float particle_radius;
+    ParticleRenderer::DisplayMode displayMode = ParticleRenderer::PARTICLE_SPHERES;
+    ParticleRenderer *renderer = 0;
+    GLuint g_vbo = 0;
 
-std::vector<Vec3f> particles;
-float particle_radius;
-ParticleRenderer::DisplayMode displayMode = ParticleRenderer::PARTICLE_SPHERES;
-ParticleRenderer *renderer = 0;
-GLuint g_vbo=0;
-void createVBO(GLuint & vbo, vector<Vec3f> & particle_data)
+public:
+    Fluid3D(GUIHelperInterface* app);
+    ~Fluid3D();
+    virtual void physicsDebugDraw(int debugDrawMode)
+    {
+    }
+    virtual void initPhysics();
+
+    virtual void exitPhysics()
+    {
+    }
+    virtual void stepSimulation(float deltaTime);
+
+    virtual void renderScene();
+    // GLUT callbacks
+
+
+    virtual bool keyboardCallback(int key, int state);
+
+    virtual bool mouseButtonCallback(int button, int state, float x, float y);
+
+    virtual bool mouseMoveCallback(float x, float y);
+    void createVBO(GLuint & vbo, std::vector<Vec3f> & particle_data);
+    bool read_frame(int newframe);
+    void set_lights_and_material(int  );
+
+};
+void Fluid3D::createVBO(GLuint & vbo, std::vector<Vec3f> & particle_data)
 {
 	if(vbo)
-		glDeleteBuffersARB(1, &vbo);
-	glGenBuffersARB(1,&vbo);
+		glDeleteBuffers(1, &vbo);
+	glGenBuffers(1,&vbo);
 	glBindBuffer(GL_ARRAY_BUFFER, vbo);
 	float *data = new float[4*particle_data.size()];
 	for (int i=0;i<particle_data.size();i++)
@@ -50,7 +86,7 @@ void createVBO(GLuint & vbo, vector<Vec3f> & particle_data)
 
 
 }
-bool read_frame(int newframe)
+bool Fluid3D::read_frame(int newframe)
 {
    if(newframe<0) newframe = highest_frame;
 
@@ -87,13 +123,8 @@ bool read_frame(int newframe)
 
    return true;
 }
-
-void set_view(Gluvi::Target3D &cam)
-{
-   cam.dist=0.5;
-}
-
-void set_lights_and_material(int object)
+ 
+void Fluid3D::set_lights_and_material(int object)
 {
    glEnable(GL_LIGHTING);
    GLfloat global_ambient[4] = {0.1f, 0.1f, 0.1f, 1.0f};
@@ -126,30 +157,30 @@ void set_lights_and_material(int object)
 
 }
 
-void timer(int value)
+void Fluid3D::stepSimulation(float deltaTime)
 {
    if(filming) {
-      Gluvi::ppm_screenshot(ppmfileformat, frame);
+      //Gluvi::ppm_screenshot(ppmfileformat, frame);
       if(read_frame(frame+1)) {
          if(frame == 0) {
             filming = false;
          }
       }
-      glutPostRedisplay();
-      glutTimerFunc(200, timer, 0);
+      //glutPostRedisplay();
+      //glutTimerFunc(200, timer, 0);
    }
 
 
    if(running) {
       read_frame(frame+1);
-      glutTimerFunc(1, timer, 0);
-      glutPostRedisplay();
+      //glutTimerFunc(1, timer, 0);
+      //glutPostRedisplay();
    }
 
 }
 
 
-void display(void)
+void Fluid3D::renderScene( )
 {
    glClearColor(0.6f, 0.7f, 0.9f, 1);
 
@@ -250,57 +281,15 @@ void display(void)
    //glPopMatrix();
 
 
-}
+} 
 
-struct ScreenShotButton : public Gluvi::Button{
-   const char *filename_format;
-   ScreenShotButton(const char *label, const char *filename_format_) : Gluvi::Button(label), filename_format(filename_format_) {}
-   void action()
-   { 
-      Gluvi::ppm_screenshot(filename_format, frame); 
-   }
-};
-
-
-struct MovieButton : public Gluvi::Button{
-   const char *filename_format;
-   MovieButton(const char *label, const char *filename_format_) : Gluvi::Button(label), filename_format(filename_format_) {}
-   void action()
-   { 
-      if(!running) {
-         if(!filming) {
-            filming = true;
-            glutTimerFunc(1000, timer, 0);
-         }
-         else {
-            filming = false;
-         }
-      }
-   }
-};
-
-struct RunButton : public Gluvi::Button{
-   RunButton(const char *label) : Gluvi::Button(label){}
-   void action()
-   { 
-      if(!filming) {
-         if(!running) {
-            running = true;
-         }
-         else {
-            running = false;
-         }
-      }
-   }
-};
-
-void keyPress(unsigned char key, int x, int y) {
+bool Fluid3D::keyboardCallback(int key, int state) {
 
    if(key == 'r') {
       if(!filming) {
          if(!running) {
             running = true;
-            glutTimerFunc(1000, timer, 0);
+            //glutTimerFunc(1000, timer, 0);
          }
          else {
             running = false;
@@ -317,96 +306,47 @@ void keyPress(unsigned char key, int x, int y) {
          }
       }
    }
-   glutPostRedisplay();
-
-
-
+   //glutPostRedisplay();
+   return true;
 }
 
-void special_key_handler(int key, int x, int y)
+Fluid3D::Fluid3D(GUIHelperInterface* gui)
 {
-   int mods=glutGetModifiers();
-   switch(key){
-case GLUT_KEY_LEFT:
-   if(mods == GLUT_ACTIVE_SHIFT) {
-      if(read_frame(0))
-         glutPostRedisplay();
-   }
-   else {
-      if(read_frame(frame-1))
-         glutPostRedisplay();
-   }
-   break;
-case GLUT_KEY_RIGHT:
-   if(mods == GLUT_ACTIVE_SHIFT) {
-      if(read_frame(highest_frame))
-         glutPostRedisplay();
-   }
-   else {
-      if(read_frame(frame+1))
-         glutPostRedisplay();
-   }
-   break;
-default:
-   ;
-   }
+    m_guiHelper = gui;
+    m_app = gui->getAppInterface();
+
+
+
+    //Gluvi::init("Liquid Data Viewer", &argc, argv);
+    renderer = new ParticleRenderer;
+    renderer->setParticleRadius(0.01);
+
+    file_path = "";
+
+    //read grid dimensions
+    char buffer[100];
+    sprintf(buffer, "%s/simdata.txt", file_path.c_str());
+
+    std::ostringstream strout;
+    strout << file_path << "liquidmesh_" << 0 << ".obj";
+
+    ppmfileformat = new char[strlen(file_path.c_str()) + 100];
+    sprintf(ppmfileformat, "%sscreenshot%%04d.ppm", file_path.c_str());
+    printf("%s\n", ppmfileformat);
 }
-
-
-Gluvi::Target3D* cam_local;
-int main(int argc, char **argv)
-{
-
-   Gluvi::init("Liquid Data Viewer", &argc, argv);
-   renderer = new ParticleRenderer;
-   renderer->setParticleRadius(0.01);
-
-   if(argc!=2){
-      cerr<<"Expecting path to simulation data folder"<<endl;
-      return 1;
-   }
-
-
-   file_path=argv[1];   
-
-   //read grid dimensions
-   char buffer[100];
-   sprintf(buffer, "%s/simdata.txt", file_path.c_str());
-
-   ostringstream strout;
-   strout << file_path << "liquidmesh_" << 0 << ".obj";
-
    //read input mesh here
 
-   if(!read_frame(0))
-      return 1;
 
-   glutSpecialFunc(special_key_handler);
-   glutKeyboardFunc(keyPress);
-
-   Gluvi::Target3D cam;
-   set_view(cam);
-   Gluvi::camera=&cam;
-   cam_local = &cam;
-
-   Gluvi::userDisplayFunc=display;
-
-   Gluvi::StaticText frametext(frame_number.c_str());
-   Gluvi::root.list.push_back(&frametext);
-
-   ppmfileformat = new char[strlen(file_path.c_str())+100];
-   sprintf(ppmfileformat, "%sscreenshot%%04d.ppm", file_path.c_str());
-   printf("%s\n", ppmfileformat);
-
-   ScreenShotButton screenshot("Screenshot", ppmfileformat);
-   Gluvi::root.list.push_back(&screenshot);
-
-   MovieButton movie("Movie", ppmfileformat);
-   Gluvi::root.list.push_back(&movie);
-
-   RunButton run("Run");
-   Gluvi::root.list.push_back(&run);
-
-   Gluvi::run();
-   return 0;
+Fluid3D::~Fluid3D()
+{
+ 
 }
+
+void Fluid3D::initPhysics()
+{
+    if (!read_frame(0))
+        return;
+}
+
+
+ 

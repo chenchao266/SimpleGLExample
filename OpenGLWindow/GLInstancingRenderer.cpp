@@ -1552,6 +1552,24 @@ void GLInstancingRenderer::drawTexturedTriangleMesh(float worldPosition[3], floa
 	checkError("glBindVertexArray");
 }
 
+
+void GLInstancingRenderer::drawCylinder(const float* a, const float* b, const Colorf& color, const float radius /*= 0.02*/, const unsigned int subdivisions /*= 8*/)
+{
+    //todo
+}
+
+
+void GLInstancingRenderer::drawSphere(const float* translation, float radius, const Colorf& color, const unsigned int subDivision /*= 16*/)
+{
+    //todo
+}
+
+
+void GLInstancingRenderer::drawQuad(const float* a, const float* b, const float* c, const float* d, const float* norm, const Colorf& color)
+{
+    //todo
+}
+
 #if 0
 
 void GLInstancingRenderer::writeSingleInstanceScaleToCPU(const double* scale, int srcIndex2)

@@ -36,7 +36,10 @@ class ParticleRenderer
 
         void display(DisplayMode mode = PARTICLE_POINTS);
         void displayGrid();
-
+        void setParticleRadius(float r)
+        {
+            m_particleRadius = r;
+        }
         void setPointSize(float size)
         {
             m_pointSize = size;
@@ -65,6 +68,7 @@ class ParticleRenderer
         int m_numParticles;
 
         float m_pointSize;
+        float m_particleRadius;
         float m_particleRernderingSize;
         float m_fov;
         int m_window_w, m_window_h;

@@ -38,6 +38,8 @@
 
 __constant__ ParticleParams		simData;
 __device__ uint					gridActive;
+
+#define EPSILON 0.00001f
 #define LUT_SIZE_CUDA 100000
 
 __device__ int GetGridCell ( float3 pos , float3 gridMin, int3 gridRes, float cellSize, int3& grid_cell)
@@ -380,7 +382,7 @@ __device__ float3 ComputeBoundaryForce(int i, float sim_scale, bufList buf, int 
 	register float3 veval = buf.vel_eval[i];
 
 	register float3 force = make_float3(0.0, 0.0, 0.0);
-
+ 
 	register float diff = simData.param_radius - (pos.y - (simData.param_bound_min.y + (pos.x-simData.param_bound_min.x)*simData.param_ground_slope )) * sim_scale;
 	if ( diff > EPSILON ) {
 		norm = make_float3( -simData.param_ground_slope, 1.0 - simData.param_ground_slope, 0);
@@ -756,7 +758,7 @@ __global__ void advanceParticlesCUDA ( float time_step, float sim_scale, bufList
 	register float3 veval = buf.vel_eval[i];
 					
 	register float3 accel = buf.force[i] * (1.0f / simData.param_mass);
-
+ 
 	register float diff = simData.param_radius - (pos.y - (simData.param_bound_min.y + (pos.x-simData.param_bound_min.x)*simData.param_ground_slope )) * sim_scale;
 	if ( diff > EPSILON ) {
 		norm = make_float3( -simData.param_ground_slope, 1.0 - simData.param_ground_slope, 0);

@@ -510,6 +510,10 @@ T *b3AlignPointer(T *unalignedPtr, size_t alignment)
 #define btRecipSqrt(x) ((b3Scalar)(b3Scalar(1.0) / btSqrt(b3Scalar(x)))) /* reciprocal square root */
 #define btRecip(x) (b3Scalar(1.0) / b3Scalar(x))
 
+#ifndef M_PI
+const static double M_PI = 3.1415926535897932384626433832795029;
+#endif
+
 #ifdef B3_USE_DOUBLE_PRECISION
 #define SIMD_EPSILON DBL_EPSILON
 #define SIMD_INFINITY DBL_MAX

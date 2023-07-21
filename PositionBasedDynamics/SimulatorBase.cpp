@@ -196,23 +196,11 @@ void SimulatorBase::run()
 	runSimulation();
 	cleanup();
 }
-
-void SimulatorBase::init(std::vector<std::string> argv, const std::string &windowName)
+ 
+void SimulatorBase::init(const ArgResult& result, const std::string &windowName)
 {
-	m_argc = static_cast<int>(argv.size());
-	m_argv_vec.clear();
-	m_argv_vec.reserve(argv.size());
-	for (auto & a : argv)
-		m_argv_vec.push_back(&a[0]);
-
-	m_argv = m_argv_vec.data();
-	init(m_argc, m_argv, windowName);
-}
-
-void SimulatorBase::init(int argc, char **argv, const std::string &windowName)
-{
-	m_argc = argc;
-	m_argv = argv;
+	//m_argc = argc;
+	//m_argv = argv;
 	m_windowName = windowName;
 
 	createExporters();
@@ -221,68 +209,67 @@ void SimulatorBase::init(int argc, char **argv, const std::string &windowName)
 	m_exePath = FileSystem::getProgramPath();
 	setUseParticleCaching(true);
 
-	try
-	{
-		cxxopts::Options options(argv[0], "SPlisHSPlasH - An open-source library for the physically-based simulation of fluids.");
-		options
-			.positional_help("[scene file]")
-			.show_positional_help();
+ 
+		//cxxopts::Options options(argv[0], "SPlisHSPlasH - An open-source library for the physically-based simulation of fluids.");
+		//options
+		//	.positional_help("[scene file]")
+		//	.show_positional_help();
 
-		options.add_options()
-			("h,help", "Print help")
-			("v,version", "Print version")
-			("no-cache", "Disable caching of boundary samples/maps.")
-			("state-file", "State file (state_<time>.bin) that should be loaded.", cxxopts::value<std::string>())
-			("output-dir", "Output directory for log file and partio files.", cxxopts::value<std::string>())
-			("no-initial-pause", "Disable initial pause when starting the simulation.")
-			("no-gui", "Disable GUI.")
-			("stopAt", "Sets or overwrites the stopAt parameter of the scene.", cxxopts::value<Real>())
-			("param", "Sets or overwrites a parameter of the scene.\n\n" 
-					  "- Setting a fluid parameter:\n\t<fluid-id>:<parameter-name>:<value>\n"
-					  "- Example: --param Fluid:viscosity:0.01\n\n"
-					  "- Setting a configuration parameter:\n\t<parameter-name>:<value>\n"
-					  "- Example: --param cflMethod:1\n"
-					  , cxxopts::value<std::string>())
-			;
+		//options.add_options()
+		//	("h,help", "Print help")
+		//	("v,version", "Print version")
+		//	("no-cache", "Disable caching of boundary samples/maps.")
+		//	("state-file", "State file (state_<time>.bin) that should be loaded.", cxxopts::value<std::string>())
+		//	("output-dir", "Output directory for log file and partio files.", cxxopts::value<std::string>())
+		//	("no-initial-pause", "Disable initial pause when starting the simulation.")
+		//	("no-gui", "Disable GUI.")
+		//	("stopAt", "Sets or overwrites the stopAt parameter of the scene.", cxxopts::value<Real>())
+		//	("param", "Sets or overwrites a parameter of the scene.\n\n" 
+		//			  "- Setting a fluid parameter:\n\t<fluid-id>:<parameter-name>:<value>\n"
+		//			  "- Example: --param Fluid:viscosity:0.01\n\n"
+		//			  "- Setting a configuration parameter:\n\t<parameter-name>:<value>\n"
+		//			  "- Example: --param cflMethod:1\n"
+		//			  , cxxopts::value<std::string>())
+		//	;
 
-		options.add_options("invisible")
-			("scene-file", "Scene file", cxxopts::value<std::string>());
+		//options.add_options("invisible")
+		//	("scene-file", "Scene file", cxxopts::value<std::string>());
 
-		options.parse_positional("scene-file");
-		auto result = options.parse(argc, argv);
+		//options.parse_positional("scene-file");
+		//auto result = options.parse(argc, argv);
 
-		if (result.count("help"))
+		//if (result.count("help"))
 		{
-			std::cout << options.help({ "" }) << std::endl;
-			exit(0);
+			//std::cout << options.help({ "" }) << std::endl;
+			//exit(0);
 		}
 
-		if (result.count("version"))
+		//if (result.count("version"))
 		{
 			//std::cout << SPLISHSPLASH_VERSION << std::endl;
-			exit(0);
+			//exit(0);
 		}
 
-		if (result.count("no-cache"))
+		if (result.no_cache)
 		{
 			setUseParticleCaching(false);
 		}
 
-		if (result.count("no-gui"))
+		if (result.no_gui)
 		{
 			setUseGUI(false);
 		}
 
 		m_cmdLineStopAt = false;
-		if (result.count("stopAt"))
+		if (result.stopAt > 0)
 		{
-			m_stopAt = result["stopAt"].as<Real>();
+            m_stopAt = result.stopAt;
 			m_cmdLineStopAt = true;
 		}
 
-		if (result.count("param"))
+		if (!result.param.empty())
 		{
-			const  std::string paramStr = result["param"].as<std::string>();
+			const  std::string paramStr = result.param;
 			Utilities::StringTools::tokenize(paramStr, m_paramTokens, ":");
 
 			// add third element to get a unified method for all parameters
@@ -299,9 +286,9 @@ void SimulatorBase::init(int argc, char **argv, const std::string &windowName)
 
 		std::string sceneFile = "";
 
-		if (result.count("scene-file"))
+		if (!result.scene_file.empty())
 		{
-			sceneFile = result["scene-file"].as<std::string>();
+            sceneFile = result.scene_file;
 			if (FileSystem::isRelativePath(sceneFile))
 				sceneFile = FileSystem::normalizePath(m_exePath + "/" + sceneFile);
 		}
@@ -320,37 +307,37 @@ void SimulatorBase::init(int argc, char **argv, const std::string &windowName)
 #else 
 		else
 		{
-			std::cout << options.help({ "" }) << std::endl;
-			exit(0);
+			//std::cout << options.help({ "" }) << std::endl;
+			//exit(0);
 		}
 #endif
 		SceneConfiguration::getCurrent()->setSceneFile(sceneFile);
 
 		m_outputPath = FileSystem::normalizePath(getExePath() + "/output/" + FileSystem::getFileName(sceneFile));
-		if (result.count("output-dir"))
+		if (!result.output_dir.empty())
 		{
-			m_outputPath = result["output-dir"].as<std::string>();
+            m_outputPath = result.output_dir;
 		}
 
 		m_cmdLineNoInitialPause = false;
-		if (result.count("no-initial-pause"))
+		if (result.no_initial_pause)
 		{
 			m_doPause = false;
 			m_cmdLineNoInitialPause = true;
 		}
 
 		setStateFile("");
-		if (result.count("state-file"))
+		if (!result.state_file.empty())
 		{
-			setStateFile(result["state-file"].as<std::string>());
+			setStateFile(result.state_file);
 			if (FileSystem::isRelativePath(getStateFile()))
 				setStateFile(FileSystem::normalizePath(m_exePath + "/" + getStateFile()));
 		}
-	}
-	catch (const cxxopts::OptionException& e)
+	 
+ 
 	{
-		std::cout << "error parsing options: " << e.what() << std::endl;
-		exit(1);
+		//std::cout << "error parsing options: " << e.what() << std::endl;
+		//exit(1);
 	}
 
 
@@ -372,7 +359,7 @@ void SimulatorBase::init(int argc, char **argv, const std::string &windowName)
 	// read scene
 	//////////////////////////////////////////////////////////////////////////
 	m_sceneLoader = std::unique_ptr<SceneLoaderSPH>(new SceneLoaderSPH());
-	const std::string& sceneFile = SceneConfiguration::getCurrent()->getSceneFile();
+    sceneFile = SceneConfiguration::getCurrent()->getSceneFile();
 	Utilities::SceneLoaderSPH::Scene& scene = SceneConfiguration::getCurrent()->getScene();
 	if (sceneFile != "")
 		m_sceneLoader->readScene(sceneFile.c_str(), scene);
@@ -406,7 +393,7 @@ void SimulatorBase::init(int argc, char **argv, const std::string &windowName)
 }
 
 void SimulatorBase::initSimulation()
-{
+{//to maingl
 	const std::string& sceneFile = SceneConfiguration::getCurrent()->getSceneFile();
 	const Utilities::SceneLoaderSPH::Scene& scene = SceneConfiguration::getCurrent()->getScene();
 
@@ -479,18 +466,18 @@ void SimulatorBase::initSimulation()
 	if (m_useGUI)
 	{
 		Simulation *sim = Simulation::getCurrent();
-#if 0
+
 		for (unsigned int i = 0; i < sim->numberOfFluidModels(); i++)
 		{
 			FluidModel *model = sim->getFluidModel(i);
 			const std::string &key = model->getId();
-			model->setDragMethodChangedCallback([this, model]() { m_gui->initSimulationParameterGUI(); getSceneLoader()->readMaterialParameterObject(model->getId(), (ParameterObject*)model->getDragBase()); });
-			model->setSurfaceMethodChangedCallback([this, model]() { m_gui->initSimulationParameterGUI(); getSceneLoader()->readMaterialParameterObject(model->getId(), (ParameterObject*)model->getSurfaceTensionBase()); });
-			model->setViscosityMethodChangedCallback([this, model]() { m_gui->initSimulationParameterGUI(); getSceneLoader()->readMaterialParameterObject(model->getId(), (ParameterObject*)model->getViscosityBase()); });
-			model->setVorticityMethodChangedCallback([this, model]() { m_gui->initSimulationParameterGUI(); getSceneLoader()->readMaterialParameterObject(model->getId(), (ParameterObject*)model->getVorticityBase()); });
-			model->setElasticityMethodChangedCallback([this, model]() { reset();  m_gui->initSimulationParameterGUI(); getSceneLoader()->readMaterialParameterObject(model->getId(), (ParameterObject*)model->getElasticityBase()); });
+			model->setDragMethodChangedCallback([this, model]() { /*m_gui->initSimulationParameterGUI();*/ getSceneLoader()->readMaterialParameterObject(model->getId(), (ParameterObject*)model->getDragBase()); });
+			model->setSurfaceMethodChangedCallback([this, model]() { /*m_gui->initSimulationParameterGUI();*/ getSceneLoader()->readMaterialParameterObject(model->getId(), (ParameterObject*)model->getSurfaceTensionBase()); });
+			model->setViscosityMethodChangedCallback([this, model]() { /*m_gui->initSimulationParameterGUI();*/ getSceneLoader()->readMaterialParameterObject(model->getId(), (ParameterObject*)model->getViscosityBase()); });
+			model->setVorticityMethodChangedCallback([this, model]() { /*m_gui->initSimulationParameterGUI();*/ getSceneLoader()->readMaterialParameterObject(model->getId(), (ParameterObject*)model->getVorticityBase()); });
+			model->setElasticityMethodChangedCallback([this, model]() { reset();  /*m_gui->initSimulationParameterGUI();*/ getSceneLoader()->readMaterialParameterObject(model->getId(), (ParameterObject*)model->getElasticityBase()); });
 		}
-#endif
+
 
 		//m_gui->initSimulationParameterGUI();
 		Simulation::getCurrent()->setSimulationMethodChangedCallback([this]() { 

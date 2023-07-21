@@ -17,7 +17,17 @@ namespace SPH
 {
 	class Simulator_GUI_Base;
 	class ExporterBase;
-
+    struct ArgResult
+    {  
+        bool no_cache = false;
+        bool no_gui = false;
+        bool no_initial_pause = false;
+        Real stopAt = -1.0;
+        std::string param;
+        std::string scene_file;
+        std::string output_dir;
+        std::string state_file;
+    };
 	class SimulatorBase : public GenParam::ParameterObject
 	{
 	public: 
@@ -75,9 +85,9 @@ namespace SPH
 		unsigned int m_colorMapLength;
 		BoundarySimulator *m_boundarySimulator;
 		//Simulator_GUI_Base *m_gui;
-		int m_argc;
-		std::vector<char*> m_argv_vec;
-		char **m_argv;
+		//int m_argc;
+		//std::vector<char*> m_argv_vec;
+		//char **m_argv;
 		std::string m_windowName;
 		std::vector<std::string> m_paramTokens;
 		std::function<void()> m_timeStepCB;
@@ -133,8 +143,8 @@ namespace SPH
 		virtual ~SimulatorBase();
 
 		void run();
-		void init(std::vector<std::string> argv, const std::string &windowName);
-		void init(int argc, char **argv, const std::string &windowName);
+		void init(const ArgResult&, const std::string &windowName);
+ 
         void initSimulation();
 		/** This function is called after the simulation scene is loaded and all
 		* parameters are initialized. While reading a scene file several parameters

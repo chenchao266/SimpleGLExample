@@ -567,6 +567,7 @@
     <ClCompile Include="Discregrid\mesh\triangle_mesh.cpp">
       <Filter>Discregrid</Filter>
     </ClCompile>
+    <ClCompile Include="PositionBasedDynamics\maingl.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="PositionBasedDynamics\kdTree.inl">

@@ -49,8 +49,7 @@ void drawText2D(int x, int y, char* msg)
 {}
 void drawText3D(float x, float y, float z, char* msg)
 {}
-void drawSphere()
-{}
+ 
  
 void ParticleSystem::TransferToCUDA ()
 { 
@@ -2759,7 +2758,7 @@ void ParticleSystem::Draw ( b3Matrix3x3& cam, float rad )
 				glTranslatef ( pos_[n].x, pos_[n].y, pos_[n].z );		
 				glScalef ( rad, rad, rad );			
 				glColor4f ( RED(clr_[n]), GRN(clr_[n]), BLUE(clr_[n]), ALPH(clr_[n]) );
-				drawSphere ();
+                //m_app->m_renderer->drawSphere ();
 				glPopMatrix ();		
 			}
 		}

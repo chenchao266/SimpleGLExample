@@ -263,7 +263,7 @@ void TimeSeriesCanvas::grapicalPrintf(const char* str,  int rasterposx, int rast
 {//??
     sth_stash* m_font = m_data->m_fontStash;
     float dx = 0;
-    float pos[3] = { rasterposx, rasterposy, strlen(str) };
+    float pos[3] = { (float)rasterposx, (float)rasterposy, (float)strlen(str) };
     m_data->m_renderCallbacks->setWorldPosition(pos);
     Colorf clrf(clr.r / 256.f, clr.g / 256.f, clr.b / 256.f, clr.a / 256.f );
     m_data->m_renderCallbacks->setColorRGBA(clrf.c);

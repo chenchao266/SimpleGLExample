@@ -146,7 +146,6 @@
     <ClInclude Include="Droplet3D\Fluid3D\faithful_surfacing3.h" />
     <ClInclude Include="Droplet3D\Fluid3D\fluidsim.h" />
     <ClInclude Include="Droplet3D\Fluid3D\GeometricLevelGen.h" />
-    <ClInclude Include="Droplet3D\Fluid3D\gluvi.h" />
     <ClInclude Include="Droplet3D\Fluid3D\hashgrid.h" />
     <ClInclude Include="Droplet3D\Fluid3D\incomplete_qr.h" />
     <ClInclude Include="Droplet3D\Fluid3D\levelset_util.h" />
@@ -217,6 +216,7 @@
     <ClCompile Include="Droplet3D\Fluid3D\incomplete_qr.cpp" />
     <ClCompile Include="Droplet3D\Fluid3D\levelset_util.cpp" />
     <ClCompile Include="Droplet3D\Fluid3D\main1.cpp" />
+    <ClCompile Include="Droplet3D\Fluid3D\maingl.cpp" />
     <ClCompile Include="Droplet3D\Fluid3D\makelevelset3.cpp" />
     <ClCompile Include="Droplet3D\Fluid3D\marching_tiles.cpp" />
     <ClCompile Include="Droplet3D\FMMTLWrapper.cpp" />
@@ -240,6 +240,7 @@
     <ClCompile Include="Droplet3D\LosTopos3D\surftrack.cpp" />
     <ClCompile Include="Droplet3D\LosTopos3D\t1transition.cpp" />
     <ClCompile Include="Droplet3D\LosTopos3D\trianglequality.cpp" />
+    <ClCompile Include="Droplet3D\mainsim.cpp" />
     <ClCompile Include="Droplet3D\MeshIO.cpp" />
     <ClCompile Include="Droplet3D\Scenes.cpp" />
     <ClCompile Include="Droplet3D\Sim.cpp" />

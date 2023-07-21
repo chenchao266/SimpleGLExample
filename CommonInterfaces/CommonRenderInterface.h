@@ -65,6 +65,9 @@ struct CommonRenderInterface
 	//virtual void drawPoint(const double* position, const double color[4], double pointDrawSize) = 0;
 	virtual void drawTexturedTriangleMesh(float worldPosition[3], float worldOrientation[4], const float* vertices, int numvertices, 
         const unsigned int* indices, int numIndices, const Colorf& color, int textureIndex = -1, int vertexLayout = 0) = 0;
+    virtual void drawCylinder(const float* a, const float* b, const Colorf& color, const float radius = 0.02, const unsigned int subdivisions = 8) = 0;
+    virtual void drawSphere(const float* translation, float radius, const Colorf& color, const unsigned int subDivision = 16) = 0;
+    virtual void drawQuad(const float* a, const float* b, const float* c, const float* d, const float* norm, const Colorf& color) = 0;
 
 	virtual int registerShape(const float* vertices, int numvertices, const int* indices, int numIndices, int primitiveType = B3_GL_TRIANGLES, int textureIndex = -1) = 0;
 	virtual void updateShape(int shapeIndex, const float* vertices) = 0;

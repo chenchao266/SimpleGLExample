@@ -175,6 +175,12 @@
     <ClCompile Include="common\sos_orientation.cpp">
       <Filter>common</Filter>
     </ClCompile>
+    <ClCompile Include="Droplet3D\Fluid3D\maingl.cpp">
+      <Filter>Fluid3D</Filter>
+    </ClCompile>
+    <ClCompile Include="Droplet3D\mainsim.cpp">
+      <Filter>Droplet3D</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="common">
@@ -294,9 +300,6 @@
       <Filter>Fluid3D</Filter>
     </ClInclude>
     <ClInclude Include="Droplet3D\Fluid3D\GeometricLevelGen.h">
-      <Filter>Fluid3D</Filter>
-    </ClInclude>
-    <ClInclude Include="Droplet3D\Fluid3D\gluvi.h">
       <Filter>Fluid3D</Filter>
     </ClInclude>
     <ClInclude Include="Droplet3D\Fluid3D\hashgrid.h">
